@@ -1,0 +1,19 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Result",
+            "Participant",
+            "Program",
+            "Course",
+            "EducationEvent",
+            "Activity",
+            "Test",
+            "Stage",
+            "Question",
+            "Group",
+            "Review",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}
