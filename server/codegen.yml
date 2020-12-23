@@ -76,7 +76,83 @@ generates:
                 DateTime: Date
                 Date: Date
                 JSON: Record<string, unknown>
+    src/generated/mrc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/mrc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - fragment-matcher
+    src/generated/mrc-graphql.tsx:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/mrc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-react-apollo'
+        config:
+            withHooks: true
+            withMutationFn: false
+            withComponent: false
+            withHOC: false
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/arc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/arc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - fragment-matcher
+    src/generated/arc-graphql.tsx:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/arc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-react-apollo'
+        config:
+            withHooks: true
+            withMutationFn: false
+            withComponent: false
+            withHOC: false
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/wrc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/wrc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - fragment-matcher
+    src/generated/wrc-graphql.tsx:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/wrc/graphql:
+                  headers:
+                      Authorization: b820b925-b4c3-4d48-8035-248ccc628ea7
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-react-apollo'
+        config:
+            withHooks: true
+            withMutationFn: false
+            withComponent: false
+            withHOC: false
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
 
 hooks:
     afterAllFileWrite:
         - prettier --write
+\

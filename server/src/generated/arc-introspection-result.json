@@ -1,0 +1,18 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Reservation",
+            "Availability",
+            "Event",
+            "Schedule",
+            "Calendar",
+            "Alarm",
+            "Resource",
+            "Freebusy",
+            "Journal",
+            "Todo",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}

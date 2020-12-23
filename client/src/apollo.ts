@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import introspectionResult from './generated/introspection-result.json'
 
 const apolloClient = new ApolloClient({
