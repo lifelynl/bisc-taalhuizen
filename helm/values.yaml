@@ -10,6 +10,7 @@ settings:
   version: '0.1.0' #${GIT_COMMIT_HASH}
   domain: bisc-staging.lifely.nl
   nodeEnv: production
+  subpath: ''
 
 letsEncrypt:
   host: bisc-staging.lifely.nl
@@ -19,6 +20,7 @@ security:
   pepper: ''
   secret: ''
   sentryDns: ''
+  apiKey: ''
 
 mail:
   type: smtp
@@ -31,10 +33,7 @@ mail:
     userName: ''
     password: ''
 
-
-
 image:
-  repository: nginx
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -68,6 +67,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+
 
 ingress:
   enabled: false
