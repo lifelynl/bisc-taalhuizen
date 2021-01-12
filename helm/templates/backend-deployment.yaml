@@ -37,7 +37,7 @@ spec:
                   key: app-name
             - name: APP_VERSION
               valueFrom:
-                - configMapKeyRef:
+                configMapKeyRef:
                     name: {{ template "fullname" . }}
                     key: version
             - name: ENV
@@ -47,17 +47,17 @@ spec:
                   key: app-env
             - name: APP_SERVER_URL
               valueFrom:
-                - configMapKeyRef:
+                configMapKeyRef:
                     name: {{ template "fullname" . }}
                     key: server-url
             - name: APP_CLIENT_URL
               valueFrom:
-                - configMapKeyRef:
+                configMapKeyRef:
                     name: {{ template "fullname" . }}
                     key: client-url
             - name: NODE_ENV
               valueFrom:
-                - configMapKeyRef:
+                configMapKeyRef:
                     name: {{ template "fullname" . }}
                     key: node-env
 
@@ -65,7 +65,8 @@ spec:
             - name: API_KEY
               valueFrom:
                 secretKeyRef:
-                  - name: {{ template "fullname" . }}
+                  name: {{ template "fullname" . }}
+                  key: api-key
             - name: APP_PEPPER
               valueFrom:
                 secretKeyRef:
@@ -85,24 +86,29 @@ spec:
             #Mail configmap values
             - name: MAIL
               valueFrom:
-                configMapKeyRef: {{ template "fullname" . }}
-                key: mail
+                configMapKeyRef:
+                  name:  {{ template "fullname" . }}
+                  key: mail
             - name: MAIL_FROM_NAME
               valueFrom:
-                configMapKeyRef: {{ template "fullname" . }}
-                key: mail-from-name
+                configMapKeyRef:
+                  name:  {{ template "fullname" . }}
+                  key: mail-from-name
             - name: MAIL_FROM_EMAIL
               valueFrom:
-                configMapKeyRef: {{ template "fullname" . }}
-                key: mail-from-email
+                configMapKeyRef:
+                  name:  {{ template "fullname" . }}
+                  key: mail-from-email
             - name: MAIL_SMTP_HOST
               valueFrom:
-                configMapKeyRef: {{ template "fullname" . }}
-                key: mail-host
+                configMapKeyRef:
+                  name:  {{ template "fullname" . }}
+                  key: mail-host
             - name: MAIL_SMTP_PORT
               valueFrom:
-                configMapKeyRef: {{ template "fullname" . }}
-                key: mail-port
+                configMapKeyRef:
+                  name:  {{ template "fullname" . }}
+                  key: mail-port
 
             #Mail secret values
             - name: MAIL_SMTP_AUTH_USERNAME

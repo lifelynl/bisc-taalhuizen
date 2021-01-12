@@ -24,4 +24,4 @@ data:
   mail-from-name: {{ .Values.mail.from.name }}
   mail-from-email: {{ .Values.mail.from.email }}
   mail-host: {{ .Values.mail.smtp.host }}
-  mail-port: {{ .Values.mail.smtp.port }}
+  mail-port: {{ .Values.mail.smtp.port | quote }}

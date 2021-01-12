@@ -125,4 +125,3 @@ spec:
               serviceName: {{ $.Values.settings.name }}-backend
               servicePort: 80
     {{- end }}
-  {{ end }}

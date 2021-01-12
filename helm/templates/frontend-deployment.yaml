@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.settings.name }}-backend
+  name: {{ .Values.settings.name }}-frontend
   labels:
     app.kubernetes.io/name: {{ .Values.settings.name }}-frontend
     app.kubernetes.io/part-of: {{ .Values.settings.name }}
@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ .Values.settings.name }}-backend
+        app.kubernetes.io/name: {{ .Values.settings.name }}-frontend
         app.kubernetes.io/part-of: {{ .Values.settings.name }}
         helm.sh/chart: {{ include "chart" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}

@@ -17,21 +17,21 @@ letsEncrypt:
   email: ops@lifely.nl
 
 security:
-  pepper: ''
-  secret: ''
-  sentryDns: ''
-  apiKey: ''
+  pepper: '6559410638cb76176e1d0202aabb9ebf3faca2c0cb421131e9a7e535a8ddb011'
+  secret: '101d5966aa1f412ae62fefe98fbf3d1c856aa7b123a71242a12b154761b3e607'
+  sentryDns: 'e3d1e584-381f-4295-a5b1-10ed9a38d920'
+  apiKey: '4dc76f5e-fbf8-4b01-b465-49e24f0df19a'
 
 mail:
   type: smtp
   from:
-    name: ''
-    email: ''
+    name: 'test'
+    email: 'test@test.nl'
   smtp:
-    host: ''
-    port: ''
-    userName: ''
-    password: ''
+    host: 'example.com'
+    port: '25'
+    username: 'example'
+    password: '!changeMe!'
 
 image:
   pullPolicy: Always
