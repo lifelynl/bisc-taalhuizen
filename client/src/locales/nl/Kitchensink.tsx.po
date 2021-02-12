@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2021-02-12 14:37+0100\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: nl\n"
+
+#: src/views/Unauthorized/LinguiExample.tsx:15
+msgid "LinguiExample.errorMessage"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:15
+msgid "LinguiExample.errorTitle"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:52
+msgid "LinguiExample.plurals"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:18
+msgid "LinguiExample.successMessage"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:18
+msgid "LinguiExample.successTitle"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:30
+msgid "LinguiExample.text"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:38
+msgid "LinguiExample.value"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:76
+msgid "LinguiExample.withI18n"
+msgstr ""
+
+#: src/views/Unauthorized/LinguiExample.tsx:26
+msgid "TranslationsExamle.title"
+msgstr ""
