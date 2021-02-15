@@ -25,6 +25,7 @@ import { MainNavigationType } from '../../../components/Core/Navigation/MainNavi
 import MainNavigationEnvironmentCard from '../../../components/Core/Navigation/MainNavigation/MainNavigationEnvironmentCard'
 import Actionbar from '../../../components/Core/Actionbar/Actionbar'
 import ContentGreetingPageLayout from '../../../components/Core/PageLayout/ContentGreetingPageLayout'
+import AppPageLayout from '../../../components/Core/PageLayout/AppPageLayout'
 
 export default function Kitchensink() {
     return (
@@ -537,6 +538,72 @@ export default function Kitchensink() {
         return (
             <div style={{ height: 900, width: '100%', background: 'black' }}>
                 <ContentGreetingPageLayout greeting={'Welkom bij Mijn Taalhuis'} ContentComponent={<p>:)</p>} />
+                <AppPageLayout
+                    NavigationComponent={
+                        <MainNavigation
+                            type={MainNavigationType.bisc}
+                            TopComponent={
+                                <MainNavigationEnvironmentCard
+                                    name={'Applicatie naam'}
+                                    environment={'BISC OMGEVING'}
+                                    type={MainNavigationType.bisc}
+                                />
+                            }
+                            ListComponent={
+                                <>
+                                    <MainNavigationItem
+                                        label="Deelnemers"
+                                        icon={IconType.taalhuis}
+                                        to={routes.index}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                    <MainNavigationItem
+                                        label="Aanbieders"
+                                        icon={IconType.providers}
+                                        active={true}
+                                        to={routes.programs}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                    <MainNavigationItem
+                                        label="Aanbod"
+                                        icon={IconType.offer}
+                                        to={routes.myPrograms}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                    <MainNavigationItem
+                                        label="Rapportages"
+                                        icon={IconType.rapportage}
+                                        to={routes.addPersonToProgram}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                    <MainNavigationItem
+                                        label="Beheer"
+                                        icon={IconType.settings}
+                                        to={routes.kitchensink}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                </>
+                            }
+                            BottomComponent={
+                                <>
+                                    <MainNavigationItem
+                                        label="Daniella de Wit"
+                                        icon={IconType.profile}
+                                        to={routes.addPersonToProgram}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                    <MainNavigationItem
+                                        label="Uitloggen"
+                                        icon={IconType.logOut}
+                                        onClick={() => alert('log me out')}
+                                        type={MainNavigationType.bisc}
+                                    />
+                                </>
+                            }
+                        />
+                    }
+                    ContentComponent={<p>:)</p>}
+                />
             </div>
         )
     }

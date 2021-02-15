@@ -1,0 +1,21 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    padding: 25px 85px 32px;
+}
+
+.navigationContainer {
+    width: 220px;
+    height: 100%;
+}
+
+.contentContainer {
+    height: 100%;
+    width: 100%;
+}
