@@ -11,7 +11,7 @@ import { UserRepository } from './uc/UserRepository'
 import { ParticipantRepository } from './edu/ParticipantRepository'
 import { ProgramRepository } from './edu/ProgramRepository'
 import { GroupRepository } from './uc/GroupRepository'
-import { SourceTaalhuisRepository } from './wrc/SourceTaalhuisRepository'
+import { SourceOrganisationRepository } from './wrc/SourceOrganisationRepository'
 
 @Module({
     providers: [
@@ -22,7 +22,7 @@ import { SourceTaalhuisRepository } from './wrc/SourceTaalhuisRepository'
         TelephoneRepository,
         EmployeeRepository,
         UserRepository,
-        SourceTaalhuisRepository,
+        SourceOrganisationRepository,
         ParticipantRepository,
         ProgramRepository,
         TaalhuisRepository,
@@ -37,7 +37,7 @@ import { SourceTaalhuisRepository } from './wrc/SourceTaalhuisRepository'
         TelephoneRepository,
         EmployeeRepository,
         UserRepository,
-        SourceTaalhuisRepository,
+        SourceOrganisationRepository,
         ParticipantRepository,
         ProgramRepository,
         TaalhuisRepository,

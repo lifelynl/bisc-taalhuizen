@@ -3,7 +3,7 @@ import { assertNotNil } from 'src/AssertNotNil'
 import { WRCRepository } from 'src/CommonGroundAPI/WRCRepository'
 
 @Injectable()
-export class SourceTaalhuisRepository extends WRCRepository {
+export class SourceOrganisationRepository extends WRCRepository {
     public async createSourceTaalhuis(name: string) {
         const result = await this.sdk.createSourceOrganization({ input: { name } })
 

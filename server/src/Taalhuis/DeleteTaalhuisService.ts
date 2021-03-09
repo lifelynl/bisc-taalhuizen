@@ -7,7 +7,7 @@ import { TelephoneRepository } from 'src/CommonGroundAPI/cc/TelephoneRepository'
 import { ParticipantRepository } from 'src/CommonGroundAPI/edu/ParticipantRepository'
 import { ProgramRepository } from 'src/CommonGroundAPI/edu/ProgramRepository'
 import { EmployeeRepository } from 'src/CommonGroundAPI/mrc/EmployeeRepository'
-import { SourceTaalhuisRepository } from 'src/CommonGroundAPI/wrc/SourceTaalhuisRepository'
+import { SourceOrganisationRepository } from 'src/CommonGroundAPI/wrc/SourceOrganisationRepository'
 
 export interface DeleteTaalhuisInput {
     id: string
@@ -22,7 +22,7 @@ export class DeleteTaalhuisService {
         private taalhuisRepository: TaalhuisRepository,
         private employeeRepository: EmployeeRepository,
         private programRepository: ProgramRepository,
-        private sourceTaalhuisRepository: SourceTaalhuisRepository,
+        private sourceOrganisationRepository: SourceOrganisationRepository,
         private addressRepository: AddressRepository,
         private emailRepository: EmailRepository,
         private telephoneRepository: TelephoneRepository
@@ -76,7 +76,7 @@ export class DeleteTaalhuisService {
         // delete cc/organization
         await this.taalhuisRepository.deleteTaalhuis(taalhuis.id)
         // delete wrc/organization
-        await this.sourceTaalhuisRepository.deleteSourceTaalhuis(taalhuis.sourceTaalhuis)
+        await this.sourceOrganisationRepository.deleteSourceTaalhuis(taalhuis.sourceTaalhuis)
 
         return true
     }
