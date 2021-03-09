@@ -3,7 +3,7 @@ import { AddressRepository } from 'src/CommonGroundAPI/cc/AddressRepository'
 import { EmailRepository } from 'src/CommonGroundAPI/cc/EmailRepository'
 import { TelephoneRepository } from 'src/CommonGroundAPI/cc/TelephoneRepository'
 import { PersonRepository } from './cc/PersonRepository'
-import { TaalhuisRepository } from './cc/TaalhuisRepository'
+import { OrganizationRepository } from './cc/OrganizationRepository'
 import { CommonGroundAPIService } from './CommonGroundAPIService'
 import { CommonGroundLoginService } from './CommonGroundLoginService'
 import { EmployeeRepository } from './mrc/EmployeeRepository'
@@ -25,7 +25,7 @@ import { SourceOrganisationRepository } from './wrc/SourceOrganisationRepository
         SourceOrganisationRepository,
         ParticipantRepository,
         ProgramRepository,
-        TaalhuisRepository,
+        OrganizationRepository,
         PersonRepository,
         GroupRepository,
     ],
@@ -40,7 +40,7 @@ import { SourceOrganisationRepository } from './wrc/SourceOrganisationRepository
         SourceOrganisationRepository,
         ParticipantRepository,
         ProgramRepository,
-        TaalhuisRepository,
+        OrganizationRepository,
         PersonRepository,
         GroupRepository,
     ],

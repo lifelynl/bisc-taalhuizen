@@ -39,7 +39,7 @@ type TaalhuisEntity = {
 }
 
 @Injectable()
-export class TaalhuisRepository extends CCRepository {
+export class OrganizationRepository extends CCRepository {
     public async addTaalhuis(input: AddTaalhuisInput) {
         const createdTaalhuis = await this.sdk.createOrganization({
             input: {

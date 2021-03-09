@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { assertNotNil } from 'src/AssertNotNil'
 import { AddressRepository } from 'src/CommonGroundAPI/cc/AddressRepository'
 import { EmailRepository } from 'src/CommonGroundAPI/cc/EmailRepository'
-import { TaalhuisRepository } from 'src/CommonGroundAPI/cc/TaalhuisRepository'
+import { OrganizationRepository } from 'src/CommonGroundAPI/cc/OrganizationRepository'
 import { TelephoneRepository } from 'src/CommonGroundAPI/cc/TelephoneRepository'
 import { ParticipantRepository } from 'src/CommonGroundAPI/edu/ParticipantRepository'
 import { ProgramRepository } from 'src/CommonGroundAPI/edu/ProgramRepository'
@@ -19,7 +19,7 @@ export class DeleteTaalhuisService {
 
     public constructor(
         private participantRepository: ParticipantRepository,
-        private taalhuisRepository: TaalhuisRepository,
+        private organizationRepository: OrganizationRepository,
         private employeeRepository: EmployeeRepository,
         private programRepository: ProgramRepository,
         private sourceOrganisationRepository: SourceOrganisationRepository,
@@ -29,7 +29,7 @@ export class DeleteTaalhuisService {
     ) {}
 
     public async deleteTaalhuis(id: string) {
-        const taalhuis = await this.taalhuisRepository.getOne(id)
+        const taalhuis = await this.organizationRepository.getOne(id)
         assertNotNil(taalhuis, `Taalhuis ${id} not found.`)
 
         const employeesForTaalhuis = await this.employeeRepository.findByTaalhuisId(taalhuis.id)
@@ -74,7 +74,7 @@ export class DeleteTaalhuisService {
         }
 
         // delete cc/organization
-        await this.taalhuisRepository.deleteTaalhuis(taalhuis.id)
+        await this.organizationRepository.deleteTaalhuis(taalhuis.id)
         // delete wrc/organization
         await this.sourceOrganisationRepository.deleteSourceTaalhuis(taalhuis.sourceTaalhuis)
 

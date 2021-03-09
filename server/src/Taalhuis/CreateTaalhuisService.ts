@@ -8,7 +8,7 @@ import { Organization } from 'src/generated/wrc-graphql'
 import { ProgramRepository } from 'src/CommonGroundAPI/edu/ProgramRepository'
 import { GroupRepository } from '../CommonGroundAPI/uc/GroupRepository'
 import { SourceOrganisationRepository } from '../CommonGroundAPI/wrc/SourceOrganisationRepository'
-import { TaalhuisRepository } from '../CommonGroundAPI/cc/TaalhuisRepository'
+import { OrganizationRepository } from '../CommonGroundAPI/cc/OrganizationRepository'
 import { TaalhuisAddressType, TaalhuisType } from './types/TaalhuisType'
 
 export interface CreateTaalhuisInput {
@@ -24,7 +24,7 @@ export class CreateTaalhuisService {
     public constructor(
         private emailRepository: EmailRepository,
         private telephoneRepository: TelephoneRepository,
-        private taalhuisRepository: TaalhuisRepository,
+        private organizationRepository: OrganizationRepository,
         private addressRepository: AddressRepository,
         private sourceOrganisationRepository: SourceOrganisationRepository,
         private groupRepository: GroupRepository,
@@ -47,7 +47,7 @@ export class CreateTaalhuisService {
         await this.createProgramForSourceTaalhuis(sourceTaalhuis)
 
         // cc/organization
-        const taalhuis = await this.taalhuisRepository.addTaalhuis({
+        const taalhuis = await this.organizationRepository.addTaalhuis({
             name: input.name,
             addressIds: address ? [address.id] : undefined,
             emailIds: [email.id],

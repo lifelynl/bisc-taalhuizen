@@ -4,7 +4,7 @@ import { CreateTaalhuisService } from './CreateTaalhuisService'
 import { TaalhuisType } from './types/TaalhuisType'
 import { CurrentUser } from 'src/User/CurrentUserDecorator'
 import { UserEntity } from 'src/User/entities/UserEntity'
-import { TaalhuisRepository } from '../CommonGroundAPI/cc/TaalhuisRepository'
+import { OrganizationRepository } from '../CommonGroundAPI/cc/OrganizationRepository'
 import { UpdateTaalhuisInputType } from './types/UpdateTaalhuisInputType'
 import { UpdateTaalhuisService } from './UpdateTaalhuisService'
 import { DeleteTaalhuisService } from './DeleteTaalhuisService'
@@ -18,13 +18,13 @@ export class TaalhuisResolver {
         private createTaalhuisService: CreateTaalhuisService,
         private updateTaalhuisService: UpdateTaalhuisService,
         private deleteTaalhuisService: DeleteTaalhuisService,
-        private taalhuisRepository: TaalhuisRepository
+        private organizationRepository: OrganizationRepository
     ) {}
 
     @Query(() => [TaalhuisType])
     public async taalhuizen(@CurrentUser() user: UserEntity): Promise<TaalhuisType[]> {
         // TODO: Authorization checks (user type, user role)
-        return this.taalhuisRepository.findAll()
+        return this.organizationRepository.findAll()
     }
 
     @Mutation(() => TaalhuisType)
