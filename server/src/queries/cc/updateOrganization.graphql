@@ -22,7 +22,7 @@ mutation updateOrganization($input: updateOrganizationInput!) {
                     }
                 }
             }
-            adresses {
+            addresses {
                 edges {
                     node {
                         id

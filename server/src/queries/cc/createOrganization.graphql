@@ -21,7 +21,7 @@ mutation createOrganization($input: createOrganizationInput!) {
                     }
                 }
             }
-            adresses {
+            addresses {
                 edges {
                     node {
                         id

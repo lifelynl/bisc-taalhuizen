@@ -66,7 +66,7 @@ export class CreateTaalhuisService {
         const telephoneString = taalhuis.telephones?.edges?.pop()?.node?.telephone
         assertNotNil(telephoneString, `Telephone not found for taalhuis ${taalhuis.id}`)
 
-        const addressObject = taalhuis.adresses?.edges?.pop()?.node
+        const addressObject = taalhuis.addresses?.edges?.pop()?.node
         assertNotNil(addressObject, `Address not found for taalhuis ${taalhuis.id}`)
 
         return {

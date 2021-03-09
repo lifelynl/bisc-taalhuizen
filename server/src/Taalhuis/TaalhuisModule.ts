@@ -7,6 +7,7 @@ import { DeleteTaalhuisService } from './DeleteTaalhuisService'
 import { TaalhuisEmployeeResolver } from './TaalhuisEmployeeResolver'
 import { TaalhuisEmployeeService } from './TaalhuisEmployeeService'
 import { TaalhuisResolver } from './TaalhuisResolver'
+import { UpdateTaalhuisEmployeeService } from './UpdateTaalhuisEmployeeService'
 import { UpdateTaalhuisService } from './UpdateTaalhuisService'
 import { UserRoleResolver } from './UserRoleResolver'
 
@@ -21,6 +22,7 @@ import { UserRoleResolver } from './UserRoleResolver'
         TaalhuisEmployeeResolver,
         DeleteTaalhuisService,
         TaalhuisEmployeeService,
+        UpdateTaalhuisEmployeeService,
     ],
     exports: [],
 })

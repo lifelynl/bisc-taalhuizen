@@ -23,7 +23,7 @@ query organizations($type: String!) {
                         }
                     }
                 }
-                adresses {
+                addresses {
                     edges {
                         node {
                             id

@@ -45,7 +45,7 @@ export class TaalhuisRepository extends CCRepository {
             input: {
                 type: OrganizationTypesEnum.TAALHUIS,
                 name: input.name,
-                adresses: input.addressIds
+                addresses: input.addressIds
                     ? input.addressIds.map(addressId => this.stripURLfromID(addressId))
                     : undefined,
                 emails: input.emailIds ? input.emailIds.map(emailId => this.stripURLfromID(emailId)) : undefined,
@@ -69,7 +69,7 @@ export class TaalhuisRepository extends CCRepository {
             input: {
                 id: this.stripURLfromID(input.id),
                 name: input.name,
-                adresses: input.addressIds
+                addresses: input.addressIds
                     ? input.addressIds.map(addressId => this.stripURLfromID(addressId))
                     : undefined,
                 emails: input.emailIds ? input.emailIds.map(emailId => this.stripURLfromID(emailId)) : undefined,
@@ -146,7 +146,7 @@ export class TaalhuisRepository extends CCRepository {
         const telephone = organizationEdge?.node?.telephones?.edges?.pop()?.node
         assertNotNil(telephone)
 
-        const address = organizationEdge?.node?.adresses?.edges?.pop()?.node
+        const address = organizationEdge?.node?.addresses?.edges?.pop()?.node
         assertNotNil(address)
 
         const taalhuisEntity: TaalhuisEntity = {

@@ -59,7 +59,7 @@ export class UpdateTaalhuisService {
             throw new Error(`Taalhuis entity not found`)
         }
 
-        const addressNode = taalhuis.adresses?.edges?.pop()?.node
+        const addressNode = taalhuis.addresses?.edges?.pop()?.node
         assertNotNil(addressNode, `Address not found for taalhuis ${taalhuis.id}`)
 
         const telephoneNode = taalhuis.telephones?.edges?.pop()?.node

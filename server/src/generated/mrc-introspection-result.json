@@ -10,6 +10,7 @@
             "Skill",
             "JobFunction",
             "Contract",
+            "Education",
             "AuditTrail",
             "ChangeLog"
         ]

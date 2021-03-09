@@ -26,6 +26,7 @@ export type Query = {
     competences?: Maybe<CompetenceConnection>
     contract?: Maybe<Contract>
     contracts?: Maybe<ContractConnection>
+    education?: Maybe<Education>
     employee?: Maybe<Employee>
     employees?: Maybe<EmployeeConnection>
     goal?: Maybe<Goal>
@@ -124,6 +125,10 @@ export type QueryContractsArgs = {
     salary_list?: Maybe<Array<Maybe<Scalars['Int']>>>
     dateCreated_list?: Maybe<Array<Maybe<Scalars['String']>>>
     dateModified_list?: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type QueryEducationArgs = {
+    id: Scalars['ID']
 }
 
 export type QueryEmployeeArgs = {
@@ -914,6 +919,21 @@ export type ApplicationPageInfo = {
     hasPreviousPage: Scalars['Boolean']
 }
 
+export type Education = Node & {
+    __typename?: 'Education'
+    id: Scalars['ID']
+    /** The moment this education starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this education ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The institution of this Education. */
+    institution?: Maybe<Scalars['String']>
+    /** The degree granted status of this education. **Granted**, **notGranted** */
+    degreeGrantedStatus?: Maybe<Scalars['String']>
+    /** The Isced Education Level Code of this Education. */
+    iscedEducationLevelCode?: Maybe<Scalars['String']>
+}
+
 export type EmployeeFilter_Order = {
     id?: Maybe<Scalars['String']>
     person?: Maybe<Scalars['String']>
@@ -1222,6 +1242,12 @@ export type Mutation = {
     updateContract?: Maybe<UpdateContractPayload>
     /** Creates a Contract. */
     createContract?: Maybe<CreateContractPayload>
+    /** Deletes a Education. */
+    deleteEducation?: Maybe<DeleteEducationPayload>
+    /** Updates a Education. */
+    updateEducation?: Maybe<UpdateEducationPayload>
+    /** Creates a Education. */
+    createEducation?: Maybe<CreateEducationPayload>
     /** Deletes a Employee. */
     deleteEmployee?: Maybe<DeleteEmployeePayload>
     /** Updates a Employee. */
@@ -1306,6 +1332,18 @@ export type MutationUpdateContractArgs = {
 
 export type MutationCreateContractArgs = {
     input: CreateContractInput
+}
+
+export type MutationDeleteEducationArgs = {
+    input: DeleteEducationInput
+}
+
+export type MutationUpdateEducationArgs = {
+    input: UpdateEducationInput
+}
+
+export type MutationCreateEducationArgs = {
+    input: CreateEducationInput
 }
 
 export type MutationDeleteEmployeeArgs = {
@@ -1567,6 +1605,58 @@ export type CreateContractInput = {
 export type CreateContractPayload = {
     __typename?: 'createContractPayload'
     contract?: Maybe<Contract>
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type DeleteEducationInput = {
+    id: Scalars['ID']
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type DeleteEducationPayload = {
+    __typename?: 'deleteEducationPayload'
+    education?: Maybe<Education>
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type UpdateEducationInput = {
+    id: Scalars['ID']
+    /** The moment this education starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this education ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The institution of this Education. */
+    institution?: Maybe<Scalars['String']>
+    /** The degree granted status of this education. **Granted**, **notGranted** */
+    degreeGrantedStatus?: Maybe<Scalars['String']>
+    /** The Isced Education Level Code of this Education. */
+    iscedEducationLevelCode?: Maybe<Scalars['String']>
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type UpdateEducationPayload = {
+    __typename?: 'updateEducationPayload'
+    education?: Maybe<Education>
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type CreateEducationInput = {
+    /** The moment this education starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this education ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The institution of this Education. */
+    institution?: Maybe<Scalars['String']>
+    /** The degree granted status of this education. **Granted**, **notGranted** */
+    degreeGrantedStatus?: Maybe<Scalars['String']>
+    /** The Isced Education Level Code of this Education. */
+    iscedEducationLevelCode?: Maybe<Scalars['String']>
+    clientMutationId?: Maybe<Scalars['String']>
+}
+
+export type CreateEducationPayload = {
+    __typename?: 'createEducationPayload'
+    education?: Maybe<Education>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -2008,6 +2098,14 @@ export type DeleteEmployeeMutation = { __typename?: 'Mutation' } & {
     >
 }
 
+export type EmployeeQueryVariables = Exact<{
+    id: Scalars['ID']
+}>
+
+export type EmployeeQuery = { __typename?: 'Query' } & {
+    employee?: Maybe<{ __typename?: 'Employee' } & Pick<Employee, 'id' | 'person' | 'organization'>>
+}
+
 export type EmployeesQueryVariables = Exact<{
     organizationId?: Maybe<Scalars['String']>
 }>
@@ -2048,6 +2146,15 @@ export const DeleteEmployeeDocument = gql`
         }
     }
 `
+export const EmployeeDocument = gql`
+    query employee($id: ID!) {
+        employee(id: $id) {
+            id
+            person
+            organization
+        }
+    }
+`
 export const EmployeesDocument = gql`
     query employees($organizationId: String) {
         employees(organization: $organizationId) {
@@ -2083,6 +2190,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             return withWrapper(() =>
                 client.request<DeleteEmployeeMutation>(print(DeleteEmployeeDocument), variables, requestHeaders)
             )
+        },
+        employee(
+            variables: EmployeeQueryVariables,
+            requestHeaders?: Dom.RequestInit['headers']
+        ): Promise<EmployeeQuery> {
+            return withWrapper(() => client.request<EmployeeQuery>(print(EmployeeDocument), variables, requestHeaders))
         },
         employees(
             variables?: EmployeesQueryVariables,

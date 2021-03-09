@@ -42,4 +42,28 @@ export class TaalhuisEmployeeService {
 
         return taalhuisEmployees
     }
+
+    public async findById(employeeId: string): Promise<TaalhuisEmployeeType> {
+        const employee = await this.employeeRepository.findById({ id: employeeId })
+
+        assertNotNil(employee, `Employee with id ${employeeId} not found`)
+
+        const person = await this.personRepository.findById(employee.person)
+        const user = await this.userRepository.findByPersonId(employee.person)
+
+        assertNotNil(person, `Person not found for employee ${employee.id}`)
+        assertNotNil(user, `User not found for person ${employee.person}`)
+
+        return {
+            id: user.id,
+            email: person.email,
+            telephone: person.telephone,
+            givenName: person.givenName,
+            additionalName: person.additionalName,
+            familyName: person.familyName,
+            dateCreated: user.dateCreated,
+            dateModified: user.dateModified,
+            userRoles: user.userRoles,
+        }
+    }
 }

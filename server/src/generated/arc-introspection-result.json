@@ -7,10 +7,10 @@
             "Event",
             "Schedule",
             "Freebusy",
+            "Todo",
             "Journal",
             "Reservation",
             "Resource",
-            "Todo",
             "AuditTrail",
             "ChangeLog"
         ]

@@ -21,7 +21,7 @@ query organization($id: ID!) {
                 }
             }
         }
-        adresses {
+        addresses {
             edges {
                 node {
                     id

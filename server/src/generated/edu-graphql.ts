@@ -98,6 +98,7 @@ export type QueryGroupsArgs = {
     last?: Maybe<Scalars['Int']>
     before?: Maybe<Scalars['String']>
     after?: Maybe<Scalars['String']>
+    mentors?: Maybe<Scalars['Iterable']>
 }
 
 export type QueryParticipantArgs = {
@@ -113,6 +114,8 @@ export type QueryParticipantsArgs = {
     dateCreated?: Maybe<ParticipantFilter_DateCreated>
     dateModified?: Maybe<ParticipantFilter_DateModified>
     dateOfAcceptance?: Maybe<ParticipantFilter_DateOfAcceptance>
+    startDate?: Maybe<ParticipantFilter_StartDate>
+    endDate?: Maybe<ParticipantFilter_EndDate>
     person?: Maybe<Scalars['String']>
     person_list?: Maybe<Array<Maybe<Scalars['String']>>>
     course_id?: Maybe<Scalars['String']>
@@ -121,6 +124,10 @@ export type QueryParticipantsArgs = {
     program_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
     results_id?: Maybe<Scalars['String']>
     results_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    status?: Maybe<Scalars['String']>
+    status_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    mentor?: Maybe<Scalars['String']>
+    mentor_list?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type QueryProgramArgs = {
@@ -157,6 +164,8 @@ export type QueryResultsArgs = {
     after?: Maybe<Scalars['String']>
     participant_id?: Maybe<Scalars['String']>
     participant_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    participant_person?: Maybe<Scalars['String']>
+    participant_person_list?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type QueryReviewArgs = {
@@ -322,6 +331,7 @@ export type Course = Node & {
     programs?: Maybe<ProgramConnection>
     educationEvents?: Maybe<EducationEventConnection>
     activities?: Maybe<ActivityConnection>
+    courseGroups?: Maybe<GroupConnection>
 }
 
 /** A Course is a course within a program in which participants can participate. Based on https://schema.org/Course. */
@@ -349,6 +359,15 @@ export type CourseActivitiesArgs = {
     after?: Maybe<Scalars['String']>
     course_id?: Maybe<Scalars['String']>
     course_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+/** A Course is a course within a program in which participants can participate. Based on https://schema.org/Course. */
+export type CourseCourseGroupsArgs = {
+    first?: Maybe<Scalars['Int']>
+    last?: Maybe<Scalars['Int']>
+    before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
+    mentors?: Maybe<Scalars['Iterable']>
 }
 
 /** Connection for Program. */
@@ -438,6 +457,8 @@ export type ProgramParticipantsArgs = {
     dateCreated?: Maybe<ParticipantFilter_DateCreated>
     dateModified?: Maybe<ParticipantFilter_DateModified>
     dateOfAcceptance?: Maybe<ParticipantFilter_DateOfAcceptance>
+    startDate?: Maybe<ParticipantFilter_StartDate>
+    endDate?: Maybe<ParticipantFilter_EndDate>
     person?: Maybe<Scalars['String']>
     person_list?: Maybe<Array<Maybe<Scalars['String']>>>
     course_id?: Maybe<Scalars['String']>
@@ -446,6 +467,10 @@ export type ProgramParticipantsArgs = {
     program_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
     results_id?: Maybe<Scalars['String']>
     results_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    status?: Maybe<Scalars['String']>
+    status_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    mentor?: Maybe<Scalars['String']>
+    mentor_list?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 /** A Program is a EducationalOccupationalProgram offered by an institution which determines the learning progress to achieve an outcome, usually a credential like a degree or certificate. Based on https://schema.org/EducationalOccupationalProgram. */
@@ -466,6 +491,11 @@ export type ParticipantFilter_Order = {
     status?: Maybe<Scalars['String']>
     dateOfAcceptance?: Maybe<Scalars['String']>
     motivation?: Maybe<Scalars['String']>
+    mentor?: Maybe<Scalars['String']>
+    startDate?: Maybe<Scalars['String']>
+    endDate?: Maybe<Scalars['String']>
+    referredBy?: Maybe<Scalars['String']>
+    type?: Maybe<Scalars['String']>
 }
 
 export type ParticipantFilter_DateCreated = {
@@ -483,6 +513,20 @@ export type ParticipantFilter_DateModified = {
 }
 
 export type ParticipantFilter_DateOfAcceptance = {
+    before?: Maybe<Scalars['String']>
+    strictly_before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
+    strictly_after?: Maybe<Scalars['String']>
+}
+
+export type ParticipantFilter_StartDate = {
+    before?: Maybe<Scalars['String']>
+    strictly_before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
+    strictly_after?: Maybe<Scalars['String']>
+}
+
+export type ParticipantFilter_EndDate = {
     before?: Maybe<Scalars['String']>
     strictly_before?: Maybe<Scalars['String']>
     after?: Maybe<Scalars['String']>
@@ -523,7 +567,30 @@ export type Participant = Node & {
     dateOfAcceptance?: Maybe<Scalars['String']>
     /** The motivation of this Participant. */
     motivation?: Maybe<Scalars['String']>
-    participantGroup?: Maybe<Group>
+    /** The mentor of this Participant. */
+    mentor?: Maybe<Scalars['String']>
+    /** The moment this participation starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this participation ends. */
+    endDate?: Maybe<Scalars['String']>
+    /**
+     * the Organization that referred the participant
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    referredBy?: Maybe<Scalars['String']>
+    /**
+     * The type of this Participant.
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    type?: Maybe<Scalars['String']>
+    participantGroups?: Maybe<GroupConnection>
+    educationEvents?: Maybe<EducationEventConnection>
 }
 
 /** A Participant is a person who participates in a Course or an Program. */
@@ -534,6 +601,25 @@ export type ParticipantResultsArgs = {
     after?: Maybe<Scalars['String']>
     participant_id?: Maybe<Scalars['String']>
     participant_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    participant_person?: Maybe<Scalars['String']>
+    participant_person_list?: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+/** A Participant is a person who participates in a Course or an Program. */
+export type ParticipantParticipantGroupsArgs = {
+    first?: Maybe<Scalars['Int']>
+    last?: Maybe<Scalars['Int']>
+    before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
+    mentors?: Maybe<Scalars['Iterable']>
+}
+
+/** A Participant is a person who participates in a Course or an Program. */
+export type ParticipantEducationEventsArgs = {
+    first?: Maybe<Scalars['Int']>
+    last?: Maybe<Scalars['Int']>
+    before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
 }
 
 /** Connection for Result. */
@@ -626,6 +712,21 @@ export type ResultPageInfo = {
     hasPreviousPage: Scalars['Boolean']
 }
 
+/** Connection for Group. */
+export type GroupConnection = {
+    __typename?: 'GroupConnection'
+    edges?: Maybe<Array<Maybe<GroupEdge>>>
+    pageInfo: GroupPageInfo
+    totalCount: Scalars['Int']
+}
+
+/** Edge of Group. */
+export type GroupEdge = {
+    __typename?: 'GroupEdge'
+    node?: Maybe<Group>
+    cursor: Scalars['String']
+}
+
 /** An activity like a class on a cource. */
 export type Group = Node & {
     __typename?: 'Group'
@@ -639,6 +740,17 @@ export type Group = Node & {
     /** The moment this Participant was last Modified */
     dateModified?: Maybe<Scalars['String']>
     participants?: Maybe<ParticipantConnection>
+    course?: Maybe<Course>
+    /** The moment this group starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this group ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The minimum number of participants who may be enrolled in the group. */
+    minParticipations?: Maybe<Scalars['Int']>
+    /** The maximum number of participants who may be enrolled in the group. */
+    maxParticipations?: Maybe<Scalars['Int']>
+    /** The mentors of this group. */
+    mentors?: Maybe<Scalars['Iterable']>
 }
 
 /** An activity like a class on a cource. */
@@ -651,6 +763,8 @@ export type GroupParticipantsArgs = {
     dateCreated?: Maybe<ParticipantFilter_DateCreated>
     dateModified?: Maybe<ParticipantFilter_DateModified>
     dateOfAcceptance?: Maybe<ParticipantFilter_DateOfAcceptance>
+    startDate?: Maybe<ParticipantFilter_StartDate>
+    endDate?: Maybe<ParticipantFilter_EndDate>
     person?: Maybe<Scalars['String']>
     person_list?: Maybe<Array<Maybe<Scalars['String']>>>
     course_id?: Maybe<Scalars['String']>
@@ -659,44 +773,15 @@ export type GroupParticipantsArgs = {
     program_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
     results_id?: Maybe<Scalars['String']>
     results_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    status?: Maybe<Scalars['String']>
+    status_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    mentor?: Maybe<Scalars['String']>
+    mentor_list?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 /** Information about the current page. */
-export type ParticipantPageInfo = {
-    __typename?: 'ParticipantPageInfo'
-    endCursor?: Maybe<Scalars['String']>
-    startCursor?: Maybe<Scalars['String']>
-    hasNextPage: Scalars['Boolean']
-    hasPreviousPage: Scalars['Boolean']
-}
-
-/** Connection for Course. */
-export type CourseConnection = {
-    __typename?: 'CourseConnection'
-    edges?: Maybe<Array<Maybe<CourseEdge>>>
-    pageInfo: CoursePageInfo
-    totalCount: Scalars['Int']
-}
-
-/** Edge of Course. */
-export type CourseEdge = {
-    __typename?: 'CourseEdge'
-    node?: Maybe<Course>
-    cursor: Scalars['String']
-}
-
-/** Information about the current page. */
-export type CoursePageInfo = {
-    __typename?: 'CoursePageInfo'
-    endCursor?: Maybe<Scalars['String']>
-    startCursor?: Maybe<Scalars['String']>
-    hasNextPage: Scalars['Boolean']
-    hasPreviousPage: Scalars['Boolean']
-}
-
-/** Information about the current page. */
-export type ProgramPageInfo = {
-    __typename?: 'ProgramPageInfo'
+export type GroupPageInfo = {
+    __typename?: 'GroupPageInfo'
     endCursor?: Maybe<Scalars['String']>
     startCursor?: Maybe<Scalars['String']>
     hasNextPage: Scalars['Boolean']
@@ -740,12 +825,83 @@ export type EducationEvent = Node & {
     dateCreated?: Maybe<Scalars['String']>
     /** The moment this EducationEvent was last Modified */
     dateModified?: Maybe<Scalars['String']>
-    course: Course
+    course?: Maybe<Course>
+    participants?: Maybe<ParticipantConnection>
+    /** An organizer of an Event. */
+    organizer?: Maybe<Scalars['String']>
+}
+
+/** An EducationEvent is a (online) meeting, college etc. of a course. */
+export type EducationEventParticipantsArgs = {
+    first?: Maybe<Scalars['Int']>
+    last?: Maybe<Scalars['Int']>
+    before?: Maybe<Scalars['String']>
+    after?: Maybe<Scalars['String']>
+    order?: Maybe<ParticipantFilter_Order>
+    dateCreated?: Maybe<ParticipantFilter_DateCreated>
+    dateModified?: Maybe<ParticipantFilter_DateModified>
+    dateOfAcceptance?: Maybe<ParticipantFilter_DateOfAcceptance>
+    startDate?: Maybe<ParticipantFilter_StartDate>
+    endDate?: Maybe<ParticipantFilter_EndDate>
+    person?: Maybe<Scalars['String']>
+    person_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    course_id?: Maybe<Scalars['String']>
+    course_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    program_id?: Maybe<Scalars['String']>
+    program_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    results_id?: Maybe<Scalars['String']>
+    results_id_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    status?: Maybe<Scalars['String']>
+    status_list?: Maybe<Array<Maybe<Scalars['String']>>>
+    mentor?: Maybe<Scalars['String']>
+    mentor_list?: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 /** Information about the current page. */
 export type EducationEventPageInfo = {
     __typename?: 'EducationEventPageInfo'
+    endCursor?: Maybe<Scalars['String']>
+    startCursor?: Maybe<Scalars['String']>
+    hasNextPage: Scalars['Boolean']
+    hasPreviousPage: Scalars['Boolean']
+}
+
+/** Information about the current page. */
+export type ParticipantPageInfo = {
+    __typename?: 'ParticipantPageInfo'
+    endCursor?: Maybe<Scalars['String']>
+    startCursor?: Maybe<Scalars['String']>
+    hasNextPage: Scalars['Boolean']
+    hasPreviousPage: Scalars['Boolean']
+}
+
+/** Connection for Course. */
+export type CourseConnection = {
+    __typename?: 'CourseConnection'
+    edges?: Maybe<Array<Maybe<CourseEdge>>>
+    pageInfo: CoursePageInfo
+    totalCount: Scalars['Int']
+}
+
+/** Edge of Course. */
+export type CourseEdge = {
+    __typename?: 'CourseEdge'
+    node?: Maybe<Course>
+    cursor: Scalars['String']
+}
+
+/** Information about the current page. */
+export type CoursePageInfo = {
+    __typename?: 'CoursePageInfo'
+    endCursor?: Maybe<Scalars['String']>
+    startCursor?: Maybe<Scalars['String']>
+    hasNextPage: Scalars['Boolean']
+    hasPreviousPage: Scalars['Boolean']
+}
+
+/** Information about the current page. */
+export type ProgramPageInfo = {
+    __typename?: 'ProgramPageInfo'
     endCursor?: Maybe<Scalars['String']>
     startCursor?: Maybe<Scalars['String']>
     hasNextPage: Scalars['Boolean']
@@ -925,30 +1081,6 @@ export type StagePageInfo = {
 /** Information about the current page. */
 export type TestPageInfo = {
     __typename?: 'TestPageInfo'
-    endCursor?: Maybe<Scalars['String']>
-    startCursor?: Maybe<Scalars['String']>
-    hasNextPage: Scalars['Boolean']
-    hasPreviousPage: Scalars['Boolean']
-}
-
-/** Connection for Group. */
-export type GroupConnection = {
-    __typename?: 'GroupConnection'
-    edges?: Maybe<Array<Maybe<GroupEdge>>>
-    pageInfo: GroupPageInfo
-    totalCount: Scalars['Int']
-}
-
-/** Edge of Group. */
-export type GroupEdge = {
-    __typename?: 'GroupEdge'
-    node?: Maybe<Group>
-    cursor: Scalars['String']
-}
-
-/** Information about the current page. */
-export type GroupPageInfo = {
-    __typename?: 'GroupPageInfo'
     endCursor?: Maybe<Scalars['String']>
     startCursor?: Maybe<Scalars['String']>
     hasNextPage: Scalars['Boolean']
@@ -1473,6 +1605,7 @@ export type UpdateCourseInput = {
     programs?: Maybe<Array<Maybe<Scalars['String']>>>
     educationEvents?: Maybe<Array<Maybe<Scalars['String']>>>
     activities?: Maybe<Array<Maybe<Scalars['String']>>>
+    courseGroups?: Maybe<Array<Maybe<Scalars['String']>>>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1520,6 +1653,7 @@ export type CreateCourseInput = {
     programs?: Maybe<Array<Maybe<Scalars['String']>>>
     educationEvents?: Maybe<Array<Maybe<Scalars['String']>>>
     activities?: Maybe<Array<Maybe<Scalars['String']>>>
+    courseGroups?: Maybe<Array<Maybe<Scalars['String']>>>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1561,6 +1695,9 @@ export type UpdateEducationEventInput = {
     /** The moment this EducationEvent ends. */
     endDate?: Maybe<Scalars['String']>
     course?: Maybe<Scalars['String']>
+    participants?: Maybe<Array<Maybe<Scalars['String']>>>
+    /** An organizer of an Event. */
+    organizer?: Maybe<Scalars['String']>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1587,7 +1724,10 @@ export type CreateEducationEventInput = {
     startDate?: Maybe<Scalars['String']>
     /** The moment this EducationEvent ends. */
     endDate?: Maybe<Scalars['String']>
-    course: Scalars['String']
+    course?: Maybe<Scalars['String']>
+    participants?: Maybe<Array<Maybe<Scalars['String']>>>
+    /** An organizer of an Event. */
+    organizer?: Maybe<Scalars['String']>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1619,6 +1759,17 @@ export type UpdateGroupInput = {
     /** The description of this Group. */
     description?: Maybe<Scalars['String']>
     participants?: Maybe<Array<Maybe<Scalars['String']>>>
+    course?: Maybe<Scalars['String']>
+    /** The moment this group starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this group ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The minimum number of participants who may be enrolled in the group. */
+    minParticipations?: Maybe<Scalars['Int']>
+    /** The maximum number of participants who may be enrolled in the group. */
+    maxParticipations?: Maybe<Scalars['Int']>
+    /** The mentors of this group. */
+    mentors?: Maybe<Scalars['Iterable']>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1636,6 +1787,17 @@ export type CreateGroupInput = {
     /** The description of this Group. */
     description?: Maybe<Scalars['String']>
     participants?: Maybe<Array<Maybe<Scalars['String']>>>
+    course?: Maybe<Scalars['String']>
+    /** The moment this group starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this group ends. */
+    endDate?: Maybe<Scalars['String']>
+    /** The minimum number of participants who may be enrolled in the group. */
+    minParticipations?: Maybe<Scalars['Int']>
+    /** The maximum number of participants who may be enrolled in the group. */
+    maxParticipations?: Maybe<Scalars['Int']>
+    /** The mentors of this group. */
+    mentors?: Maybe<Scalars['Iterable']>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1673,7 +1835,30 @@ export type UpdateParticipantInput = {
     dateOfAcceptance?: Maybe<Scalars['String']>
     /** The motivation of this Participant. */
     motivation?: Maybe<Scalars['String']>
-    participantGroup?: Maybe<Scalars['String']>
+    /** The mentor of this Participant. */
+    mentor?: Maybe<Scalars['String']>
+    /** The moment this participation starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this participation ends. */
+    endDate?: Maybe<Scalars['String']>
+    /**
+     * the Organization that referred the participant
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    referredBy?: Maybe<Scalars['String']>
+    /**
+     * The type of this Participant.
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    type?: Maybe<Scalars['String']>
+    participantGroups?: Maybe<Array<Maybe<Scalars['String']>>>
+    educationEvents?: Maybe<Array<Maybe<Scalars['String']>>>
     clientMutationId?: Maybe<Scalars['String']>
 }
 
@@ -1697,7 +1882,30 @@ export type CreateParticipantInput = {
     dateOfAcceptance?: Maybe<Scalars['String']>
     /** The motivation of this Participant. */
     motivation?: Maybe<Scalars['String']>
-    participantGroup?: Maybe<Scalars['String']>
+    /** The mentor of this Participant. */
+    mentor?: Maybe<Scalars['String']>
+    /** The moment this participation starts. */
+    startDate?: Maybe<Scalars['String']>
+    /** The moment this participation ends. */
+    endDate?: Maybe<Scalars['String']>
+    /**
+     * the Organization that referred the participant
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    referredBy?: Maybe<Scalars['String']>
+    /**
+     * The type of this Participant.
+     *
+     *  @Assert\Length(
+     *     max = 255
+     * )
+     */
+    type?: Maybe<Scalars['String']>
+    participantGroups?: Maybe<Array<Maybe<Scalars['String']>>>
+    educationEvents?: Maybe<Array<Maybe<Scalars['String']>>>
     clientMutationId?: Maybe<Scalars['String']>
 }
 

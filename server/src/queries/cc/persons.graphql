@@ -14,7 +14,7 @@ query persons {
                 givenName
                 additionalName
                 familyName
-                adresses {
+                addresses {
                     edges {
                         node {
                             name
