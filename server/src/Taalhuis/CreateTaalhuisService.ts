@@ -7,7 +7,7 @@ import { Address } from 'src/generated/cc-graphql'
 import { Organization } from 'src/generated/wrc-graphql'
 import { ProgramRepository } from 'src/CommonGroundAPI/edu/ProgramRepository'
 import { GroupRepository } from '../CommonGroundAPI/uc/GroupRepository'
-import { SourceOrganisationRepository } from '../CommonGroundAPI/wrc/SourceOrganisationRepository'
+import { SourceOrganizationRepository } from '../CommonGroundAPI/wrc/SourceOrganizationRepository'
 import { OrganizationRepository } from '../CommonGroundAPI/cc/OrganizationRepository'
 import { TaalhuisAddressType, TaalhuisType } from './types/TaalhuisType'
 
@@ -26,7 +26,7 @@ export class CreateTaalhuisService {
         private telephoneRepository: TelephoneRepository,
         private organizationRepository: OrganizationRepository,
         private addressRepository: AddressRepository,
-        private sourceOrganisationRepository: SourceOrganisationRepository,
+        private sourceOrganizationRepository: SourceOrganizationRepository,
         private groupRepository: GroupRepository,
         private programRepository: ProgramRepository
     ) {}
@@ -40,7 +40,7 @@ export class CreateTaalhuisService {
         const telephone = await this.telephoneRepository.createTelephone(input.phoneNumber)
 
         // wrc/organization
-        const sourceTaalhuis = await this.sourceOrganisationRepository.createSourceTaalhuis(input.name)
+        const sourceTaalhuis = await this.sourceOrganizationRepository.createSourceTaalhuis(input.name)
         // uc/group
         await this.createGroupsForSourceTaalhuis(sourceTaalhuis)
         // edu/program
@@ -56,7 +56,7 @@ export class CreateTaalhuisService {
         })
 
         // update wrc/organization to include the cc/organization
-        await this.sourceOrganisationRepository.updateSourceTaalhuis(sourceTaalhuis.id, {
+        await this.sourceOrganizationRepository.updateSourceTaalhuis(sourceTaalhuis.id, {
             ccOrganizationId: taalhuis.id,
         })
 
