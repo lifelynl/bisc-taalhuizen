@@ -17,6 +17,7 @@ export interface EditTaalhuisInput extends AddTaalhuisInput {
 
 export enum OrganizationTypesEnum {
     TAALHUIS = 'TAALHUIS',
+    AANBIEDER = 'AANBIEDER',
 }
 
 type TaalhuisEntity = {
@@ -136,7 +137,7 @@ export class TaalhuisRepository extends CCRepository {
         const name = organizationEdge?.node?.name
         assertNotNil(name)
 
-        const sourceTaalhuis = organizationEdge?.node?.sourceOrganization as string
+        const sourceTaalhuis = organizationEdge?.node?.sourceOrganization
         assertNotNil(sourceTaalhuis)
 
         const email = organizationEdge?.node?.emails?.edges?.pop()?.node
