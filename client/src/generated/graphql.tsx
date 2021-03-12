@@ -231,6 +231,10 @@ export type MutationCreateTaalhuisEmployeeArgs = {
     input: CreateTaalhuisEmployeeInputType
 }
 
+export type MutationDeleteTaalhuisEmployeeArgs = {
+    userId: Scalars['String']
+}
+
 export type MutationUpdateTaalhuisEmployeeArgs = {
     input: UpdateTaalhuisEmployeeInputType
 }
