@@ -1,15 +1,21 @@
-import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
-import { routes } from '../../../routes/routes'
-import { ReportsOverviewView } from './ReportsOverviewView'
+import React, { useContext } from 'react'
+import { UserContext } from '../../../components/Providers/UserProvider/context'
+import { Type } from '../../../components/Providers/UserProvider/types'
+import { ReportsBiscView } from './bisc/ReportsBiscView'
+import { ReportsTaalhuisView } from './taalhuis/ReportsTaalhuisView'
 
 interface Props {}
 
-export const ReportsView: React.FunctionComponent<Props> = () => {
-    return (
-        <Switch>
-            <Redirect path={routes.authorized.reports.index} exact={true} to={routes.authorized.reports.overview} />
-            <Route path={routes.authorized.reports.overview} component={ReportsOverviewView} />
-        </Switch>
-    )
+export const ManagementView: React.FunctionComponent<Props> = () => {
+    const userContext = useContext(UserContext)
+
+    if (userContext.user?.environment === Type.bisc) {
+        return <ReportsBiscView />
+    }
+
+    if (userContext.user?.environment === Type.taalhuis) {
+        return <ReportsTaalhuisView />
+    }
+
+    return null
 }
