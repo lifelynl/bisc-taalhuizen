@@ -10,18 +10,35 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
-  app-name: {{ .Values.settings.name }}
-  app-env: {{ .Values.settings.env }}
-  node-env: {{ .Values.settings.nodeEnv }}
-  domain: {{ .Values.settings.domain }}
-  version: {{ .Values.settings.version }}
+  project_name: {{ .Values.settings.projectName | quote }}
+  app-name: {{ .Values.settings.name | quote }}
+  app-version: {{ .Values.settings.version | quote }}
+  {{ if .Values.settings.id }}
+  app-id: {{ .Values.settings.id | quote }}
+  {{ end }}
+  app-repro: {{ .Values.settings.repro | quote }}
+  app-demo: {{ .Values.settings.demo | quote }}
+  app-domain: {{ .Values.settings.domain | quote }} 
+  app-description: {{ .Values.settings.description | quote }}
+  app-type: {{ .Values.settings.type | quote }}
+  app-web: {{ .Values.settings.web | quote }}
+  app-subpath-routing: {{ .Values.settings.subpathRouting | quote }}
+  app-subpath: {{ .Values.settings.subpath | quote }}
+  
+  app-auth: {{ .Values.settings.authorisationEnabled | quote }}
+  app-audittrail: {{ .Values.settings.audittrailEnabled | quote }}
+  app-notification: {{ .Values.settings.notificationEnabled | quote }}
+  
+  cache: {{ .Values.settings.cache | quote }}
+  env: {{ .Values.settings.env | quote }}
+  debug: {{ .Values.settings.debug | quote }}
+  trusted-proxies: {{ join "," .Values.settings.trustedProxies }}
+  trusted-hosts: {{ .Values.settings.trustedHosts | quote }}
+  php-service: {{ .Values.settings.name }}-{{ .Values.settings.env }}-php  
 
-  server-url: {{ printf "https://%s/backend" .Values.settings.domain }}
-  client-url: {{ printf "https://%s" .Values.settings.domain }}
-  graphql-uri: {{ printf "https://%s/backend/graphql" .Values.settings.domain }}
-
-  mail: {{ .Values.mail.type }}
-  mail-from-name: {{ .Values.mail.from.name }}
-  mail-from-email: {{ .Values.mail.from.email }}
-  mail-host: {{ .Values.mail.smtp.host }}
-  mail-port: {{ .Values.mail.smtp.port | quote }}
+  {{- if (eq $.Values.settings.type "application" ) }}
+  redis-host: {{ printf "%s-redis" $redisServiceName | quote }}
+  redis-port: {{ .Values.redis.redisPort | toString | quote }}
+  digispoof-location: { { .Values.commonground.digispoof.location } }
+  eherkenning-location: { { .Values.commonground.eherkenning.location } }
+  {{-end }}
