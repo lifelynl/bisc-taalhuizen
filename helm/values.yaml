@@ -74,7 +74,7 @@ varnish:
   replicaCount: 1
 
 postgresql:
-  enabled: true
+  enabled: false
   imageTag: 10-alpine
   # If bringing your own PostgreSQL, the full uri to use
   #url: pgsql://api-platform:!ChangeMe!@example.com/api?serverVersion=10.1
