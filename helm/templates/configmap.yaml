@@ -31,6 +31,7 @@ data:
   
   cache: {{ .Values.settings.cache | quote }}
   env: {{ .Values.settings.env | quote }}
+  node-env: {{ .Values.settings.nodeEvn | quote}}
   debug: {{ .Values.settings.debug | quote }}
   trusted-proxies: {{ join "," .Values.settings.trustedProxies }}
   trusted-hosts: {{ .Values.settings.trustedHosts | quote }}
@@ -39,6 +40,13 @@ data:
   {{- if (eq $.Values.settings.type "application" ) }}
   redis-host: {{ printf "%s-redis" $redisServiceName | quote }}
   redis-port: {{ .Values.redis.redisPort | toString | quote }}
-  digispoof-location: { { .Values.commonground.digispoof.location } }
-  eherkenning-location: { { .Values.commonground.eherkenning.location } }
-  {{-end }}
+
+  server-url: {{ printf "https://%s/backend" .Values.settings.domain | quote }}
+  client-url: {{ printf "https://%s" .Values.settings.domain | quote }}
+  graphql-url: {{ printf "https://%s/backend/graphql" .Values.settings.domain | quote }}
+
+  mail: {{ .Values.mail.type | quote }}
+  mail-from-name: {{ .Values.mail.from.name | quote }}
+  mail-from-email: {{ .Values.mail.from.email | quote }}
+  mail-host: {{ .Values.mail.smtp.host | quote }}
+  mail-port: {{ .Values.mail.smtp.port | quote }}

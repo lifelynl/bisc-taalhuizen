@@ -16,6 +16,7 @@ settings:
   subpath: bisc
   subpathRouting: true
   env: staging
+  nodeEnv: production
   web: true
   debug: 0
   cache: true
@@ -39,18 +40,62 @@ settings:
   healthEnabled: false
   archiveEnabled: false
 
+letsEncrypt:
+  host: bisc-staging.lifely.nl
+  email: ops@lifely.nl
+
 # Not the actual correct key
 security:
+  pepper: ''
+  secret: ''
+  sentryDns: ''
   applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 
-php:
-  repository: docker.io/conduction/protocomponent-php
-  tag: latest
-  mercure:
-    jwtSecret: ""
-  env: prod
-  secret: ""
-  replicaCount: 2
+mail:
+  type: smtp
+  from:
+    name: 'test'
+    email: 'test@test.nl'
+  smtp:
+    host: 'example.com'
+    port: '25'
+    username: 'example'
+    password: '!changeMe!'
+
+image:
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
 
 redis:
   cluster:
@@ -130,3 +175,16 @@ resources: {}
   # requests:
   #  cpu: 100m
 #  memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

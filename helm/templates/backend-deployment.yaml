@@ -39,12 +39,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                     name: {{ template "fullname" . }}
-                    key: version
+                    key: app-version
             - name: ENV
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "fullname" . }}
-                  key: app-env
+                  key: env
             - name: APP_SERVER_URL
               valueFrom:
                 configMapKeyRef:
