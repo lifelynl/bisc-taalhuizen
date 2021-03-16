@@ -19,6 +19,7 @@ import { TabProps } from '../../../../../components/Core/TabSwitch/types'
 import TaalhuisInformationFieldset from '../../../../../components/fieldsets/taalhuis/TaalhuisInformationFieldset'
 import { useTaalhuisQuery } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
+import { taalhuisBreadCrumbs } from '../../../../../routes/taalhuis/taalhuisBreadcrumbs'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
 
 interface Props {}
@@ -31,28 +32,30 @@ enum TabId {
 const DataView: React.FunctionComponent<Props> = () => {
     const { i18n } = useLingui()
     const history = useHistory()
-    const { taalhuisid, taalhuisname } = useParams<TaalhuisDetailParams>()
+    const params = useParams<TaalhuisDetailParams>()
     const { data, loading, error } = useTaalhuisQuery({
-        variables: { taalhuisId: decodeURIComponent(taalhuisid || '') },
+        variables: { taalhuisId: decodeURIComponent(params.taalhuisid || '') },
     })
 
-    if (!taalhuisid) {
+    if (!params.taalhuisid) {
         return null
     }
 
     const handleTabSwitch = (tab: TabProps) => {
         if (tab.tabid === TabId.coworkers) {
-            history.push(routes.authorized.taalhuis.read.coworkers.overview({ taalhuisid, taalhuisname }))
+            history.push(routes.authorized.taalhuis.read.coworkers.overview(params))
         }
     }
 
     return (
         <>
             <Headline
-                title={i18n._(t`${taalhuisname}`)}
+                title={i18n._(t`${params.taalhuisname}`)}
                 TopComponent={
                     <Breadcrumbs>
-                        <Breadcrumb text={i18n._(t`Taalhuizen`)} to={routes.authorized.taalhuis.overview} />
+                        {taalhuisBreadCrumbs[routes.authorized.taalhuis.read.index()](params).map(breadcrumb => {
+                            ;<Breadcrumb text={breadcrumb.label} to={breadcrumb.to} />
+                        })}
                     </Breadcrumbs>
                 }
                 spacingType={SpacingType.small}
@@ -73,9 +76,7 @@ const DataView: React.FunctionComponent<Props> = () => {
                     <Row>
                         <Button
                             type={ButtonType.primary}
-                            onClick={() =>
-                                history.push(routes.authorized.taalhuis.read.update({ taalhuisid, taalhuisname }))
-                            }
+                            onClick={() => history.push(routes.authorized.taalhuis.read.update(params))}
                         >
                             {i18n._(t`Bewerken`)}
                         </Button>
