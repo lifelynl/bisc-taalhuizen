@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 settings:
-  registryBase: lifely
+  registryBase: docker.io/lifely
   projectName: bisc
   name: bisc
   version: V1.0
