@@ -57,8 +57,8 @@ mail:
     name: 'test'
     email: 'test@test.nl'
   smtp:
-    host: 'example.com'
-    port: '25'
+    host: 'bisc-staging.lifely.nl'
+    port: '80'
     username: 'example'
     password: '!changeMe!'
 

@@ -50,3 +50,6 @@ data:
   mail-from-email: {{ .Values.mail.from.email | quote }}
   mail-host: {{ .Values.mail.smtp.host | quote }}
   mail-port: {{ .Values.mail.smtp.port | quote }}
+
+  letsencrypt-host: {{ .Values.letsEncrypt.host | quote }}
+  letsencrypt-email: {{ .Values.letsEncrypt.email | quote }}
