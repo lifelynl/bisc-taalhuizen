@@ -56,11 +56,11 @@ export class OldProgramRepository {
             }
         `
 
-        const result = await this.client.query({ query, variables: { person: personId } })
+        const result = await this.client.query({ query, variables: { person: personId }})
 
         const participants: {
             cursor: string
-            node: { id: string; person: string; program: { id: string; name: string } }
+            node: { id: string; person: string; program: { id: string; name: string }}
         }[] = result.data.participants.edges
         const programs = participants.map(participant => participant.node.program)
 
@@ -84,7 +84,7 @@ export class OldProgramRepository {
             }
         `
 
-        const variables = { input: { person: personId, program: programId } }
+        const variables = { input: { person: personId, program: programId }}
 
         const result = await this.client.mutate({ mutation, variables })
 

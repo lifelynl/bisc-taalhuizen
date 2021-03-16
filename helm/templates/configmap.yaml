@@ -31,15 +31,11 @@ data:
   
   cache: {{ .Values.settings.cache | quote }}
   env: {{ .Values.settings.env | quote }}
-  node-env: {{ .Values.settings.nodeEvn | quote}}
+  node-env: {{ .Values.settings.nodeEnv | quote }}
   debug: {{ .Values.settings.debug | quote }}
   trusted-proxies: {{ join "," .Values.settings.trustedProxies }}
   trusted-hosts: {{ .Values.settings.trustedHosts | quote }}
-  php-service: {{ .Values.settings.name }}-{{ .Values.settings.env }}-php  
-
-  {{- if (eq $.Values.settings.type "application" ) }}
-  redis-host: {{ printf "%s-redis" $redisServiceName | quote }}
-  redis-port: {{ .Values.redis.redisPort | toString | quote }}
+  php-service: {{ .Values.settings.name }}-{{ .Values.settings.env }}-php
 
   server-url: {{ printf "https://%s/backend" .Values.settings.domain | quote }}
   client-url: {{ printf "https://%s" .Values.settings.domain | quote }}

@@ -49,7 +49,7 @@ security:
   pepper: ''
   secret: ''
   sentryDns: ''
-  applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
+  apiKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 
 mail:
   type: smtp

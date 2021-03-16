@@ -18,7 +18,7 @@ Other values in this part are less relevant at this point.
 There are two ways to set values: to write them in the values file, which we recommend for values that do not have to be changed per cluster, and do not affect the security of the container. The other way is to set them using the ```--set``` option of ```helm install``` or ```helm upgrade```. This way of setting values is not stored in the values.yaml file, and therefore ensures that secret values are not stored in the values.yaml file.
 To use the ```--set``` option in your deployment, please note that the setting you want to override has to be defined (but does not have to contain values) in the values.yaml file, and that you override them by writing down the yaml path of the setting, and divide the settings with a comma. For example, to set the api key and the pepper you write:
 ```CLI
-helm install bisc-taalhuizen ./helm --namespace prod --set security.applicationKey=your-api-key-here,security.pepper=1234567890ABCDEFFEDCBA0987654321 --kubeconfig kubeconfig.yaml
+helm install bisc-taalhuizen ./helm --namespace prod --set security.apiKey=your-api-key-here,security.pepper=1234567890ABCDEFFEDCBA0987654321 --kubeconfig kubeconfig.yaml
 ```
 
 # Read more

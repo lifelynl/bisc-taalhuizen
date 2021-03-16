@@ -23,7 +23,7 @@ export class TelephoneRepository extends CCRepository {
     }
 
     public async deleteTelephone(id: string) {
-        const result = await this.sdk.deleteTelephone({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteTelephone({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

@@ -23,7 +23,7 @@ export class EmailRepository extends CCRepository {
 
     public async deleteEmail(id: string) {
         try {
-            await this.sdk.deleteEmail({ input: { id: this.stripURLfromID(id) } })
+            await this.sdk.deleteEmail({ input: { id: this.stripURLfromID(id) }})
         } catch (e) {
             return false
         }

@@ -78,7 +78,7 @@ export class PersonRepository extends CCRepository {
     }
 
     public async deletePerson(id: string) {
-        const result = await this.sdk.deletePerson({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deletePerson({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }
