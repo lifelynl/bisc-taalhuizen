@@ -30,26 +30,6 @@ spec:
             - containerPort: 9000
           env:
             #General configmap values
-            - name: VIRTUAL_HOST
-                  valueFrom:
-                    configMapKeyRef:
-                      name: { { template "fullname" . } }
-                      key: mail-host
-            - name: VIRTUAL_PORT
-                valueFrom:
-                  configMapKeyRef:
-                    name: { { template "fullname" . } }
-                    key: mail-port
-            - name: LETSENCRYPT_HOST
-                valueFrom:
-                  configMapKeyRef:
-                    name: { { template "fullname" . } }
-                    key: letsencrypt-host
-            - name: LETSENCRYPT_EMAIL
-                valueFrom:
-                  configMapKeyRef:
-                    name: { { template "fullname" . } }
-                    key: letsencrypt-email
             - name: NGINX_PROXY_PASS
               valueFrom:
                 configMapKeyRef:

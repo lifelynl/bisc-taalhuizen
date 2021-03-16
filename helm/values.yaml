@@ -97,55 +97,6 @@ service:
   type: ClusterIP
   port: 80
 
-redis:
-  cluster:
-    enabled: false
-  enabled: false
-  redisPort: 6379
-  usePassword: false
-
-nginx:
-  repository: docker.io/conduction/protocomponent-nginx
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 2
-
-varnish:
-  enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/protocomponent-varnish
-  tag: latest
-  pullPolicy: Always
-  replicaCount: 1
-
-postgresql:
-  enabled: false
-  imageTag: 10-alpine
-  # If bringing your own PostgreSQL, the full uri to use
-  #url: pgsql://api-platform:!ChangeMe!@example.com/api?serverVersion=10.1
-  postgresqlUsername: "example"
-  postgresqlPassword: "!ChangeMe!"
-  postgresqlDatabase: "api"
-  # Persistent Volume Storage configuration.
-  # ref: https://kubernetes.io/docs/user-guide/persistent-volumes
-  persistence:
-    enabled: false
-  pullPolicy: IfNotPresent
-#  image:
-#    repository: postgres
-#    tag: alpine
-
-mercure:
-  enabled: true
-  publishUrl: http://mercure/hub
-  subscribeUrl: https://mercure.example.com/hub
-  allowAnonymous: "1"
-  corsAllowedOrigins: "^https?://.*?\\.example\\.com$"
-  acmeHosts: "" # TODO: Fix the Mercure chart
-  service:
-    type: NodePort
-    port: 80
-
 ingress:
   annotations:
   # kubernetes.io/ingress.global-static-ip-name: chart-ip
