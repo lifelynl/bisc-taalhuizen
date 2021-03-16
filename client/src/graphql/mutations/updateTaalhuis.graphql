@@ -1,0 +1,22 @@
+mutation updateTaalhuis(
+    $id: String!
+    $address: UpdateTaalhuisAddressInputType!
+    $name: String
+    $email: String
+    $phoneNumber: String
+) {
+    updateTaalhuis(id: $id, address: $address, name: $name, email: $email, phoneNumber: $phoneNumber) {
+        id
+        name
+        address {
+            street
+            houseNumber
+            houseNumberSuffix
+            postalCode
+            locality
+        }
+        email
+        telephone
+        type
+    }
+}

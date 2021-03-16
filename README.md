@@ -7,7 +7,7 @@
 Install all dependencies in `./client` and `./server`
 
 ```sh
-cd client && npm install && cd server && npm install && cd .. 
+cd client && npm install && cd server && npm install && cd ..
 
 # Setup environment settings for the server
 cd server && npm run copyenv
@@ -20,6 +20,11 @@ cd client && npm start # To start the frontend
 cd server && npm start:debug # To start the backend
 cd client && npm run codegen # To generate graphql stuff
 ```
+
+#### Alternative, quickstart the project with iTermocil
+
+If you have iTermocil installed you can run `npm start` from the project root to quick start the project. This opens
+multiple split windows and runs the start up commands.
 
 ### Important notes
 
@@ -63,13 +68,15 @@ docker push lifely/bisc-backend:$GIT_COMMIT_HASH
 
 ### Deploy
 
-**Server config** 
+**Server config**
 
 On the server we might have to change the `MaxSessions` setting to `MaxSessions 500` in `/etc/ssh/sshd_config`, to allow docker-compose:
+
 ```
 nano /etc/ssh/sshd_config
 service ssh restart
 ```
+
 See https://unix.stackexchange.com/a/87532
 
 **Deploy**

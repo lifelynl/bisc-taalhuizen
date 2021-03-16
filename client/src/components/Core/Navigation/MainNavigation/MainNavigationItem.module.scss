@@ -1,0 +1,103 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/animations';
+
+.container {
+    padding: 4px 8px 4px 8px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+
+    transition-property: background-color color;
+    transition-duration: $animation-default;
+    transition-timing-function: $animation-appear-bezier;
+
+    &.is-aanbieder {
+        &:hover,
+        &:active {
+            background-color: rgba(255, 255, 255, 0.35);
+
+            .icon {
+                color: $color-grey-99;
+            }
+        }
+
+        &.is-active {
+            .icon {
+                color: $color-bisc-orange;
+            }
+
+            .label {
+                font-weight: 600;
+                color: $color-grey-99;
+            }
+        }
+    }
+
+    &.is-taalhuis {
+        &:hover,
+        &:active {
+            background-color: rgba(255, 255, 255, 0.35);
+
+            .icon {
+                color: $color-grey-99;
+            }
+        }
+
+        &.is-active {
+            .icon {
+                color: $color-bisc-orange;
+            }
+
+            .label {
+                font-weight: 600;
+                color: $color-grey-99;
+            }
+        }
+    }
+
+    &.is-bisc {
+        &:hover,
+        &:active {
+            background-color: rgba(255, 255, 255, 0.35);
+
+            .icon {
+                color: $color-grey-10;
+            }
+        }
+
+        &.is-active {
+            .icon {
+                color: $color-bisc-orange;
+            }
+
+            .label {
+                font-weight: 600;
+                color: $color-grey-5;
+            }
+        }
+    }
+}
+
+.icon {
+    svg {
+        height: 24px;
+        width: 24px;
+    }
+    color: $color-grey-80;
+}
+
+.label {
+    font-size: 14px;
+    color: $color-grey-80;
+    margin-left: 12px;
+}

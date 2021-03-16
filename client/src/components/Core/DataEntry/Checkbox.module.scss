@@ -1,0 +1,72 @@
+@import '../../../styles/variables/colors';
+
+.container {
+    position: relative;
+
+    .inputField {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        background-color: $color-white;
+        width: 16px;
+        height: 16px;
+        border: solid 1px $color-grey-60;
+        border-radius: 4px;
+
+        outline: none;
+        position: relative;
+
+        &:checked {
+            background-color: $color-bisc-orange;
+            border: none;
+        }
+
+        &:checked ~ .checkmark {
+            color: $color-white;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled {
+            background-color: $color-grey-5;
+            border: solid 1px $color-grey-20;
+        }
+
+        &:hover ~ .checkmark {
+            color: #ff5a26;
+            display: block;
+            visibility: visible;
+        }
+
+        &:checked:hover ~ .checkmark {
+            color: $color-white;
+        }
+
+        &:disabled:hover ~ .checkmark {
+            pointer-events: none;
+            display: none;
+            visibility: hidden;
+        }
+
+        &:checked:disabled ~ .checkmark {
+            color: $color-grey-60;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled:hover {
+            cursor: no-drop;
+        }
+    }
+}
+
+.checkmark {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: none;
+    visibility: hidden;
+}

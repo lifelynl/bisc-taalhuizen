@@ -1,0 +1,11 @@
+@import 'styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pushTop {
+    margin-top: auto;
+    padding-top: spacing(10);
+}

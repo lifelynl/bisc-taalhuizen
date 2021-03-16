@@ -1,0 +1,7 @@
+mutation deleteOrganization($input: deleteOrganizationInput!) {
+    deleteOrganization(input: $input) {
+        organization {
+            id
+        }
+    }
+}

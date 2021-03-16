@@ -1,0 +1,11 @@
+query findEmployeesByPersonId($personId: String) {
+    employees(person: $personId) {
+        edges {
+            node {
+                id
+                person
+                organization
+            }
+        }
+    }
+}

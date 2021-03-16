@@ -1,0 +1,60 @@
+@import 'styles/variables/spacing';
+@import 'styles/variables/colors';
+
+.tableContainer {
+    position: relative;
+    margin-top: spacing(2);
+    width: 100%;
+
+    .tableHeaderContainer {
+        padding: spacing(3, -2) spacing(6) 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        min-height: spacing(5.875);
+        border-bottom: 1px solid $color-grey-20;
+        .tableRow {
+            display: flex;
+            flex-direction: row;
+
+            min-height: 27px;
+            width: 100%;
+            .title {
+                width: 100%;
+                display: flex;
+                text-transform: uppercase;
+                color: $color-grey-80;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+                letter-spacing: 0.4px;
+                margin-bottom: spacing(2.5);
+            }
+        }
+    }
+
+    .containerBody {
+        .row {
+            position: relative;
+            padding: spacing(3, -2) spacing(6);
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            min-height: 40px;
+            border-bottom: 1px solid $color-grey-5;
+            &:hover {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: spacing(1);
+                    bottom: spacing(1);
+                    left: spacing(1);
+                    right: spacing(1);
+                    background: $color-background-polar;
+                    border-radius: 8px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

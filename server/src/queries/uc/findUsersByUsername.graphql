@@ -1,0 +1,12 @@
+query findUsersByUsername($username: String!) {
+    users(username: $username) {
+        edges {
+            node {
+                id
+                username
+                dateCreated
+                dateModified
+            }
+        }
+    }
+}

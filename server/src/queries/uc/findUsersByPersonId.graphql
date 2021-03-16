@@ -1,0 +1,20 @@
+query findUsersByPersonId($personId: String!) {
+    users(person: $personId) {
+        edges {
+            node {
+                id
+                username
+                dateCreated
+                dateModified
+                userGroups {
+                    edges {
+                        node {
+                            id
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

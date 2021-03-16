@@ -1,0 +1,8 @@
+mutation updateEmail($input: updateEmailInput!) {
+    updateEmail(input: $input) {
+        email {
+            id
+            email
+        }
+    }
+}

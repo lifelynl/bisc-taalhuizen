@@ -1,0 +1,38 @@
+@import 'styles/variables/spacing';
+@import 'styles/variables/media-query';
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.contentContainer {
+    padding: spacing(6) spacing(8) spacing(8) spacing(8);
+}
+
+.close {
+    position: absolute;
+    top: spacing(3);
+    right: spacing(1);
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: spacing(4) spacing(6, -2);
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    .button:last-of-type {
+        margin-left: spacing(4);
+    }
+}
+
+@include media-query(desktop) {
+    .container {
+        min-width: 586px;
+    }
+}

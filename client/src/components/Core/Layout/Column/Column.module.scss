@@ -1,0 +1,50 @@
+@import 'styles/variables/spacing';
+
+.container {
+    position: relative;
+
+    & > * {
+        display: block;
+    }
+}
+
+.container > * + * {
+    margin-top: spacing(2);
+}
+
+.spacing1 > * + * {
+    margin-top: spacing(1);
+}
+.spacing2 > * + * {
+    margin-top: spacing(2);
+}
+.spacing3 > * + * {
+    margin-top: spacing(3);
+}
+.spacing4 > * + * {
+    margin-top: spacing(4);
+}
+.spacing5 > * + * {
+    margin-top: spacing(5);
+}
+.spacing6 > * + * {
+    margin-top: spacing(6);
+}
+.spacing7 > * + * {
+    margin-top: spacing(7);
+}
+.spacing8 > * + * {
+    margin-top: spacing(8);
+}
+.spacing9 > * + * {
+    margin-top: spacing(9);
+}
+.spacing10 > * + * {
+    margin-top: spacing(10);
+}
+.spacing11 > * + * {
+    margin-top: spacing(11);
+}
+.spacing12 > * + * {
+    margin-top: spacing(12);
+}

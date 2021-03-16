@@ -1,0 +1,11 @@
+query groupsByOrganizationId($organizationId: String!) {
+    groups(organization: $organizationId) {
+        edges {
+            node {
+                id
+                name
+                organization
+            }
+        }
+    }
+}

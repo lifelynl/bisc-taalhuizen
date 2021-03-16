@@ -1,0 +1,54 @@
+@import 'styles/variables/spacing';
+@import 'styles/variables/animations';
+@import 'styles/variables/media-query';
+
+.container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: spacing(1);
+    z-index: 9999;
+    pointer-events: none;
+    max-width: 1016px;
+    margin: 0 auto;
+
+    @include media-query(tablet) {
+        padding-right: spacing(8);
+    }
+}
+
+.notification {
+    width: calc(100vw - #{spacing(2)});
+    pointer-events: auto;
+    align-self: flex-end;
+    margin-top: spacing(1);
+
+    transition: transform 250ms $animation-appear-bezier, opacity 300ms $animation-appear-bezier;
+    will-change: transform;
+
+    @include media-query(tablet) {
+        max-width: 443px;
+    }
+}
+
+.enter {
+    opacity: 0;
+    transform: translateX(75%);
+}
+
+.enterActive {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.exit {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.exitActive {
+    opacity: 0;
+    transform: translateX(75%);
+}

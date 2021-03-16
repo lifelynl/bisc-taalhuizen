@@ -1,0 +1,7 @@
+mutation deleteEmail($input: deleteEmailInput!) {
+    deleteEmail(input: $input) {
+        email {
+            id
+        }
+    }
+}

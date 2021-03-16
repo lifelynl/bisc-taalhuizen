@@ -1,0 +1,21 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+    padding-left: spacing(2);
+    .text {
+        position: relative;
+        margin: 0;
+        font-family: Faustina;
+        font-weight: 600;
+        color: #232326;
+        font-size: 24px;
+    }
+}

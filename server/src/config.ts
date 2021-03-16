@@ -13,6 +13,7 @@ export interface Config {
     MAIL: string
     MAIL_FROM_NAME: string
     MAIL_FROM_EMAIL: string
+    MAIL_SENDER?: string
 
     MAIL_SMTP_HOST: string
     MAIL_SMTP_PORT: number

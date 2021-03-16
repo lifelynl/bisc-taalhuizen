@@ -1,4 +1,4 @@
-FROM node:10.20
+FROM node:12.20-alpine
 
 WORKDIR /app
 # Dependencies first (cachable Docker layer)

@@ -1,0 +1,15 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Address",
+            "ContactList",
+            "Person",
+            "Telephone",
+            "Social",
+            "Email",
+            "Organization",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}

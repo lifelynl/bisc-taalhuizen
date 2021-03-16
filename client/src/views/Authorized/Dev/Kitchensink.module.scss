@@ -1,0 +1,69 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.container {
+    margin: spacing(12);
+}
+
+.colorContainer {
+    width: 177px;
+    height: 80px;
+}
+
+.biscOrange {
+    background-color: $color-bisc-orange;
+}
+.biscIce {
+    background-color: $color-bisc-ice;
+}
+
+.yellow {
+    background-color: $color-background-yellow;
+}
+.salmon {
+    background-color: $color-background-salmon;
+}
+.purple {
+    background-color: $color-background-purple;
+}
+.darkBlue {
+    background-color: $color-background-dark-blue;
+}
+.polar {
+    background-color: $color-background-polar;
+}
+
+.dark99 {
+    background-color: $color-grey-99;
+}
+.grey80 {
+    background-color: $color-grey-80;
+}
+.grey60 {
+    background-color: $color-grey-60;
+}
+.grey20 {
+    background-color: $color-grey-20;
+}
+.grey10 {
+    background-color: $color-grey-10;
+}
+
+.uiSuccess {
+    background-color: $color-ui-green;
+}
+.uiWarning {
+    background-color: $color-ui-orange;
+}
+.uiDanger {
+    background-color: $color-ui-red;
+}
+
+.buttonColumnContainer {
+    display: grid;
+    grid-template-rows: 20px repeat(10, 70px);
+}
+
+.tooltipText {
+    white-space: nowrap;
+}

@@ -1,0 +1,29 @@
+mutation updatePerson($input: updatePersonInput!) {
+    updatePerson(input: $input) {
+        person {
+            id
+            name
+            givenName
+            additionalName
+            familyName
+            telephones {
+                edges {
+                    node {
+                        id
+                        telephone
+                    }
+                }
+                totalCount
+            }
+            addresses {
+                edges {
+                    node {
+                        name
+                        street
+                        houseNumber
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import 'styles/variables/spacing';
+@import 'styles/variables/colors';
+
+.link {
+    font-weight: 600;
+    color: $color-grey-99;
+    text-decoration: none;
+    &:hover {
+        color: $color-bisc-orange;
+    }
+}

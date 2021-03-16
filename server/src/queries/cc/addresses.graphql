@@ -1,0 +1,14 @@
+query addresses($id_list: [String!]) {
+    addresses(id_list: $id_list) {
+        edges {
+            node {
+                id
+                street
+                houseNumber
+                houseNumberSuffix
+                postalCode
+                locality
+            }
+        }
+    }
+}

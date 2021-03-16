@@ -1,0 +1,8 @@
+mutation createEmail($input: createEmailInput!) {
+    createEmail(input: $input) {
+        email {
+            id
+            email
+        }
+    }
+}

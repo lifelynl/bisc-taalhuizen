@@ -1,5 +1,5 @@
 # Nodejs build stage
-FROM node:10.20 as build-deps
+FROM node:12.20-alpine as build-deps
 
 WORKDIR /usr/src/app
 # Dependencies first (cachable Docker layer)
@@ -7,6 +7,8 @@ COPY package.json package-lock.json ./
 RUN npm i
 
 COPY . ./
+RUN npm run extract-translations && npm run compile-translations
+
 RUN npm run build
 
 # Nginx build stage

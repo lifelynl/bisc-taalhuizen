@@ -1,0 +1,11 @@
+mutation deleteParticipant($input: deleteParticipantInput!) {
+    deleteParticipant(input: $input) {
+        participant {
+            id
+            program {
+                id
+                name
+            }
+        }
+    }
+}

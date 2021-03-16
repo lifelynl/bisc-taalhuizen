@@ -1,0 +1,38 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+@mixin modifyContainerAndText($backgroundColor, $textColor) {
+    background-color: $backgroundColor;
+
+    .text {
+        color: $textColor;
+    }
+}
+
+.container {
+    padding: spacing(1) spacing(2);
+    border-radius: 4px;
+    display: flex;
+    width: max-content;
+
+    .text {
+        text-align: center;
+        line-height: normal;
+    }
+
+    &.isRed {
+        @include modifyContainerAndText($color-background-red-light, $color-background-red);
+    }
+
+    &.isYellow {
+        @include modifyContainerAndText($color-background-yellow-light, $color-background-yellow-dark);
+    }
+
+    &.isBlue {
+        @include modifyContainerAndText($color-background-polar, $color-background-blue);
+    }
+
+    &.isPurple {
+        @include modifyContainerAndText($color-background-purple-light, $color-background-purple);
+    }
+}

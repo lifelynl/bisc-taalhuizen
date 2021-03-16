@@ -1,0 +1,139 @@
+overwrite: true
+
+generates:
+    src/generated/cc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/cc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/cc-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/cc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        documents: ./src/queries/cc/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/edu-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/edu/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/edu-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/edu/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        documents: ./src/queries/edu/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/uc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/uc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/uc-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/uc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        documents: ./src/queries/uc/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/mrc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/mrc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/mrc-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/mrc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        documents: ./src/queries/mrc/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/arc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/arc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/arc-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/arc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        # documents: ./src/queries/arc/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+    src/generated/wrc-introspection-result.json:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/wrc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - fragment-matcher
+    src/generated/wrc-graphql.ts:
+        schema:
+            - https://taalhuizen-bisc.commonground.nu/api/v1/wrc/graphql:
+                  headers:
+                      Authorization: ${API_KEY}
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-graphql-request'
+        documents: ./src/queries/wrc/*.graphql
+        config:
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+
+hooks:
+    afterAllFileWrite:
+        - prettier --write

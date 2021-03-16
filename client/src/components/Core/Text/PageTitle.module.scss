@@ -1,0 +1,19 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.title {
+    position: relative;
+    margin: 0;
+    margin-bottom: spacing(3);
+    font-family: Faustina;
+    font-weight: 600;
+    color: #232326;
+
+    &.is-default {
+        font-size: 40px;
+    }
+
+    &.is-large {
+        font-size: 64px;
+    }
+}

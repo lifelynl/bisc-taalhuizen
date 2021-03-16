@@ -1,0 +1,38 @@
+mutation updateOrganization($input: updateOrganizationInput!) {
+    updateOrganization(input: $input) {
+        organization {
+            id
+            name
+            sourceOrganization
+            emails {
+                totalCount
+                edges {
+                    node {
+                        id
+                        email
+                    }
+                }
+            }
+            telephones {
+                totalCount
+                edges {
+                    node {
+                        id
+                        telephone
+                    }
+                }
+            }
+            addresses {
+                edges {
+                    node {
+                        id
+                        houseNumber
+                        postalCode
+                        street
+                        houseNumberSuffix
+                    }
+                }
+            }
+        }
+    }
+}

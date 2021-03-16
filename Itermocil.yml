@@ -4,6 +4,8 @@ windows:
     pre: cwd=$(pwd)
     layout: main-vertical-flipped
     panes:
-      - npm run start:client
-      - npm run codegen:watch
-      - npm run start:server
+      - cd client && nvm use && npm run start
+      - cd server && nvm use && npm run start:services
+      - nodemon --watch ./client/src --watch ./server/src --ext graphql,ts --exec "wait-on http://localhost:5000/health && cd client && npm run codegen"
+      - nodemon --watch ./server/src --watch ./src/queries --ext graphql --exec "cd server && npm run codegen"
+      - cd server && nvm use && npm run start:debug

@@ -1,0 +1,15 @@
+query programs($provider: String) {
+    programs(provider: $provider) {
+        pageInfo {
+            hasNextPage
+        }
+
+        edges {
+            cursor
+            node {
+                id
+                name
+            }
+        }
+    }
+}

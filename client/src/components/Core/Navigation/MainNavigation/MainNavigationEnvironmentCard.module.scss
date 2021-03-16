@@ -1,0 +1,69 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.container {
+    padding: spacing(4, -1) spacing(3) spacing(4, -1) spacing(3);
+    border-radius: 4px;
+    display: flex;
+
+    &.is-aanbieder {
+        background-color: $color-bisc-ice;
+
+        .name {
+            color: $color-white;
+        }
+
+        .environment {
+            color: $color-white;
+        }
+    }
+
+    &.is-taalhuis {
+        background-color: $color-white;
+
+        .name {
+            color: $color-grey-99;
+        }
+
+        .environment {
+            color: $color-grey-80;
+        }
+    }
+
+    &.is-bisc {
+        background-color: $color-grey-95;
+
+        .name {
+            color: $color-white;
+        }
+
+        .environment {
+            color: $color-white;
+        }
+    }
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: spacing(1);
+}
+
+.environment {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.42px;
+    color: #ffffff;
+}
+
+.left {
+    padding-right: spacing(3);
+}
+
+.logo {
+    svg {
+        height: 36px;
+        width: 36px;
+    }
+}

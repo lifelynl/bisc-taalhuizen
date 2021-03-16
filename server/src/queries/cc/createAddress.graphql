@@ -1,0 +1,14 @@
+mutation createAddress($input: createAddressInput!) {
+    createAddress(input: $input) {
+        address {
+            id
+            name
+            street
+            postalCode
+            houseNumber
+            houseNumberSuffix
+            country
+            locality
+        }
+    }
+}

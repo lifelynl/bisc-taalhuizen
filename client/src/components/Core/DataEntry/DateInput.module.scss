@@ -1,0 +1,13 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+@import 'styles/variables/media-query';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: $input-width;
+
+    &.grow {
+        max-width: 100%;
+    }
+}

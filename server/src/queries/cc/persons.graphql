@@ -1,0 +1,30 @@
+# TODO: I think this can be removed
+query persons {
+    people(first: 10000) {
+        pageInfo {
+            hasNextPage
+        }
+        totalCount
+        edges {
+            cursor
+
+            node {
+                id
+                name
+                givenName
+                additionalName
+                familyName
+                addresses {
+                    edges {
+                        node {
+                            id
+                            name
+                            street
+                            houseNumber
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

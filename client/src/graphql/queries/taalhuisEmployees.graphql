@@ -1,0 +1,16 @@
+query taalhuisEmployees($taalhuisId: String!) {
+    taalhuisEmployees(taalhuisId: $taalhuisId) {
+        id
+        givenName
+        additionalName
+        familyName
+        email
+        telephone
+        dateCreated
+        dateModified
+        userRoles {
+            id
+            name
+        }
+    }
+}

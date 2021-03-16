@@ -1,0 +1,16 @@
+query taalhuizen {
+    taalhuizen {
+        id
+        name
+        address {
+            street
+            houseNumber
+            houseNumberSuffix
+            postalCode
+            locality
+        }
+        email
+        telephone
+        type
+    }
+}

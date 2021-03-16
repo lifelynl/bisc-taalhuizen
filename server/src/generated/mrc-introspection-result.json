@@ -1,0 +1,18 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Application",
+            "JobPosting",
+            "Employee",
+            "Goal",
+            "Interest",
+            "Competence",
+            "Skill",
+            "JobFunction",
+            "Contract",
+            "Education",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}

@@ -1,5 +1,5 @@
 import { Args, ArgsType, Field, Mutation, ObjectType, Query, Resolver } from '@nestjs/graphql'
-import { PersonRepository } from './PersonRepository'
+import { PersonRepository } from '../CommonGroundAPI/cc/PersonRepository'
 
 @ObjectType()
 export class PersonType {
@@ -30,7 +30,7 @@ export class PersonResolver {
     public async persons(): Promise<PersonEdgeType[]> {
         const result = await this.personRepository.findPersons()
 
-        return result
+        return result as any
     }
 
     @Mutation(() => PersonEdgeType)

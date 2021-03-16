@@ -1,0 +1,12 @@
+query employees($organizationId: String) {
+    employees(organization: $organizationId) {
+        totalCount
+        edges {
+            node {
+                id
+                person
+                organization
+            }
+        }
+    }
+}

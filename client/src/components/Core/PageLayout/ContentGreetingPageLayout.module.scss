@@ -1,0 +1,86 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    background: $color-background-polar;
+}
+
+.contentContainer {
+    padding: spacing(18) spacing(18);
+    height: 100%;
+    width: 568px;
+    background-color: $color-white;
+    overflow-y: auto;
+
+    .topComponent {
+        margin-bottom: 133px;
+    }
+}
+
+.greetingContainer {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+
+    .providers {
+        position: absolute;
+        right: -140px;
+        top: -266px;
+        color: $color-background-yellow;
+
+        svg {
+            transform: rotate(-30deg);
+            height: 510px;
+            width: 510px;
+        }
+    }
+
+    .attendee {
+        position: absolute;
+        right: -100px;
+        top: 110px;
+        color: $color-bisc-orange;
+
+        svg {
+            height: 830px;
+            width: 830px;
+        }
+    }
+
+    .profile {
+        position: absolute;
+        right: -310px;
+        top: 222px;
+        color: $color-background-purple;
+
+        svg {
+            height: 1120px;
+            width: 1120px;
+        }
+    }
+
+    .shape {
+        position: absolute;
+        right: 418px;
+        top: 320px;
+        color: $color-bisc-ice;
+
+        svg {
+            height: 710px;
+            width: 710px;
+        }
+    }
+
+    .greeting {
+        width: 516px;
+        left: 100px;
+        top: 120px;
+        position: absolute;
+    }
+}

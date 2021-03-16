@@ -1,0 +1,14 @@
+mutation createParticipant($input: createParticipantInput!) {
+    createParticipant(input: $input) {
+        participant {
+            id
+            status
+            referredBy
+            person
+            program {
+                id
+                name
+            }
+        }
+    }
+}

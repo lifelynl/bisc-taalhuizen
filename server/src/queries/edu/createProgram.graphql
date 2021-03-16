@@ -1,0 +1,9 @@
+mutation createProgram($input: createProgramInput!) {
+    createProgram(input: $input) {
+        program {
+            id
+            name
+            provider
+        }
+    }
+}

@@ -1,0 +1,13 @@
+query findParticipantById($id: ID!) {
+    participant(id: $id) {
+        id
+        person
+        status
+        dateCreated
+        referredBy
+        program {
+            id
+            name
+        }
+    }
+}

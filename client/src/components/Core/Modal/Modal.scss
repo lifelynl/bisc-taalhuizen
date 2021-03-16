@@ -1,0 +1,14 @@
+// TODO: this file should be removed in the future this effects the modal globally
+// animations only
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 160ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}

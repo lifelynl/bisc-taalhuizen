@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro Bold'), local('Source-Sans-Pro-Bold'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Bold.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro Bold Italic'), local('Source-Sans-Pro-BoldItalic'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-BoldItalic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-BoldItalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro Italic'), local('Source-Sans-Pro-Italic'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Italic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro Regular'), local('Source-Sans-Pro-Regular'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro SemiBold'), local('Source-Sans-Pro-SemiBold'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-SemiBold.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: local('Source Sans Pro SemiBold Italic'), local('Source-Sans-Pro-SemiBoldItalic'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-SemiBoldItalic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/SourceSansPro/SourceSansPro-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}

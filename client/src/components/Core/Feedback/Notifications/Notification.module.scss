@@ -1,0 +1,84 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+@import 'styles/variables/animations';
+
+@mixin modifyBorderAndIconColor($color) {
+    .iconContainer {
+        border-color: $color;
+
+        &::before {
+            background-color: $color;
+        }
+
+        .icon {
+            background-color: $color;
+        }
+    }
+}
+
+.container {
+    background-color: $color-white;
+    width: 300px;
+    height: 85px;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    padding: spacing(2);
+
+    border: 1px solid $color-grey-20;
+    border-radius: 8px;
+
+    .iconContainer,
+    .textContainer {
+        position: relative;
+        width: 100%;
+    }
+
+    .iconContainer {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            width: 4px;
+            height: 70px;
+            display: block;
+            border-radius: 2.5px;
+            content: '';
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            color: $color-white;
+            border-radius: 10px;
+
+            svg {
+                font-size: 10px;
+            }
+        }
+    }
+
+    .textContainer {
+        margin-left: 0;
+    }
+
+    &.isSuccess {
+        @include modifyBorderAndIconColor($color-ui-green);
+    }
+    &.isWarning {
+        @include modifyBorderAndIconColor($color-ui-orange);
+    }
+    &.isError {
+        @include modifyBorderAndIconColor($color-ui-red);
+    }
+
+    .text {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

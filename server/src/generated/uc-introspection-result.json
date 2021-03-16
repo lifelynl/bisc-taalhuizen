@@ -1,0 +1,16 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Alert",
+            "Application",
+            "Scope",
+            "Group",
+            "User",
+            "LoginLog",
+            "Provider",
+            "Token",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}

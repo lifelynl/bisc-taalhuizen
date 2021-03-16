@@ -1,0 +1,15 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+
+.hr {
+    margin: spacing(10) 0px;
+    height: 1px;
+    border-color: $color-grey-20;
+    color: $color-grey-20;
+    background-color: $color-grey-20;
+    border: none;
+
+    &.is-spacing-disabled {
+        margin: 0;
+    }
+}

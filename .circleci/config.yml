@@ -1,0 +1,131 @@
+# https://github.com/circleci/frontend/blob/master/.circleci/config.yml
+
+version: 2
+jobs:
+  build-frontend:
+    docker:
+      - image: docker:git
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13 # https://support.circleci.com/hc/en-us/articles/360050934711
+
+      - run: |
+          cd client
+          docker build -t lifely/bisc-frontend:$CIRCLE_SHA1 .
+
+  build-backend:
+    docker:
+      - image: docker:git
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run: |
+          cd server
+          docker build -t lifely/bisc-backend:$CIRCLE_SHA1 .
+  
+  build-and-push-frontend:
+    docker:
+      - image: docker:git
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13 # https://support.circleci.com/hc/en-us/articles/360050934711
+
+      - run: |
+          cd client
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t lifely/bisc-frontend:$CIRCLE_SHA1 .
+          docker push lifely/bisc-frontend:$CIRCLE_SHA1
+
+  build-and-push-backend:
+    docker:
+      - image: docker:git
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run: |
+          cd server
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t lifely/bisc-backend:$CIRCLE_SHA1 .
+          docker push lifely/bisc-backend:$CIRCLE_SHA1
+  
+  add-latest-tag:
+    docker:
+      - image: docker:git
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker pull lifely/bisc-backend:$CIRCLE_SHA1
+          docker pull lifely/bisc-frontend:$CIRCLE_SHA1
+          docker tag lifely/bisc-backend:$CIRCLE_SHA1 lifely/bisc-backend:latest
+          docker tag lifely/bisc-frontend:$CIRCLE_SHA1 lifely/bisc-frontend:latest
+          docker push lifely/bisc-backend:latest
+          docker push lifely/bisc-frontend:latest
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-and-push-frontend:
+          context: docker-hub-auth
+          filters:
+            branches:
+              ignore:
+                - /feature\/.*/
+                - /fix\/.*/
+      - build-and-push-backend:
+          context: docker-hub-auth
+          filters:
+            branches:
+              ignore:
+                - /feature\/.*/
+                - /fix\/.*/
+      - add-latest-tag:
+          context: docker-hub-auth
+          requires:
+            - build-and-push-frontend
+            - build-and-push-backend
+          filters:
+            branches:
+              only:
+                - /ops\/.*/
+                - develop
+  nightly-develop:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - develop
+    jobs:
+      - build-frontend
+      - build-backend
+  nightly-master:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build-frontend
+      - build-backend

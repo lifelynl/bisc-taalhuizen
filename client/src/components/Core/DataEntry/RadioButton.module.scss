@@ -1,0 +1,84 @@
+@import '../../../styles/variables/colors';
+
+.container {
+    position: relative;
+    display: flex;
+
+    .inputField {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        background-color: $color-white;
+        width: 16px;
+        height: 16px;
+        border: solid 1px $color-grey-60;
+        border-radius: 50%;
+        display: inline-block;
+        outline: none;
+        position: relative;
+
+        &:checked {
+            background-color: $color-bisc-orange;
+        }
+
+        &:checked ~ .radio {
+            display: block;
+            visibility: visible;
+            background-color: $color-white;
+        }
+
+        &:checked:hover {
+            background-color: $color-background-orange-dark;
+        }
+
+        &:checked:hover ~ .radio {
+            background-color: $color-white;
+        }
+
+        &:disabled {
+            background-color: $color-grey-5;
+            border: solid 1px $color-grey-20;
+        }
+
+        &:checked:disabled:hover {
+            background-color: $color-grey-5;
+            border: solid 1px $color-grey-20;
+        }
+
+        &:hover ~ .radio {
+            background-color: #ff5a26;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled:hover ~ .radio {
+            pointer-events: none;
+            display: none;
+            visibility: hidden;
+        }
+
+        &:checked:disabled ~ .radio {
+            background-color: $color-grey-60;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled:hover {
+            cursor: no-drop;
+        }
+    }
+
+    .radio {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        display: none;
+        visibility: hidden;
+    }
+}

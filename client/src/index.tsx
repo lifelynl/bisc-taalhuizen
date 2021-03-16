@@ -1,18 +1,24 @@
+import { ApolloProvider } from '@apollo/client'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { ApolloProvider } from '@apollo/client'
 import { apolloClient } from './apollo'
+import App from './App'
+import { I18nLoader } from './components/Providers/I18nLoader/I18nLoader'
+import { SessionProvider } from './components/Providers/SessionProvider/SessionProvider'
+import reportWebVitals from './reportWebVitals'
+import './styles/index.scss'
 
 ReactDOM.render(
     <React.StrictMode>
         <ApolloProvider client={apolloClient}>
-            <Router>
-                <App />
-            </Router>
+            <I18nLoader>
+                <SessionProvider>
+                    <Router>
+                        <App />
+                    </Router>
+                </SessionProvider>
+            </I18nLoader>
         </ApolloProvider>
     </React.StrictMode>,
     document.getElementById('root')

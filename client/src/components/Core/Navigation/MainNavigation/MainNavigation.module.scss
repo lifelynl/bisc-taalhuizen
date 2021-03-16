@@ -1,0 +1,44 @@
+@import 'styles/variables/colors';
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 0px 25px;
+    width: 220px;
+    height: 100%;
+
+    &.is-bisc {
+        background-color: $color-grey-99;
+    }
+
+    &.is-taalhuis {
+        background-color: $color-grey-5;
+    }
+
+    &.is-aanbieder {
+        background-color: $color-grey-5;
+    }
+}
+
+.top-wrapper {
+    padding: 0px 16px;
+    margin-bottom: 32px;
+}
+.list-wrapper {
+    padding: 0px 24px;
+}
+
+.list-wrapper > * {
+    margin-bottom: 8px;
+}
+
+.bottom-wrapper > *:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.bottom-wrapper {
+    padding: 0px 24px;
+    margin-bottom: 32px;
+}

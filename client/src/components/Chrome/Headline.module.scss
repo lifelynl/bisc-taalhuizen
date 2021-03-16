@@ -1,0 +1,22 @@
+@import 'styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    .topComponent {
+        margin-bottom: spacing(4);
+    }
+
+    &.is-spacing-default {
+        .title {
+            margin-bottom: spacing(12);
+        }
+    }
+
+    &.is-spacing-small {
+        .title {
+            margin-bottom: spacing(6);
+        }
+    }
+}

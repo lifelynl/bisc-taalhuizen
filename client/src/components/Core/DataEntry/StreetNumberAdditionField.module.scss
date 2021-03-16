@@ -1,0 +1,22 @@
+@import 'styles/variables/media-query';
+
+.container {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    max-width: $input-width;
+    width: 100%;
+}
+
+.streetContainer {
+    max-width: 178px;
+    width: 100%;
+}
+
+.streetNumberContainer {
+    width: 53px;
+}
+
+.additionContainer {
+    width: 39px;
+}

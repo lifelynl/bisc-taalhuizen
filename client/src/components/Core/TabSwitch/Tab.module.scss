@@ -1,0 +1,61 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+@import 'styles/variables/animations';
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: $color-grey-5;
+    padding: spacing(3) spacing(6);
+    border: none;
+
+    user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+
+    transition-property: background-color color border text-decoration;
+    transition-duration: $animation-default;
+    transition-timing-function: $animation-appear-bezier;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover,
+    :focus {
+        background-color: $color-background-polar;
+    }
+
+    &.is-active {
+        .label {
+            color: $color-white;
+        }
+        background-color: $color-bisc-ice;
+    }
+
+    &:disabled {
+        .label {
+            color: $color-grey-60;
+        }
+        background-color: unset;
+        cursor: no-drop;
+    }
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-grey-80;
+}
+
+.indicator {
+    margin-left: 8px;
+    padding: 0px 4px;
+    border-radius: 16px;
+    background-color: $color-bisc-orange;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-white;
+}

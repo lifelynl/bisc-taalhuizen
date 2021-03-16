@@ -1,0 +1,21 @@
+{
+    "possibleTypes": {
+        "Node": [
+            "Application",
+            "Configuration",
+            "Style",
+            "Image",
+            "Organization",
+            "Template",
+            "Slug",
+            "TemplateGroup",
+            "Category",
+            "ResourceCategory",
+            "Document",
+            "Menu",
+            "MenuItem",
+            "AuditTrail",
+            "ChangeLog"
+        ]
+    }
+}

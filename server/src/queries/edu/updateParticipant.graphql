@@ -1,0 +1,14 @@
+mutation updateParticipant($input: updateParticipantInput!) {
+    updateParticipant(input: $input) {
+        participant {
+            id
+            status
+            referredBy
+            person
+            program {
+                id
+                name
+            }
+        }
+    }
+}

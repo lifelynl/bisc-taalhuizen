@@ -1,0 +1,75 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/spacing';
+@import 'styles/variables/media-query';
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: $input-width;
+
+    &.grow {
+        max-width: 100%;
+    }
+
+    .selectTrigger {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        outline: none;
+
+        .input {
+            width: 100%;
+        }
+
+        .arrow {
+            position: absolute;
+            right: spacing(2);
+        }
+
+        .arrow.disabledArrow {
+            cursor: no-drop;
+            color: $color-grey-80;
+        }
+
+        .selectedValue > span {
+            color: $color-grey-80;
+        }
+    }
+
+    .options {
+        margin-top: spacing(12);
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        padding: 6px 6px 8px;
+        border: solid 1px $color-grey-80;
+        background-color: $color-white;
+        border-radius: 4px;
+        max-height: 264px;
+        overflow-y: scroll;
+        z-index: 1;
+        span {
+            border-radius: 4px;
+            height: 26px;
+            padding: 1px 21px 2px 10px;
+            &:hover {
+                background-color: $color-background-polar;
+                cursor: pointer;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-background-polar;
+            border-radius: 20px;
+            border: 4px solid $color-white;
+        }
+    }
+}

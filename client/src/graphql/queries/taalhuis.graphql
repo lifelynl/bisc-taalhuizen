@@ -1,0 +1,16 @@
+query taalhuis($taalhuisId: String!) {
+    taalhuis(taalhuisId: $taalhuisId) {
+        id
+        name
+        address {
+            street
+            houseNumber
+            houseNumberSuffix
+            postalCode
+            locality
+        }
+        email
+        telephone
+        type
+    }
+}

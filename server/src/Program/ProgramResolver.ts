@@ -1,5 +1,5 @@
 import { Args, ArgsType, Field, Mutation, ObjectType, Query, Resolver } from '@nestjs/graphql'
-import { ProgramRepository } from './ProgramRepository'
+import { OldProgramRepository } from './OldProgramRepository'
 
 @ObjectType()
 export class ProgramType {
@@ -27,7 +27,7 @@ class EnrollPersonInProgramArgs {
 
 @Resolver(() => ProgramType)
 export class ProgramResolver {
-    public constructor(private programRepository: ProgramRepository) {}
+    public constructor(private programRepository: OldProgramRepository) {}
 
     @Query(() => [ProgramEdgeType])
     public async programs(): Promise<ProgramEdgeType[]> {

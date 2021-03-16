@@ -1,0 +1,16 @@
+mutation createTaalhuisEmployee($input: CreateTaalhuisEmployeeInputType!) {
+    createTaalhuisEmployee(input: $input) {
+        id
+        givenName
+        additionalName
+        familyName
+        email
+        telephone
+        dateCreated
+        dateModified
+        userRoles {
+            id
+            name
+        }
+    }
+}
