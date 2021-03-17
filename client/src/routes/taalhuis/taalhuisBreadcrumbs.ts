@@ -5,7 +5,7 @@ import { taalhuisRoutes } from './taalhuisRoutes'
 import { TaalhuisDetailParams } from './types'
 
 export const taalhuisBreadCrumbs = {
-    [taalhuisRoutes.read.index()]: () => [{ to: routes.authorized.taalhuis.overview, label: i18n._(t`Taalhuizen`) }],
+    [taalhuisRoutes.index]: () => [{ to: routes.authorized.taalhuis.overview, label: i18n._(t`Taalhuizen`) }],
     [taalhuisRoutes.read.coworkers.detail.index()]: (params: TaalhuisDetailParams) => [
         { to: routes.authorized.taalhuis.overview, label: i18n._(t`Taalhuizen`) },
         { to: routes.authorized.taalhuis.read.index(params), label: params.taalhuisname },
