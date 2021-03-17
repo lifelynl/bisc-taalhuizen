@@ -6,6 +6,7 @@ import Headline, { SpacingType } from '../../../../../components/Chrome/Headline
 import Actionbar from '../../../../../components/Core/Actionbar/Actionbar'
 import Breadcrumb from '../../../../../components/Core/Breadcrumb/Breadcrumb'
 import Breadcrumbs from '../../../../../components/Core/Breadcrumb/Breadcrumbs'
+import RouteBreadcrumbs from '../../../../../components/Core/Breadcrumb/RouteBreadcrumbs'
 import Button, { ButtonType } from '../../../../../components/Core/Button/Button'
 import ErrorBlock from '../../../../../components/Core/Feedback/Error/ErrorBlock'
 import Spinner, { Animation } from '../../../../../components/Core/Feedback/Spinner/Spinner'
@@ -51,13 +52,7 @@ const DataView: React.FunctionComponent<Props> = () => {
         <>
             <Headline
                 title={i18n._(t`${params.taalhuisname}`)}
-                TopComponent={
-                    <Breadcrumbs>
-                        {taalhuisBreadCrumbs[routes.authorized.taalhuis.read.index()](params).map(breadcrumb => {
-                            ;<Breadcrumb text={breadcrumb.label} to={breadcrumb.to} />
-                        })}
-                    </Breadcrumbs>
-                }
+                TopComponent={<RouteBreadcrumbs breadcrumbs={taalhuisBreadCrumbs.index} />}
                 spacingType={SpacingType.small}
             />
 

@@ -3,8 +3,7 @@ import { useLingui } from '@lingui/react'
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Headline from '../../../../../components/Chrome/Headline'
-import Breadcrumb from '../../../../../components/Core/Breadcrumb/Breadcrumb'
-import Breadcrumbs from '../../../../../components/Core/Breadcrumb/Breadcrumbs'
+import RouteBreadcrumbs from '../../../../../components/Core/Breadcrumb/RouteBreadcrumbs'
 import Button from '../../../../../components/Core/Button/Button'
 import RoleLabelTag from '../../../../../components/Core/DataDisplay/LabelTag/RoleLabelTag'
 import ErrorBlock from '../../../../../components/Core/Feedback/Error/ErrorBlock'
@@ -20,6 +19,7 @@ import TabSwitch from '../../../../../components/Core/TabSwitch/TabSwitch'
 import { TabProps } from '../../../../../components/Core/TabSwitch/types'
 import { useTaalhuisEmployeesQuery } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
+import { taalhuisBreadCrumbs } from '../../../../../routes/taalhuis/taalhuisBreadcrumbs'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
 
 interface Props {}
@@ -49,16 +49,7 @@ const CoworkersOverviewView: React.FunctionComponent<Props> = () => {
         <>
             <Headline
                 title={i18n._(t`Medewerkers`)}
-                TopComponent={
-                    <Breadcrumbs>
-                        <Breadcrumb text={i18n._(t`Taalhuizen`)} to={routes.authorized.taalhuis.overview} />
-                        <Breadcrumb text={params.taalhuisname} to={routes.authorized.taalhuis.read.data(params)} />
-                        <Breadcrumb
-                            text={i18n._(t`Medewerkers`)}
-                            to={routes.authorized.taalhuis.read.coworkers.overview(params)}
-                        />
-                    </Breadcrumbs>
-                }
+                TopComponent={<RouteBreadcrumbs breadcrumbs={taalhuisBreadCrumbs.index} />}
             />
 
             <Column spacing={10}>

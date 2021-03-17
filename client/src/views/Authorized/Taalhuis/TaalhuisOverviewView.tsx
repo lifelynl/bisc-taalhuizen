@@ -3,8 +3,6 @@ import { useLingui } from '@lingui/react'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Headline, { SpacingType } from '../../../components/Chrome/Headline'
-import Breadcrumbs from '../../../components/Core/Breadcrumb/Breadcrumbs'
-import RouteBreadcrumbs from '../../../components/Core/Breadcrumb/RouteBreadcrumbs'
 import Button from '../../../components/Core/Button/Button'
 import ErrorBlock from '../../../components/Core/Feedback/Error/ErrorBlock'
 import Spinner, { Animation } from '../../../components/Core/Feedback/Spinner/Spinner'
@@ -16,7 +14,6 @@ import { Table } from '../../../components/Core/Table/Table'
 import { TableLink } from '../../../components/Core/Table/TableLink'
 import { useTaalhuizenQuery } from '../../../generated/graphql'
 import { routes } from '../../../routes/routes'
-import { taalhuisBreadCrumbs } from '../../../routes/taalhuis/taalhuisBreadcrumbs'
 
 interface Props {}
 
@@ -27,13 +24,7 @@ export const TaalhuisOverviewView: React.FunctionComponent<Props> = () => {
 
     return (
         <>
-            <Headline
-                spacingType={SpacingType.small}
-                title={i18n._(t`Taalhuizen`)}
-                TopComponent={
-                    <RouteBreadcrumbs breadcrumbs={taalhuisBreadCrumbs[routes.authorized.taalhuis.index]({})} />
-                }
-            />
+            <Headline spacingType={SpacingType.small} title={i18n._(t`Taalhuizen`)} />
             <Column spacing={6}>
                 <Row justifyContent="flex-end">
                     <Button icon={IconType.add} onClick={() => history.push(routes.authorized.taalhuis.create)}>

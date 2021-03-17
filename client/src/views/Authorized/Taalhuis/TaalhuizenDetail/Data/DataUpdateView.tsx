@@ -4,8 +4,7 @@ import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Headline from '../../../../../components/Chrome/Headline'
 import Actionbar from '../../../../../components/Core/Actionbar/Actionbar'
-import Breadcrumb from '../../../../../components/Core/Breadcrumb/Breadcrumb'
-import Breadcrumbs from '../../../../../components/Core/Breadcrumb/Breadcrumbs'
+import RouteBreadcrumbs from '../../../../../components/Core/Breadcrumb/RouteBreadcrumbs'
 import Button, { ButtonType } from '../../../../../components/Core/Button/Button'
 import ErrorBlock from '../../../../../components/Core/Feedback/Error/ErrorBlock'
 import { NotificationsManager } from '../../../../../components/Core/Feedback/Notifications/NotificationsManager'
@@ -13,17 +12,14 @@ import Spinner, { Animation } from '../../../../../components/Core/Feedback/Spin
 import Form from '../../../../../components/Core/Form/Form'
 import { IconType } from '../../../../../components/Core/Icon/IconType'
 import Center from '../../../../../components/Core/Layout/Center/Center'
-import Column from '../../../../../components/Core/Layout/Column/Column'
 import Row from '../../../../../components/Core/Layout/Row/Row'
 import Modal from '../../../../../components/Core/Modal/Modal'
-import ModalView from '../../../../../components/Core/Modal/ModalView'
-import SectionTitle from '../../../../../components/Core/Text/SectionTitle'
-import Paragraph from '../../../../../components/Core/Typography/Paragraph'
 import TaalhuisInformationFieldset, {
     TaalhuisInformationFieldsetModel,
 } from '../../../../../components/fieldsets/taalhuis/TaalhuisInformationFieldset'
 import { useTaalhuisQuery, useUpdateTaalhuisMutation } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
+import { taalhuisBreadCrumbs } from '../../../../../routes/taalhuis/taalhuisBreadcrumbs'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
 import { Forms } from '../../../../../utils/forms'
 import TaalhuisDeleteModalView from '../../Modals/TaalhuisDeleteModalView'
@@ -91,11 +87,7 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
         <Form onSubmit={handleEdit}>
             <Headline
                 title={i18n._(t`${params.taalhuisname}`)}
-                TopComponent={
-                    <Breadcrumbs>
-                        <Breadcrumb text={i18n._(t`Taalhuizen`)} to={routes.authorized.taalhuis.overview} />
-                    </Breadcrumbs>
-                }
+                TopComponent={<RouteBreadcrumbs breadcrumbs={taalhuisBreadCrumbs.index} />}
             />
             {renderViews()}
             <Actionbar

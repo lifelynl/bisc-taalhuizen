@@ -6,6 +6,7 @@ import Headline from '../../../../../components/Chrome/Headline'
 import Actionbar from '../../../../../components/Core/Actionbar/Actionbar'
 import Breadcrumb from '../../../../../components/Core/Breadcrumb/Breadcrumb'
 import Breadcrumbs from '../../../../../components/Core/Breadcrumb/Breadcrumbs'
+import RouteBreadcrumbs from '../../../../../components/Core/Breadcrumb/RouteBreadcrumbs'
 import Button, { ButtonType } from '../../../../../components/Core/Button/Button'
 import { NotificationsManager } from '../../../../../components/Core/Feedback/Notifications/NotificationsManager'
 import Form from '../../../../../components/Core/Form/Form'
@@ -21,6 +22,7 @@ import InformationFieldset, {
 } from '../../../../../components/fieldsets/shared/InformationFieldset'
 import { useCreateTaalhuisEmployeeMutation, useUserRolesByTaalhuisIdQuery } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
+import { taalhuisBreadCrumbs } from '../../../../../routes/taalhuis/taalhuisBreadcrumbs'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
 import { Forms } from '../../../../../utils/forms'
 
@@ -86,15 +88,7 @@ const CoworkersCreateView: React.FunctionComponent<Props> = () => {
         <Form onSubmit={handleCreate}>
             <Headline
                 title={i18n._(t`Nieuwe medewerker`)}
-                TopComponent={
-                    <Breadcrumbs>
-                        <Breadcrumb text={i18n._(t`Taalhuizen`)} to={routes.authorized.taalhuis.overview} />
-                        <Breadcrumb
-                            text={params.taalhuisname}
-                            to={routes.authorized.taalhuis.read.coworkers.index(params)}
-                        />
-                    </Breadcrumbs>
-                }
+                TopComponent={<RouteBreadcrumbs breadcrumbs={taalhuisBreadCrumbs.coworkers.index(params)} />}
             />
             <InformationFieldset />
             <HorizontalRule />
