@@ -1,2 +1,9 @@
 node_modules
 client/.eslintcache
+
+helm/kubeconfig.yaml
+
+.idea/codeStyles/codeStyleConfig.xml
+
+helm/*-kubeconfig.yaml
+helm/kubeconfig*

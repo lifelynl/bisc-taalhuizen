@@ -26,7 +26,7 @@ export class ProgramRepository extends EDURepository {
     }
 
     public async deleteProgram(id: string) {
-        const result = await this.sdk.deleteProgram({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteProgram({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

@@ -95,7 +95,7 @@ export class EmployeeRepository extends MRCRepository {
     }
 
     public async deleteEmployee(id: string) {
-        const result = await this.sdk.deleteEmployee({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteEmployee({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

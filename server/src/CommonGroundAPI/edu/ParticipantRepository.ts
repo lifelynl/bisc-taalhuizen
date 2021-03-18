@@ -97,7 +97,7 @@ export class ParticipantRepository extends EDURepository {
     }
 
     public async deleteParticipant(id: string) {
-        const result = await this.sdk.deleteParticipant({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteParticipant({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

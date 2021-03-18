@@ -5,7 +5,7 @@ import { WRCRepository } from 'src/CommonGroundAPI/WRCRepository'
 @Injectable()
 export class SourceOrganizationRepository extends WRCRepository {
     public async createSourceOrganization(name: string) {
-        const result = await this.sdk.createSourceOrganization({ input: { name } })
+        const result = await this.sdk.createSourceOrganization({ input: { name }})
 
         const organization = result.createOrganization?.organization
         assertNotNil(organization, `Failed to create SourceOrganization`)
@@ -29,7 +29,7 @@ export class SourceOrganizationRepository extends WRCRepository {
     }
 
     public async deleteSourceOrganization(id: string) {
-        const result = await this.sdk.deleteSourceOrganization({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteSourceOrganization({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

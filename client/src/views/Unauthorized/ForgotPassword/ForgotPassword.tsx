@@ -31,7 +31,7 @@ function ForgotPassword() {
         e.preventDefault()
         try {
             const data = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await requestPasswordReset({ variables: { email: data.email } })
+            const response = await requestPasswordReset({ variables: { email: data.email }})
 
             if (response.errors) {
                 throw new Error(response.errors[0].message)

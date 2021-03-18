@@ -31,7 +31,7 @@ export class OldUserRepository {
             }
         `
 
-        const result = await this.client.query({ query, variables: { username } })
+        const result = await this.client.query({ query, variables: { username }})
 
         const userEdges: UserEdge[] = result.data.users.edges
 
@@ -59,7 +59,7 @@ export class OldUserRepository {
             }
         `
 
-        const result = await this.client.query({ query, variables: { id: `/users/${userId}` } })
+        const result = await this.client.query({ query, variables: { id: `/users/${userId}` }})
 
         const user: UserEntity | null = result.data.user
 
@@ -84,7 +84,7 @@ export class OldUserRepository {
 
         const result = await this.client.mutate({
             mutation,
-            variables: { input: { id: userId, password: newPasswordHash } },
+            variables: { input: { id: userId, password: newPasswordHash }},
         })
 
         return result.data.updateUser.user

@@ -33,7 +33,7 @@ export class UserRepository extends UCRepository {
 
     public async deleteUser(id: string) {
         try {
-            const result = await this.sdk.deleteUser({ input: { id: this.stripURLfromID(id) } })
+            const result = await this.sdk.deleteUser({ input: { id: this.stripURLfromID(id) }})
             return !!result
         } catch {
             // allow this to fail, it seems to get auto deleted sometimes

@@ -94,7 +94,7 @@ export class OrganizationRepository extends CCRepository {
     }
 
     public async deleteOrganization(id: string) {
-        const result = await this.sdk.deleteOrganization({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteOrganization({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

@@ -152,7 +152,7 @@ function ResetPassword() {
                 return
             }
 
-            const response = await resetPasswordMutation({ variables: { email, token, password: data.newPassword } })
+            const response = await resetPasswordMutation({ variables: { email, token, password: data.newPassword }})
 
             if (response.errors) {
                 throw new Error(response.errors[0].message)

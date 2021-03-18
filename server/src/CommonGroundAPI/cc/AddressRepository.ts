@@ -69,7 +69,7 @@ export class AddressRepository extends CCRepository {
     }
 
     public async deleteAddress(id: string) {
-        const result = await this.sdk.deleteAddress({ input: { id: this.stripURLfromID(id) } })
+        const result = await this.sdk.deleteAddress({ input: { id: this.stripURLfromID(id) }})
 
         return !!result
     }

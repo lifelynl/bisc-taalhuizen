@@ -1,0 +1,141 @@
+# Default values for bisc-taalhuizen.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+settings:
+  registryBase: docker.io/lifely
+  projectName: bisc
+  name: bisc
+  version: V1.0
+  majorVersion: v1
+  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
+  repro: https://github.com/lifelynl/bisc-taalhuizen
+  demo: bisc-staging.lifely.nl
+  domain: bisc-staging.lifely.nl
+  subdomain: bisc
+  subpath: bisc
+  subpathRouting: true
+  env: staging
+  nodeEnv: production
+  web: true
+  debug: 0
+  cache: true
+  type: component
+  id:
+  replicaCount: 1
+  corsAllowOrigin: ['*']
+  trustedHosts: '^.+$'
+  pullPolicy: Always
+  # You will need these proxies on kubernetes
+  trustedProxies:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
+  loadbalancerEnabled: false
+  # If you are running a single component on a kubernetes cluster you can just easily enable the load balancer, if not you need to set up a multi component load balancer
+  notificationEnabled: false
+  audittrailEnabled: false
+  authorisationEnabled: false
+  healthEnabled: false
+  archiveEnabled: false
+
+letsEncrypt:
+  host: bisc-staging.lifely.nl
+  email: ops@lifely.nl
+
+# Not the actual correct key
+security:
+  pepper: ''
+  secret: ''
+  sentryDns: ''
+  apiKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
+
+mail:
+  type: smtp
+  from:
+    name: 'test'
+    email: 'test@test.nl'
+  smtp:
+    host: 'bisc-staging.lifely.nl'
+    port: '80'
+    username: 'example'
+    password: '!changeMe!'
+
+image:
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  annotations:
+  # kubernetes.io/ingress.global-static-ip-name: chart-ip
+  # kubernetes.io/ingress.class: gce
+  # kubernetes.io/tls-acme: "true"
+  tls:
+  # Secrets must be manually created in the namespace, you can also use cert-manager.
+  # - hosts:
+  # - example.com
+  # - mercure.example.com
+  hosts:
+    api:
+      host: example.com
+      serviceName: varnish
+    mercure:
+      host: mercure.example.com
+      serviceName: mercure
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+#  memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

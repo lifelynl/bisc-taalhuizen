@@ -1,7 +1,7 @@
 version: '3'
 services:
     bisc-backend:
-        image: 'lifely/bisc-backend:${GIT_COMMIT_HASH}'
+        image: 'docker.io/lifely/bisc-backend:${GIT_COMMIT_HASH}'
         expose:
             - 5000
         environment:
@@ -24,7 +24,7 @@ services:
             - NODE_ENV=production
         restart: on-failure
     bisc-frontend:
-        image: 'lifely/bisc-frontend:${GIT_COMMIT_HASH}'
+        image: 'docker.io/lifely/bisc-frontend:${GIT_COMMIT_HASH}'
         expose:
             - 80
         environment:

@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.settings.name }}-frontend
+  labels:
+    app.kubernetes.io/name: {{ .Values.settings.name }}-frontend
+    app.kubernetes.io/part-of: {{ .Values.settings.name }}
+    helm.sh/chart: {{ include "chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.settings.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.settings.name }}-frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.settings.name }}-frontend
+        app.kubernetes.io/part-of: {{ .Values.settings.name }}
+        helm.sh/chart: {{ include "chart" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
+    spec:
+      containers:
+        - name: {{ .Values.settings.name }}-frontend
+          image: "{{ .Values.settings.registryBase }}/{{ .Values.settings.projectName }}-frontend:{{ .Values.settings.version }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 9000
+          env:
+            #General configmap values
+            - name: NGINX_PROXY_PASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: server-url
+            - name: NGINX_ENVJS_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: env
+            - name: NGINX_ENVJS_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: version
+            - name: NGINX_ENVJS_GRAPHQL_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: graphql-uri
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
