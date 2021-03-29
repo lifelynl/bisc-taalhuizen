@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import HorizontalRule from 'components/Core/HorizontalRule/HorizontalRule'
+import Space from 'components/Core/Layout/Space/Space'
 import BranchInformationFieldset, {
     BranchInformationFieldsetFormModel,
 } from 'components/fieldsets/shared/BranchInformationFieldset'
@@ -53,6 +54,7 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
                 }
             />
             {renderViews()}
+            <Space pushTop={true} />
             <Actionbar
                 LeftComponent={
                     <Row>
@@ -124,7 +126,6 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
                             placeholder: i18n._(t`Naam`),
                         },
                     }}
-                    readOnly={true}
                 />
                 <HorizontalRule />
                 <ContactInformationFieldset
@@ -149,7 +150,6 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
                             hidden: true,
                         },
                     }}
-                    readOnly={true}
                 />
             </>
         )
