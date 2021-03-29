@@ -122,7 +122,7 @@ export const AanbiederParticipantIntakeFields: React.FunctionComponent<Props> = 
                 prefillData={{
                     street: street,
                     streetNr: `${building}`,
-                    addition: apartment,
+                    streetAddition: apartment,
                     postalCode: postcode,
                     city,
                     phone,

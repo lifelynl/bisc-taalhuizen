@@ -6,17 +6,26 @@ import { InsertionValidators } from '../../../utils/validators/InsertionValidato
 import Input from '../../Core/DataEntry/Input'
 import StreetNumberAdditionField, {
     StreetNumberAdditionFieldModel,
+    StreetNumberAdditionFieldPrefillData,
 } from '../../Core/DataEntry/StreetNumberAdditionField'
 import Field from '../../Core/Field/Field'
 import Section from '../../Core/Field/Section'
 import Column from '../../Core/Layout/Column/Column'
 
 interface Props {
-    prefillData?: AdressInformationFieldsetModel
+    prefillData?: AdressInformationPrefillData
     readOnly?: boolean
 }
 
 export interface AdressInformationFieldsetModel extends StreetNumberAdditionFieldModel {
+    ['address-postalCode']?: string
+    ['address-city']?: string
+    ['address-street']?: StreetNumberAdditionFieldModel['-street']
+    ['address-streetNr']?: StreetNumberAdditionFieldModel['-streetNr']
+    ['address-streetAddition']?: StreetNumberAdditionFieldModel['-streetAddition']
+}
+
+export interface AdressInformationPrefillData extends StreetNumberAdditionFieldPrefillData {
     postalCode?: string
     city?: string
 }
@@ -50,10 +59,11 @@ const AdressInformationFieldset: React.FunctionComponent<Props> = props => {
             <Column spacing={4}>
                 <Field label={i18n._(t`Straatnaam + huisnr.`)} horizontal={true}>
                     <StreetNumberAdditionField
+                        prefixName={'address'}
                         prefillData={{
                             street: prefillData?.street,
                             streetNr: prefillData?.streetNr,
-                            addition: prefillData?.addition,
+                            streetAddition: prefillData?.streetAddition,
                         }}
                     />
                 </Field>
