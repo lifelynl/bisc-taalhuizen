@@ -136,6 +136,9 @@ const DataUpdateView: React.FunctionComponent<Props> = props => {
                         email: data?.aanbieder.email,
                     }}
                     fieldControls={{
+                        address: {
+                            hidden: true,
+                        },
                         postalCode: {
                             hidden: true,
                         },
