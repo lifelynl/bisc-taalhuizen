@@ -27,22 +27,35 @@ export const supplierRoutes = {
         },
     },
     participants: {
-        overview: {
-            active: '/supplier/participants/active',
-            completed: '/supplier/participants/completed',
-            referred: '/supplier/participants/referred',
-        },
+        index: '/supplier/participants',
+        active: '/supplier/participants/active',
+        completed: '/supplier/participants/completed',
+        referred: '/supplier/participants/referred',
         detail: {
-            index: '/supplier/participant',
-            overview: '/supplier/participant/overview',
-            registration: '/supplier/participant/registration',
-            folder: '/supplier/participant/folder',
+            index: '/supplier/participants/detail',
+            overview: '/supplier/participants/detail/overview',
+            registration: '/supplier/participants/detail/registration',
+            folder: '/supplier/participants/detail/folder',
             goals: {
-                index: '/supplier/participant/goals',
-                overview: '/supplier/participant/goals/overview',
-                detail: '/supplier/participant/goals/detail',
+                index: '/supplier/participants/detail/goals',
+                overview: '/supplier/participants/detail/goals/overview',
+                detail: '/supplier/participants/detail/goals/detail',
             },
-            documents: '/supplier/participant/documents',
+            documents: '/supplier/participants/detail/documents',
+        },
+    },
+    // do not confuse with the bisc environment. this is for aanbieder management
+    management: {
+        index: '/supplier/management',
+        overview: '/supplier/management/overview',
+        employees: {
+            index: '/supplier/management/employees',
+            overview: '/supplier/management/employees/overview',
+            detail: {
+                overview: '/supplier/management/employees/detail/overview',
+                participants: '/supplier/management/employees/detail/participants',
+                documents: '/supplier/management/employees/detail/documents',
+            },
         },
     },
 }

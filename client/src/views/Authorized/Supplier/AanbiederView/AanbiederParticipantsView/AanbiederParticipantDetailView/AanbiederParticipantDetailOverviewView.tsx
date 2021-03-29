@@ -1,22 +1,25 @@
 import React from 'react'
+import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
 import Headline, { SpacingType } from 'components/Chrome/Headline'
-import Column from 'components/Core/Layout/Column/Column'
-import { AanbiederParticipantTab, AanbiederParticipantTabs } from 'components/Domain/Aanbieder/AanbiederParticipantTab'
-import { useMockQuery } from 'components/hooks/useMockQuery'
-import { AanbiederParticipantDetail, aanbiederParticipantDetail } from '../mocks'
-import Center from 'components/Core/Layout/Center/Center'
-import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
 import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
-import { t } from '@lingui/macro'
-import { AanbiederParticipantRegistrationFields } from 'components/Domain/Aanbieder/AanbiederParticipantRegistrationFields'
+import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
+import Center from 'components/Core/Layout/Center/Center'
+import Column from 'components/Core/Layout/Column/Column'
+import {
+    AanbiederParticipantTab,
+    AanbiederParticipantTabs,
+} from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantTabs'
+import { useMockQuery } from 'components/hooks/useMockQuery'
+import { aanbiederParticipantDetail, AanbiederParticipantDetail } from '../../mocks'
+import { AanbiederParticipantIntakeFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantIntakeFields'
 
 interface Props {
     participantId: number
 }
 
-export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props> = ({ participantId }) => {
+export const AanbiederParticipantDetailOverviewView: React.FunctionComponent<Props> = ({ participantId }) => {
     const { i18n } = useLingui()
 
     // TODO: replace with the api call/query (using participantId prop)
@@ -35,13 +38,12 @@ export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props
             {/* TODO: add breadcrumb */}
             <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
             <Column spacing={10}>
-                <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.registration} />
+                <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.overview} />
                 {renderList()}
             </Column>
         </>
     )
 
-    // TODO
     function renderList() {
         if (error || !data) {
             return (
@@ -52,6 +54,6 @@ export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props
             )
         }
 
-        return <AanbiederParticipantRegistrationFields participant={data} />
+        return <AanbiederParticipantIntakeFields participant={data} />
     }
 }

@@ -3,20 +3,23 @@ import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 
 import Headline, { SpacingType } from 'components/Chrome/Headline'
-import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
-import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
-import Center from 'components/Core/Layout/Center/Center'
 import Column from 'components/Core/Layout/Column/Column'
-import { AanbiederParticipantTab, AanbiederParticipantTabs } from 'components/Domain/Aanbieder/AanbiederParticipantTab'
+import {
+    AanbiederParticipantTab,
+    AanbiederParticipantTabs,
+} from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantTabs'
 import { useMockQuery } from 'components/hooks/useMockQuery'
-import { aanbiederParticipantDetail, AanbiederParticipantDetail } from '../../mocks'
-import { AanbiederParticipantGoalsOverviewFields } from 'components/Domain/Aanbieder/AanbiederParticipantGoalsOverviewFields'
+import { AanbiederParticipantDetail, aanbiederParticipantDetail } from '../../mocks'
+import Center from 'components/Core/Layout/Center/Center'
+import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
+import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
+import { AanbiederParticipantRegistrationFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantRegistrationFields'
 
 interface Props {
     participantId: number
 }
 
-export const AanbiederParticipantGoalsOverviewView: React.FunctionComponent<Props> = props => {
+export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props> = ({ participantId }) => {
     const { i18n } = useLingui()
 
     // TODO: replace with the api call/query (using participantId prop)
@@ -35,7 +38,7 @@ export const AanbiederParticipantGoalsOverviewView: React.FunctionComponent<Prop
             {/* TODO: add breadcrumb */}
             <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
             <Column spacing={10}>
-                <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.goals} />
+                <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.registration} />
                 {renderList()}
             </Column>
         </>
@@ -52,6 +55,6 @@ export const AanbiederParticipantGoalsOverviewView: React.FunctionComponent<Prop
             )
         }
 
-        return <AanbiederParticipantGoalsOverviewFields participant={data} />
+        return <AanbiederParticipantRegistrationFields participant={data} />
     }
 }

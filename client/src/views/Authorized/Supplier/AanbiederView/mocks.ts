@@ -246,3 +246,25 @@ export const aanbiederParticipantDetail: AanbiederParticipantDetail = {
         },
     ],
 }
+
+export interface AanbiederManagementProfile {
+    id: number
+}
+
+export const aanbiederManagementProfile: AanbiederManagementProfile = {
+    id: 1,
+}
+
+export interface AanbiederEmployeeProfile {
+    id: number
+}
+
+export const aanbiederEmployeeProfile: AanbiederEmployeeProfile = {
+    id: 1,
+}
+
+export interface AanbiederEmployeeDocument {
+    id: number
+}
+
+export const aanbiederEmployeeDocumentsMock: AanbiederEmployeeDocument[] = [{ id: 1 }]
