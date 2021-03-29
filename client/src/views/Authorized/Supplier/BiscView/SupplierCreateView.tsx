@@ -40,7 +40,7 @@ const SupplierCreateView: React.FunctionComponent<Props> = () => {
                     street: formData.street ?? '',
                     houseNumber: formData.streetNr ?? '',
                     houseNumberSuffix: formData.addition,
-                    postalCode: formData.postcode ?? '',
+                    postalCode: formData.branchPostcode ?? '',
                     locality: formData.city ?? '',
                 },
                 name: formData.branch ?? '',

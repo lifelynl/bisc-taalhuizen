@@ -23,7 +23,7 @@ interface Props extends ConnectedFieldsetProps<Fields> {
     readOnly?: boolean
 }
 
-export interface ContactInformationFieldsetPrefillData extends StreetNumberAdditionFieldModel {
+export interface ContactInformationFieldsetPrefillData extends StreetNumberAdditionFieldPrefillData {
     phone?: string | null
     email?: string | null
     postalCode?: string | null
@@ -32,7 +32,7 @@ export interface ContactInformationFieldsetPrefillData extends StreetNumberAddit
     contactPreference?: string | null
 }
 
-export interface ContactInformationFieldsetFormModel extends StreetNumberAdditionFieldPrefillData {
+export interface ContactInformationFieldsetFormModel extends StreetNumberAdditionFieldModel {
     phone?: string
     email?: string
     postalCode?: string
