@@ -37,21 +37,21 @@ const SupplierCreateView: React.FunctionComponent<Props> = () => {
         const response = await createSupplier({
             variables: {
                 address: {
-                    street: formData.street ?? '',
-                    houseNumber: formData.streetNr ?? '',
-                    houseNumberSuffix: formData.addition,
-                    postalCode: formData.postcode ?? '',
-                    locality: formData.city ?? '',
+                    street: formData['branch-street'] ?? '',
+                    houseNumber: formData['contact-streetNr'] ?? '',
+                    houseNumberSuffix: formData['branch-streetAddition'],
+                    postalCode: formData['branch-postcode'] ?? '',
+                    locality: formData['branch-city'] ?? '',
                 },
                 name: formData.branch ?? '',
-                email: formData.email ?? '',
-                phoneNumber: formData.phone ?? '',
+                email: formData['contact-email'] ?? '',
+                phoneNumber: formData['contact-phone'] ?? '',
             },
             refetchQueries: [{ query: AanbiedersDocument }],
         })
 
         if (response.errors?.length || !response.data) {
-            throw new Error()
+            return
         }
 
         if (response) {

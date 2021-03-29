@@ -1,5 +1,8 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import HorizontalRule from 'components/Core/HorizontalRule/HorizontalRule'
+import BranchInformationFieldset from 'components/fieldsets/shared/BranchInformationFieldset'
+import ContactInformationFieldset from 'components/fieldsets/shared/ContactInformationFieldset'
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Headline, { SpacingType } from '../../../../../components/Chrome/Headline'
@@ -16,7 +19,6 @@ import Space from '../../../../../components/Core/Layout/Space/Space'
 import Tab from '../../../../../components/Core/TabSwitch/Tab'
 import TabSwitch from '../../../../../components/Core/TabSwitch/TabSwitch'
 import { TabProps } from '../../../../../components/Core/TabSwitch/types'
-import TaalhuisInformationFieldset from '../../../../../components/fieldsets/taalhuis/TaalhuisInformationFieldset'
 import { useTaalhuisQuery } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
@@ -102,19 +104,50 @@ const DataView: React.FunctionComponent<Props> = () => {
             )
         }
         return (
-            <TaalhuisInformationFieldset
-                readOnly={true}
-                prefillData={{
-                    taalhuis: data.taalhuis.name,
-                    street: data.taalhuis.address?.street,
-                    streetNr: data.taalhuis.address?.houseNumber,
-                    addition: data.taalhuis.address?.houseNumberSuffix,
-                    postalCode: data.taalhuis.address?.postalCode,
-                    city: data.taalhuis.address?.locality,
-                    phoneNumber: data.taalhuis.telephone || undefined,
-                    email: data.taalhuis.email || undefined,
-                }}
-            />
+            <>
+                <BranchInformationFieldset
+                    prefillData={{
+                        branch: data?.taalhuis.name,
+                        street: data?.taalhuis.address?.street,
+                        streetNr: data?.taalhuis.address?.houseNumber,
+                        streetAddition: data?.taalhuis.address?.houseNumberSuffix,
+                        postcode: data?.taalhuis.address?.postalCode,
+                        city: data?.taalhuis.address?.locality,
+                    }}
+                    fieldNaming={{
+                        branch: {
+                            label: i18n._(t`Naam taalhuis`),
+                            placeholder: i18n._(t`Naam`),
+                        },
+                    }}
+                    readOnly={true}
+                />
+                <HorizontalRule />
+                <ContactInformationFieldset
+                    prefillData={{
+                        phone: data?.taalhuis.telephone,
+                        email: data?.taalhuis.email,
+                    }}
+                    fieldControls={{
+                        address: {
+                            hidden: true,
+                        },
+                        postalCode: {
+                            hidden: true,
+                        },
+                        city: {
+                            hidden: true,
+                        },
+                        phoneNumberContactPerson: {
+                            hidden: true,
+                        },
+                        contactPreference: {
+                            hidden: true,
+                        },
+                    }}
+                    readOnly={true}
+                />
+            </>
         )
     }
 }

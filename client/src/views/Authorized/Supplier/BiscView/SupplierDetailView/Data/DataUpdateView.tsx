@@ -50,15 +50,15 @@ const DataUpdateView: React.FunctionComponent<Props> = props => {
             variables: {
                 id: routeState.supplierId,
                 address: {
-                    street: formData.street || '',
-                    houseNumber: formData.streetNr || '',
-                    houseNumberSuffix: formData.addition,
-                    postalCode: formData.postcode || '',
-                    locality: formData.city || '',
+                    street: formData['branch-street'] ?? data?.aanbieder.address?.street,
+                    houseNumber: formData['branch-streetNr'] ?? data?.aanbieder.address?.houseNumber,
+                    houseNumberSuffix: formData['branch-streetAddition'] ?? data?.aanbieder.address?.houseNumberSuffix,
+                    postalCode: formData['branch-postcode'] ?? data?.aanbieder.address?.postalCode,
+                    locality: formData['branch-city'] ?? data?.aanbieder.address?.locality,
                 },
-                name: formData.branch || '',
-                email: formData.email || '',
-                phoneNumber: formData.phone || '',
+                name: formData.branch ?? data?.aanbieder.name,
+                email: formData['contact-email'] || data?.aanbieder.email,
+                phoneNumber: formData['contact-phone'] || data?.aanbieder.telephone,
             },
         })
 
@@ -124,7 +124,7 @@ const DataUpdateView: React.FunctionComponent<Props> = props => {
                         branch: data?.aanbieder.name,
                         street: data?.aanbieder.address?.street,
                         streetNr: data?.aanbieder.address?.houseNumber,
-                        addition: data?.aanbieder.address?.houseNumberSuffix,
+                        streetAddition: data?.aanbieder.address?.houseNumberSuffix,
                         postcode: data?.aanbieder.address?.postalCode,
                         city: data?.aanbieder.address?.locality,
                     }}

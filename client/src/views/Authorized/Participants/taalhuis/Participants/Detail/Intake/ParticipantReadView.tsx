@@ -165,7 +165,7 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
                         prefillData={{
                             street: data.street,
                             streetNr: data.streetNr,
-                            addition: data.addition,
+                            streetAddition: data.street,
                             email: data.email,
                             postalCode: data.postalCode,
                             city: data.city,

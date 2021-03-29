@@ -119,7 +119,7 @@ const DataView: React.FunctionComponent<Props> = props => {
                         branch: data?.aanbieder.name,
                         street: data?.aanbieder.address?.street,
                         streetNr: data?.aanbieder.address?.houseNumber,
-                        addition: data?.aanbieder.address?.houseNumberSuffix,
+                        streetAddition: data?.aanbieder.address?.houseNumberSuffix,
                         postcode: data?.aanbieder.address?.postalCode,
                         city: data?.aanbieder.address?.locality,
                     }}

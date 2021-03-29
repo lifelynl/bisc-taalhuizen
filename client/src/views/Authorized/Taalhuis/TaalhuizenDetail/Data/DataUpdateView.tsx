@@ -1,5 +1,12 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import HorizontalRule from 'components/Core/HorizontalRule/HorizontalRule'
+import BranchInformationFieldset, {
+    BranchInformationFieldsetFormModel,
+} from 'components/fieldsets/shared/BranchInformationFieldset'
+import ContactInformationFieldset, {
+    ContactInformationFieldsetModel,
+} from 'components/fieldsets/shared/ContactInformationFieldset'
 import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Headline from '../../../../../components/Chrome/Headline'
@@ -15,9 +22,6 @@ import { IconType } from '../../../../../components/Core/Icon/IconType'
 import Center from '../../../../../components/Core/Layout/Center/Center'
 import Row from '../../../../../components/Core/Layout/Row/Row'
 import Modal from '../../../../../components/Core/Modal/Modal'
-import TaalhuisInformationFieldset, {
-    TaalhuisInformationFieldsetModel,
-} from '../../../../../components/fieldsets/taalhuis/TaalhuisInformationFieldset'
 import { useTaalhuisQuery, useUpdateTaalhuisMutation } from '../../../../../generated/graphql'
 import { routes } from '../../../../../routes/routes'
 import { TaalhuisDetailParams } from '../../../../../routes/taalhuis/types'
@@ -25,7 +29,7 @@ import { Forms } from '../../../../../utils/forms'
 import TaalhuisDeleteModalView from '../../Modals/TaalhuisDeleteModalView'
 
 interface Props {}
-export interface FormModel extends TaalhuisInformationFieldsetModel {}
+interface FormModel extends BranchInformationFieldsetFormModel, ContactInformationFieldsetModel {}
 
 const DataUpdateView: React.FunctionComponent<Props> = () => {
     const { i18n } = useLingui()
@@ -37,51 +41,6 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
         variables: { taalhuisId: decodedTaalhuisId },
     })
     const [updateCoworker, { loading: mutationLoading }] = useUpdateTaalhuisMutation()
-
-    const handleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        try {
-            const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await updateCoworker({
-                variables: {
-                    id: decodedTaalhuisId,
-                    address: {
-                        street: formData.street || '',
-                        houseNumber: formData.streetNr || '',
-                        houseNumberSuffix: formData.addition,
-                        postalCode: formData.postalCode || '',
-                        locality: formData.city || '',
-                    },
-                    name: formData.taalhuis || '',
-                    email: formData.email || '',
-                    phoneNumber: formData.phoneNumber || '',
-                },
-            })
-
-            if (response.errors?.length || !response.data) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Taalhuis is aangemaakt`),
-                    i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
-                )
-
-                history.push(
-                    routes.authorized.taalhuis.read.data({
-                        taalhuisid: encodeURIComponent(response.data.updateTaalhuis.id),
-                        taalhuisname: response.data.updateTaalhuis.name,
-                    })
-                )
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om de taalhuis aan te passen`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
-        }
-    }
 
     return (
         <Form onSubmit={handleEdit}>
@@ -149,18 +108,87 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
             )
         }
         return (
-            <TaalhuisInformationFieldset
-                prefillData={{
-                    taalhuis: data.taalhuis.name,
-                    street: data.taalhuis.address?.street,
-                    streetNr: data.taalhuis.address?.houseNumber,
-                    addition: data.taalhuis.address?.houseNumberSuffix,
-                    postalCode: data.taalhuis.address?.postalCode,
-                    city: data.taalhuis.address?.locality,
-                    phoneNumber: data.taalhuis.telephone || undefined,
-                    email: data.taalhuis.email || undefined,
-                }}
-            />
+            <>
+                <BranchInformationFieldset
+                    prefillData={{
+                        branch: data?.taalhuis.name,
+                        street: data?.taalhuis.address?.street,
+                        streetNr: data?.taalhuis.address?.houseNumber,
+                        streetAddition: data?.taalhuis.address?.houseNumberSuffix,
+                        postcode: data?.taalhuis.address?.postalCode,
+                        city: data?.taalhuis.address?.locality,
+                    }}
+                    fieldNaming={{
+                        branch: {
+                            label: i18n._(t`Naam taalhuis`),
+                            placeholder: i18n._(t`Naam`),
+                        },
+                    }}
+                    readOnly={true}
+                />
+                <HorizontalRule />
+                <ContactInformationFieldset
+                    prefillData={{
+                        phone: data?.taalhuis.telephone,
+                        email: data?.taalhuis.email,
+                    }}
+                    fieldControls={{
+                        address: {
+                            hidden: true,
+                        },
+                        postalCode: {
+                            hidden: true,
+                        },
+                        city: {
+                            hidden: true,
+                        },
+                        phoneNumberContactPerson: {
+                            hidden: true,
+                        },
+                        contactPreference: {
+                            hidden: true,
+                        },
+                    }}
+                    readOnly={true}
+                />
+            </>
+        )
+    }
+
+    async function handleEdit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+
+        const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
+        const response = await updateCoworker({
+            variables: {
+                id: decodedTaalhuisId,
+                address: {
+                    street: formData['branch-street'] ?? data?.taalhuis.address?.street,
+                    houseNumber: formData['branch-streetNr'] ?? data?.taalhuis.address?.houseNumber,
+                    houseNumberSuffix: formData['branch-streetAddition'] ?? data?.taalhuis.address?.houseNumberSuffix,
+                    postalCode: formData['branch-postcode'] ?? data?.taalhuis.address?.postalCode,
+                    locality: formData['branch-city'] ?? data?.taalhuis.address?.locality,
+                },
+                name: formData.branch ?? data?.taalhuis.name,
+                email: formData['contact-email'] || data?.taalhuis.email,
+                phoneNumber: formData['contact-phone'] || data?.taalhuis.telephone,
+            },
+        })
+
+        if (response.errors?.length || !response.data) {
+            return
+        }
+
+        NotificationsManager.success(
+            i18n._(t`Taalhuis is aangemaakt`),
+            i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
+        )
+
+        history.push(
+            routes.authorized.taalhuis.read.data({
+                taalhuisid: encodeURIComponent(response.data.updateTaalhuis.id),
+                taalhuisname: response.data.updateTaalhuis.name,
+            })
         )
     }
 }

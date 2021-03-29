@@ -104,7 +104,6 @@ export const ParticipantsOverviewView: React.FunctionComponent<Props> = () => {
                     },
                 }}
                 text={NameFormatters.formattedLastName({
-                    additionalName: participant.addition,
                     familyName: participant.lastName,
                 })}
             />,
