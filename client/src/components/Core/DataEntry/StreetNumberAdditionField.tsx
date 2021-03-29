@@ -8,28 +8,29 @@ import styles from './StreetNumberAdditionField.module.scss'
 export interface StreetNumberAdditionFieldModel {
     street?: string
     streetNr?: string
-    addition?: string
+    streetAddition?: string
 }
 
 export interface StreetNumberAdditionFieldPrefillData {
     street?: string | null
     streetNr?: string | null
-    addition?: string | null
+    streetAddition?: string | null
 }
 
 interface Props {
     prefillData?: StreetNumberAdditionFieldPrefillData
+    prefixName: string
 }
 
 const StreetNumberAdditionField: FunctionComponent<Props> = props => {
-    const { prefillData } = props
+    const { prefillData, prefixName } = props
     const { i18n } = useLingui()
 
     return (
         <div className={styles.container}>
             <div className={styles.streetContainer}>
                 <Input
-                    name="street"
+                    name={`${prefixName}Street`}
                     placeholder={i18n._(t`Straatnaam`)}
                     defaultValue={prefillData?.street ?? undefined}
                     grow={true}
@@ -37,7 +38,7 @@ const StreetNumberAdditionField: FunctionComponent<Props> = props => {
             </div>
             <div className={styles.streetNumberContainer}>
                 <Input
-                    name="streetNr"
+                    name={`${prefixName}StreetNr`}
                     placeholder={i18n._(t`Nr.`)}
                     validators={[AdressValidators.isValidHousenumber]}
                     defaultValue={prefillData?.streetNr ?? undefined}
@@ -46,9 +47,9 @@ const StreetNumberAdditionField: FunctionComponent<Props> = props => {
             </div>
             <div className={styles.additionContainer}>
                 <Input
-                    name="addition"
+                    name={`${prefixName}StreetAddition`}
                     placeholder={i18n._(t`A`)}
-                    defaultValue={prefillData?.addition ?? undefined}
+                    defaultValue={prefillData?.streetAddition ?? undefined}
                     grow={true}
                 />
             </div>
