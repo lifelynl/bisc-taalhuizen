@@ -8,11 +8,3 @@ export interface SessionContextValue {
 }
 
 export type User = ContextUserType
-
-// TODO: this should be temporary
-export enum UserRoleEnumType {
-    coordinator = 'Coördinator',
-    mentor = 'Begeleider',
-    volunteer = 'Vrijwilliger',
-    coworker = 'Medewerker',
-}

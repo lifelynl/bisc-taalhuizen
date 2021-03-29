@@ -18,10 +18,10 @@ import AccountInformationFieldset, {
 } from 'components/fieldsets/shared/AccountInformationFieldset'
 import { AvailabillityFieldsetModel } from 'components/fieldsets/shared/AvailabillityFieldset'
 import InformationFieldset, { InformationFieldsetModel } from 'components/fieldsets/shared/InformationFieldset'
-import { UserRoleEnumType } from 'components/Providers/UserProvider/types'
 import {
     AanbiederUserRoleType,
     useAanbiederEmployeeQuery,
+    UserRoleEnum,
     useUpdateAanbiederEmployeeMutation,
     useUserRolesByAanbiederIdQuery,
 } from 'generated/graphql'
@@ -107,10 +107,10 @@ export const CoworkerDetailDataUpdateView: React.FunctionComponent<Props> = prop
                     rolesError={!!userRolesError}
                     rolesLoading={userRolesLoading}
                     roleOptions={[
-                        [UserRoleEnumType.coordinator],
-                        [UserRoleEnumType.mentor],
-                        [UserRoleEnumType.mentor, UserRoleEnumType.coordinator],
-                        [UserRoleEnumType.volunteer],
+                        [UserRoleEnum.AanbiederCoordinator],
+                        [UserRoleEnum.AanbiederMentor],
+                        [UserRoleEnum.AanbiederMentor, UserRoleEnum.AanbiederCoordinator],
+                        [UserRoleEnum.AanbiederVolunteer],
                     ]}
                     prefillData={{
                         email: aanbiederData.aanbiederEmployee.email,

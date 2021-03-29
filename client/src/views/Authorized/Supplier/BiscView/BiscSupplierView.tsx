@@ -10,8 +10,9 @@ interface Props {}
 export const BiscSupplierView: React.FunctionComponent<Props> = () => {
     return (
         <Switch>
+            <Redirect path={routes.authorized.supplier.index} exact={true} to={routes.authorized.supplier.bisc.index} />
             <Redirect
-                path={routes.authorized.supplier.index}
+                path={routes.authorized.supplier.bisc.index}
                 exact={true}
                 to={routes.authorized.supplier.bisc.overview}
             />

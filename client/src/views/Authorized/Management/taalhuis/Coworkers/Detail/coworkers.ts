@@ -1,7 +1,8 @@
 import times from 'lodash/times'
 import { FormModel } from '../CoworkerOverviewView'
 
-export const medewerkersMock: FormModel[] = times(3, num => ({
+// TODO: remove
+export const medewerkersMock: any = times(3, num => ({
     id: 1234523525,
     achternaam: `Wit`,
     tussenvoegsel: `De`,

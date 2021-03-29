@@ -6,8 +6,8 @@ import { RegistrationsOverviewView } from './RegistrationsOverviewView'
 
 interface Props {}
 export interface RegistrationsDetailLocationStateProps {
-    registrationid: string
-    registrationname: string
+    registrationId: string
+    registrationName: string
 }
 
 export const RegistrationsTaalhuisView: React.FunctionComponent<Props> = () => {

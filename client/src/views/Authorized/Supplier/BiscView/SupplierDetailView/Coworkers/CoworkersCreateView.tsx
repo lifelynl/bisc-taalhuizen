@@ -16,11 +16,11 @@ import AccountInformationFieldset, {
 } from 'components/fieldsets/shared/AccountInformationFieldset'
 import { AvailabillityFieldsetModel } from 'components/fieldsets/shared/AvailabillityFieldset'
 import InformationFieldset, { InformationFieldsetModel } from 'components/fieldsets/shared/InformationFieldset'
-import { UserRoleEnumType } from 'components/Providers/UserProvider/types'
 import {
     AanbiederEmployeesDocument,
     AanbiederUserRoleType,
     useCreateAanbiederEmployeeMutation,
+    UserRoleEnum,
     useUserRolesByAanbiederIdQuery,
 } from 'generated/graphql'
 import React from 'react'
@@ -77,10 +77,10 @@ const CoworkerCreateView: React.FunctionComponent<Props> = props => {
                 rolesError={!!userRolesError}
                 rolesLoading={userRolesLoading}
                 roleOptions={[
-                    [UserRoleEnumType.coordinator],
-                    [UserRoleEnumType.mentor],
-                    [UserRoleEnumType.mentor, UserRoleEnumType.coordinator],
-                    [UserRoleEnumType.volunteer],
+                    [UserRoleEnum.AanbiederCoordinator],
+                    [UserRoleEnum.AanbiederMentor],
+                    [UserRoleEnum.AanbiederMentor, UserRoleEnum.AanbiederCoordinator],
+                    [UserRoleEnum.AanbiederVolunteer],
                 ]}
             />
             <Space pushTop={true} />

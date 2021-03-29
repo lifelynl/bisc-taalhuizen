@@ -10,16 +10,16 @@ import ModalView from '../../../../../../components/Core/Modal/ModalView'
 import SectionTitle from '../../../../../../components/Core/Text/SectionTitle'
 import Paragraph from '../../../../../../components/Core/Typography/Paragraph'
 import { useMockMutation } from '../../../../../../hooks/UseMockMutation'
-import { RegistrationsDetailParams } from '../../../../../../routes/participants/types'
 import { routes } from '../../../../../../routes/routes'
 import { RegistrationsMock, taalhuisRegistrationsCreateResponse } from '../../../mocks/registrations'
 
 interface Props {
-    registratorDetails: RegistrationsDetailParams
+    registrationName: string
+    registrationId: string
     onClose: () => void
 }
 
-export const RegistrationDeleteModal: React.FC<Props> = ({ registratorDetails, onClose }) => {
+export const RegistrationDeleteModal: React.FC<Props> = ({ registrationName, registrationId, onClose }) => {
     const history = useHistory()
     const [taalhuisRegistrationDelete, { loading, error, data }] = useMockMutation<RegistrationsMock, {}>(
         taalhuisRegistrationsCreateResponse,
@@ -31,10 +31,7 @@ export const RegistrationDeleteModal: React.FC<Props> = ({ registratorDetails, o
             onClose={onClose}
             ContentComponent={
                 <Column spacing={6}>
-                    <SectionTitle
-                        title={i18n._(t`Aanmelding ${registratorDetails.registrationname} verwijderen`)}
-                        heading="H4"
-                    />
+                    <SectionTitle title={i18n._(t`Aanmelding ${registrationName} verwijderen`)} heading="H4" />
                     <Paragraph>
                         {i18n._(t`
                                 Weet je zeker dat je de aanmelding wil verwijderen? Hiermee worden ook alle onderliggende

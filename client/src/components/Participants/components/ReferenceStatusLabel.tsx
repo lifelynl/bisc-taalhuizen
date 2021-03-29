@@ -24,7 +24,7 @@ const ReferenceStatusLabel: React.FunctionComponent<Props> = props => {
         [ReferenceStatusLabelStatus.Ongoing]: LabelColor.red,
         [ReferenceStatusLabelStatus.Finished]: LabelColor.green,
     }
-    const roleTranslations = {
+    const statusTranslations = {
         [ReferenceStatusLabelStatus.Refered]: i18n._(t`Verwezen`),
         [ReferenceStatusLabelStatus.Ongoing]: i18n._(t`Lopend`),
         [ReferenceStatusLabelStatus.Finished]: i18n._(t`Afgerond`),
@@ -40,7 +40,7 @@ const ReferenceStatusLabel: React.FunctionComponent<Props> = props => {
             {...props}
             className={className}
             icon={statusIcons[status as ReferenceStatusLabelStatus]}
-            label={roleTranslations[status as ReferenceStatusLabelStatus] || '[STATUS DOES NOT EXIST]'}
+            label={statusTranslations[status as ReferenceStatusLabelStatus] || '[STATUS DOES NOT EXIST]'}
             color={colorConfig[status as ReferenceStatusLabelStatus] || LabelColor.red}
         />
     )

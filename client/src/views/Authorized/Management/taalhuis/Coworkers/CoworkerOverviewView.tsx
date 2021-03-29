@@ -15,7 +15,6 @@ import { Table } from '../../../../../components/Core/Table/Table'
 import Tab from '../../../../../components/Core/TabSwitch/Tab'
 import TabSwitch from '../../../../../components/Core/TabSwitch/TabSwitch'
 import { TabProps } from '../../../../../components/Core/TabSwitch/types'
-import { Roles } from '../../../../../components/fieldsets/shared/PersonInformationFieldset'
 import { useMockQuery } from '../../../../../components/hooks/useMockQuery'
 import { routes } from '../../../../../routes/routes'
 import { medewerkersMock } from './Detail/coworkers'
@@ -29,7 +28,7 @@ export interface FormModel {
     roepnaam: string
     telefoonnummer: string
     email: string
-    role: Roles[]
+    role: string
     aangemaakt: string
     bewerkt: string
 }
@@ -40,6 +39,7 @@ enum Tabs {
 }
 
 export const CoworkerOverviewView: React.FunctionComponent<Props> = () => {
+    // TODO: implement real call
     const { data, loading, error } = useMockQuery<FormModel[]>(medewerkersMock)
     const history = useHistory()
 

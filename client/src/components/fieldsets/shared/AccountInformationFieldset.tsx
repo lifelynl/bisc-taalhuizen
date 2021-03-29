@@ -120,7 +120,7 @@ const AccountInformationFieldset: React.FunctionComponent<Props> = props => {
 
     function renderRoleOptions(roleOptions: string[][]) {
         return roleOptions.map((roleOption: string[], index: number, roleOptions: string[][]) => {
-            const isChecked = isEqual(roleOption.sort(), prefillData?.roles)
+            const isChecked = isEqual(roleOption.sort(), prefillData?.roles?.sort())
 
             return (
                 <Row key={`${index}-${roleOptions.length}`}>

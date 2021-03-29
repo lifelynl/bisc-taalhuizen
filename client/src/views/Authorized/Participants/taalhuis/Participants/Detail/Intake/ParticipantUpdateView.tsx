@@ -89,7 +89,7 @@ export interface FormModel
 export const ParticipantsUpdateView: React.FunctionComponent<Props> = props => {
     const { routeState } = props
     const { i18n } = useLingui()
-    const history = useHistory<ParticipantDetailLocationStateProps>()
+    const history = useHistory()
     const { data, loading: loadingData, error } = useMockQuery(taalhuisParticipantsCreateResponse)
     const [createParticipant, { loading }] = useMockMutation({}, false)
 

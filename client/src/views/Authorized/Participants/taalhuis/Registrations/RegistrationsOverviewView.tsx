@@ -92,8 +92,8 @@ export const RegistrationsOverviewView: React.FunctionComponent<Props> = () => {
                     hash: '',
                     search: '',
                     state: {
-                        registrationid: encodeURIComponent(registration.id),
-                        registrationname: NameFormatters.formattedFullname({
+                        registrationId: encodeURIComponent(registration.id),
+                        registrationName: NameFormatters.formattedFullname({
                             givenName: registration.givenName,
                             additionalName: registration.additionalName,
                             familyName: registration.familyName,

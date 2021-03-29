@@ -38,12 +38,10 @@ const CoworkerUpdateView: React.FunctionComponent<Props> = () => {
     const { i18n } = useLingui()
     const history = useHistory()
     const params = useParams<ManagementCoworkerParams>()
-    const { loading: queryLoading, error, data } = useMockQuery<FormModel, FormModel>(coworkersCreateResponse, false)
+    // implement real calls
+    const { loading: queryLoading, error, data } = useMockQuery<any, any>(coworkersCreateResponse, false)
 
-    const [updateMedewerker, { loading: updateLoading }] = useMockMutation<FormModel, FormModel>(
-        coworkersCreateResponse,
-        false
-    )
+    const [updateMedewerker, { loading: updateLoading }] = useMockMutation<any, any>(coworkersCreateResponse, false)
 
     const [deleteCoworker, { loading: loadingDelete }] = useMockMutation<boolean, boolean>(true, false)
 

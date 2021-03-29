@@ -31,7 +31,7 @@ import PersonInformationFieldset, {
     PersonInformationFieldsetModel,
 } from 'components/fieldsets/shared/PersonInformationFieldset'
 import { UserContext } from 'components/Providers/UserProvider/context'
-import { useCreateStudentMutation } from 'generated/graphql'
+import { StudentsDocument, useCreateStudentMutation } from 'generated/graphql'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { routes } from 'routes/routes'
@@ -60,7 +60,7 @@ export interface FormModel
 
 export const ParticipantsCreateView: React.FunctionComponent<Props> = () => {
     const { i18n } = useLingui()
-    const history = useHistory<ParticipantDetailLocationStateProps>()
+    const history = useHistory()
     const userContext = useContext(UserContext)
     const [createParticipant, { loading }] = useCreateStudentMutation()
 
@@ -175,6 +175,14 @@ export const ParticipantsCreateView: React.FunctionComponent<Props> = () => {
                     telephone: formData.phone ?? '',
                 },
             },
+            refetchQueries: [
+                {
+                    query: StudentsDocument,
+                    variables: {
+                        taalhuisId: userContext.user?.organizationId || '',
+                    },
+                },
+            ],
         })
 
         if (response.errors?.length || !response.data) {

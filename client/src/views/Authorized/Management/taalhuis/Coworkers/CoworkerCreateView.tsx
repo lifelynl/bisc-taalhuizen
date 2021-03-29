@@ -26,7 +26,8 @@ interface Props {}
 const CoworkerCreateView: React.FunctionComponent<Props> = () => {
     const { i18n } = useLingui()
     const history = useHistory()
-    const [createMedewerker, { loading }] = useMockMutation<FormModel, FormModel>(coworkersCreateResponse, false)
+    //TODO: implement real call
+    const [createMedewerker, { loading }] = useMockMutation<any, any>(coworkersCreateResponse, false)
 
     return (
         <Form onSubmit={handleCreate}>
