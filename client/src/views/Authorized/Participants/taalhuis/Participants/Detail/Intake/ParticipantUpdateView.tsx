@@ -148,7 +148,7 @@ export const ParticipantsUpdateView: React.FunctionComponent<Props> = props => {
                 pathname: routes.authorized.participants.taalhuis.participants.detail.intake.read,
                 state: {
                     participantId: participant.id,
-                    participantName: participant.nickName,
+                    participantName: participant.nickName ?? '',
                 },
             })
         } catch (error) {

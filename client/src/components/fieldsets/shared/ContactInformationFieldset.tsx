@@ -8,6 +8,7 @@ import Input from '../../Core/DataEntry/Input'
 import RadioButton from '../../Core/DataEntry/RadioButton'
 import StreetNumberAdditionField, {
     StreetNumberAdditionFieldModel,
+    StreetNumberAdditionFieldPrefillData,
 } from '../../Core/DataEntry/StreetNumberAdditionField'
 import ControlField from '../../Core/Field/ControlField'
 import Section from '../../Core/Field/Section'
@@ -31,7 +32,7 @@ export interface ContactInformationFieldsetPrefillData extends StreetNumberAddit
     contactPreference?: string | null
 }
 
-export interface ContactInformationFieldsetFormModel extends StreetNumberAdditionFieldModel {
+export interface ContactInformationFieldsetFormModel extends StreetNumberAdditionFieldPrefillData {
     phone?: string
     email?: string
     postalCode?: string

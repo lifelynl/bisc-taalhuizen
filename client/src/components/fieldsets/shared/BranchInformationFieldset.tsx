@@ -22,15 +22,15 @@ interface Props extends ConnectedFieldsetProps<Fields> {
 
 export interface BranchInformationFieldsetFormModel extends StreetNumberAdditionFieldModel {
     branch?: string
-    postcode?: string
-    city?: string
+    branchPostcode?: string
+    branchCity?: string
 }
 export interface BranchInformationFieldsetPrefillData extends StreetNumberAdditionFieldPrefillData {
     branch?: string
     postcode?: string
     city?: string
 }
-type Fields = 'branch' | 'postcode' | 'city' | 'address'
+type Fields = 'branch' | 'branchPostcode' | 'branchCity' | 'branchAddress'
 
 const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
     const { prefillData, readOnly, fieldNaming, fieldControls } = props
@@ -42,15 +42,15 @@ const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
                 label: i18n._(t`Naam vestiging`),
                 placeholder: i18n._(t`Naam vestiging`),
             },
-            postcode: {
+            branchPostcode: {
                 label: i18n._(t`Postcode`),
                 placeholder: i18n._(t`Postcode`),
             },
-            city: {
+            branchCity: {
                 label: i18n._(t`Plaats`),
                 placeholder: i18n._(t`Plaats`),
             },
-            address: {
+            branchAddress: {
                 label: i18n._(t`Straat en huisnr.`),
             },
         },
@@ -62,11 +62,11 @@ const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
                 required: true,
                 validators: [GenericValidators.required],
             },
-            postcode: {
+            branchPostcode: {
                 validators: [AdressValidators.isValidZipcode],
             },
-            city: {},
-            address: {},
+            branchCity: {},
+            branchAddress: {},
         },
         fieldControls
     )
@@ -79,17 +79,25 @@ const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
                         <p>{prefillData?.branch}</p>
                     </ControlField>
 
-                    <ControlField control={controls.address} label={content.address?.label} horizontal={true}>
+                    <ControlField
+                        control={controls.branchAddress}
+                        label={content.branchAddress?.label}
+                        horizontal={true}
+                    >
                         <p>{`${prefillData?.street} ${prefillData?.streetNr} ${
                             prefillData?.addition ? prefillData?.addition : ''
                         }`}</p>
                     </ControlField>
 
-                    <ControlField control={controls.postcode} label={content.postcode?.label} horizontal={true}>
+                    <ControlField
+                        control={controls.branchPostcode}
+                        label={content.branchPostcode?.label}
+                        horizontal={true}
+                    >
                         <p>{prefillData?.postcode}</p>
                     </ControlField>
 
-                    <ControlField control={controls.city} label={content.city?.label} horizontal={true}>
+                    <ControlField control={controls.branchCity} label={content.branchCity?.label} horizontal={true}>
                         <p>{prefillData?.city}</p>
                     </ControlField>
                 </Column>
@@ -109,7 +117,7 @@ const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
                     />
                 </ControlField>
 
-                <ControlField control={controls?.address} label={content?.address?.label} horizontal={true}>
+                <ControlField control={controls?.branchAddress} label={content?.branchAddress?.label} horizontal={true}>
                     <StreetNumberAdditionField
                         prefillData={{
                             street: prefillData?.street || '',
@@ -119,21 +127,25 @@ const BranchInformationFieldset: React.FunctionComponent<Props> = props => {
                     />
                 </ControlField>
 
-                <ControlField control={controls?.postcode} label={content?.postcode?.label} horizontal={true}>
+                <ControlField
+                    control={controls?.branchPostcode}
+                    label={content?.branchPostcode?.label}
+                    horizontal={true}
+                >
                     <Input
                         name="postcode"
-                        placeholder={content?.postcode?.placeholder}
-                        validators={controls.postcode?.validators}
+                        placeholder={content?.branchPostcode?.placeholder}
+                        validators={controls.branchPostcode?.validators}
                         defaultValue={prefillData?.postcode}
                     />
                 </ControlField>
 
-                <ControlField control={controls?.city} label={content.city?.label} horizontal={true}>
+                <ControlField control={controls?.branchCity} label={content.branchCity?.label} horizontal={true}>
                     <Input
                         name="city"
-                        placeholder={content.city?.placeholder}
+                        placeholder={content.branchCity?.placeholder}
                         defaultValue={prefillData?.city}
-                        validators={controls.city?.validators}
+                        validators={controls.branchCity?.validators}
                     />
                 </ControlField>
             </Column>

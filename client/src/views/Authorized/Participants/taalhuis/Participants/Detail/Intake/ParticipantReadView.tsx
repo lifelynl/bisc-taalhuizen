@@ -13,28 +13,12 @@ import Column from 'components/Core/Layout/Column/Column'
 import Space from 'components/Core/Layout/Space/Space'
 import Tab from 'components/Core/TabSwitch/Tab'
 import TabSwitch from 'components/Core/TabSwitch/TabSwitch'
-import BackgroundInformationFieldset from 'components/fieldsets/participants/fieldsets/BackgroundInformationFieldset'
-import CivicIntegrationFieldset from 'components/fieldsets/participants/fieldsets/CivicIntegrationInformationFieldset'
-import EducationInformationFieldset from 'components/fieldsets/participants/fieldsets/EducationInformationFieldset'
-import LevelInformationFieldset from 'components/fieldsets/participants/fieldsets/LevelInformationFieldset'
-import MotivationInformationFieldset from 'components/fieldsets/participants/fieldsets/MotivationInformationFieldset'
-import { PermissionsFieldset } from 'components/fieldsets/participants/fieldsets/PermissionsFieldset'
-import ReadingTestInformationFieldset from 'components/fieldsets/participants/fieldsets/ReadingTestInformationFieldset'
-import RefererInformationFieldset from 'components/fieldsets/participants/fieldsets/ReferrerInformationFieldset'
-import WorkInformationFieldset from 'components/fieldsets/participants/fieldsets/WorkInformationFieldset'
-import WritingInformationFieldset from 'components/fieldsets/participants/fieldsets/WritingInformationFieldset'
-import AvailabillityFieldset from 'components/fieldsets/shared/AvailabillityFieldset'
 import ContactInformationFieldset from 'components/fieldsets/shared/ContactInformationFieldset'
-import CourseInformationFieldset from 'components/fieldsets/shared/CourseInformationFieldset'
-import DutchNTFieldset from 'components/fieldsets/shared/DutchNTInformationFieldset'
-import GeneralInformationFieldset from 'components/fieldsets/shared/GeneralInformationFieldset'
-import IntakeInformationFieldset from 'components/fieldsets/shared/IntakeInformationFieldset'
 import PersonInformationFieldset from 'components/fieldsets/shared/PersonInformationFieldset'
-import { useMockQuery } from 'components/hooks/useMockQuery'
+import { useStudentQuery } from 'generated/graphql'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { routes } from 'routes/routes'
-import { taalhuisParticipantsCreateResponse } from '../../../../mocks/participants'
 import { ReadDetailTabs, readDetailTabsTranslations } from '../../../constants'
 import { ParticipantDetailLocationStateProps } from '../ParticipantsDetailView'
 
@@ -46,7 +30,11 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
     const { routeState } = props
     const { i18n } = useLingui()
     const history = useHistory()
-    const { data, loading, error } = useMockQuery(taalhuisParticipantsCreateResponse)
+    const { data, loading, error } = useStudentQuery({
+        variables: {
+            studentId: routeState.participantId,
+        },
+    })
 
     if (!routeState.participantId) {
         return null
@@ -126,7 +114,7 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
         if (data) {
             return (
                 <>
-                    <IntakeInformationFieldset
+                    {/* <IntakeInformationFieldset
                         prefillData={{
                             nameOfCustomer: data.nameOfCustomer,
                             dateOfIntake: data.dateOfIntake,
@@ -140,15 +128,15 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
                             civicIntegrationRequirementReason: data.civicIntegrationRequirementReason,
                         }}
                     />
-                    <HorizontalRule />
+                    <HorizontalRule /> */}
                     <PersonInformationFieldset
                         readOnly={true}
                         prefillData={{
-                            lastName: data.lastName,
-                            insertion: data.insertion,
-                            nickName: data.nickName,
-                            gender: data.gender,
-                            dateOfBirth: data.dateOfBirth,
+                            lastName: data.student.familyName,
+                            insertion: data.student.additionalName,
+                            nickName: data.student.givenName,
+                            // gender: data.student.,
+                            // dateOfBirth: data.student,
                         }}
                         fieldControls={{
                             countryOfOrigin: {
@@ -157,28 +145,50 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
                             lastName: {
                                 required: false,
                             },
+                            // TODO: add back field when the data can be send back to the backend
+                            dateOfBirth: {
+                                hidden: true,
+                            },
+                            gender: {
+                                hidden: true,
+                            },
                         }}
                     />
                     <HorizontalRule />
                     <ContactInformationFieldset
                         readOnly={true}
                         prefillData={{
-                            street: data.street,
-                            streetNr: data.streetNr,
-                            addition: data.addition,
-                            email: data.email,
-                            postalCode: data.postalCode,
-                            city: data.city,
-                            phoneNumberContactPerson: data.phoneNumberContactPerson,
-                            contactPreference: data.contactPreference,
+                            // street: data.street,
+                            // streetNr: data.streetNr,
+                            // addition: data.addition,
+                            email: data.student.registrar?.email,
+                            phone: data.student.registrar?.telephone,
+                            // phone: data.student.
+                            // postalCode: data.postalCode,
+                            // city: data.city,
+                            // phoneNumberContactPerson: data.phoneNumberContactPerson,
+                            // contactPreference: data.contactPreference,
                         }}
                         fieldControls={{
-                            phone: {
+                            // TODO: add back field when the data can be send back to the backend
+                            address: {
+                                hidden: true,
+                            },
+                            postalCode: {
+                                hidden: true,
+                            },
+                            city: {
+                                hidden: true,
+                            },
+                            phoneNumberContactPerson: {
+                                hidden: true,
+                            },
+                            contactPreference: {
                                 hidden: true,
                             },
                         }}
                     />
-                    <HorizontalRule />
+                    {/* <HorizontalRule />
                     <GeneralInformationFieldset
                         readOnly={true}
                         prefillData={{
@@ -289,7 +299,7 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
                             sharingBasicData: data.sharingLearningPathway,
                             permissionInformationFromLibrary: data.permissionInformationFromLibrary,
                         }}
-                    />
+                    /> */}
                 </>
             )
         }

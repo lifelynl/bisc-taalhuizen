@@ -168,9 +168,9 @@ export const ParticipantsCreateView: React.FunctionComponent<Props> = () => {
             variables: {
                 input: {
                     taalhuisId: userContext.user?.organizationId ?? '',
-                    givenName: formData.nickName,
+                    givenName: formData.nickName ?? '',
                     additionalName: formData.insertion,
-                    familyName: formData.lastName,
+                    familyName: formData.lastName ?? '',
                     email: formData.email ?? '',
                     telephone: formData.phone ?? '',
                 },
