@@ -63,7 +63,7 @@ const DataUpdateView: React.FunctionComponent<Props> = props => {
         })
 
         if (response.errors?.length || !response.data) {
-            throw new Error()
+            return
         }
 
         NotificationsManager.success(

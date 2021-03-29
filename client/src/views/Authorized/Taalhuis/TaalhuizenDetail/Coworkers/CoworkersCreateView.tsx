@@ -44,49 +44,39 @@ const CoworkersCreateView: React.FunctionComponent<Props> = () => {
 
     const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        try {
-            const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await createCoworker({
-                variables: {
-                    input: {
-                        taalhuisId: decodedTaalhuisId,
-                        userGroupId:
-                            userRoles?.userRolesByTaalhuisId.find(role => role.name === formData.roles)?.id || '',
-                        givenName: formData.callSign || '',
-                        additionalName: formData.insertion,
-                        familyName: formData.lastname || '',
-                        email: formData.email || '',
-                        telephone: formData.phonenumber || '',
-                    },
+        const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
+        const response = await createCoworker({
+            variables: {
+                input: {
+                    taalhuisId: decodedTaalhuisId,
+                    userGroupId: userRoles?.userRolesByTaalhuisId.find(role => role.name === formData.roles)?.id || '',
+                    givenName: formData.callSign || '',
+                    additionalName: formData.insertion,
+                    familyName: formData.lastname || '',
+                    email: formData.email || '',
+                    telephone: formData.phonenumber || '',
                 },
-                refetchQueries: [{ query: AanbiederEmployeesDocument }],
-            })
+            },
+            refetchQueries: [{ query: AanbiederEmployeesDocument }],
+        })
 
-            if (response.errors?.length || !response.data) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Medewerker is aangemaakt`),
-                    i18n._(t`U word doorgestuurd naar de gegevens van de medewerker `)
-                )
-
-                history.push(
-                    routes.authorized.taalhuis.read.coworkers.detail.data({
-                        taalhuisid: params.taalhuisid,
-                        taalhuisname: params.taalhuisname,
-                        coworkerid: encodeURIComponent(response.data.createTaalhuisEmployee.id),
-                        coworkername: response.data.createTaalhuisEmployee.givenName,
-                    })
-                )
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om een medewerker aan te maken`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
+        if (response.errors?.length || !response.data) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Medewerker is aangemaakt`),
+            i18n._(t`U word doorgestuurd naar de gegevens van de medewerker `)
+        )
+
+        history.push(
+            routes.authorized.taalhuis.read.coworkers.detail.data({
+                taalhuisid: params.taalhuisid,
+                taalhuisname: params.taalhuisname,
+                coworkerid: encodeURIComponent(response.data.createTaalhuisEmployee.id),
+                coworkername: response.data.createTaalhuisEmployee.givenName,
+            })
+        )
     }
 
     return (

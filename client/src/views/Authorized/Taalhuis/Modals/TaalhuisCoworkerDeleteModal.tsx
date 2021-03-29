@@ -27,35 +27,26 @@ const TaalhuisCoworkerDeleteModalView: React.FunctionComponent<Props> = props =>
     const { onClose, coworkerId, coworkerName, taalhuisId, taalhuisName } = props
 
     async function handleDelete() {
-        try {
-            const response = await deleteTaalhuis({
-                variables: {
-                    userId: coworkerId,
-                },
-            })
+        const response = await deleteTaalhuis({
+            variables: {
+                userId: coworkerId,
+            },
+        })
 
-            if (response.errors?.length) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Medewerker is verwijderd`),
-                    i18n._(t`U word teruggestuurd naar het overzicht`)
-                )
-                history.push(
-                    routes.authorized.taalhuis.read.coworkers.overview({
-                        taalhuisid: encodeURIComponent(taalhuisId),
-                        taalhuisname: taalhuisName,
-                    })
-                )
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om de medewerker te verwijderen`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
+        if (response.errors?.length || !response.data) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Medewerker is verwijderd`),
+            i18n._(t`U word teruggestuurd naar het overzicht`)
+        )
+        history.push(
+            routes.authorized.taalhuis.read.coworkers.overview({
+                taalhuisid: encodeURIComponent(taalhuisId),
+                taalhuisname: taalhuisName,
+            })
+        )
     }
 
     return (
