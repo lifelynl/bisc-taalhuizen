@@ -14,6 +14,11 @@ export const ManagementBiscView: React.FunctionComponent<Props> = () => {
             <Redirect
                 path={routes.authorized.management.index}
                 exact={true}
+                to={routes.authorized.management.bisc.index}
+            />
+            <Redirect
+                path={routes.authorized.management.bisc.index}
+                exact={true}
                 to={routes.authorized.management.bisc.overview}
             />
             <Route path={routes.authorized.management.bisc.overview} component={CoworkerOverviewView} />

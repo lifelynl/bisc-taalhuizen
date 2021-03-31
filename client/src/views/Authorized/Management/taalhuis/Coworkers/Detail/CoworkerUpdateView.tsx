@@ -39,9 +39,9 @@ const CoworkerUpdateView: React.FunctionComponent<Props> = () => {
     const history = useHistory()
     const params = useParams<ManagementCoworkerParams>()
     // implement real calls
-    const { loading: queryLoading, error, data } = useMockQuery<any, any>(coworkersCreateResponse, false)
+    const { loading: queryLoading, error, data } = useMockQuery(coworkersCreateResponse, false)
 
-    const [updateMedewerker, { loading: updateLoading }] = useMockMutation<any, any>(coworkersCreateResponse, false)
+    const [updateMedewerker, { loading: updateLoading }] = useMockMutation(coworkersCreateResponse, false)
 
     const [deleteCoworker, { loading: loadingDelete }] = useMockMutation<boolean, boolean>(true, false)
 

@@ -115,6 +115,15 @@
         &.isLoading:hover {
             background-color: $color-grey-10;
         }
+
+        &.isDanger {
+            color: $color-ui-red-light;
+            background-color: $color-white;
+
+            &:hover {
+                background-color: $color-grey-10;
+            }
+        }
     }
 
     &.arrowLink {

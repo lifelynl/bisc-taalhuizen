@@ -30,7 +30,7 @@ export const AanbiederParticipantsTabs: React.FunctionComponent<Props> = props =
                 <Tab label={i18n._(t`Actief`)} tabid={getRoute(AanbiederParticipantsTab.active)} />
                 <Tab label={i18n._(t`Afgerond`)} tabid={getRoute(AanbiederParticipantsTab.completed)} />
                 <Tab
-                    label={i18n._(t`Verwijsinzgen`)}
+                    label={i18n._(t`Verwijzingen`)}
                     indicatorCount={referredCount || undefined}
                     tabid={getRoute(AanbiederParticipantsTab.referred)}
                 />
@@ -39,6 +39,6 @@ export const AanbiederParticipantsTabs: React.FunctionComponent<Props> = props =
     )
 
     function getRoute(tab: AanbiederParticipantsTab) {
-        return routes.authorized.supplier.participants.overview[tab]
+        return routes.authorized.supplier.participants[tab]
     }
 }

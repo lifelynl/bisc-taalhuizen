@@ -10,12 +10,17 @@
     .text {
         color: $textColor;
     }
+
+    .icon {
+        color: $textColor;
+    }
 }
 
 .container {
     padding: spacing(1) spacing(2);
     border-radius: 4px;
     display: flex;
+    align-items: center;
     width: max-content;
 
     .text {
@@ -58,6 +63,10 @@
 
     &.isGreen {
         @include modifyContainerAndText($color-ui-green-light, $color-ui-green-dark);
+    }
+
+    &.isGrey {
+        @include modifyContainerAndText($color-grey-5, $color-grey-99);
     }
 
     &.isWhite {

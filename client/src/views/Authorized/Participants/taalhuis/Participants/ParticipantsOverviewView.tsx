@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import Paragraph from 'components/Core/Typography/Paragraph'
 import { UserContext } from 'components/Providers/UserProvider/context'
 import { useStudentsQuery } from 'generated/graphql'
 import React, { useContext } from 'react'
@@ -115,12 +116,12 @@ export const ParticipantsOverviewView: React.FunctionComponent<Props> = () => {
                     familyName: participant.familyName,
                 })}
             />,
-            <p>{participant.givenName}</p>,
+            <Paragraph>{participant.givenName}</Paragraph>,
             // TODO: data is not available yet, this should be implemented when available
-            <p>NOT IMPLEMENTED</p>,
-            <p>NOT IMPLEMENTED</p>,
-            <p>{DateFormatters.formattedDate(participant.dateCreated)}</p>,
-            <p>NOT IMPLEMENTED</p>,
+            <Paragraph />,
+            <Paragraph />,
+            <Paragraph>{DateFormatters.formattedDate(participant.dateCreated)}</Paragraph>,
+            <Paragraph />,
         ])
     }
 }

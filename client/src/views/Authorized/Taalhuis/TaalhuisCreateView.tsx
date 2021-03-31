@@ -58,47 +58,39 @@ const TaalhuisCreateView: React.FunctionComponent<Props> = () => {
 
     async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        try {
-            const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await createCoworker({
-                variables: {
-                    address: {
-                        street: formData.street || '',
-                        houseNumber: formData.streetNr || '',
-                        houseNumberSuffix: formData.addition,
-                        postalCode: formData.postalCode || '',
-                        locality: formData.city || '',
-                    },
-                    name: formData.taalhuis || '',
-                    email: formData.email || '',
-                    phoneNumber: formData.phoneNumber || '',
+
+        const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
+        const response = await createCoworker({
+            variables: {
+                address: {
+                    street: formData.street || '',
+                    houseNumber: formData.streetNr || '',
+                    houseNumberSuffix: formData.addition,
+                    postalCode: formData.postalCode || '',
+                    locality: formData.city || '',
                 },
-                refetchQueries: [{ query: TaalhuizenDocument }],
-            })
+                name: formData.taalhuis || '',
+                email: formData.email || '',
+                phoneNumber: formData.phoneNumber || '',
+            },
+            refetchQueries: [{ query: TaalhuizenDocument }],
+        })
 
-            if (response.errors?.length || !response.data) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Taalhuis is aangemaakt`),
-                    i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
-                )
-
-                history.push(
-                    routes.authorized.taalhuis.read.data({
-                        taalhuisid: encodeURIComponent(response.data.createTaalhuis.id),
-                        taalhuisname: response.data.createTaalhuis.name,
-                    })
-                )
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om een taalhuis aan te maken`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
+        if (response.errors?.length || !response.data) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Taalhuis is aangemaakt`),
+            i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
+        )
+
+        history.push(
+            routes.authorized.taalhuis.read.data({
+                taalhuisid: encodeURIComponent(response.data.createTaalhuis.id),
+                taalhuisname: response.data.createTaalhuis.name,
+            })
+        )
     }
 }
 

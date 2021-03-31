@@ -1,4 +1,3 @@
-import { Trans } from '@lingui/macro'
 import classNames from 'classnames'
 import LabelTag from 'components/Core/DataDisplay/LabelTag/LabelTag'
 import { LabelColor } from 'components/Core/DataDisplay/LabelTag/types'

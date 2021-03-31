@@ -40,47 +40,39 @@ const DataUpdateView: React.FunctionComponent<Props> = () => {
 
     const handleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        try {
-            const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await updateCoworker({
-                variables: {
-                    id: decodedTaalhuisId,
-                    address: {
-                        street: formData.street || '',
-                        houseNumber: formData.streetNr || '',
-                        houseNumberSuffix: formData.addition,
-                        postalCode: formData.postalCode || '',
-                        locality: formData.city || '',
-                    },
-                    name: formData.taalhuis || '',
-                    email: formData.email || '',
-                    phoneNumber: formData.phoneNumber || '',
+
+        const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
+        const response = await updateCoworker({
+            variables: {
+                id: decodedTaalhuisId,
+                address: {
+                    street: formData.street || '',
+                    houseNumber: formData.streetNr || '',
+                    houseNumberSuffix: formData.addition,
+                    postalCode: formData.postalCode || '',
+                    locality: formData.city || '',
                 },
-            })
+                name: formData.taalhuis || '',
+                email: formData.email || '',
+                phoneNumber: formData.phoneNumber || '',
+            },
+        })
 
-            if (response.errors?.length || !response.data) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Taalhuis is aangemaakt`),
-                    i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
-                )
-
-                history.push(
-                    routes.authorized.taalhuis.read.data({
-                        taalhuisid: encodeURIComponent(response.data.updateTaalhuis.id),
-                        taalhuisname: response.data.updateTaalhuis.name,
-                    })
-                )
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om de taalhuis aan te passen`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
+        if (response.errors?.length || !response.data) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Taalhuis is aangemaakt`),
+            i18n._(t`U word doorgestuurd naar de gegevens van het taalhuis`)
+        )
+
+        history.push(
+            routes.authorized.taalhuis.read.data({
+                taalhuisid: encodeURIComponent(response.data.updateTaalhuis.id),
+                taalhuisname: response.data.updateTaalhuis.name,
+            })
+        )
     }
 
     return (

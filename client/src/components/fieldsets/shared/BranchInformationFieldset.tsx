@@ -21,9 +21,9 @@ interface Props extends ConnectedFieldsetProps<Fields> {
 }
 
 export interface BranchInformationFieldsetFormModel extends StreetNumberAdditionFieldModel {
-    branch?: string
-    branchPostcode?: string
-    branchCity?: string
+    branch: string
+    postcode?: string
+    city?: string
 }
 export interface BranchInformationFieldsetPrefillData extends StreetNumberAdditionFieldPrefillData {
     branch?: string

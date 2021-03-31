@@ -46,26 +46,24 @@ const DataUpdateView: React.FunctionComponent<Props> = props => {
     const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = Forms.getFormDataFromFormEvent<FormModel>(e)
-
-        // TODO: when formData is not available, send back data from useAanbiederQuery
         const response = await updateSupplier({
             variables: {
                 id: routeState.supplierId,
                 address: {
-                    street: formData.street || '',
-                    houseNumber: formData.streetNr || '',
+                    street: formData.street,
+                    houseNumber: formData.streetNr,
                     houseNumberSuffix: formData.addition,
-                    postalCode: formData.branchPostcode || '',
-                    locality: formData.branchCity || '',
+                    postalCode: formData.postalCode,
+                    locality: formData.city,
                 },
-                name: formData.branch || '',
-                email: formData.email || '',
-                phoneNumber: formData.phone || '',
+                name: formData.branch ?? data?.aanbieder.name,
+                email: formData.email,
+                phoneNumber: formData.phone,
             },
         })
 
         if (response.errors?.length || !response.data) {
-            throw new Error()
+            return
         }
 
         NotificationsManager.success(

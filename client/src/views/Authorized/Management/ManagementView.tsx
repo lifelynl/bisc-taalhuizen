@@ -18,5 +18,9 @@ export const ManagementView: React.FunctionComponent<Props> = () => {
         return <ManagementAanbiederView />
     }
 
-    return <ManagementTaalhuisView />
+    if (userContext.user?.userEnvironment === UserEnvironmentEnum.Taalhuis) {
+        return <ManagementTaalhuisView />
+    }
+
+    return null
 }

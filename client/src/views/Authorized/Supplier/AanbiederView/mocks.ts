@@ -1,5 +1,6 @@
 // TODO: remove this file once the api is connected
 
+import { UserRoleEnum } from 'generated/graphql'
 import times from 'lodash/times'
 
 export interface AanbiederParticipant {
@@ -124,6 +125,7 @@ export interface LearningQuestionMetadata {
     desiredOffers: string[]
     advisedOffers: string[]
     engagements: string[]
+    differences?: string[]
 }
 
 export interface DesiredOutcomeMetadata {
@@ -235,6 +237,7 @@ export const aanbiederParticipantDetail: AanbiederParticipantDetail = {
                 desiredOffers: ['desiredoffer1', 'desiredoffer2'],
                 advisedOffers: ['advisedoffer1', 'advisedoffer2'],
                 engagements: ['someengagement'],
+                differences: ['difference1'],
             },
             desiredOutcome: {
                 goal: 'somegoal',
@@ -246,3 +249,91 @@ export const aanbiederParticipantDetail: AanbiederParticipantDetail = {
         },
     ],
 }
+
+export interface AanbiederManagementProfile {
+    id: number
+    name: string
+    address: Pick<AddressMetadata, 'street' | 'building' | 'apartment' | 'postcode' | 'city'>
+    phone: string
+    email: string
+}
+
+export const aanbiederManagementProfile: AanbiederManagementProfile = {
+    id: 1,
+    name: 'someaanbieder name',
+    address: {
+        street: 'somestreet',
+        building: 2,
+        apartment: 'a',
+        postcode: '1234 ab',
+        city: 'somecity',
+    },
+    phone: '123412341',
+    email: 'qwer@qwer.com',
+}
+
+export interface AanbiederEmployeeProfile {
+    id: number
+    nickName: string
+    lastName: string
+    fullName: string
+    phone: string
+    email: string
+    roles: UserRoleEnum[]
+    createdAt: Date
+    updatedAt: Date
+}
+
+export const aanbiederEmployeeProfilesMock: AanbiederEmployeeProfile[] = [
+    {
+        id: 1,
+        nickName: 'somenick',
+        lastName: 'somelastname',
+        fullName: 'Some Fullname',
+        phone: '123412341',
+        email: 'qwer@qwer.com',
+        roles: [UserRoleEnum.AanbiederCoordinator],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        id: 2,
+        nickName: 'somenick',
+        lastName: 'somelastname',
+        fullName: 'Some Fullname',
+        phone: '123412341',
+        email: 'qwer@qwer.com',
+        roles: [UserRoleEnum.AanbiederCoordinator, UserRoleEnum.AanbiederMentor],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    {
+        id: 3,
+        nickName: 'somenick',
+        lastName: 'somelastname',
+        fullName: 'Some Fullname',
+        phone: '123412341',
+        email: 'qwer@qwer.com',
+        roles: [UserRoleEnum.AanbiederVolunteer],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+]
+
+export const aanbiederEmployeeProfile: AanbiederEmployeeProfile = {
+    id: 3,
+    nickName: 'somenick',
+    lastName: 'somelastname',
+    fullName: 'Some Fullname',
+    phone: '123412341',
+    email: 'qwer@qwer.com',
+    roles: [UserRoleEnum.AanbiederVolunteer],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+}
+
+export interface AanbiederEmployeeDocument {
+    id: number
+}
+
+export const aanbiederEmployeeDocumentsMock: AanbiederEmployeeDocument[] = [{ id: 1 }]

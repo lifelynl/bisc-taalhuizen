@@ -5,11 +5,11 @@ import React from 'react'
 import Headline, { SpacingType } from 'components/Chrome/Headline'
 import Column from 'components/Core/Layout/Column/Column'
 import { useMockQuery } from 'components/hooks/useMockQuery'
-import { aanbiederParticipantsMock, AanbiederParticipant } from './mocks'
+import { aanbiederParticipantsMock, AanbiederParticipant } from '../mocks'
 import {
     AanbiederParticipantsTab,
     AanbiederParticipantsTabs,
-} from 'components/Domain/Aanbieder/AanbiederParticipantsTabs'
+} from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantsTabs'
 import Center from 'components/Core/Layout/Center/Center'
 import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
 import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
@@ -17,9 +17,8 @@ import { Table } from 'components/Core/Table/Table'
 import { TableLink } from 'components/Core/Table/TableLink'
 import { routes } from 'routes/routes'
 import Paragraph from 'components/Core/Typography/Paragraph'
-import { DateFormatters } from 'utils/formatters/Date/Date'
 
-export const AanbiederReferredParticipantsOverviewView: React.FunctionComponent = () => {
+export const AanbiederActiveParticipantsOverviewView: React.FunctionComponent = () => {
     const { i18n } = useLingui()
 
     // TODO: remove/replace after api connection
@@ -30,10 +29,7 @@ export const AanbiederReferredParticipantsOverviewView: React.FunctionComponent 
         <>
             <Headline spacingType={SpacingType.small} title={i18n._(t`Deelnemers`)} />
             <Column spacing={10}>
-                <AanbiederParticipantsTabs
-                    currentTab={AanbiederParticipantsTab.referred}
-                    referredCount={referredCount}
-                />
+                <AanbiederParticipantsTabs currentTab={AanbiederParticipantsTab.active} referredCount={referredCount} />
                 {renderList()}
             </Column>
         </>
@@ -65,9 +61,7 @@ export const AanbiederReferredParticipantsOverviewView: React.FunctionComponent 
             )
         }
 
-        const headers = [i18n._(t`ACHTERNAAM`), i18n._(t`ROEPNAAM`), i18n._(t`VERWEZEN DOOR`), i18n._(t`VERWEZEN PER`)]
-
-        return <Table flex={1} headers={headers} rows={getRows()} />
+        return <Table flex={0.25} headers={[i18n._(t`ACHTERNAAM`), i18n._(t`ROEPNAAM`)]} rows={getRows()} />
     }
 
     function getRows() {
@@ -75,22 +69,17 @@ export const AanbiederReferredParticipantsOverviewView: React.FunctionComponent 
             return []
         }
 
-        // TODO: remove isReferred filter once api is connected
-        return data
-            .filter(({ isReferred }) => isReferred)
-            .map(item => [
-                <TableLink
-                    to={{
-                        pathname: routes.authorized.supplier.participants.detail.overview,
-                        search: '',
-                        hash: '',
-                        state: { participantId: item.id },
-                    }}
-                    text={item.lastName}
-                />,
-                <Paragraph>{item.firstName}</Paragraph>,
-                <Paragraph>{item.referredBy}</Paragraph>,
-                <Paragraph>{DateFormatters.formattedDate(item.referredAt)}</Paragraph>,
-            ])
+        return data.map(item => [
+            <TableLink
+                to={{
+                    pathname: routes.authorized.supplier.participants.detail.overview,
+                    search: '',
+                    hash: '',
+                    state: { participantId: item.id },
+                }}
+                text={item.lastName}
+            />,
+            <Paragraph>{item.firstName}</Paragraph>,
+        ])
     }
 }

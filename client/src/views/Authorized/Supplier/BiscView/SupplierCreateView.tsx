@@ -51,23 +51,21 @@ const SupplierCreateView: React.FunctionComponent<Props> = () => {
         })
 
         if (response.errors?.length || !response.data) {
-            throw new Error()
+            return
         }
 
-        if (response) {
-            NotificationsManager.success(
-                i18n._(t`Aanbieder is aangemaakt`),
-                i18n._(t`U word doorgestuurd naar de gegevens van de aanbieder`)
-            )
+        NotificationsManager.success(
+            i18n._(t`Aanbieder is aangemaakt`),
+            i18n._(t`U word doorgestuurd naar de gegevens van de aanbieder`)
+        )
 
-            history.push({
-                pathname: routes.authorized.supplier.bisc.read.data,
-                state: {
-                    supplierId: response.data.createAanbieder.id,
-                    supplierName: response.data.createAanbieder.name,
-                },
-            })
-        }
+        history.push({
+            pathname: routes.authorized.supplier.bisc.read.data,
+            state: {
+                supplierId: response.data.createAanbieder.id,
+                supplierName: response.data.createAanbieder.name,
+            },
+        })
     }
 
     return (

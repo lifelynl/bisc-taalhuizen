@@ -43,7 +43,7 @@ import CivicIntegrationFieldset, {
 } from 'components/fieldsets/participants/fieldsets/CivicIntegrationInformationFieldset'
 import RefererInformationFieldset, {
     RefererInformationFieldsetModel,
-} from 'components/fieldsets/participants/fieldsets/ReferrerInformationFieldset'
+} from 'components/fieldsets/participants/fieldsets/RefererInformationFieldset'
 import LevelInformationFieldset, {
     LevelInformationFieldsetModel,
 } from 'components/fieldsets/participants/fieldsets/LevelInformationFieldset'
@@ -86,7 +86,7 @@ export interface FormModel
         ReadingTestInformationFieldsetModel,
         WritingInformationFieldsetModel {}
 
-export const ParticipantsUpdateView: React.FunctionComponent<Props> = props => {
+export const ParticipantsUpdateIntakeView: React.FunctionComponent<Props> = props => {
     const { routeState } = props
     const { i18n } = useLingui()
     const history = useHistory()

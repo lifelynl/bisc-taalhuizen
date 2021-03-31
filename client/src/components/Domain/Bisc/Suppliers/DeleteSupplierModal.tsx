@@ -25,31 +25,22 @@ const AanbiederDeleteModalView: React.FunctionComponent<Props> = props => {
     const { onClose, supplierid, suppliername } = props
 
     async function handleDelete() {
-        try {
-            const response = await deleteAanbieder({
-                variables: {
-                    id: supplierid,
-                },
-                refetchQueries: [{ query: AanbiedersDocument }],
-            })
+        const response = await deleteAanbieder({
+            variables: {
+                id: supplierid,
+            },
+            refetchQueries: [{ query: AanbiedersDocument }],
+        })
 
-            if (response.errors?.length) {
-                throw new Error()
-            }
-
-            if (response) {
-                NotificationsManager.success(
-                    i18n._(t`Aanbieder is verwijderd`),
-                    i18n._(t`U word teruggestuurd naar het overzicht`)
-                )
-                history.push(routes.authorized.supplier.bisc.index)
-            }
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Het is niet gelukt om de aanbieder te verwijderen`),
-                i18n._(t`Probeer het later opnieuw`)
-            )
+        if (response.errors?.length) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Aanbieder is verwijderd`),
+            i18n._(t`U word teruggestuurd naar het overzicht`)
+        )
+        history.push(routes.authorized.supplier.bisc.index)
     }
 
     return (

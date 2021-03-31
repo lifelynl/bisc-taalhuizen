@@ -19,14 +19,14 @@ import { useStudentQuery } from 'generated/graphql'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { routes } from 'routes/routes'
-import { ReadDetailTabs, readDetailTabsTranslations } from '../../../constants'
+import { readDetailTabPaths, ReadDetailTabs, readDetailTabsTranslations } from '../../../constants'
 import { ParticipantDetailLocationStateProps } from '../ParticipantsDetailView'
 
 interface Props {
     routeState: ParticipantDetailLocationStateProps
 }
 
-export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
+export const ParticipantsIntakeView: React.FunctionComponent<Props> = props => {
     const { routeState } = props
     const { i18n } = useLingui()
     const history = useHistory()
@@ -42,7 +42,7 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
 
     return (
         <>
-            <Column spacing={10}>
+            <Column spacing={4}>
                 <Headline
                     title={i18n._(t`Deelnemer ${routeState.participantName}`)}
                     spacingType={SpacingType.small}
@@ -58,19 +58,15 @@ export const ParticipantsReadView: React.FunctionComponent<Props> = props => {
 
                 <TabSwitch
                     defaultActiveTabId={ReadDetailTabs.read}
-                    onChange={props => history.push(ReadDetailTabs[props.tabid as ReadDetailTabs])}
+                    onChange={props =>
+                        history.push({
+                            pathname: readDetailTabPaths[props.tabid as ReadDetailTabs],
+                            state: routeState,
+                        })
+                    }
                 >
                     <Tab label={readDetailTabsTranslations[ReadDetailTabs.read]} tabid={ReadDetailTabs.read} />
-                    <Tab
-                        label={readDetailTabsTranslations[ReadDetailTabs.registration]}
-                        tabid={ReadDetailTabs.registration}
-                    />
-                    <Tab label={readDetailTabsTranslations[ReadDetailTabs.folder]} tabid={ReadDetailTabs.folder} />
                     <Tab label={readDetailTabsTranslations[ReadDetailTabs.goals]} tabid={ReadDetailTabs.goals} />
-                    <Tab
-                        label={readDetailTabsTranslations[ReadDetailTabs.documents]}
-                        tabid={ReadDetailTabs.documents}
-                    />
                 </TabSwitch>
                 {renderSection()}
             </Column>

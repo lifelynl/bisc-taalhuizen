@@ -1,0 +1,11 @@
+@import 'styles/variables/spacing';
+@import 'styles/variables/colors';
+
+.container {
+    display: flex;
+    align-items: center;
+    .icon {
+        margin: 0 spacing(1.5);
+        color: $color-grey-80;
+    }
+}

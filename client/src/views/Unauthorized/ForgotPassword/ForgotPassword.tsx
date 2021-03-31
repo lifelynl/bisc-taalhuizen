@@ -29,25 +29,19 @@ function ForgotPassword() {
 
     const handleForgotPassword = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        try {
-            const data = Forms.getFormDataFromFormEvent<FormModel>(e)
-            const response = await requestPasswordReset({ variables: { email: data.email } })
 
-            if (response.errors) {
-                throw new Error(response.errors[0].message)
-            }
+        const data = Forms.getFormDataFromFormEvent<FormModel>(e)
+        const response = await requestPasswordReset({ variables: { email: data.email } })
 
-            NotificationsManager.success(
-                i18n._(t`Wij hebben uw verzoek ontvangen`),
-                i18n._(t`U heeft een E-mail onvangen waarmee u uw wachtwoord kunt wijzigen.`)
-            )
-            setSuccess(true)
-        } catch (error) {
-            NotificationsManager.error(
-                i18n._(t`Wij hebben uw aanvraag niet ontvangen`),
-                i18n._(t`Controleeer uw gegevens en probeer het later opnieuw`)
-            )
+        if (response.errors) {
+            return
         }
+
+        NotificationsManager.success(
+            i18n._(t`Wij hebben uw verzoek ontvangen`),
+            i18n._(t`U heeft een E-mail onvangen waarmee u uw wachtwoord kunt wijzigen.`)
+        )
+        setSuccess(true)
     }
 
     return (

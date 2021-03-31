@@ -11,7 +11,7 @@ import PersonInformationFieldset from 'components/fieldsets/shared/PersonInforma
 import { DateFormatters } from 'utils/formatters/Date/Date'
 import { AanbiederParticipantDetail } from 'views/Authorized/Supplier/AanbiederView/mocks'
 import GeneralInformationFieldset from 'components/fieldsets/shared/GeneralInformationFieldset'
-import RefererInformationFieldset from 'components/fieldsets/participants/fieldsets/ReferrerInformationFieldset'
+import RefererInformationFieldset from 'components/fieldsets/participants/fieldsets/RefererInformationFieldset'
 import BackgroundInformationFieldset from 'components/fieldsets/participants/fieldsets/BackgroundInformationFieldset'
 import DutchNTFieldset from 'components/fieldsets/shared/DutchNTInformationFieldset'
 import LevelInformationFieldset from 'components/fieldsets/participants/fieldsets/LevelInformationFieldset'

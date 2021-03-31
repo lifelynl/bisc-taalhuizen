@@ -1,15 +1,16 @@
+import React from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+
 import Headline, { SpacingType } from 'components/Chrome/Headline'
 import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
 import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
 import Center from 'components/Core/Layout/Center/Center'
 import Column from 'components/Core/Layout/Column/Column'
 import Paragraph from 'components/Core/Typography/Paragraph'
-import { AanbiederParticipantGoalDetailFields } from 'components/Domain/Aanbieder/AanbiederParticipantGoalDetailFields'
+import { AanbiederParticipantGoalDetailFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantGoalDetailFields'
 import { useMockQuery } from 'components/hooks/useMockQuery'
-import React from 'react'
-import { aanbiederParticipantDetail, AanbiederParticipantGoal } from '../../mocks'
+import { aanbiederParticipantDetail, AanbiederParticipantGoal } from '../../../mocks'
 
 interface Props {
     participantId: number

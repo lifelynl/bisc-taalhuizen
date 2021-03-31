@@ -21,7 +21,7 @@ const ExplanationInformationFieldset: React.FunctionComponent<Props> = props => 
 
     if (readOnly) {
         return (
-            <Section title={i18n._(t`Toelichitng`)}>
+            <Section title={i18n._(t`Toelichting`)}>
                 <Column spacing={4}>
                     <Field label={i18n._(t`Notitie`)} horizontal={true}>
                         <p style={{ maxWidth: '279px' }}>{prefillData?.note}</p>

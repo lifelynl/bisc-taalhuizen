@@ -4,15 +4,19 @@ import Icon from '../Icon/Icon'
 import { IconType } from '../Icon/IconType'
 import styles from './Select.module.scss'
 import Input from './Input'
+import { Validator } from 'utils/validators/types'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string
     options: string[]
     grow?: boolean
+    onChangeValue?: (value: string | undefined) => void
+    validators?: Validator<string | null>[]
+    ref?: React.MutableRefObject<undefined>
 }
 
 const Select: React.FunctionComponent<Props> = props => {
-    const { disabled, options, className, grow } = props
+    const { disabled, options, className, onChangeValue, grow } = props
     const [open, setOpen] = useState<boolean>(false)
     const [selectedValue, setSelectedValue] = useState<string | undefined>()
     const [filteredOptions, setFilteredOptions] = useState<string[]>()
@@ -59,6 +63,7 @@ const Select: React.FunctionComponent<Props> = props => {
                         onClick={() => {
                             setOpen(!open)
                             setSelectedValue(option)
+                            onChangeValue?.(option)
                         }}
                     >
                         {option}

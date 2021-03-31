@@ -7,10 +7,17 @@ import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import Field from 'components/Core/Field/Field'
 import Paragraph from 'components/Core/Typography/Paragraph'
+import Input from 'components/Core/DataEntry/Input'
+import { GenericValidators } from 'utils/validators/GenericValidators'
+import TextArea from 'components/Core/DataEntry/TextArea'
 
 interface Props {
-    defaultValues: LearningQuestionMetadata
+    defaultValues?: LearningQuestionMetadata
     readOnly?: boolean
+}
+export interface LearningQuestionsFieldsetModel {
+    motivations: string
+    decription: string
 }
 
 export const LearningQuestionsFieldset: React.FunctionComponent<Props> = props => {
@@ -24,29 +31,47 @@ export const LearningQuestionsFieldset: React.FunctionComponent<Props> = props =
 
     function renderFields() {
         const { readOnly, defaultValues } = props
-        const { motivations, desiredOffers, advisedOffers, engagements } = defaultValues
 
-        if (readOnly) {
+        if (readOnly && defaultValues) {
             return (
                 <>
                     <Field label={i18n._(t`Motivatie`)} horizontal={true}>
-                        {renderTexts(motivations, { withHyphen: true })}
+                        {renderTexts(defaultValues.motivations, { withHyphen: true })}
                     </Field>
                     <Field label={i18n._(t`Gewenste aanbod`)} horizontal={true}>
-                        {renderTexts(desiredOffers)}
+                        {renderTexts(defaultValues.desiredOffers)}
                     </Field>
                     <Field label={i18n._(t`Geadviseerd aanbod`)} horizontal={true}>
-                        {renderTexts(advisedOffers)}
+                        {renderTexts(defaultValues.advisedOffers)}
                     </Field>
                     <Field label={i18n._(t`Afspraken`)} horizontal={true}>
-                        {renderTexts(engagements, { withHyphen: true })}
+                        {renderTexts(defaultValues.engagements, { withHyphen: true })}
                     </Field>
                 </>
             )
         }
 
         // TODO: implement editable fields when needed
-        return null
+        return (
+            <>
+                <Field label={i18n._(t`Korte omschrijving`)} horizontal={true} required={true}>
+                    <Input
+                        name="decription"
+                        required={true}
+                        placeholder={i18n._(t`Beschrijving`)}
+                        validators={[GenericValidators.required]}
+                    />
+                </Field>
+                <Field label={i18n._(t`Motivatie`)} horizontal={true} required={true}>
+                    <TextArea
+                        name="motvations"
+                        placeholder={i18n._(t`Motivatie`)}
+                        defaultValue={defaultValues?.motivations}
+                        validators={[GenericValidators.required]}
+                    />
+                </Field>
+            </>
+        )
     }
 
     function renderTexts(texts: string[], flag?: { withHyphen: boolean }) {

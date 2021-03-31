@@ -40,7 +40,7 @@ enum Tabs {
 
 export const CoworkerOverviewView: React.FunctionComponent<Props> = () => {
     // TODO: implement real call
-    const { data, loading, error } = useMockQuery<FormModel[]>(medewerkersMock)
+    const { data, loading, error } = useMockQuery(medewerkersMock)
     const history = useHistory()
 
     const handleTabSwitch = (tab: TabProps) => {

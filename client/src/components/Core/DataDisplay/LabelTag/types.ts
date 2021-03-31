@@ -5,4 +5,5 @@ export enum LabelColor {
     purple = 'purple',
     green = 'green',
     white = 'white',
+    grey = 'grey',
 }

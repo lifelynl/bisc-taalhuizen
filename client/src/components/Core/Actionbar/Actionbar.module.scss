@@ -4,9 +4,13 @@
 .container {
     display: flex;
     border-radius: 8px;
-    width: 100%;
     background-color: $color-grey-5;
     padding: spacing(4) spacing(6);
+
+    position: fixed;
+    bottom: 32px;
+    left: 292px; // 220px for the side nav + 72px for the authorized container padding
+    right: 88px; // to align with authorized container padding
 
     .rightContainer {
         margin-left: auto;
