@@ -309,6 +309,7 @@ export type Query = {
     students: Array<StudentType>
     student: StudentType
     learningNeeds: Array<LearningNeedType>
+    learningNeed: LearningNeedType
 }
 
 export type QueryTaalhuisArgs = {
@@ -363,6 +364,10 @@ export type QueryLearningNeedsArgs = {
     studentId: Scalars['String']
 }
 
+export type QueryLearningNeedArgs = {
+    learningNeedId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     addPerson: PersonEdgeType
@@ -388,6 +393,8 @@ export type Mutation = {
     createStudent: StudentType
     updateStudent: StudentType
     createLearningNeed: LearningNeedType
+    updateLearningNeed: LearningNeedType
+    deleteLearningNeed: Scalars['Boolean']
     createParticipation: ParticipationType
 }
 
@@ -502,6 +509,14 @@ export type MutationCreateLearningNeedArgs = {
     input: CreateLearningNeedInputType
 }
 
+export type MutationUpdateLearningNeedArgs = {
+    input: UpdateLearningNeedInputType
+}
+
+export type MutationDeleteLearningNeedArgs = {
+    learningNeedId: Scalars['String']
+}
+
 export type MutationCreateParticipationArgs = {
     input: CreateParticipationInputType
 }
@@ -598,6 +613,24 @@ export type UpdateStudentInputType = {
 
 export type CreateLearningNeedInputType = {
     studentId: Scalars['String']
+    learningNeedDescription: Scalars['String']
+    learningNeedMotivation: Scalars['String']
+    desiredOutComesGoal: Scalars['String']
+    desiredOutComesTopic: LearningNeedTopicEnum
+    desiredOutComesTopicOther?: Maybe<Scalars['String']>
+    desiredOutComesApplication: LearningNeedApplicationEnum
+    desiredOutComesApplicationOther?: Maybe<Scalars['String']>
+    desiredOutComesLevel: LearningNeedLevelEnum
+    desiredOutComesLevelOther?: Maybe<Scalars['String']>
+    offerDesiredOffer: Scalars['String']
+    offerAdvisedOffer: Scalars['String']
+    offerDifference: LearningNeedOfferDifferenceEnum
+    offerDifferenceOther?: Maybe<Scalars['String']>
+    offerEngagements?: Maybe<Scalars['String']>
+}
+
+export type UpdateLearningNeedInputType = {
+    learningNeedId: Scalars['String']
     learningNeedDescription: Scalars['String']
     learningNeedMotivation: Scalars['String']
     desiredOutComesGoal: Scalars['String']

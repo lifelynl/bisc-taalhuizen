@@ -101,7 +101,7 @@ export class LearningNeedService {
 
     public constructor(private configService: ConfigService<Config>) {}
 
-    public async findByParticipantId(participantId: string) {
+    public async findByParticipantId(participantId: string): Promise<LearningNeedEntity[]> {
         const eavParticipant = await this.getEavParticipant(participantId)
 
         if (!eavParticipant) {
@@ -125,7 +125,7 @@ export class LearningNeedService {
         return learningNeedEntitites
     }
 
-    public async findById(learningNeedId: string) {
+    public async findById(learningNeedId: string): Promise<LearningNeedEntity> {
         const eavLeervraag = await this.getEavLeervraag(learningNeedId)
         assertNotNil(eavLeervraag, `eav/leervraag with ID ${learningNeedId} not found`)
 
