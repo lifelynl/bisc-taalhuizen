@@ -20,6 +20,8 @@ import { useCreateAanbiederEmployeeMutation, UserRoleEnum, useUserRolesByAanbied
 import { Forms } from 'utils/forms'
 import { UserContext } from 'components/Providers/UserProvider/context'
 import { NotificationsManager } from 'components/Core/Feedback/Notifications/NotificationsManager'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 export const AanbiederManagementEmployeesCreateView: React.FunctionComponent = () => {
     const { i18n } = useLingui()
@@ -31,8 +33,18 @@ export const AanbiederManagementEmployeesCreateView: React.FunctionComponent = (
 
     return (
         <Column spacing={10}>
-            {/* TODO: add breadcrumbs */}
-            <Headline spacingType={SpacingType.small} title={i18n._(t`Nieuwe medewerker`)} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={i18n._(t`Nieuwe medewerker`)}
+                TopComponent={
+                    <Breadcrumbs
+                        breadcrumbItems={[
+                            breadcrumbItems.aanbieder.management.overview,
+                            breadcrumbItems.aanbieder.management.employees.overview,
+                        ]}
+                    />
+                }
+            />
             <Form onSubmit={handleSubmit}>
                 {renderFormFields()}
                 <ActionBar RightComponent={renderButtons()} />

@@ -17,6 +17,8 @@ import { Table } from 'components/Core/Table/Table'
 import { TableLink } from 'components/Core/Table/TableLink'
 import Paragraph from 'components/Core/Typography/Paragraph'
 import { supplierRoutes } from 'routes/supplier/supplierRoutes'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     employeeId: string
@@ -39,8 +41,18 @@ export const AanbiederManagementEmployeeParticipantsView: React.FunctionComponen
 
     return (
         <>
-            {/* TODO: add breadcrumbs */}
-            <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={data?.fullName || ''}
+                TopComponent={
+                    <Breadcrumbs
+                        breadcrumbItems={[
+                            breadcrumbItems.aanbieder.management.overview,
+                            breadcrumbItems.aanbieder.management.employees.overview,
+                        ]}
+                    />
+                }
+            />
             <Column spacing={10}>
                 <AanbiederManagementEmployeeTabs
                     currentTab={AanbiederManagementEmployeeTab.participants}

@@ -283,6 +283,7 @@ export interface AanbiederEmployeeProfile {
     createdAt: Date
     updatedAt: Date
     participants: AanbiederParticipant[]
+    documents: AanbiederEmployeeDocument[]
 }
 
 export const aanbiederEmployeeProfilesMock: AanbiederEmployeeProfile[] = [
@@ -297,6 +298,7 @@ export const aanbiederEmployeeProfilesMock: AanbiederEmployeeProfile[] = [
         createdAt: new Date(),
         updatedAt: new Date(),
         participants: [],
+        documents: [],
     },
     {
         id: 2,
@@ -309,6 +311,7 @@ export const aanbiederEmployeeProfilesMock: AanbiederEmployeeProfile[] = [
         createdAt: new Date(),
         updatedAt: new Date(),
         participants: [],
+        documents: [],
     },
     {
         id: 3,
@@ -321,6 +324,7 @@ export const aanbiederEmployeeProfilesMock: AanbiederEmployeeProfile[] = [
         createdAt: new Date(),
         updatedAt: new Date(),
         participants: [],
+        documents: [],
     },
 ]
 
@@ -334,6 +338,7 @@ export const aanbiederEmployeeProfile: AanbiederEmployeeProfile = {
     roles: [UserRoleEnum.AanbiederVolunteer],
     createdAt: new Date(),
     updatedAt: new Date(),
+    documents: [],
     participants: [
         {
             id: 1,
@@ -355,5 +360,3 @@ export const aanbiederEmployeeProfile: AanbiederEmployeeProfile = {
 export interface AanbiederEmployeeDocument {
     id: number
 }
-
-export const aanbiederEmployeeDocumentsMock: AanbiederEmployeeDocument[] = [{ id: 1 }]

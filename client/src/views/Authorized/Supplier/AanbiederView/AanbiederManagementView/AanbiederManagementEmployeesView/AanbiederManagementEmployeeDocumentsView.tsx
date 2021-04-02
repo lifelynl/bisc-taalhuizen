@@ -5,7 +5,7 @@ import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
 import Center from 'components/Core/Layout/Center/Center'
 import { useLingui } from '@lingui/react'
 import { useMockQuery } from 'components/hooks/useMockQuery'
-import { AanbiederEmployeeDocument, aanbiederEmployeeDocumentsMock } from '../../mocks'
+import { AanbiederEmployeeProfile, aanbiederEmployeeProfile } from '../../mocks'
 import Headline, { SpacingType } from 'components/Chrome/Headline'
 import Column from 'components/Core/Layout/Column/Column'
 import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
@@ -13,6 +13,8 @@ import {
     AanbiederManagementEmployeeTab,
     AanbiederManagementEmployeeTabs,
 } from 'components/Domain/Aanbieder/AanbiederManagement/AanbiederManagementEmployeeTabs'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     employeeId: string
@@ -23,7 +25,7 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
     const { employeeId } = props
 
     // TODO: replace with the api call/query (using participantId prop)
-    const { data, loading, error } = useMockQuery<AanbiederEmployeeDocument[]>(aanbiederEmployeeDocumentsMock)
+    const { data, loading, error } = useMockQuery<AanbiederEmployeeProfile>(aanbiederEmployeeProfile)
 
     if (loading) {
         return (
@@ -35,8 +37,18 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
 
     return (
         <>
-            {/* TODO: add breadcrumbs */}
-            <Headline spacingType={SpacingType.small} title={i18n._(t`Beheer`)} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={data?.fullName || ''}
+                TopComponent={
+                    <Breadcrumbs
+                        breadcrumbItems={[
+                            breadcrumbItems.aanbieder.management.overview,
+                            breadcrumbItems.aanbieder.management.employees.overview,
+                        ]}
+                    />
+                }
+            />
             <Column spacing={10}>
                 <AanbiederManagementEmployeeTabs
                     currentTab={AanbiederManagementEmployeeTab.documents}

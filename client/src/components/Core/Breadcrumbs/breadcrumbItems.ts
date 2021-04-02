@@ -86,7 +86,20 @@ export const breadcrumbItems = {
             },
         },
     },
-    aanbieder: {},
+    aanbieder: {
+        management: {
+            overview: {
+                label: i18n._(t`Beheer`),
+                to: routes.authorized.supplier.management.overview,
+            },
+            employees: {
+                overview: {
+                    label: i18n._(t`Medewerkers`),
+                    to: routes.authorized.supplier.management.employees.overview,
+                },
+            },
+        },
+    },
     dev: {
         kitchensink: {
             label: 'kitchensink',

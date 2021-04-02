@@ -32,6 +32,8 @@ import { UserContext } from 'components/Providers/UserProvider/context'
 import { NotificationsManager } from 'components/Core/Feedback/Notifications/NotificationsManager'
 import { useHistory } from 'react-router'
 import { supplierRoutes } from 'routes/supplier/supplierRoutes'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     employeeId: string
@@ -65,8 +67,18 @@ export const AanbiederManagementEmployeeDetailOverviewView: React.FunctionCompon
 
     return (
         <>
-            {/* TODO: add breadcrumbs */}
-            <Headline spacingType={SpacingType.small} title={fullName} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={fullName}
+                TopComponent={
+                    <Breadcrumbs
+                        breadcrumbItems={[
+                            breadcrumbItems.aanbieder.management.overview,
+                            breadcrumbItems.aanbieder.management.employees.overview,
+                        ]}
+                    />
+                }
+            />
             <Column spacing={10}>
                 {/* {renderTabs()} */}
                 <Form onSubmit={handleEdit}>
