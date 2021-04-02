@@ -5,13 +5,13 @@ import { AanbiederParticipantDetailOverviewView } from './AanbiederParticipantDe
 // import { AanbiederParticipantGoalsView } from './AanbiederParticipantGoalsView/AanbiederParticipantGoalsView'
 // import { AanbiederParticipantRegistrationView } from './AanbiederParticipantRegistrationView'
 
-interface LocationStateProps {
+export interface AanbiederParticipantLocationStateProps {
     participantId: number
 }
 
 export const AanbiederParticipantDetailView: React.FunctionComponent = () => {
     const location = useLocation()
-    const props = location.state as LocationStateProps
+    const props = location.state as AanbiederParticipantLocationStateProps
 
     const basePath = routes.authorized.supplier.participants.detail
 

@@ -2,6 +2,7 @@ import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import { routes } from 'routes/routes'
 import { TaalhuizenDetailLocationStateProps } from 'views/Authorized/Bisc/Taalhuizen/TaalhuizenDetail/TaalhuizenDetailView'
+import { AanbiederParticipantLocationStateProps } from 'views/Authorized/Supplier/AanbiederView/AanbiederParticipantsView/AanbiederParticipantDetailView/AanbiederParticipantDetailView'
 
 export const breadcrumbItems = {
     bisc: {
@@ -87,6 +88,23 @@ export const breadcrumbItems = {
         },
     },
     aanbieder: {
+        participants: {
+            index: {
+                label: i18n._(t`Deelnemers`),
+                to: routes.authorized.supplier.participants.index,
+            },
+            detail: {
+                goals: (locationState: AanbiederParticipantLocationStateProps) => ({
+                    label: i18n._(t`Leervragen`),
+                    to: {
+                        pathname: routes.authorized.supplier.participants.detail.goals.index,
+                        hash: '',
+                        search: '',
+                        state: locationState,
+                    },
+                }),
+            },
+        },
         management: {
             overview: {
                 label: i18n._(t`Beheer`),

@@ -11,6 +11,8 @@ import Paragraph from 'components/Core/Typography/Paragraph'
 import { AanbiederParticipantGoalDetailFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantGoalDetailFields'
 import { useMockQuery } from 'components/hooks/useMockQuery'
 import { aanbiederParticipantDetail, AanbiederParticipantGoal } from '../../../mocks'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     participantId: number
@@ -19,6 +21,7 @@ interface Props {
 
 export const AanbiederParticipantGoalDetailView: React.FunctionComponent<Props> = props => {
     const { i18n } = useLingui()
+    const { participantId } = props
 
     // TODO: replace with actual query
     const { data, loading, error } = useMockQuery<AanbiederParticipantGoal>(aanbiederParticipantDetail.goals[0])
@@ -33,7 +36,12 @@ export const AanbiederParticipantGoalDetailView: React.FunctionComponent<Props> 
 
     return (
         <>
-            {/* TODO: add breadcrumb */}
+            <Breadcrumbs
+                breadcrumbItems={[
+                    breadcrumbItems.aanbieder.participants.index,
+                    breadcrumbItems.aanbieder.participants.detail.goals({ participantId }),
+                ]}
+            />
             <Paragraph bold={true}>{data?.participant.fullName || ''}</Paragraph>
             <Headline spacingType={SpacingType.small} title={data?.name || ''} />
             <Column spacing={10}>{renderList()}</Column>

@@ -14,6 +14,8 @@ import Center from 'components/Core/Layout/Center/Center'
 import Spinner, { Animation } from 'components/Core/Feedback/Spinner/Spinner'
 import ErrorBlock from 'components/Core/Feedback/Error/ErrorBlock'
 import { AanbiederParticipantRegistrationFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantRegistrationFields'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     participantId: number
@@ -35,8 +37,11 @@ export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props
 
     return (
         <>
-            {/* TODO: add breadcrumb */}
-            <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={data?.fullName || ''}
+                TopComponent={<Breadcrumbs breadcrumbItems={[breadcrumbItems.aanbieder.participants.index]} />}
+            />
             <Column spacing={10}>
                 <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.registration} />
                 {renderList()}
@@ -44,7 +49,6 @@ export const AanbiederParticipantRegistrationView: React.FunctionComponent<Props
         </>
     )
 
-    // TODO
     function renderList() {
         if (error || !data) {
             return (

@@ -14,6 +14,8 @@ import Column from 'components/Core/Layout/Column/Column'
 import { useMockQuery } from 'components/hooks/useMockQuery'
 import { aanbiederParticipantDetail, AanbiederParticipantDetail } from '../../mocks'
 import { AanbiederParticipantIntakeFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantIntakeFields'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
 
 interface Props {
     participantId: number
@@ -35,8 +37,11 @@ export const AanbiederParticipantDetailOverviewView: React.FunctionComponent<Pro
 
     return (
         <>
-            {/* TODO: add breadcrumb */}
-            <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={data?.fullName || ''}
+                TopComponent={<Breadcrumbs breadcrumbItems={[breadcrumbItems.aanbieder.participants.index]} />}
+            />
             <Column spacing={10}>
                 {/* TODO: uncomment in 2nd sprint */}
                 {/* <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.overview} /> */}

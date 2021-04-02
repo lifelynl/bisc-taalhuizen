@@ -14,6 +14,8 @@ import {
 import { useMockQuery } from 'components/hooks/useMockQuery'
 import { aanbiederParticipantDetail, AanbiederParticipantDetail } from '../../../mocks'
 import { AanbiederParticipantGoalsOverviewFields } from 'components/Domain/Aanbieder/AanbiederParticipants/AanbiederParticipantGoalsOverviewFields'
+import { breadcrumbItems } from 'components/Core/Breadcrumbs/breadcrumbItems'
+import { Breadcrumbs } from 'components/Core/Breadcrumbs/Breadcrumbs'
 
 interface Props {
     participantId: number
@@ -35,8 +37,11 @@ export const AanbiederParticipantGoalsOverviewView: React.FunctionComponent<Prop
 
     return (
         <>
-            {/* TODO: add breadcrumb */}
-            <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={data?.fullName || ''}
+                TopComponent={<Breadcrumbs breadcrumbItems={[breadcrumbItems.aanbieder.participants.index]} />}
+            />
             <Column spacing={10}>
                 <AanbiederParticipantTabs currentTab={AanbiederParticipantTab.goals} />
                 {renderList()}
@@ -44,7 +49,6 @@ export const AanbiederParticipantGoalsOverviewView: React.FunctionComponent<Prop
         </>
     )
 
-    // TODO
     function renderList() {
         if (error || !data) {
             return (
