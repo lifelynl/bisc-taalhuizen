@@ -141,6 +141,22 @@ export type StudentDocumentDownloadType = {
     base64data: Scalars['String']
 }
 
+export type StudentDossierEventType = {
+    __typename?: 'StudentDossierEventType'
+    id: Scalars['String']
+    event: StudentDossierEventEnum
+    eventDate: Scalars['String']
+    eventDescription: Scalars['String']
+}
+
+export enum StudentDossierEventEnum {
+    FinalTalk = 'FINAL_TALK',
+    Remark = 'REMARK',
+    FollowUpTalk = 'FOLLOW_UP_TALK',
+    InfoForStorytelling = 'INFO_FOR_STORYTELLING',
+    Intake = 'INTAKE',
+}
+
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -332,6 +348,8 @@ export type Query = {
     aanbiederEmployeeDocuments: Array<AanbiederEmployeeDocumentType>
     studentDocument: StudentDocumentType
     studentDocuments: Array<StudentDocumentType>
+    studentDossierEvent: StudentDossierEventType
+    studentDossierEvents: Array<StudentDossierEventType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -406,6 +424,14 @@ export type QueryStudentDocumentsArgs = {
     studentId: Scalars['String']
 }
 
+export type QueryStudentDossierEventArgs = {
+    studentDossierEventId: Scalars['String']
+}
+
+export type QueryStudentDossierEventsArgs = {
+    studentId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -441,6 +467,9 @@ export type Mutation = {
     createStudentDocument: StudentDocumentType
     downloadStudentDocument: StudentDocumentDownloadType
     deleteStudentDocument: Scalars['Boolean']
+    createStudentDossierEvent: StudentDossierEventType
+    updateStudentDossierEvent: StudentDossierEventType
+    deleteStudentDossierEvent: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -591,6 +620,18 @@ export type MutationDownloadStudentDocumentArgs = {
 
 export type MutationDeleteStudentDocumentArgs = {
     studentDocumentId: Scalars['String']
+}
+
+export type MutationCreateStudentDossierEventArgs = {
+    input: CreateStudentDossierEventInputType
+}
+
+export type MutationUpdateStudentDossierEventArgs = {
+    input: UpdateStudentDossierEventInputType
+}
+
+export type MutationDeleteStudentDossierEventArgs = {
+    studentDossierEventId: Scalars['String']
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -790,6 +831,20 @@ export type CreateStudentDocumentInputType = {
     studentId: Scalars['String']
     filename: Scalars['String']
     base64data: Scalars['String']
+}
+
+export type CreateStudentDossierEventInputType = {
+    studentId: Scalars['String']
+    event: StudentDossierEventEnum
+    eventDate: Scalars['String']
+    eventDescription: Scalars['String']
+}
+
+export type UpdateStudentDossierEventInputType = {
+    studentDossierEventId: Scalars['String']
+    event: StudentDossierEventEnum
+    eventDate: Scalars['String']
+    eventDescription: Scalars['String']
 }
 
 export type ChangePasswordMutationVariables = Exact<{

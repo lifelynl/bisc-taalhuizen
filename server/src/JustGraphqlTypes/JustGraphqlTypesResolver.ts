@@ -1,4 +1,4 @@
-import { Args, Field, InputType, Mutation, ObjectType, Query, Resolver } from '@nestjs/graphql'
+import { Args, Field, InputType, Mutation, ObjectType, Query, registerEnumType, Resolver } from '@nestjs/graphql'
 import { IsEmail } from 'class-validator'
 
 @InputType()
@@ -138,6 +138,61 @@ class CreateStudentDocumentInputType {
     public base64data!: string
 }
 
+enum StudentDossierEventEnum {
+    FINAL_TALK = 'FINAL_TALK', // Eindgesprek
+    REMARK = 'REMARK', // Opmerking
+    FOLLOW_UP_TALK = 'FOLLOW_UP_TALK', // Vervolg gesprek
+    INFO_FOR_STORYTELLING = 'INFO_FOR_STORYTELLING', // Informatie voor storytelling
+    INTAKE = 'INTAKE', // Intake
+}
+
+registerEnumType(StudentDossierEventEnum, { name: 'StudentDossierEventEnum' })
+
+@InputType()
+class CreateStudentDossierEventInputType {
+    @Field()
+    public studentId!: string
+
+    @Field(() => StudentDossierEventEnum)
+    public event!: StudentDossierEventEnum
+
+    @Field()
+    public eventDate!: string
+
+    @Field()
+    public eventDescription!: string
+}
+
+@InputType()
+class UpdateStudentDossierEventInputType {
+    @Field()
+    public studentDossierEventId!: string
+
+    @Field(() => StudentDossierEventEnum)
+    public event!: string
+
+    @Field()
+    public eventDate!: string
+
+    @Field()
+    public eventDescription!: string
+}
+
+@ObjectType()
+class StudentDossierEventType {
+    @Field()
+    public id!: string
+
+    @Field(() => StudentDossierEventEnum)
+    public event!: string
+
+    @Field()
+    public eventDate!: string
+
+    @Field()
+    public eventDescription!: string
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -225,6 +280,32 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => [StudentDocumentType])
     public async studentDocuments(@Args('studentId') studentId: string) {
+        return undefined
+    }
+
+    // Student dossier event
+    @Mutation(() => StudentDossierEventType)
+    public async createStudentDossierEvent(@Args('input') input: CreateStudentDossierEventInputType) {
+        return undefined
+    }
+
+    @Mutation(() => StudentDossierEventType)
+    public async updateStudentDossierEvent(@Args('input') input: UpdateStudentDossierEventInputType) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async deleteStudentDossierEvent(@Args('studentDossierEventId') studentDossierEventId: string) {
+        return undefined
+    }
+
+    @Query(() => StudentDossierEventType)
+    public async studentDossierEvent(@Args('studentDossierEventId') studentDossierEventId: string) {
+        return undefined
+    }
+
+    @Query(() => [StudentDossierEventType])
+    public async studentDossierEvents(@Args('studentId') studentId: string) {
         return undefined
     }
 }
