@@ -1,8 +1,0 @@
-query persons {
-    persons {
-        node {
-            id
-            name
-        }
-    }
-}

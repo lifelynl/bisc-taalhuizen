@@ -1,3 +1,0 @@
-mutation enrollPersonInProgram($personId: String!, $programId: String!) {
-    enrollPersonInProgram(personId: $personId, programId: $programId)
-}

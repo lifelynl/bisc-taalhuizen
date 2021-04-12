@@ -1,8 +1,0 @@
-query programs {
-    programs {
-        node {
-            id
-            name
-        }
-    }
-}
