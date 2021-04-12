@@ -342,6 +342,7 @@ export type Query = {
     students: Array<StudentType>
     student: StudentType
     learningNeeds: Array<LearningNeedType>
+    learningNeed: LearningNeedType
     biscEmployee: BiscEmployeeType
     biscEmployees: Array<BiscEmployeeType>
     aanbiederEmployeeDocument: AanbiederEmployeeDocumentType
@@ -404,6 +405,10 @@ export type QueryLearningNeedsArgs = {
     studentId: Scalars['String']
 }
 
+export type QueryLearningNeedArgs = {
+    learningNeedId: Scalars['String']
+}
+
 export type QueryBiscEmployeeArgs = {
     biscEmployeeId: Scalars['String']
 }
@@ -456,6 +461,8 @@ export type Mutation = {
     createStudent: StudentType
     updateStudent: StudentType
     createLearningNeed: LearningNeedType
+    updateLearningNeed: LearningNeedType
+    deleteLearningNeed: Scalars['Boolean']
     createParticipation: ParticipationType
     createBiscEmployee: BiscEmployeeType
     updateBiscEmployee: BiscEmployeeType
@@ -576,6 +583,14 @@ export type MutationUpdateStudentArgs = {
 
 export type MutationCreateLearningNeedArgs = {
     input: CreateLearningNeedInputType
+}
+
+export type MutationUpdateLearningNeedArgs = {
+    input: UpdateLearningNeedInputType
+}
+
+export type MutationDeleteLearningNeedArgs = {
+    learningNeedId: Scalars['String']
 }
 
 export type MutationCreateParticipationArgs = {
@@ -759,6 +774,24 @@ export type UpdateStudentInputType = {
 
 export type CreateLearningNeedInputType = {
     studentId: Scalars['String']
+    learningNeedDescription: Scalars['String']
+    learningNeedMotivation: Scalars['String']
+    desiredOutComesGoal: Scalars['String']
+    desiredOutComesTopic: LearningNeedTopicEnum
+    desiredOutComesTopicOther?: Maybe<Scalars['String']>
+    desiredOutComesApplication: LearningNeedApplicationEnum
+    desiredOutComesApplicationOther?: Maybe<Scalars['String']>
+    desiredOutComesLevel: LearningNeedLevelEnum
+    desiredOutComesLevelOther?: Maybe<Scalars['String']>
+    offerDesiredOffer: Scalars['String']
+    offerAdvisedOffer: Scalars['String']
+    offerDifference: LearningNeedOfferDifferenceEnum
+    offerDifferenceOther?: Maybe<Scalars['String']>
+    offerEngagements?: Maybe<Scalars['String']>
+}
+
+export type UpdateLearningNeedInputType = {
+    learningNeedId: Scalars['String']
     learningNeedDescription: Scalars['String']
     learningNeedMotivation: Scalars['String']
     desiredOutComesGoal: Scalars['String']

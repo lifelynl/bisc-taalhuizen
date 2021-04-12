@@ -13,7 +13,7 @@ import {
     LearningNeedService,
     LearningNeedTopicEnum,
 } from './services/LearningNeedService'
-import { CreateLearningNeedInputType } from './types/CreateLearningNeedInputType'
+import { CreateLearningNeedInputType, UpdateLearningNeedInputType } from './types/CreateLearningNeedInputType'
 import { LearningNeedType } from './types/LearningNeedType'
 
 registerEnumType(LearningNeedApplicationEnum, { name: 'LearningNeedApplicationEnum' })
@@ -65,6 +65,21 @@ export class LearningNeedResolver {
         }
 
         return this.createLearningNeedService.createLearingNeed(input)
+    }
+
+    @Mutation(() => LearningNeedType)
+    public async updateLearningNeed(@Args('input') input: UpdateLearningNeedInputType) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async deleteLearningNeed(@Args('learningNeedId') learningNeedId: string) {
+        return undefined
+    }
+
+    @Query(() => LearningNeedType)
+    public async learningNeed(@Args('learningNeedId') learningNeedId: string) {
+        return undefined
     }
 
     // Field resolvers
