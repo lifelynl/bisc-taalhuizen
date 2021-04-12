@@ -90,6 +90,36 @@ class DownloadParticipantReportInputType {
     public dateUntil?: string
 }
 
+@InputType()
+class CreateAanbiederEmployeeDocumentInputType {
+    @Field()
+    public aanbiederEmployeeId!: string
+
+    @Field()
+    public filename!: string
+
+    @Field()
+    public base64data!: string
+}
+
+@ObjectType()
+class AanbiederEmployeeDocumentType {
+    @Field()
+    public id!: string
+
+    @Field()
+    public filename!: string
+
+    @Field()
+    public dateCreated?: string
+}
+
+@ObjectType()
+class AanbiederEmployeeDocumentDownloadType {
+    @Field()
+    public base64data!: string
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -121,6 +151,36 @@ export class JustGraphqlTypesResolver {
     // Participants report
     @Mutation(() => DownloadReportType)
     public async downloadParticipantsReport(@Args('input') input: DownloadParticipantReportInputType) {
+        return undefined
+    }
+
+    // AanbiederEmployee documents
+    @Mutation(() => AanbiederEmployeeDocumentType)
+    public async createAanbiederEmployeeDocument(@Args('input') input: CreateAanbiederEmployeeDocumentInputType) {
+        return undefined
+    }
+
+    @Mutation(() => AanbiederEmployeeDocumentDownloadType)
+    public async downloadAanbiederEmployeeDocument(
+        @Args('aanbiederEmployeeDocumentId') aanbiederEmployeeDocumentId: string
+    ) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async deleteAanbiederEmployeeDocument(
+        @Args('aanbiederEmployeeDocumentId') aanbiederEmployeeDocumentId: string
+    ) {
+        return undefined
+    }
+
+    @Query(() => AanbiederEmployeeDocumentType)
+    public async aanbiederEmployeeDocument(@Args('aanbiederEmployeeDocumentId') aanbiederEmployeeDocumentId: string) {
+        return undefined
+    }
+
+    @Query(() => [AanbiederEmployeeDocumentType])
+    public async aanbiederEmployeeDocuments(@Args('aanbiederEmployeeId') aanbiederEmployeeId: string) {
         return undefined
     }
 }
