@@ -99,6 +99,18 @@ export type AanbiederType = {
     type?: Maybe<Scalars['String']>
 }
 
+export type BiscEmployeeType = {
+    __typename?: 'BiscEmployeeType'
+    id: Scalars['String']
+    givenName: Scalars['String']
+    additionalName?: Maybe<Scalars['String']>
+    familyName: Scalars['String']
+    email: Scalars['String']
+    telephone?: Maybe<Scalars['String']>
+    dateCreated: Scalars['String']
+    dateModified: Scalars['String']
+}
+
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -284,6 +296,8 @@ export type Query = {
     students: Array<StudentType>
     student: StudentType
     learningNeeds: Array<LearningNeedType>
+    biscEmployee: BiscEmployeeType
+    biscEmployees: Array<BiscEmployeeType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -338,6 +352,10 @@ export type QueryLearningNeedsArgs = {
     studentId: Scalars['String']
 }
 
+export type QueryBiscEmployeeArgs = {
+    biscEmployeeId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -363,6 +381,9 @@ export type Mutation = {
     updateStudent: StudentType
     createLearningNeed: LearningNeedType
     createParticipation: ParticipationType
+    createBiscEmployee: BiscEmployeeType
+    updateBiscEmployee: BiscEmployeeType
+    deleteBiscEmployee: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -473,6 +494,18 @@ export type MutationCreateLearningNeedArgs = {
 
 export type MutationCreateParticipationArgs = {
     input: CreateParticipationInputType
+}
+
+export type MutationCreateBiscEmployeeArgs = {
+    input: CreateBiscEmployeeInputType
+}
+
+export type MutationUpdateBiscEmployeeArgs = {
+    input: UpdateBiscEmployeeInputType
+}
+
+export type MutationDeleteBiscEmployeeArgs = {
+    biscEmployeeId: Scalars['String']
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -637,6 +670,23 @@ export type CreateParticipationInputType = {
     detailsStartDate?: Maybe<Scalars['DateTime']>
     detailsEndDate?: Maybe<Scalars['DateTime']>
     detailsEngagements?: Maybe<Scalars['String']>
+}
+
+export type CreateBiscEmployeeInputType = {
+    givenName: Scalars['String']
+    additionalName?: Maybe<Scalars['String']>
+    familyName: Scalars['String']
+    email: Scalars['String']
+    telephone?: Maybe<Scalars['String']>
+}
+
+export type UpdateBiscEmployeeInputType = {
+    biscEmployeeId: Scalars['String']
+    givenName: Scalars['String']
+    additionalName?: Maybe<Scalars['String']>
+    familyName: Scalars['String']
+    email: Scalars['String']
+    telephone?: Maybe<Scalars['String']>
 }
 
 export type ChangePasswordMutationVariables = Exact<{

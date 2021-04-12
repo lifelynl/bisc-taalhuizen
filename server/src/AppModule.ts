@@ -9,6 +9,7 @@ import { AppService } from './AppService'
 import { CommonGroundAPIModule } from './CommonGroundAPI/CommonGroundAPIModule'
 import { Config } from './config'
 import { HealthController } from './HealthController'
+import { JustGraphqlTypesModule } from './JustGraphqlTypes/JustGraphqlTypesModule'
 import { JwtMiddleware } from './JwtMiddleware'
 import { LearningNeedModule } from './LearningNeed/LearningNeedModule'
 import { PersonModule } from './Person/PersonModule'
@@ -56,6 +57,7 @@ import { UserModule } from './User/UserModule'
         AanbiederModule,
         StudentModule,
         LearningNeedModule,
+        JustGraphqlTypesModule,
     ],
     controllers: [HealthController],
     providers: [AppService, AllExceptionsFilter],
