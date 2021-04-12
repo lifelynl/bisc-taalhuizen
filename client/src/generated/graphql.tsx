@@ -111,6 +111,12 @@ export type BiscEmployeeType = {
     dateModified: Scalars['String']
 }
 
+export type DownloadReportType = {
+    __typename?: 'DownloadReportType'
+    filename: Scalars['String']
+    base64data: Scalars['String']
+}
+
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -384,6 +390,7 @@ export type Mutation = {
     createBiscEmployee: BiscEmployeeType
     updateBiscEmployee: BiscEmployeeType
     deleteBiscEmployee: Scalars['Boolean']
+    downloadParticipantsReport: DownloadReportType
 }
 
 export type MutationLoginArgs = {
@@ -506,6 +513,10 @@ export type MutationUpdateBiscEmployeeArgs = {
 
 export type MutationDeleteBiscEmployeeArgs = {
     biscEmployeeId: Scalars['String']
+}
+
+export type MutationDownloadParticipantsReportArgs = {
+    input: DownloadParticipantReportInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -687,6 +698,12 @@ export type UpdateBiscEmployeeInputType = {
     familyName: Scalars['String']
     email: Scalars['String']
     telephone?: Maybe<Scalars['String']>
+}
+
+export type DownloadParticipantReportInputType = {
+    taalhuisId: Scalars['String']
+    dateFrom?: Maybe<Scalars['String']>
+    dateUntil?: Maybe<Scalars['String']>
 }
 
 export type ChangePasswordMutationVariables = Exact<{

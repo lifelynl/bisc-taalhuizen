@@ -69,8 +69,30 @@ export class BiscEmployeeType {
     public dateModified?: string
 }
 
+@ObjectType()
+class DownloadReportType {
+    @Field()
+    public filename!: string
+
+    @Field()
+    public base64data!: string
+}
+
+@InputType()
+class DownloadParticipantReportInputType {
+    @Field()
+    public taalhuisId!: string
+
+    @Field({ nullable: true })
+    public dateFrom?: string
+
+    @Field({ nullable: true })
+    public dateUntil?: string
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
+    // BiscEmployee
     @Mutation(() => BiscEmployeeType)
     public async createBiscEmployee(@Args('input') input: CreateBiscEmployeeInputType) {
         return undefined
@@ -93,6 +115,12 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => [BiscEmployeeType])
     public async biscEmployees() {
+        return undefined
+    }
+
+    // Participants report
+    @Mutation(() => DownloadReportType)
+    public async downloadParticipantsReport(@Args('input') input: DownloadParticipantReportInputType) {
         return undefined
     }
 }
