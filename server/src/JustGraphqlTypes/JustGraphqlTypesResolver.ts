@@ -120,6 +120,24 @@ class AanbiederEmployeeDocumentDownloadType {
     public base64data!: string
 }
 
+@ObjectType()
+class StudentDocumentType extends AanbiederEmployeeDocumentType {}
+
+@ObjectType()
+class StudentDocumentDownloadType extends AanbiederEmployeeDocumentDownloadType {}
+
+@InputType()
+class CreateStudentDocumentInputType {
+    @Field()
+    public studentId!: string
+
+    @Field()
+    public filename!: string
+
+    @Field()
+    public base64data!: string
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -181,6 +199,32 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => [AanbiederEmployeeDocumentType])
     public async aanbiederEmployeeDocuments(@Args('aanbiederEmployeeId') aanbiederEmployeeId: string) {
+        return undefined
+    }
+
+    // Student documents
+    @Mutation(() => StudentDocumentType)
+    public async createStudentDocument(@Args('input') input: CreateStudentDocumentInputType) {
+        return undefined
+    }
+
+    @Mutation(() => StudentDocumentDownloadType)
+    public async downloadStudentDocument(@Args('studentDocumentId') studentDocumentId: string) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async deleteStudentDocument(@Args('studentDocumentId') studentDocumentId: string) {
+        return undefined
+    }
+
+    @Query(() => StudentDocumentType)
+    public async studentDocument(@Args('studentDocumentId') studentDocumentId: string) {
+        return undefined
+    }
+
+    @Query(() => [StudentDocumentType])
+    public async studentDocuments(@Args('studentId') studentId: string) {
         return undefined
     }
 }

@@ -129,6 +129,18 @@ export type AanbiederEmployeeDocumentDownloadType = {
     base64data: Scalars['String']
 }
 
+export type StudentDocumentType = {
+    __typename?: 'StudentDocumentType'
+    id: Scalars['String']
+    filename: Scalars['String']
+    dateCreated: Scalars['String']
+}
+
+export type StudentDocumentDownloadType = {
+    __typename?: 'StudentDocumentDownloadType'
+    base64data: Scalars['String']
+}
+
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -318,6 +330,8 @@ export type Query = {
     biscEmployees: Array<BiscEmployeeType>
     aanbiederEmployeeDocument: AanbiederEmployeeDocumentType
     aanbiederEmployeeDocuments: Array<AanbiederEmployeeDocumentType>
+    studentDocument: StudentDocumentType
+    studentDocuments: Array<StudentDocumentType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -384,6 +398,14 @@ export type QueryAanbiederEmployeeDocumentsArgs = {
     aanbiederEmployeeId: Scalars['String']
 }
 
+export type QueryStudentDocumentArgs = {
+    studentDocumentId: Scalars['String']
+}
+
+export type QueryStudentDocumentsArgs = {
+    studentId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -416,6 +438,9 @@ export type Mutation = {
     createAanbiederEmployeeDocument: AanbiederEmployeeDocumentType
     downloadAanbiederEmployeeDocument: AanbiederEmployeeDocumentDownloadType
     deleteAanbiederEmployeeDocument: Scalars['Boolean']
+    createStudentDocument: StudentDocumentType
+    downloadStudentDocument: StudentDocumentDownloadType
+    deleteStudentDocument: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -554,6 +579,18 @@ export type MutationDownloadAanbiederEmployeeDocumentArgs = {
 
 export type MutationDeleteAanbiederEmployeeDocumentArgs = {
     aanbiederEmployeeDocumentId: Scalars['String']
+}
+
+export type MutationCreateStudentDocumentArgs = {
+    input: CreateStudentDocumentInputType
+}
+
+export type MutationDownloadStudentDocumentArgs = {
+    studentDocumentId: Scalars['String']
+}
+
+export type MutationDeleteStudentDocumentArgs = {
+    studentDocumentId: Scalars['String']
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -745,6 +782,12 @@ export type DownloadParticipantReportInputType = {
 
 export type CreateAanbiederEmployeeDocumentInputType = {
     aanbiederEmployeeId: Scalars['String']
+    filename: Scalars['String']
+    base64data: Scalars['String']
+}
+
+export type CreateStudentDocumentInputType = {
+    studentId: Scalars['String']
     filename: Scalars['String']
     base64data: Scalars['String']
 }
