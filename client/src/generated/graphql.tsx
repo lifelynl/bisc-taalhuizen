@@ -237,6 +237,22 @@ export enum StudentDossierEventEnum {
     Intake = 'INTAKE',
 }
 
+export type TestResultType = {
+    __typename?: 'TestResultType'
+    id: Scalars['String']
+    outComesGoal?: Maybe<Scalars['String']>
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    examUsedExam: Scalars['String']
+    examDate: Scalars['String']
+    examMemo?: Maybe<Scalars['String']>
+    examResult?: Maybe<Scalars['String']>
+}
+
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -682,6 +698,8 @@ export type Query = {
     studentDossierEvents: Array<StudentDossierEventType>
     participations: Array<ParticipationType>
     participation: ParticipationType
+    testResults: Array<TestResultType>
+    testResult: TestResultType
 }
 
 export type QueryTaalhuisArgs = {
@@ -776,6 +794,14 @@ export type QueryParticipationArgs = {
     participationId: Scalars['String']
 }
 
+export type QueryTestResultsArgs = {
+    participationId: Scalars['String']
+}
+
+export type QueryTestResultArgs = {
+    testResultId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -818,6 +844,9 @@ export type Mutation = {
     deleteStudentDossierEvent: Scalars['Boolean']
     deleteParticipation: Scalars['Boolean']
     updateParticipation: ParticipationType
+    createTestResult: TestResultType
+    updateTestResult: TestResultType
+    deleteTestResult: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -996,6 +1025,18 @@ export type MutationDeleteParticipationArgs = {
 
 export type MutationUpdateParticipationArgs = {
     input: UpdateParticipationInputType
+}
+
+export type MutationCreateTestResultArgs = {
+    input: CreateTestResultInputType
+}
+
+export type MutationUpdateTestResultArgs = {
+    input: UpdateTestResultInputType
+}
+
+export type MutationDeleteTestResultArgs = {
+    testResultId: Scalars['String']
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1415,6 +1456,34 @@ export enum ParticipationPresenceEndParticipationReasonEnum {
     FamilyCircumstances = 'FAMILY_CIRCUMSTANCES',
     DoesNotMeetExpectations = 'DOES_NOT_MEET_EXPECTATIONS',
     Other = 'OTHER',
+}
+
+export type CreateTestResultInputType = {
+    learningNeedId: Scalars['String']
+    outComesGoal: Scalars['String']
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    examUsedExam: Scalars['String']
+    examDate: Scalars['String']
+    examMemo?: Maybe<Scalars['String']>
+}
+
+export type UpdateTestResultInputType = {
+    testResultId: Scalars['String']
+    outComesGoal: Scalars['String']
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    examUsedExam: Scalars['String']
+    examDate: Scalars['String']
+    examMemo?: Maybe<Scalars['String']>
 }
 
 export type ChangePasswordMutationVariables = Exact<{

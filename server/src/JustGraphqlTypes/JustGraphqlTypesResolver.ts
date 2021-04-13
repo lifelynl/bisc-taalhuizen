@@ -1,5 +1,10 @@
 import { Args, Field, InputType, Mutation, ObjectType, Query, registerEnumType, Resolver } from '@nestjs/graphql'
 import { IsEmail } from 'class-validator'
+import {
+    LearningNeedApplicationEnum,
+    LearningNeedLevelEnum,
+    LearningNeedTopicEnum,
+} from 'src/LearningNeed/services/LearningNeedService'
 import { UpdateParticipationInputType } from 'src/LearningNeed/types/CreateParticipationInputType'
 import { ParticipationType } from 'src/LearningNeed/types/ParticipationType'
 
@@ -171,7 +176,7 @@ class UpdateStudentDossierEventInputType {
     public studentDossierEventId!: string
 
     @Field(() => StudentDossierEventEnum)
-    public event!: string
+    public event!: StudentDossierEventEnum
 
     @Field()
     public eventDate!: string
@@ -186,13 +191,126 @@ class StudentDossierEventType {
     public id!: string
 
     @Field(() => StudentDossierEventEnum)
-    public event!: string
+    public event!: StudentDossierEventEnum
 
     @Field()
     public eventDate!: string
 
     @Field()
     public eventDescription!: string
+}
+
+@InputType()
+class CreateTestResultInputType {
+    @Field()
+    // public participationId!: string
+    public learningNeedId!: string
+
+    @Field()
+    public outComesGoal!: string
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic?: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther?: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication!: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther?: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel!: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther?: string | null
+
+    @Field()
+    public examUsedExam!: string
+
+    @Field()
+    public examDate!: string
+
+    @Field({ nullable: true })
+    public examMemo!: string
+}
+
+@InputType()
+class UpdateTestResultInputType {
+    @Field()
+    public testResultId!: string
+
+    @Field()
+    public outComesGoal!: string
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic?: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther?: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication!: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther?: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel!: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther?: string | null
+
+    @Field()
+    public examUsedExam!: string
+
+    @Field()
+    public examDate!: string
+
+    @Field({ nullable: true })
+    public examMemo!: string
+}
+
+@ObjectType()
+class TestResultType {
+    @Field()
+    public id!: string
+
+    @Field(() => String, { nullable: true })
+    public outComesGoal!: string | null
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic!: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther!: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication!: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther!: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel!: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther!: string | null
+
+    @Field()
+    public examUsedExam!: string
+
+    @Field()
+    public examDate!: string
+
+    @Field({ nullable: true })
+    public examMemo!: string
+
+    // TODO: Maybe enum?
+    @Field({ nullable: true })
+    public examResult!: string
 }
 
 @Resolver()
@@ -329,6 +447,33 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => ParticipationType)
     public async participation(@Args('participationId') participationId: string) {
+        return undefined
+    }
+
+    // Test result
+    @Mutation(() => TestResultType)
+    public async createTestResult(@Args('input') input: CreateTestResultInputType) {
+        return undefined
+    }
+
+    @Mutation(() => TestResultType)
+    public async updateTestResult(@Args('input') input: UpdateTestResultInputType) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async deleteTestResult(@Args('testResultId') testResultId: string) {
+        return undefined
+    }
+
+    @Query(() => [TestResultType])
+    public async testResults(@Args('participationId') participationId: string) {
+        // public async testResults(@Args('learningNeedId') learningNeedId: string) {
+        return undefined
+    }
+
+    @Query(() => TestResultType)
+    public async testResult(@Args('testResultId') testResultId: string) {
         return undefined
     }
 }
