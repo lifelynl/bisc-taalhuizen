@@ -205,8 +205,8 @@ class StudentDossierEventType {
 @InputType()
 class CreateTestResultInputType {
     @Field()
-    // public participationId!: string
-    public learningNeedId!: string
+    public participationId!: string
+    // public learningNeedId!: string
 
     @Field()
     public outComesGoal!: string
@@ -364,6 +364,75 @@ class CreateGroupAvailabilityInputType {
 class CreateGroupInputType {
     @Field()
     public aanbiederId!: string
+
+    @Field()
+    public name!: string
+
+    @Field(() => GroupTypeCourseEnum)
+    public typeCourse!: GroupTypeCourseEnum
+
+    @Field(() => String)
+    public outComesGoal?: string
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic?: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther?: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication?: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther?: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel?: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther?: string | null
+
+    @Field()
+    public detailsIsFormal!: boolean
+
+    @Field(() => Int)
+    public detailsTotalClassHours!: number
+
+    @Field()
+    public detailsCertificateWillBeAwarded!: boolean
+
+    @Field(() => String, { nullable: true })
+    public detailsStartDate?: string | null
+
+    @Field(() => String, { nullable: true })
+    public detailsEndDate?: string | null
+
+    @Field({ nullable: true })
+    public availability?: CreateGroupAvailabilityInputType
+
+    @Field({ nullable: true })
+    public availabilityNotes?: string
+
+    @Field()
+    public generalLocation?: string
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMin?: number
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMax?: number
+
+    @Field({ nullable: true })
+    public generalEvaluation?: string
+
+    @Field(() => [String], { nullable: true })
+    public aanbiederEmployeeIds?: string[]
+}
+
+@InputType()
+class UpdateGroupInputType {
+    @Field()
+    public groupId!: string
 
     @Field()
     public name!: string
@@ -704,13 +773,42 @@ export class JustGraphqlTypesResolver {
     // AanbiederEmployee mentees
     @Query(() => [StudentType])
     public async aanbiederEmployeeMentees(@Args('anbiederEmployeeId') anbiederEmployeeId: string) {
-        // public async testResults(@Args('learningNeedId') learningNeedId: string) {
         return undefined
     }
 
     // Group
     @Mutation(() => GroupType)
     public async createGroup(@Args('input') input: CreateGroupInputType) {
+        return undefined
+    }
+
+    @Mutation(() => GroupType)
+    public async updateGroup(@Args('input') input: UpdateGroupInputType) {
+        return undefined
+    }
+
+    @Query(() => GroupType)
+    public async group(@Args('groupId') groupId: string) {
+        return undefined
+    }
+
+    @Query(() => [GroupType])
+    public async activeGroups(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
+
+    @Query(() => [GroupType])
+    public async completedGroups(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
+
+    @Query(() => [GroupType])
+    public async futureGroups(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
+
+    @Query(() => [StudentType])
+    public async groupStudents(@Args('groupId') groupId: string) {
         return undefined
     }
 }

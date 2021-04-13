@@ -848,6 +848,11 @@ export type Query = {
     testResults: Array<TestResultType>
     testResult: TestResultType
     aanbiederEmployeeMentees: Array<StudentType>
+    group: GroupType
+    activeGroups: Array<GroupType>
+    completedGroups: Array<GroupType>
+    futureGroups: Array<GroupType>
+    groupStudents: Array<StudentType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -954,6 +959,26 @@ export type QueryAanbiederEmployeeMenteesArgs = {
     anbiederEmployeeId: Scalars['String']
 }
 
+export type QueryGroupArgs = {
+    groupId: Scalars['String']
+}
+
+export type QueryActiveGroupsArgs = {
+    aanbiederId: Scalars['String']
+}
+
+export type QueryCompletedGroupsArgs = {
+    aanbiederId: Scalars['String']
+}
+
+export type QueryFutureGroupsArgs = {
+    aanbiederId: Scalars['String']
+}
+
+export type QueryGroupStudentsArgs = {
+    groupId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -1000,6 +1025,7 @@ export type Mutation = {
     updateTestResult: TestResultType
     deleteTestResult: Scalars['Boolean']
     createGroup: GroupType
+    updateGroup: GroupType
 }
 
 export type MutationLoginArgs = {
@@ -1194,6 +1220,10 @@ export type MutationDeleteTestResultArgs = {
 
 export type MutationCreateGroupArgs = {
     input: CreateGroupInputType
+}
+
+export type MutationUpdateGroupArgs = {
+    input: UpdateGroupInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1700,7 +1730,7 @@ export enum ParticipationPresenceEndParticipationReasonEnum {
 }
 
 export type CreateTestResultInputType = {
-    learningNeedId: Scalars['String']
+    participationId: Scalars['String']
     outComesGoal: Scalars['String']
     outComesTopic: LearningNeedTopicEnum
     outComesTopicOther?: Maybe<Scalars['String']>
@@ -1766,6 +1796,31 @@ export type CreateGroupAvailabilityDayInputType = {
     morning: Scalars['Boolean']
     afternoon: Scalars['Boolean']
     evening: Scalars['Boolean']
+}
+
+export type UpdateGroupInputType = {
+    groupId: Scalars['String']
+    name: Scalars['String']
+    typeCourse: GroupTypeCourseEnum
+    outComesGoal: Scalars['String']
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    detailsIsFormal: Scalars['Boolean']
+    detailsTotalClassHours: Scalars['Int']
+    detailsCertificateWillBeAwarded: Scalars['Boolean']
+    detailsStartDate?: Maybe<Scalars['String']>
+    detailsEndDate?: Maybe<Scalars['String']>
+    availability?: Maybe<CreateGroupAvailabilityInputType>
+    availabilityNotes?: Maybe<Scalars['String']>
+    generalLocation: Scalars['String']
+    generalParticipantsMin?: Maybe<Scalars['Int']>
+    generalParticipantsMax?: Maybe<Scalars['Int']>
+    generalEvaluation?: Maybe<Scalars['String']>
+    aanbiederEmployeeIds?: Maybe<Array<Scalars['String']>>
 }
 
 export type ChangePasswordMutationVariables = Exact<{
