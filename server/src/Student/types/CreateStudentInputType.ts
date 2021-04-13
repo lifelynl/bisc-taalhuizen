@@ -45,7 +45,7 @@ class CreateStudentPersonInputType {
     public dateOfBirth!: string
 }
 
-enum StudentContactPreferenceEnum {
+export enum StudentContactPreferenceEnum {
     PHONECALL = 'PHONECALL', // Bellen
     WHATSAPP = 'WHATSAPP', // Whatsapp
     EMAIL = 'EMAIL', // Mailen
@@ -86,7 +86,7 @@ class CreateStudentContactInputType {
     public contactPreferenceOther?: string
 }
 
-enum StudentFamilyCompositionEnum {
+export enum StudentFamilyCompositionEnum {
     MARRIED_PARTNER = 'MARRIED_PARTNER', // Getrouwd/partner
     SINGLE = 'SINGLE', // Alleenstaand
     DIVORCED = 'DIVORCED', // Gescheiden
@@ -115,7 +115,7 @@ class CreateStudentGeneralInputType {
     public childrenDatesOfBirth?: string
 }
 
-enum StudentReferringOrganizationEnum {
+export enum StudentReferringOrganizationEnum {
     UWV = 'UWV', // UWV
     SOCIAL_SERVICE = 'SOCIAL_SERVICE', // Sociale dienst
     LIBRARY = 'LIBRARY', // Bibliotheek
@@ -139,7 +139,7 @@ class CreateStudentReferrerInputType {
     public email?: string
 }
 
-enum StudentFoundViaEnum {
+export enum StudentFoundViaEnum {
     VOLUNTEER_CENTER = 'VOLUNTEER_CENTER', // Vrijwilligerscentrale
     LIBRARY_WEBSITE = 'LIBRARY_WEBSITE', // Website bibliotheek
     SOCIAL_MEDIA = 'SOCIAL_MEDIA', // Social media
@@ -149,7 +149,7 @@ enum StudentFoundViaEnum {
 }
 registerEnumType(StudentFoundViaEnum, { name: 'StudentFoundViaEnum' })
 
-enum StudentNetworkEnum {
+export enum StudentNetworkEnum {
     HOUSEHOLD_MEMBERS = 'HOUSEHOLD_MEMBERS', // Gezinsleden
     NEIGHBORS = 'NEIGHBORS', // Buren
     FAMILY_MEMBERS = 'FAMILY_MEMBERS', // Familie (buiten gezin om)
@@ -185,13 +185,13 @@ class CreateStudentBackgroundInputType {
     public participationLadder?: number
 }
 
-enum StudentDutchNTLevelEnum {
+export enum StudentDutchNTLevelEnum {
     NT1 = 'NT1',
     NT2 = 'NT2',
 }
 registerEnumType(StudentDutchNTLevelEnum, { name: 'StudentDutchNTLevelEnum' })
 
-enum StudentDutchLastKnownLevelEnum {
+export enum StudentDutchLastKnownLevelEnum {
     A0 = 'A0',
     A1 = 'A1',
     A2 = 'A2',
@@ -221,14 +221,14 @@ class CreateStudentDutchNTInputType {
     public lastKnownLevel?: StudentDutchLastKnownLevelEnum
 }
 
-enum StudentSpeakingLevelEnum {
+export enum StudentSpeakingLevelEnum {
     BEGINNER = 'BEGINNER', // Beginner
     REASONABLE = 'REASONABLE', // Redelijk
     ADVANCED = 'ADVANCED', // Gevorderd
 }
 registerEnumType(StudentSpeakingLevelEnum, { name: 'StudentSpeakingLevelEnum' })
 
-enum StudentLastFollowedEducationEnum {
+export enum StudentLastFollowedEducationEnum {
     NO_EDUCATION = 'NO_EDUCATION', // Geen onderwijs
     SOME_YEARS_PO = 'SOME_YEARS_PO', // enkele jaren po
     PO = 'PO', // po
@@ -239,14 +239,14 @@ enum StudentLastFollowedEducationEnum {
 }
 registerEnumType(StudentLastFollowedEducationEnum, { name: 'StudentLastFollowedEducationEnum' })
 
-enum StudentFollowingEducationRightNowEnum {
+export enum StudentFollowingEducationRightNowEnum {
     YES = 'YES',
     NO = 'NO',
     NO_BUT_DID_EARLIER = 'NO_BUT_DID_EARLIER',
 }
 registerEnumType(StudentFollowingEducationRightNowEnum, { name: 'StudentFollowingEducationRightNowEnum' })
 
-enum StudentFollowingEducationRightNowLevelEnum {
+export enum StudentFollowingEducationRightNowLevelEnum {
     LANGUAGE_COURSE = 'LANGUAGE_COURSE', // Taalles
     BO = 'BO', // Beroepsopleiding
     HBO = 'HBO', // Hbo
@@ -291,14 +291,14 @@ class CreateStudentEducationInputType {
     public followingEducationRightNowNoGotCertificate?: boolean
 }
 
-enum StudentFollowingCourseTeacherEnum {
+export enum StudentFollowingCourseTeacherEnum {
     PROFESSIONAL = 'PROFESSIONAL',
     VOLUNTEER = 'VOLUNTEER',
     BOTH = 'PROFESSIONAL_AND_VOLUNTEER',
 }
 registerEnumType(StudentFollowingCourseTeacherEnum, { name: 'StudentFollowingCourseTeacherEnum' })
 
-enum StudentFollowingCourseGroupEnum {
+export enum StudentFollowingCourseGroupEnum {
     INDIVIDUALLY = 'INDIVIDUALLY',
     GROUP = 'GROUP',
 }
@@ -325,7 +325,7 @@ class CreateStudentCourseInputType {
     public doesCourseProvideCertificate?: boolean
 }
 
-enum StudentJobDaytimeActivitiesEnum {
+export enum StudentJobDaytimeActivitiesEnum {
     SEARCHING_FOR_JOB = 'SEARCHING_FOR_JOB', // Op zoek naar werk
     RE_INTEGRATION = 'RE_INTEGRATION', // Re-integratie
     SCHOOL = 'SCHOOL', // Studie/school
@@ -350,7 +350,7 @@ class CreateStudentJobInputType {
     public dayTimeActivitiesOther?: string
 }
 
-enum StudentMotivationDesiredSkillsEnum {
+export enum StudentMotivationDesiredSkillsEnum {
     KLIKTIK = 'KLIKTIK', // Klik & Tik
     USING_WHATSAPP = 'USING_WHATSAPP', // Leren whatsappen
     USING_SKYPE = 'USING_SKYPE', // Leren skypen
@@ -372,7 +372,7 @@ enum StudentMotivationDesiredSkillsEnum {
 }
 registerEnumType(StudentMotivationDesiredSkillsEnum, { name: 'StudentMotivationDesiredSkillsEnum' })
 
-enum StudentMotivationDesiredLearningMethodsEnum {
+export enum StudentMotivationDesiredLearningMethodsEnum {
     IN_A_GROUP = 'IN_A_GROUP', // In een groep
     ONE_ON_ONE = 'ONE_ON_ONE', // Een-op-een
     HOME_ENVIRONMENT = 'HOME_ENVIRONMENT', // In thuis omgeving
@@ -462,7 +462,7 @@ class CreateStudentAvailabilityInputType {
     public availabilityNotes?: string
 }
 
-enum StudentReadingTestResultEnum {
+export enum StudentReadingTestResultEnum {
     CAN_NOT_READ = 'CAN_NOT_READ', // Kan niet lezen
     A0 = 'A0',
     A1 = 'A1',
@@ -474,7 +474,7 @@ enum StudentReadingTestResultEnum {
 }
 registerEnumType(StudentReadingTestResultEnum, { name: 'StudentReadingTestResultEnum' })
 
-enum StudentWritingTestResultEnum {
+export enum StudentWritingTestResultEnum {
     CAN_NOT_WRITE = 'CAN_NOT_WRITE', // Kan niet schrijven
     WRITE_NAW_DETAILS = 'WRITE_NAW_DETAILS', // Kan NAW gegevens schrijven
     WRITE_SIMPLE_TEXTS = 'WRITE_SIMPLE_TEXTS', // Kan eenvoudige teksten schrijven (boodschappenbriefje etc.)
@@ -498,12 +498,7 @@ class CreateStudentPermissionInputType {
 }
 
 @InputType()
-// export class CreateStudentInputType implements CreateStudentInput {
-export class CreateStudentInputType {
-    @Field()
-    @IsUrl()
-    public taalhuisId!: string
-
+export class StudentBaseInputFields {
     // TOOD: Disable field to not break the frontend
     @Field({ nullable: true })
     @Type(() => CreateStudentCivicIntegrationInputType)
@@ -593,6 +588,14 @@ export class CreateStudentInputType {
     @Type(() => CreateStudentPermissionInputType)
     @ValidateNested()
     public permissionDetails!: CreateStudentPermissionInputType
+}
+
+@InputType()
+// export class CreateStudentInputType implements CreateStudentInput {
+export class CreateStudentInputType extends StudentBaseInputFields {
+    @Field()
+    @IsUrl()
+    public taalhuisId!: string
 
     // @Field()
     // public givenName!: string

@@ -755,7 +755,6 @@ export type RegisterStudentRegistrarInputType = {
 }
 
 export type CreateStudentInputType = {
-    taalhuisId: Scalars['String']
     civicIntegrationDetails?: Maybe<CreateStudentCivicIntegrationInputType>
     personDetails: CreateStudentPersonInputType
     contactDetails?: Maybe<CreateStudentContactInputType>
@@ -772,6 +771,7 @@ export type CreateStudentInputType = {
     readingTestResult?: Maybe<StudentReadingTestResultEnum>
     writingTestResult?: Maybe<StudentWritingTestResultEnum>
     permissionDetails: CreateStudentPermissionInputType
+    taalhuisId: Scalars['String']
 }
 
 export type CreateStudentCivicIntegrationInputType = {
@@ -1076,12 +1076,23 @@ export type CreateStudentPermissionInputType = {
 }
 
 export type UpdateStudentInputType = {
+    civicIntegrationDetails?: Maybe<CreateStudentCivicIntegrationInputType>
+    personDetails: CreateStudentPersonInputType
+    contactDetails?: Maybe<CreateStudentContactInputType>
+    generalDetails?: Maybe<CreateStudentGeneralInputType>
+    referrerDetails?: Maybe<CreateStudentReferrerInputType>
+    backgroundDetails?: Maybe<CreateStudentBackgroundInputType>
+    dutchNTDetails?: Maybe<CreateStudentDutchNtInputType>
+    speakingLevel?: Maybe<StudentSpeakingLevelEnum>
+    educationDetails?: Maybe<CreateStudentEducationInputType>
+    courseDetails?: Maybe<CreateStudentCourseInputType>
+    jobDetails?: Maybe<CreateStudentJobInputType>
+    motivationDetails?: Maybe<CreateStudentMotivationInputType>
+    availabilityDetails?: Maybe<CreateStudentAvailabilityInputType>
+    readingTestResult?: Maybe<StudentReadingTestResultEnum>
+    writingTestResult?: Maybe<StudentWritingTestResultEnum>
+    permissionDetails: CreateStudentPermissionInputType
     studentId: Scalars['String']
-    givenName: Scalars['String']
-    additionalName?: Maybe<Scalars['String']>
-    familyName: Scalars['String']
-    email?: Maybe<Scalars['String']>
-    telephone?: Maybe<Scalars['String']>
 }
 
 export type CreateLearningNeedInputType = {
