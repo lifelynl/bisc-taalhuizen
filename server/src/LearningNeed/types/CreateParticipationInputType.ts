@@ -1,4 +1,4 @@
-import { Field, Float, InputType } from '@nestjs/graphql'
+import { Field, Float, InputType, registerEnumType } from '@nestjs/graphql'
 import { IsUrl } from 'class-validator'
 import {
     LearningNeedApplicationEnum,
@@ -12,11 +12,7 @@ import {
 } from '../services/ParticipationService'
 
 @InputType()
-export class CreateParticipationInputType implements CreateParticipationInput {
-    @Field()
-    @IsUrl()
-    public learningNeedId!: string
-
+class BaseParticipationInputType {
     @Field(() => String, { nullable: true })
     public aanbiederId?: string | null
 
@@ -73,4 +69,42 @@ export class CreateParticipationInputType implements CreateParticipationInput {
 
     @Field(() => String, { nullable: true })
     public detailsEngagements?: string | null
+}
+
+@InputType()
+export class CreateParticipationInputType extends BaseParticipationInputType implements CreateParticipationInput {
+    @Field()
+    @IsUrl()
+    public learningNeedId!: string
+}
+
+enum ParticipationPresenceEndParticipationReasonEnum {
+    MOVED = 'MOVED', // verhuisd
+    JOB = 'JOB', // werk
+    ILLNESS = 'ILLNESS', // ziekte/gezondheid
+    DEATH = 'DEATH', // overlijden
+    COMPLETED_SUCCESSFULLY = 'COMPLETED_SUCCESSFULLY', // succesvol afgerond
+    FAMILY_CIRCUMSTANCES = 'FAMILY_CIRCUMSTANCES', // familie omstandigheden
+    DOES_NOT_MEET_EXPECTATIONS = 'DOES_NOT_MEET_EXPECTATIONS', // voldoet niet aan verwachting deelnemer
+    OTHER = 'OTHER', // overig
+}
+
+registerEnumType(ParticipationPresenceEndParticipationReasonEnum, {
+    name: 'ParticipationPresenceEndParticipationReasonEnum',
+})
+
+@InputType()
+export class UpdateParticipationInputType extends BaseParticipationInputType {
+    @Field()
+    @IsUrl()
+    public participationId!: string
+
+    @Field(() => Date, { nullable: true })
+    public presenceStartDate?: Date
+
+    @Field(() => Date, { nullable: true })
+    public presenceEndDate?: Date
+
+    @Field(() => ParticipationPresenceEndParticipationReasonEnum, { nullable: true })
+    public presenceEndParticipationReason?: ParticipationPresenceEndParticipationReasonEnum
 }

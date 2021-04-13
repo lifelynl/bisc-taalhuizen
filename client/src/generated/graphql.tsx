@@ -99,6 +99,86 @@ export type AanbiederType = {
     type?: Maybe<Scalars['String']>
 }
 
+export type ParticipationType = {
+    __typename?: 'ParticipationType'
+    id: Scalars['String']
+    status: ParticipationStatusEnum
+    aanbiederId?: Maybe<Scalars['String']>
+    aanbiederName?: Maybe<Scalars['String']>
+    aanbiederNote?: Maybe<Scalars['String']>
+    offerName?: Maybe<Scalars['String']>
+    offerCourse?: Maybe<ParticipationOfferCourseEnum>
+    outComesGoal?: Maybe<Scalars['String']>
+    outComesTopic?: Maybe<LearningNeedTopicEnum>
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication?: Maybe<LearningNeedApplicationEnum>
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel?: Maybe<LearningNeedLevelEnum>
+    outComesLevelOther?: Maybe<Scalars['String']>
+    detailsIsFormal?: Maybe<Scalars['Boolean']>
+    detailsGroupFormation?: Maybe<ParticipationGroupFormationEnum>
+    detailsTotalClassHours?: Maybe<Scalars['Float']>
+    detailsCertificateWillBeAwarded?: Maybe<Scalars['Boolean']>
+    detailsStartDate?: Maybe<Scalars['DateTime']>
+    detailsEndDate?: Maybe<Scalars['DateTime']>
+    detailsEngagements?: Maybe<Scalars['String']>
+}
+
+export enum ParticipationStatusEnum {
+    Active = 'ACTIVE',
+    Completed = 'COMPLETED',
+    Referred = 'REFERRED',
+}
+
+export enum ParticipationOfferCourseEnum {
+    Language = 'LANGUAGE',
+    Math = 'MATH',
+    Digital = 'DIGITAL',
+    Other = 'OTHER',
+}
+
+export enum LearningNeedTopicEnum {
+    DutchReading = 'DUTCH_READING',
+    DutchWriting = 'DUTCH_WRITING',
+    MathNumbers = 'MATH_NUMBERS',
+    MathProportion = 'MATH_PROPORTION',
+    MathGeometry = 'MATH_GEOMETRY',
+    MathLinks = 'MATH_LINKS',
+    DigitalUsingIctSystems = 'DIGITAL_USING_ICT_SYSTEMS',
+    DigitalSearchingInformation = 'DIGITAL_SEARCHING_INFORMATION',
+    DigitalProcessingInformation = 'DIGITAL_PROCESSING_INFORMATION',
+    DigitalCommunication = 'DIGITAL_COMMUNICATION',
+    Knowledge = 'KNOWLEDGE',
+    Skills = 'SKILLS',
+    Attitude = 'ATTITUDE',
+    Behaviour = 'BEHAVIOUR',
+    Other = 'OTHER',
+}
+
+export enum LearningNeedApplicationEnum {
+    FamilyAndParenting = 'FAMILY_AND_PARENTING',
+    LaborMarketAndWork = 'LABOR_MARKET_AND_WORK',
+    HealthAndWellbeing = 'HEALTH_AND_WELLBEING',
+    AdministrationAndFinance = 'ADMINISTRATION_AND_FINANCE',
+    HousingAndNeighborhood = 'HOUSING_AND_NEIGHBORHOOD',
+    Selfreliance = 'SELFRELIANCE',
+    Other = 'OTHER',
+}
+
+export enum LearningNeedLevelEnum {
+    Inflow = 'INFLOW',
+    Nlqf1 = 'NLQF1',
+    Nlqf2 = 'NLQF2',
+    Nlqf3 = 'NLQF3',
+    Nlqf4 = 'NLQF4',
+    Other = 'OTHER',
+}
+
+export enum ParticipationGroupFormationEnum {
+    Individually = 'INDIVIDUALLY',
+    InAGroup = 'IN_A_GROUP',
+}
+
 export type BiscEmployeeType = {
     __typename?: 'BiscEmployeeType'
     id: Scalars['String']
@@ -514,86 +594,6 @@ export enum StudentWritingTestResultEnum {
     WriteSimpleLetters = 'WRITE_SIMPLE_LETTERS',
 }
 
-export type ParticipationType = {
-    __typename?: 'ParticipationType'
-    id: Scalars['String']
-    status: ParticipationStatusEnum
-    aanbiederId?: Maybe<Scalars['String']>
-    aanbiederName?: Maybe<Scalars['String']>
-    aanbiederNote?: Maybe<Scalars['String']>
-    offerName?: Maybe<Scalars['String']>
-    offerCourse?: Maybe<ParticipationOfferCourseEnum>
-    outComesGoal?: Maybe<Scalars['String']>
-    outComesTopic?: Maybe<LearningNeedTopicEnum>
-    outComesTopicOther?: Maybe<Scalars['String']>
-    outComesApplication?: Maybe<LearningNeedApplicationEnum>
-    outComesApplicationOther?: Maybe<Scalars['String']>
-    outComesLevel?: Maybe<LearningNeedLevelEnum>
-    outComesLevelOther?: Maybe<Scalars['String']>
-    detailsIsFormal?: Maybe<Scalars['Boolean']>
-    detailsGroupFormation?: Maybe<ParticipationGroupFormationEnum>
-    detailsTotalClassHours?: Maybe<Scalars['Float']>
-    detailsCertificateWillBeAwarded?: Maybe<Scalars['Boolean']>
-    detailsStartDate?: Maybe<Scalars['DateTime']>
-    detailsEndDate?: Maybe<Scalars['DateTime']>
-    detailsEngagements?: Maybe<Scalars['String']>
-}
-
-export enum ParticipationStatusEnum {
-    Active = 'ACTIVE',
-    Completed = 'COMPLETED',
-    Referred = 'REFERRED',
-}
-
-export enum ParticipationOfferCourseEnum {
-    Language = 'LANGUAGE',
-    Math = 'MATH',
-    Digital = 'DIGITAL',
-    Other = 'OTHER',
-}
-
-export enum LearningNeedTopicEnum {
-    DutchReading = 'DUTCH_READING',
-    DutchWriting = 'DUTCH_WRITING',
-    MathNumbers = 'MATH_NUMBERS',
-    MathProportion = 'MATH_PROPORTION',
-    MathGeometry = 'MATH_GEOMETRY',
-    MathLinks = 'MATH_LINKS',
-    DigitalUsingIctSystems = 'DIGITAL_USING_ICT_SYSTEMS',
-    DigitalSearchingInformation = 'DIGITAL_SEARCHING_INFORMATION',
-    DigitalProcessingInformation = 'DIGITAL_PROCESSING_INFORMATION',
-    DigitalCommunication = 'DIGITAL_COMMUNICATION',
-    Knowledge = 'KNOWLEDGE',
-    Skills = 'SKILLS',
-    Attitude = 'ATTITUDE',
-    Behaviour = 'BEHAVIOUR',
-    Other = 'OTHER',
-}
-
-export enum LearningNeedApplicationEnum {
-    FamilyAndParenting = 'FAMILY_AND_PARENTING',
-    LaborMarketAndWork = 'LABOR_MARKET_AND_WORK',
-    HealthAndWellbeing = 'HEALTH_AND_WELLBEING',
-    AdministrationAndFinance = 'ADMINISTRATION_AND_FINANCE',
-    HousingAndNeighborhood = 'HOUSING_AND_NEIGHBORHOOD',
-    Selfreliance = 'SELFRELIANCE',
-    Other = 'OTHER',
-}
-
-export enum LearningNeedLevelEnum {
-    Inflow = 'INFLOW',
-    Nlqf1 = 'NLQF1',
-    Nlqf2 = 'NLQF2',
-    Nlqf3 = 'NLQF3',
-    Nlqf4 = 'NLQF4',
-    Other = 'OTHER',
-}
-
-export enum ParticipationGroupFormationEnum {
-    Individually = 'INDIVIDUALLY',
-    InAGroup = 'IN_A_GROUP',
-}
-
 export type LearningNeedType = {
     __typename?: 'LearningNeedType'
     id: Scalars['String']
@@ -680,6 +680,8 @@ export type Query = {
     studentDocuments: Array<StudentDocumentType>
     studentDossierEvent: StudentDossierEventType
     studentDossierEvents: Array<StudentDossierEventType>
+    participations: Array<ParticipationType>
+    participation: ParticipationType
 }
 
 export type QueryTaalhuisArgs = {
@@ -766,6 +768,14 @@ export type QueryStudentDossierEventsArgs = {
     studentId: Scalars['String']
 }
 
+export type QueryParticipationsArgs = {
+    learningNeedId: Scalars['String']
+}
+
+export type QueryParticipationArgs = {
+    participationId: Scalars['String']
+}
+
 export type Mutation = {
     __typename?: 'Mutation'
     login: RawReturnType
@@ -806,6 +816,8 @@ export type Mutation = {
     createStudentDossierEvent: StudentDossierEventType
     updateStudentDossierEvent: StudentDossierEventType
     deleteStudentDossierEvent: Scalars['Boolean']
+    deleteParticipation: Scalars['Boolean']
+    updateParticipation: ParticipationType
 }
 
 export type MutationLoginArgs = {
@@ -976,6 +988,14 @@ export type MutationUpdateStudentDossierEventArgs = {
 
 export type MutationDeleteStudentDossierEventArgs = {
     studentDossierEventId: Scalars['String']
+}
+
+export type MutationDeleteParticipationArgs = {
+    participationId: Scalars['String']
+}
+
+export type MutationUpdateParticipationArgs = {
+    input: UpdateParticipationInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1289,7 +1309,6 @@ export type UpdateLearningNeedInputType = {
 }
 
 export type CreateParticipationInputType = {
-    learningNeedId: Scalars['String']
     aanbiederId?: Maybe<Scalars['String']>
     aanbiederName?: Maybe<Scalars['String']>
     aanbiederNote?: Maybe<Scalars['String']>
@@ -1309,6 +1328,7 @@ export type CreateParticipationInputType = {
     detailsStartDate?: Maybe<Scalars['DateTime']>
     detailsEndDate?: Maybe<Scalars['DateTime']>
     detailsEngagements?: Maybe<Scalars['String']>
+    learningNeedId: Scalars['String']
 }
 
 export type CreateBiscEmployeeInputType = {
@@ -1358,6 +1378,43 @@ export type UpdateStudentDossierEventInputType = {
     event: StudentDossierEventEnum
     eventDate: Scalars['String']
     eventDescription: Scalars['String']
+}
+
+export type UpdateParticipationInputType = {
+    aanbiederId?: Maybe<Scalars['String']>
+    aanbiederName?: Maybe<Scalars['String']>
+    aanbiederNote?: Maybe<Scalars['String']>
+    offerName?: Maybe<Scalars['String']>
+    offerCourse?: Maybe<ParticipationOfferCourseEnum>
+    outComesGoal?: Maybe<Scalars['String']>
+    outComesTopic?: Maybe<LearningNeedTopicEnum>
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication?: Maybe<LearningNeedApplicationEnum>
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel?: Maybe<LearningNeedLevelEnum>
+    outComesLevelOther?: Maybe<Scalars['String']>
+    detailsIsFormal?: Maybe<Scalars['Boolean']>
+    detailsGroupFormation?: Maybe<ParticipationGroupFormationEnum>
+    detailsTotalClassHours?: Maybe<Scalars['Float']>
+    detailsCertificateWillBeAwarded?: Maybe<Scalars['Boolean']>
+    detailsStartDate?: Maybe<Scalars['DateTime']>
+    detailsEndDate?: Maybe<Scalars['DateTime']>
+    detailsEngagements?: Maybe<Scalars['String']>
+    participationId: Scalars['String']
+    presenceStartDate?: Maybe<Scalars['DateTime']>
+    presenceEndDate?: Maybe<Scalars['DateTime']>
+    presenceEndParticipationReason?: Maybe<ParticipationPresenceEndParticipationReasonEnum>
+}
+
+export enum ParticipationPresenceEndParticipationReasonEnum {
+    Moved = 'MOVED',
+    Job = 'JOB',
+    Illness = 'ILLNESS',
+    Death = 'DEATH',
+    CompletedSuccessfully = 'COMPLETED_SUCCESSFULLY',
+    FamilyCircumstances = 'FAMILY_CIRCUMSTANCES',
+    DoesNotMeetExpectations = 'DOES_NOT_MEET_EXPECTATIONS',
+    Other = 'OTHER',
 }
 
 export type ChangePasswordMutationVariables = Exact<{

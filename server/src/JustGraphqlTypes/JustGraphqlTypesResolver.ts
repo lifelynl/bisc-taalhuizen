@@ -1,5 +1,7 @@
 import { Args, Field, InputType, Mutation, ObjectType, Query, registerEnumType, Resolver } from '@nestjs/graphql'
 import { IsEmail } from 'class-validator'
+import { UpdateParticipationInputType } from 'src/LearningNeed/types/CreateParticipationInputType'
+import { ParticipationType } from 'src/LearningNeed/types/ParticipationType'
 
 @InputType()
 class CreateBiscEmployeeInputType {
@@ -306,6 +308,27 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => [StudentDossierEventType])
     public async studentDossierEvents(@Args('studentId') studentId: string) {
+        return undefined
+    }
+
+    // Student Participation
+    @Mutation(() => Boolean)
+    public async deleteParticipation(@Args('participationId') participationId: string) {
+        return undefined
+    }
+
+    @Mutation(() => ParticipationType)
+    public async updateParticipation(@Args('input') input: UpdateParticipationInputType) {
+        return undefined
+    }
+
+    @Query(() => [ParticipationType])
+    public async participations(@Args('learningNeedId') learningNeedId: string) {
+        return undefined
+    }
+
+    @Query(() => ParticipationType)
+    public async participation(@Args('participationId') participationId: string) {
         return undefined
     }
 }
