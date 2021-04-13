@@ -7,6 +7,7 @@ import {
 } from 'src/LearningNeed/services/LearningNeedService'
 import { UpdateParticipationInputType } from 'src/LearningNeed/types/CreateParticipationInputType'
 import { ParticipationType } from 'src/LearningNeed/types/ParticipationType'
+import { StudentType } from 'src/Student/types/StudentType'
 
 @InputType()
 class CreateBiscEmployeeInputType {
@@ -474,6 +475,13 @@ export class JustGraphqlTypesResolver {
 
     @Query(() => TestResultType)
     public async testResult(@Args('testResultId') testResultId: string) {
+        return undefined
+    }
+
+    // AanbiederEmployee mentees
+    @Query(() => [StudentType])
+    public async aanbiederEmployeeMentees(@Args('anbiederEmployeeId') anbiederEmployeeId: string) {
+        // public async testResults(@Args('learningNeedId') learningNeedId: string) {
         return undefined
     }
 }

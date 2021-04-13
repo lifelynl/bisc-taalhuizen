@@ -274,80 +274,6 @@ export enum ParticipationGroupFormationEnum {
     InAGroup = 'IN_A_GROUP',
 }
 
-export type BiscEmployeeType = {
-    __typename?: 'BiscEmployeeType'
-    id: Scalars['String']
-    givenName: Scalars['String']
-    additionalName?: Maybe<Scalars['String']>
-    familyName: Scalars['String']
-    email: Scalars['String']
-    telephone?: Maybe<Scalars['String']>
-    dateCreated: Scalars['String']
-    dateModified: Scalars['String']
-}
-
-export type DownloadReportType = {
-    __typename?: 'DownloadReportType'
-    filename: Scalars['String']
-    base64data: Scalars['String']
-}
-
-export type AanbiederEmployeeDocumentType = {
-    __typename?: 'AanbiederEmployeeDocumentType'
-    id: Scalars['String']
-    filename: Scalars['String']
-    dateCreated: Scalars['String']
-}
-
-export type AanbiederEmployeeDocumentDownloadType = {
-    __typename?: 'AanbiederEmployeeDocumentDownloadType'
-    base64data: Scalars['String']
-}
-
-export type StudentDocumentType = {
-    __typename?: 'StudentDocumentType'
-    id: Scalars['String']
-    filename: Scalars['String']
-    dateCreated: Scalars['String']
-}
-
-export type StudentDocumentDownloadType = {
-    __typename?: 'StudentDocumentDownloadType'
-    base64data: Scalars['String']
-}
-
-export type StudentDossierEventType = {
-    __typename?: 'StudentDossierEventType'
-    id: Scalars['String']
-    event: StudentDossierEventEnum
-    eventDate: Scalars['String']
-    eventDescription: Scalars['String']
-}
-
-export enum StudentDossierEventEnum {
-    FinalTalk = 'FINAL_TALK',
-    Remark = 'REMARK',
-    FollowUpTalk = 'FOLLOW_UP_TALK',
-    InfoForStorytelling = 'INFO_FOR_STORYTELLING',
-    Intake = 'INTAKE',
-}
-
-export type TestResultType = {
-    __typename?: 'TestResultType'
-    id: Scalars['String']
-    outComesGoal?: Maybe<Scalars['String']>
-    outComesTopic: LearningNeedTopicEnum
-    outComesTopicOther?: Maybe<Scalars['String']>
-    outComesApplication: LearningNeedApplicationEnum
-    outComesApplicationOther?: Maybe<Scalars['String']>
-    outComesLevel: LearningNeedLevelEnum
-    outComesLevelOther?: Maybe<Scalars['String']>
-    examUsedExam: Scalars['String']
-    examDate: Scalars['String']
-    examMemo?: Maybe<Scalars['String']>
-    examResult?: Maybe<Scalars['String']>
-}
-
 export type StudentRegistrarType = {
     __typename?: 'StudentRegistrarType'
     id: Scalars['String']
@@ -705,6 +631,80 @@ export enum StudentWritingTestResultEnum {
     WriteSimpleLetters = 'WRITE_SIMPLE_LETTERS',
 }
 
+export type BiscEmployeeType = {
+    __typename?: 'BiscEmployeeType'
+    id: Scalars['String']
+    givenName: Scalars['String']
+    additionalName?: Maybe<Scalars['String']>
+    familyName: Scalars['String']
+    email: Scalars['String']
+    telephone?: Maybe<Scalars['String']>
+    dateCreated: Scalars['String']
+    dateModified: Scalars['String']
+}
+
+export type DownloadReportType = {
+    __typename?: 'DownloadReportType'
+    filename: Scalars['String']
+    base64data: Scalars['String']
+}
+
+export type AanbiederEmployeeDocumentType = {
+    __typename?: 'AanbiederEmployeeDocumentType'
+    id: Scalars['String']
+    filename: Scalars['String']
+    dateCreated: Scalars['String']
+}
+
+export type AanbiederEmployeeDocumentDownloadType = {
+    __typename?: 'AanbiederEmployeeDocumentDownloadType'
+    base64data: Scalars['String']
+}
+
+export type StudentDocumentType = {
+    __typename?: 'StudentDocumentType'
+    id: Scalars['String']
+    filename: Scalars['String']
+    dateCreated: Scalars['String']
+}
+
+export type StudentDocumentDownloadType = {
+    __typename?: 'StudentDocumentDownloadType'
+    base64data: Scalars['String']
+}
+
+export type StudentDossierEventType = {
+    __typename?: 'StudentDossierEventType'
+    id: Scalars['String']
+    event: StudentDossierEventEnum
+    eventDate: Scalars['String']
+    eventDescription: Scalars['String']
+}
+
+export enum StudentDossierEventEnum {
+    FinalTalk = 'FINAL_TALK',
+    Remark = 'REMARK',
+    FollowUpTalk = 'FOLLOW_UP_TALK',
+    InfoForStorytelling = 'INFO_FOR_STORYTELLING',
+    Intake = 'INTAKE',
+}
+
+export type TestResultType = {
+    __typename?: 'TestResultType'
+    id: Scalars['String']
+    outComesGoal?: Maybe<Scalars['String']>
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    examUsedExam: Scalars['String']
+    examDate: Scalars['String']
+    examMemo?: Maybe<Scalars['String']>
+    examResult?: Maybe<Scalars['String']>
+}
+
 export type LearningNeedType = {
     __typename?: 'LearningNeedType'
     id: Scalars['String']
@@ -795,6 +795,7 @@ export type Query = {
     participation: ParticipationType
     testResults: Array<TestResultType>
     testResult: TestResultType
+    aanbiederEmployeeMentees: Array<StudentType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -895,6 +896,10 @@ export type QueryTestResultsArgs = {
 
 export type QueryTestResultArgs = {
     testResultId: Scalars['String']
+}
+
+export type QueryAanbiederEmployeeMenteesArgs = {
+    anbiederEmployeeId: Scalars['String']
 }
 
 export type Mutation = {
