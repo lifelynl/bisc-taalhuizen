@@ -54,7 +54,7 @@ export class StudentResolver {
     ): Promise<StudentType[]> {
         // TODO: Authorization checks (user type, user role, can user see given Taalhuis and Students?)
 
-        return this.studentService.findByTaalhuisId(args.taalhuisId, ParticipantStatusEnum.pending)
+        return this.studentService.findByTaalhuisId(args.taalhuisId, ParticipantStatusEnum.pending) as any
     }
 
     @Query(() => StudentType)
@@ -64,7 +64,7 @@ export class StudentResolver {
     ): Promise<StudentType> {
         // TODO: Authorization checks (user type, user role, can user see given Taalhuis and Students?)
 
-        return this.studentService.findByStudentId(args.studentId)
+        return this.studentService.findByStudentId(args.studentId) as any
     }
 
     @Mutation(() => Boolean)
@@ -80,7 +80,7 @@ export class StudentResolver {
 
         await this.registrationService.acceptRegistration(args.studentId)
 
-        return this.studentService.findByStudentId(args.studentId)
+        return this.studentService.findByStudentId(args.studentId) as any
     }
 
     @Mutation(() => StudentType)
@@ -113,7 +113,7 @@ export class StudentResolver {
         }
 
         // TODO: Add updateStudent implementation
-        return student
+        return student as any
     }
 
     @Query(() => [StudentType])
@@ -126,7 +126,7 @@ export class StudentResolver {
             throw new UnauthorizedException()
         }
 
-        return this.studentService.findByTaalhuisId(args.taalhuisId, ParticipantStatusEnum.accepted)
+        return this.studentService.findByTaalhuisId(args.taalhuisId, ParticipantStatusEnum.accepted) as any
     }
 
     @Query(() => StudentType)
@@ -141,6 +141,6 @@ export class StudentResolver {
             throw new UnauthorizedException()
         }
 
-        return student
+        return student as any
     }
 }

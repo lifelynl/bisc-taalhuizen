@@ -168,21 +168,350 @@ export type StudentRegistrarType = {
     telephone: Scalars['String']
 }
 
+export type StudentCivicIntegrationType = {
+    __typename?: 'StudentCivicIntegrationType'
+    civicIntegrationRequirement?: Maybe<StudentCivicIntegrationRequirementEnum>
+    civicIntegrationRequirementReason?: Maybe<StudentCivicIntegrationRequirementReasonEnum>
+    civicIntegrationRequirementFinishDate?: Maybe<Scalars['String']>
+}
+
+export enum StudentCivicIntegrationRequirementEnum {
+    No = 'NO',
+    Yes = 'YES',
+    CurrentlyWorkingOnIntegration = 'CURRENTLY_WORKING_ON_INTEGRATION',
+}
+
+export enum StudentCivicIntegrationRequirementReasonEnum {
+    Finished = 'FINISHED',
+    FromEuCountry = 'FROM_EU_COUNTRY',
+    ExemptedOrZroute = 'EXEMPTED_OR_ZROUTE',
+}
+
+export type StudentPersonType = {
+    __typename?: 'StudentPersonType'
+    givenName: Scalars['String']
+    additionalName?: Maybe<Scalars['String']>
+    familyName: Scalars['String']
+    gender?: Maybe<StudentGenderEnum>
+    dateOfBirth?: Maybe<Scalars['String']>
+}
+
+export enum StudentGenderEnum {
+    Male = 'MALE',
+    Female = 'FEMALE',
+    X = 'X',
+}
+
+export type StudentContactType = {
+    __typename?: 'StudentContactType'
+    street?: Maybe<Scalars['String']>
+    postalCode?: Maybe<Scalars['String']>
+    locality?: Maybe<Scalars['String']>
+    houseNumber?: Maybe<Scalars['String']>
+    houseNumberSuffix?: Maybe<Scalars['String']>
+    email?: Maybe<Scalars['String']>
+    telephone?: Maybe<Scalars['String']>
+    contactPersonTelephone?: Maybe<Scalars['String']>
+    contactPreference?: Maybe<StudentContactPreferenceEnum>
+    contactPreferenceOther?: Maybe<Scalars['String']>
+}
+
+export enum StudentContactPreferenceEnum {
+    Phonecall = 'PHONECALL',
+    Whatsapp = 'WHATSAPP',
+    Email = 'EMAIL',
+    Other = 'OTHER',
+}
+
+export type StudentGeneralType = {
+    __typename?: 'StudentGeneralType'
+    countryOfOrigin?: Maybe<Scalars['String']>
+    nativeLanguage?: Maybe<Scalars['String']>
+    otherLanguages?: Maybe<Scalars['String']>
+    familyComposition?: Maybe<Array<StudentFamilyCompositionEnum>>
+    childrenCount?: Maybe<Scalars['Int']>
+    childrenDatesOfBirth?: Maybe<Scalars['String']>
+}
+
+export enum StudentFamilyCompositionEnum {
+    MarriedPartner = 'MARRIED_PARTNER',
+    Single = 'SINGLE',
+    Divorced = 'DIVORCED',
+    Widow = 'WIDOW',
+}
+
+export type StudentReferrerType = {
+    __typename?: 'StudentReferrerType'
+    referringOrganization?: Maybe<StudentReferringOrganizationEnum>
+    referringOrganizationOther?: Maybe<Scalars['String']>
+    email?: Maybe<Scalars['String']>
+}
+
+export enum StudentReferringOrganizationEnum {
+    Uwv = 'UWV',
+    SocialService = 'SOCIAL_SERVICE',
+    Library = 'LIBRARY',
+    WelfareWork = 'WELFARE_WORK',
+    NeighborhoodTeam = 'NEIGHBORHOOD_TEAM',
+    VolunteerOrganization = 'VOLUNTEER_ORGANIZATION',
+    LanguageProvider = 'LANGUAGE_PROVIDER',
+    Other = 'OTHER',
+}
+
+export type StudentBackgroundType = {
+    __typename?: 'StudentBackgroundType'
+    foundVia?: Maybe<StudentFoundViaEnum>
+    foundViaOther?: Maybe<Scalars['String']>
+    wentToTaalhuisBefore?: Maybe<Scalars['Boolean']>
+    wentToTaalhuisBeforeReason?: Maybe<Scalars['String']>
+    wentToTaalhuisBeforeYear?: Maybe<Scalars['Float']>
+    network?: Maybe<Array<StudentNetworkEnum>>
+    participationLadder?: Maybe<Scalars['Int']>
+}
+
+export enum StudentFoundViaEnum {
+    VolunteerCenter = 'VOLUNTEER_CENTER',
+    LibraryWebsite = 'LIBRARY_WEBSITE',
+    SocialMedia = 'SOCIAL_MEDIA',
+    Newspaper = 'NEWSPAPER',
+    ViaVia = 'VIA_VIA',
+    Other = 'OTHER',
+}
+
+export enum StudentNetworkEnum {
+    HouseholdMembers = 'HOUSEHOLD_MEMBERS',
+    Neighbors = 'NEIGHBORS',
+    FamilyMembers = 'FAMILY_MEMBERS',
+    AidWorkers = 'AID_WORKERS',
+    FriendsAcquaintances = 'FRIENDS_ACQUAINTANCES',
+    PeopleAtMosqueChurch = 'PEOPLE_AT_MOSQUE_CHURCH',
+    AcquaintancesSpeakingOwnLanguage = 'ACQUAINTANCES_SPEAKING_OWN_LANGUAGE',
+    AcquaintancesSpeakingDutch = 'ACQUAINTANCES_SPEAKING_DUTCH',
+}
+
+export type StudentDutchNtType = {
+    __typename?: 'StudentDutchNTType'
+    dutchNTLevel?: Maybe<StudentDutchNtLevelEnum>
+    inNetherlandsSinceYear?: Maybe<Scalars['Float']>
+    languageInDailyLife?: Maybe<Scalars['String']>
+    knowsLatinAlphabet?: Maybe<Scalars['Boolean']>
+    lastKnownLevel?: Maybe<StudentDutchLastKnownLevelEnum>
+}
+
+export enum StudentDutchNtLevelEnum {
+    Nt1 = 'NT1',
+    Nt2 = 'NT2',
+}
+
+export enum StudentDutchLastKnownLevelEnum {
+    A0 = 'A0',
+    A1 = 'A1',
+    A2 = 'A2',
+    B1 = 'B1',
+    B2 = 'B2',
+    C1 = 'C1',
+    C2 = 'C2',
+    Unknown = 'UNKNOWN',
+}
+
+export type StudentEducationType = {
+    __typename?: 'StudentEducationType'
+    lastFollowedEducation?: Maybe<StudentLastFollowedEducationEnum>
+    didGraduate?: Maybe<Scalars['Boolean']>
+    followingEducationRightNow?: Maybe<StudentFollowingEducationRightNowEnum>
+    followingEducationRightNowYesStartDate?: Maybe<Scalars['String']>
+    followingEducationRightNowYesEndDate?: Maybe<Scalars['String']>
+    followingEducationRightNowYesLevel?: Maybe<StudentFollowingEducationRightNowLevelEnum>
+    followingEducationRightNowYesInstitute?: Maybe<Scalars['String']>
+    followingEducationRightNowYesProvidesCertificate?: Maybe<Scalars['Boolean']>
+    followingEducationRightNowNoEndDate?: Maybe<Scalars['String']>
+    followingEducationRightNowNoLevel?: Maybe<Scalars['String']>
+    followingEducationRightNowNoGotCertificate?: Maybe<Scalars['Boolean']>
+}
+
+export enum StudentLastFollowedEducationEnum {
+    NoEducation = 'NO_EDUCATION',
+    SomeYearsPo = 'SOME_YEARS_PO',
+    Po = 'PO',
+    Vo = 'VO',
+    Mbo = 'MBO',
+    Hbo = 'HBO',
+    University = 'UNIVERSITY',
+}
+
+export enum StudentFollowingEducationRightNowEnum {
+    Yes = 'YES',
+    No = 'NO',
+    NoButDidEarlier = 'NO_BUT_DID_EARLIER',
+}
+
+export enum StudentFollowingEducationRightNowLevelEnum {
+    LanguageCourse = 'LANGUAGE_COURSE',
+    Bo = 'BO',
+    Hbo = 'HBO',
+    Wo = 'WO',
+    Other = 'OTHER',
+}
+
+export type StudentCourseType = {
+    __typename?: 'StudentCourseType'
+    isFollowingCourseRightNow?: Maybe<Scalars['Boolean']>
+    courseName?: Maybe<Scalars['String']>
+    courseTeacher?: Maybe<StudentFollowingCourseTeacherEnum>
+    courseGroup?: Maybe<StudentFollowingCourseGroupEnum>
+    amountOfHours?: Maybe<Scalars['Int']>
+    doesCourseProvideCertificate?: Maybe<Scalars['Boolean']>
+}
+
+export enum StudentFollowingCourseTeacherEnum {
+    Professional = 'PROFESSIONAL',
+    Volunteer = 'VOLUNTEER',
+    Both = 'BOTH',
+}
+
+export enum StudentFollowingCourseGroupEnum {
+    Individually = 'INDIVIDUALLY',
+    Group = 'GROUP',
+}
+
+export type StudentJobType = {
+    __typename?: 'StudentJobType'
+    trainedForJob?: Maybe<Scalars['String']>
+    lastJob?: Maybe<Scalars['String']>
+    dayTimeActivities?: Maybe<Array<StudentJobDaytimeActivitiesEnum>>
+    dayTimeActivitiesOther?: Maybe<Scalars['String']>
+}
+
+export enum StudentJobDaytimeActivitiesEnum {
+    SearchingForJob = 'SEARCHING_FOR_JOB',
+    ReIntegration = 'RE_INTEGRATION',
+    School = 'SCHOOL',
+    VolunteerJob = 'VOLUNTEER_JOB',
+    Job = 'JOB',
+    Other = 'OTHER',
+}
+
+export type StudentMotivationType = {
+    __typename?: 'StudentMotivationType'
+    desiredSkills?: Maybe<Array<StudentMotivationDesiredSkillsEnum>>
+    desiredSkillsOther?: Maybe<Scalars['String']>
+    hasTriedThisBefore?: Maybe<Scalars['Boolean']>
+    hasTriedThisBeforeExplanation?: Maybe<Scalars['String']>
+    whyWantTheseSkills?: Maybe<Scalars['String']>
+    whyWantThisNow?: Maybe<Scalars['String']>
+    desiredLearningMethod?: Maybe<Array<StudentMotivationDesiredLearningMethodsEnum>>
+    remarks?: Maybe<Scalars['String']>
+}
+
+export enum StudentMotivationDesiredSkillsEnum {
+    Kliktik = 'KLIKTIK',
+    UsingWhatsapp = 'USING_WHATSAPP',
+    UsingSkype = 'USING_SKYPE',
+    DeviceFunctionalities = 'DEVICE_FUNCTIONALITIES',
+    DigitalGovernment = 'DIGITAL_GOVERNMENT',
+    ReserveBooksInLibrary = 'RESERVE_BOOKS_IN_LIBRARY',
+    AdsOnMarktplaats = 'ADS_ON_MARKTPLAATS',
+    ReadForChildren = 'READ_FOR_CHILDREN',
+    UnderstandPrescriptions = 'UNDERSTAND_PRESCRIPTIONS',
+    WriteApplicationLetter = 'WRITE_APPLICATION_LETTER',
+    WritePostcardForFamily = 'WRITE_POSTCARD_FOR_FAMILY',
+    DoAdministration = 'DO_ADMINISTRATION',
+    CalculationsForRecipes = 'CALCULATIONS_FOR_RECIPES',
+    Other = 'OTHER',
+}
+
+export enum StudentMotivationDesiredLearningMethodsEnum {
+    InAGroup = 'IN_A_GROUP',
+    OneOnOne = 'ONE_ON_ONE',
+    HomeEnvironment = 'HOME_ENVIRONMENT',
+    InLibraryOrOther = 'IN_LIBRARY_OR_OTHER',
+    Online = 'ONLINE',
+}
+
+export type StudentAvailabilityDayType = {
+    __typename?: 'StudentAvailabilityDayType'
+    morning: Scalars['Boolean']
+    afternoon: Scalars['Boolean']
+    evening: Scalars['Boolean']
+}
+
+export type StudentAvailabilityDaysType = {
+    __typename?: 'StudentAvailabilityDaysType'
+    monday: StudentAvailabilityDayType
+    tuesday: StudentAvailabilityDayType
+    wednesday: StudentAvailabilityDayType
+    thursday: StudentAvailabilityDayType
+    friday: StudentAvailabilityDayType
+    saturday: StudentAvailabilityDayType
+    sunday: StudentAvailabilityDayType
+}
+
+export type StudentAvailabilityType = {
+    __typename?: 'StudentAvailabilityType'
+    availability?: Maybe<StudentAvailabilityDaysType>
+    availabilityNotes?: Maybe<Scalars['String']>
+}
+
+export type StudentPermissionType = {
+    __typename?: 'StudentPermissionType'
+    didSignPermissionForm: Scalars['Boolean']
+    hasPermissionToShareDataWithAanbieders: Scalars['Boolean']
+    hasPermissionToShareDataWithLibraries: Scalars['Boolean']
+    hasPermissionToSendInformationAboutLibraries: Scalars['Boolean']
+}
+
 export type StudentType = {
     __typename?: 'StudentType'
     id: Scalars['String']
     dateCreated: Scalars['String']
     status: ParticipantStatusEnum
-    givenName: Scalars['String']
-    additionalName?: Maybe<Scalars['String']>
-    familyName: Scalars['String']
     memo?: Maybe<Scalars['String']>
     registrar?: Maybe<StudentRegistrarType>
+    civicIntegrationDetails?: Maybe<StudentCivicIntegrationType>
+    personDetails: StudentPersonType
+    contactDetails?: Maybe<StudentContactType>
+    generalDetails?: Maybe<StudentGeneralType>
+    referrerDetails?: Maybe<StudentReferrerType>
+    backgroundDetails?: Maybe<StudentBackgroundType>
+    dutchNTDetails?: Maybe<StudentDutchNtType>
+    speakingLevel?: Maybe<StudentSpeakingLevelEnum>
+    educationDetails?: Maybe<StudentEducationType>
+    courseDetails?: Maybe<StudentCourseType>
+    jobDetails?: Maybe<StudentJobType>
+    motivationDetails?: Maybe<StudentMotivationType>
+    availabilityDetails?: Maybe<StudentAvailabilityType>
+    readingTestResult?: Maybe<StudentReadingTestResultEnum>
+    writingTestResult?: Maybe<StudentWritingTestResultEnum>
+    permissionDetails: StudentPermissionType
 }
 
 export enum ParticipantStatusEnum {
     Pending = 'pending',
     Accepted = 'accepted',
+}
+
+export enum StudentSpeakingLevelEnum {
+    Beginner = 'BEGINNER',
+    Reasonable = 'REASONABLE',
+    Advanced = 'ADVANCED',
+}
+
+export enum StudentReadingTestResultEnum {
+    CanNotRead = 'CAN_NOT_READ',
+    A0 = 'A0',
+    A1 = 'A1',
+    A2 = 'A2',
+    B1 = 'B1',
+    B2 = 'B2',
+    C1 = 'C1',
+    C2 = 'C2',
+}
+
+export enum StudentWritingTestResultEnum {
+    CanNotWrite = 'CAN_NOT_WRITE',
+    WriteNawDetails = 'WRITE_NAW_DETAILS',
+    WriteSimpleTexts = 'WRITE_SIMPLE_TEXTS',
+    WriteSimpleLetters = 'WRITE_SIMPLE_LETTERS',
 }
 
 export type ParticipationType = {
@@ -780,30 +1109,12 @@ export type CreateStudentCivicIntegrationInputType = {
     civicIntegrationRequirementFinishDate?: Maybe<Scalars['String']>
 }
 
-export enum StudentCivicIntegrationRequirementEnum {
-    No = 'NO',
-    Yes = 'YES',
-    CurrentlyWorkingOnIntegration = 'CURRENTLY_WORKING_ON_INTEGRATION',
-}
-
-export enum StudentCivicIntegrationRequirementReasonEnum {
-    Finished = 'FINISHED',
-    FromEuCountry = 'FROM_EU_COUNTRY',
-    ExemptedOrZroute = 'EXEMPTED_OR_ZROUTE',
-}
-
 export type CreateStudentPersonInputType = {
     givenName: Scalars['String']
     additionalName?: Maybe<Scalars['String']>
     familyName: Scalars['String']
     gender?: Maybe<StudentGenderEnum>
     dateOfBirth?: Maybe<Scalars['String']>
-}
-
-export enum StudentGenderEnum {
-    Male = 'MALE',
-    Female = 'FEMALE',
-    X = 'X',
 }
 
 export type CreateStudentContactInputType = {
@@ -819,13 +1130,6 @@ export type CreateStudentContactInputType = {
     contactPreferenceOther?: Maybe<Scalars['String']>
 }
 
-export enum StudentContactPreferenceEnum {
-    Phonecall = 'PHONECALL',
-    Whatsapp = 'WHATSAPP',
-    Email = 'EMAIL',
-    Other = 'OTHER',
-}
-
 export type CreateStudentGeneralInputType = {
     countryOfOrigin?: Maybe<Scalars['String']>
     nativeLanguage?: Maybe<Scalars['String']>
@@ -835,28 +1139,10 @@ export type CreateStudentGeneralInputType = {
     childrenDatesOfBirth?: Maybe<Scalars['String']>
 }
 
-export enum StudentFamilyCompositionEnum {
-    MarriedPartner = 'MARRIED_PARTNER',
-    Single = 'SINGLE',
-    Divorced = 'DIVORCED',
-    Widow = 'WIDOW',
-}
-
 export type CreateStudentReferrerInputType = {
     referringOrganization?: Maybe<StudentReferringOrganizationEnum>
     referringOrganizationOther?: Maybe<Scalars['String']>
     email?: Maybe<Scalars['String']>
-}
-
-export enum StudentReferringOrganizationEnum {
-    Uwv = 'UWV',
-    SocialService = 'SOCIAL_SERVICE',
-    Library = 'LIBRARY',
-    WelfareWork = 'WELFARE_WORK',
-    NeighborhoodTeam = 'NEIGHBORHOOD_TEAM',
-    VolunteerOrganization = 'VOLUNTEER_ORGANIZATION',
-    LanguageProvider = 'LANGUAGE_PROVIDER',
-    Other = 'OTHER',
 }
 
 export type CreateStudentBackgroundInputType = {
@@ -869,54 +1155,12 @@ export type CreateStudentBackgroundInputType = {
     participationLadder?: Maybe<Scalars['Int']>
 }
 
-export enum StudentFoundViaEnum {
-    VolunteerCenter = 'VOLUNTEER_CENTER',
-    LibraryWebsite = 'LIBRARY_WEBSITE',
-    SocialMedia = 'SOCIAL_MEDIA',
-    Newspaper = 'NEWSPAPER',
-    ViaVia = 'VIA_VIA',
-    Other = 'OTHER',
-}
-
-export enum StudentNetworkEnum {
-    HouseholdMembers = 'HOUSEHOLD_MEMBERS',
-    Neighbors = 'NEIGHBORS',
-    FamilyMembers = 'FAMILY_MEMBERS',
-    AidWorkers = 'AID_WORKERS',
-    FriendsAcquaintances = 'FRIENDS_ACQUAINTANCES',
-    PeopleAtMosqueChurch = 'PEOPLE_AT_MOSQUE_CHURCH',
-    AcquaintancesSpeakingOwnLanguage = 'ACQUAINTANCES_SPEAKING_OWN_LANGUAGE',
-    AcquaintancesSpeakingDutch = 'ACQUAINTANCES_SPEAKING_DUTCH',
-}
-
 export type CreateStudentDutchNtInputType = {
     dutchNTLevel?: Maybe<StudentDutchNtLevelEnum>
     inNetherlandsSinceYear?: Maybe<Scalars['Float']>
     languageInDailyLife?: Maybe<Scalars['String']>
     knowsLatinAlphabet?: Maybe<Scalars['Boolean']>
     lastKnownLevel?: Maybe<StudentDutchLastKnownLevelEnum>
-}
-
-export enum StudentDutchNtLevelEnum {
-    Nt1 = 'NT1',
-    Nt2 = 'NT2',
-}
-
-export enum StudentDutchLastKnownLevelEnum {
-    A0 = 'A0',
-    A1 = 'A1',
-    A2 = 'A2',
-    B1 = 'B1',
-    B2 = 'B2',
-    C1 = 'C1',
-    C2 = 'C2',
-    Unknown = 'UNKNOWN',
-}
-
-export enum StudentSpeakingLevelEnum {
-    Beginner = 'BEGINNER',
-    Reasonable = 'REASONABLE',
-    Advanced = 'ADVANCED',
 }
 
 export type CreateStudentEducationInputType = {
@@ -933,30 +1177,6 @@ export type CreateStudentEducationInputType = {
     followingEducationRightNowNoGotCertificate?: Maybe<Scalars['Boolean']>
 }
 
-export enum StudentLastFollowedEducationEnum {
-    NoEducation = 'NO_EDUCATION',
-    SomeYearsPo = 'SOME_YEARS_PO',
-    Po = 'PO',
-    Vo = 'VO',
-    Mbo = 'MBO',
-    Hbo = 'HBO',
-    University = 'UNIVERSITY',
-}
-
-export enum StudentFollowingEducationRightNowEnum {
-    Yes = 'YES',
-    No = 'NO',
-    NoButDidEarlier = 'NO_BUT_DID_EARLIER',
-}
-
-export enum StudentFollowingEducationRightNowLevelEnum {
-    LanguageCourse = 'LANGUAGE_COURSE',
-    Bo = 'BO',
-    Hbo = 'HBO',
-    Wo = 'WO',
-    Other = 'OTHER',
-}
-
 export type CreateStudentCourseInputType = {
     isFollowingCourseRightNow?: Maybe<Scalars['Boolean']>
     courseName?: Maybe<Scalars['String']>
@@ -966,31 +1186,11 @@ export type CreateStudentCourseInputType = {
     doesCourseProvideCertificate?: Maybe<Scalars['Boolean']>
 }
 
-export enum StudentFollowingCourseTeacherEnum {
-    Professional = 'PROFESSIONAL',
-    Volunteer = 'VOLUNTEER',
-    Both = 'BOTH',
-}
-
-export enum StudentFollowingCourseGroupEnum {
-    Individually = 'INDIVIDUALLY',
-    Group = 'GROUP',
-}
-
 export type CreateStudentJobInputType = {
     trainedForJob?: Maybe<Scalars['String']>
     lastJob?: Maybe<Scalars['String']>
     dayTimeActivities?: Maybe<Array<StudentJobDaytimeActivitiesEnum>>
     dayTimeActivitiesOther?: Maybe<Scalars['String']>
-}
-
-export enum StudentJobDaytimeActivitiesEnum {
-    SearchingForJob = 'SEARCHING_FOR_JOB',
-    ReIntegration = 'RE_INTEGRATION',
-    School = 'SCHOOL',
-    VolunteerJob = 'VOLUNTEER_JOB',
-    Job = 'JOB',
-    Other = 'OTHER',
 }
 
 export type CreateStudentMotivationInputType = {
@@ -1002,31 +1202,6 @@ export type CreateStudentMotivationInputType = {
     whyWantThisNow?: Maybe<Scalars['String']>
     desiredLearningMethod?: Maybe<Array<StudentMotivationDesiredLearningMethodsEnum>>
     remarks?: Maybe<Scalars['String']>
-}
-
-export enum StudentMotivationDesiredSkillsEnum {
-    Kliktik = 'KLIKTIK',
-    UsingWhatsapp = 'USING_WHATSAPP',
-    UsingSkype = 'USING_SKYPE',
-    DeviceFunctionalities = 'DEVICE_FUNCTIONALITIES',
-    DigitalGovernment = 'DIGITAL_GOVERNMENT',
-    ReserveBooksInLibrary = 'RESERVE_BOOKS_IN_LIBRARY',
-    AdsOnMarktplaats = 'ADS_ON_MARKTPLAATS',
-    ReadForChildren = 'READ_FOR_CHILDREN',
-    UnderstandPrescriptions = 'UNDERSTAND_PRESCRIPTIONS',
-    WriteApplicationLetter = 'WRITE_APPLICATION_LETTER',
-    WritePostcardForFamily = 'WRITE_POSTCARD_FOR_FAMILY',
-    DoAdministration = 'DO_ADMINISTRATION',
-    CalculationsForRecipes = 'CALCULATIONS_FOR_RECIPES',
-    Other = 'OTHER',
-}
-
-export enum StudentMotivationDesiredLearningMethodsEnum {
-    InAGroup = 'IN_A_GROUP',
-    OneOnOne = 'ONE_ON_ONE',
-    HomeEnvironment = 'HOME_ENVIRONMENT',
-    InLibraryOrOther = 'IN_LIBRARY_OR_OTHER',
-    Online = 'ONLINE',
 }
 
 export type CreateStudentAvailabilityInputType = {
@@ -1048,24 +1223,6 @@ export type CreateStudentAvailabilityDayInputType = {
     morning: Scalars['Boolean']
     afternoon: Scalars['Boolean']
     evening: Scalars['Boolean']
-}
-
-export enum StudentReadingTestResultEnum {
-    CanNotRead = 'CAN_NOT_READ',
-    A0 = 'A0',
-    A1 = 'A1',
-    A2 = 'A2',
-    B1 = 'B1',
-    B2 = 'B2',
-    C1 = 'C1',
-    C2 = 'C2',
-}
-
-export enum StudentWritingTestResultEnum {
-    CanNotWrite = 'CAN_NOT_WRITE',
-    WriteNawDetails = 'WRITE_NAW_DETAILS',
-    WriteSimpleTexts = 'WRITE_SIMPLE_TEXTS',
-    WriteSimpleLetters = 'WRITE_SIMPLE_LETTERS',
 }
 
 export type CreateStudentPermissionInputType = {
@@ -1292,24 +1449,6 @@ export type CreateLearningNeedMutation = { __typename?: 'Mutation' } & {
         }
 }
 
-export type CreateStudentMutationVariables = Exact<{
-    input: CreateStudentInputType
-}>
-
-export type CreateStudentMutation = { __typename?: 'Mutation' } & {
-    createStudent: { __typename?: 'StudentType' } & Pick<
-        StudentType,
-        'id' | 'dateCreated' | 'status' | 'givenName' | 'additionalName' | 'familyName' | 'memo'
-    > & {
-            registrar?: Maybe<
-                { __typename?: 'StudentRegistrarType' } & Pick<
-                    StudentRegistrarType,
-                    'id' | 'organisationName' | 'givenName' | 'additionalName' | 'familyName' | 'email' | 'telephone'
-                >
-            >
-        }
-}
-
 export type CreateTaalhuisMutationVariables = Exact<{
     address: CreateTaalhuisAddressInputType
     name: Scalars['String']
@@ -1420,24 +1559,6 @@ export type UpdateAanbiederEmployeeMutation = { __typename?: 'Mutation' } & {
         AanbiederEmployeeType,
         'id' | 'givenName' | 'additionalName' | 'familyName' | 'email' | 'telephone' | 'dateCreated' | 'dateModified'
     > & { userRoles: Array<{ __typename?: 'AanbiederUserRoleType' } & Pick<AanbiederUserRoleType, 'id' | 'name'>> }
-}
-
-export type UpdateStudentMutationVariables = Exact<{
-    input: UpdateStudentInputType
-}>
-
-export type UpdateStudentMutation = { __typename?: 'Mutation' } & {
-    updateStudent: { __typename?: 'StudentType' } & Pick<
-        StudentType,
-        'id' | 'dateCreated' | 'status' | 'givenName' | 'additionalName' | 'familyName' | 'memo'
-    > & {
-            registrar?: Maybe<
-                { __typename?: 'StudentRegistrarType' } & Pick<
-                    StudentRegistrarType,
-                    'id' | 'organisationName' | 'givenName' | 'additionalName' | 'familyName' | 'email' | 'telephone'
-                >
-            >
-        }
 }
 
 export type UpdateTaalhuisMutationVariables = Exact<{
@@ -1601,67 +1722,6 @@ export type LearningNeedsQuery = { __typename?: 'Query' } & {
                         | 'detailsStartDate'
                         | 'detailsEndDate'
                         | 'detailsEngagements'
-                    >
-                >
-            }
-    >
-}
-
-export type RegistrationsQueryVariables = Exact<{
-    taalhuisId: Scalars['String']
-}>
-
-export type RegistrationsQuery = { __typename?: 'Query' } & {
-    registrations: Array<
-        { __typename?: 'StudentType' } & Pick<
-            StudentType,
-            'id' | 'dateCreated' | 'status' | 'givenName' | 'additionalName' | 'familyName'
-        > & {
-                registrar?: Maybe<
-                    { __typename?: 'StudentRegistrarType' } & Pick<StudentRegistrarType, 'id' | 'organisationName'>
-                >
-            }
-    >
-}
-
-export type StudentQueryVariables = Exact<{
-    studentId: Scalars['String']
-}>
-
-export type StudentQuery = { __typename?: 'Query' } & {
-    student: { __typename?: 'StudentType' } & Pick<
-        StudentType,
-        'id' | 'dateCreated' | 'status' | 'givenName' | 'additionalName' | 'familyName' | 'memo'
-    > & {
-            registrar?: Maybe<
-                { __typename?: 'StudentRegistrarType' } & Pick<
-                    StudentRegistrarType,
-                    'id' | 'organisationName' | 'givenName' | 'additionalName' | 'familyName' | 'email' | 'telephone'
-                >
-            >
-        }
-}
-
-export type StudentsQueryVariables = Exact<{
-    taalhuisId: Scalars['String']
-}>
-
-export type StudentsQuery = { __typename?: 'Query' } & {
-    students: Array<
-        { __typename?: 'StudentType' } & Pick<
-            StudentType,
-            'id' | 'dateCreated' | 'status' | 'givenName' | 'additionalName' | 'familyName' | 'memo'
-        > & {
-                registrar?: Maybe<
-                    { __typename?: 'StudentRegistrarType' } & Pick<
-                        StudentRegistrarType,
-                        | 'id'
-                        | 'organisationName'
-                        | 'givenName'
-                        | 'additionalName'
-                        | 'familyName'
-                        | 'email'
-                        | 'telephone'
                     >
                 >
             }
@@ -1966,57 +2026,6 @@ export type CreateLearningNeedMutationResult = Apollo.MutationResult<CreateLearn
 export type CreateLearningNeedMutationOptions = Apollo.BaseMutationOptions<
     CreateLearningNeedMutation,
     CreateLearningNeedMutationVariables
->
-export const CreateStudentDocument = gql`
-    mutation createStudent($input: CreateStudentInputType!) {
-        createStudent(input: $input) {
-            id
-            dateCreated
-            status
-            givenName
-            additionalName
-            familyName
-            memo
-            registrar {
-                id
-                organisationName
-                givenName
-                additionalName
-                familyName
-                email
-                telephone
-            }
-        }
-    }
-`
-
-/**
- * __useCreateStudentMutation__
- *
- * To run a mutation, you first call `useCreateStudentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateStudentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createStudentMutation, { data, loading, error }] = useCreateStudentMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateStudentMutation(
-    baseOptions?: Apollo.MutationHookOptions<CreateStudentMutation, CreateStudentMutationVariables>
-) {
-    return Apollo.useMutation<CreateStudentMutation, CreateStudentMutationVariables>(CreateStudentDocument, baseOptions)
-}
-export type CreateStudentMutationHookResult = ReturnType<typeof useCreateStudentMutation>
-export type CreateStudentMutationResult = Apollo.MutationResult<CreateStudentMutation>
-export type CreateStudentMutationOptions = Apollo.BaseMutationOptions<
-    CreateStudentMutation,
-    CreateStudentMutationVariables
 >
 export const CreateTaalhuisDocument = gql`
     mutation createTaalhuis(
@@ -2489,57 +2498,6 @@ export type UpdateAanbiederEmployeeMutationOptions = Apollo.BaseMutationOptions<
     UpdateAanbiederEmployeeMutation,
     UpdateAanbiederEmployeeMutationVariables
 >
-export const UpdateStudentDocument = gql`
-    mutation updateStudent($input: UpdateStudentInputType!) {
-        updateStudent(input: $input) {
-            id
-            dateCreated
-            status
-            givenName
-            additionalName
-            familyName
-            memo
-            registrar {
-                id
-                organisationName
-                givenName
-                additionalName
-                familyName
-                email
-                telephone
-            }
-        }
-    }
-`
-
-/**
- * __useUpdateStudentMutation__
- *
- * To run a mutation, you first call `useUpdateStudentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateStudentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateStudentMutation, { data, loading, error }] = useUpdateStudentMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateStudentMutation(
-    baseOptions?: Apollo.MutationHookOptions<UpdateStudentMutation, UpdateStudentMutationVariables>
-) {
-    return Apollo.useMutation<UpdateStudentMutation, UpdateStudentMutationVariables>(UpdateStudentDocument, baseOptions)
-}
-export type UpdateStudentMutationHookResult = ReturnType<typeof useUpdateStudentMutation>
-export type UpdateStudentMutationResult = Apollo.MutationResult<UpdateStudentMutation>
-export type UpdateStudentMutationOptions = Apollo.BaseMutationOptions<
-    UpdateStudentMutation,
-    UpdateStudentMutationVariables
->
 export const UpdateTaalhuisDocument = gql`
     mutation updateTaalhuis(
         $id: String!
@@ -2975,148 +2933,6 @@ export function useLearningNeedsLazyQuery(
 export type LearningNeedsQueryHookResult = ReturnType<typeof useLearningNeedsQuery>
 export type LearningNeedsLazyQueryHookResult = ReturnType<typeof useLearningNeedsLazyQuery>
 export type LearningNeedsQueryResult = Apollo.QueryResult<LearningNeedsQuery, LearningNeedsQueryVariables>
-export const RegistrationsDocument = gql`
-    query registrations($taalhuisId: String!) {
-        registrations(taalhuisId: $taalhuisId) {
-            id
-            dateCreated
-            status
-            givenName
-            additionalName
-            familyName
-            registrar {
-                id
-                organisationName
-            }
-        }
-    }
-`
-
-/**
- * __useRegistrationsQuery__
- *
- * To run a query within a React component, call `useRegistrationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useRegistrationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useRegistrationsQuery({
- *   variables: {
- *      taalhuisId: // value for 'taalhuisId'
- *   },
- * });
- */
-export function useRegistrationsQuery(
-    baseOptions: Apollo.QueryHookOptions<RegistrationsQuery, RegistrationsQueryVariables>
-) {
-    return Apollo.useQuery<RegistrationsQuery, RegistrationsQueryVariables>(RegistrationsDocument, baseOptions)
-}
-export function useRegistrationsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<RegistrationsQuery, RegistrationsQueryVariables>
-) {
-    return Apollo.useLazyQuery<RegistrationsQuery, RegistrationsQueryVariables>(RegistrationsDocument, baseOptions)
-}
-export type RegistrationsQueryHookResult = ReturnType<typeof useRegistrationsQuery>
-export type RegistrationsLazyQueryHookResult = ReturnType<typeof useRegistrationsLazyQuery>
-export type RegistrationsQueryResult = Apollo.QueryResult<RegistrationsQuery, RegistrationsQueryVariables>
-export const StudentDocument = gql`
-    query student($studentId: String!) {
-        student(studentId: $studentId) {
-            id
-            dateCreated
-            status
-            givenName
-            additionalName
-            familyName
-            memo
-            registrar {
-                id
-                organisationName
-                givenName
-                additionalName
-                familyName
-                email
-                telephone
-            }
-        }
-    }
-`
-
-/**
- * __useStudentQuery__
- *
- * To run a query within a React component, call `useStudentQuery` and pass it any options that fit your needs.
- * When your component renders, `useStudentQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useStudentQuery({
- *   variables: {
- *      studentId: // value for 'studentId'
- *   },
- * });
- */
-export function useStudentQuery(baseOptions: Apollo.QueryHookOptions<StudentQuery, StudentQueryVariables>) {
-    return Apollo.useQuery<StudentQuery, StudentQueryVariables>(StudentDocument, baseOptions)
-}
-export function useStudentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StudentQuery, StudentQueryVariables>) {
-    return Apollo.useLazyQuery<StudentQuery, StudentQueryVariables>(StudentDocument, baseOptions)
-}
-export type StudentQueryHookResult = ReturnType<typeof useStudentQuery>
-export type StudentLazyQueryHookResult = ReturnType<typeof useStudentLazyQuery>
-export type StudentQueryResult = Apollo.QueryResult<StudentQuery, StudentQueryVariables>
-export const StudentsDocument = gql`
-    query students($taalhuisId: String!) {
-        students(taalhuisId: $taalhuisId) {
-            id
-            dateCreated
-            status
-            givenName
-            additionalName
-            familyName
-            memo
-            registrar {
-                id
-                organisationName
-                givenName
-                additionalName
-                familyName
-                email
-                telephone
-            }
-        }
-    }
-`
-
-/**
- * __useStudentsQuery__
- *
- * To run a query within a React component, call `useStudentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useStudentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useStudentsQuery({
- *   variables: {
- *      taalhuisId: // value for 'taalhuisId'
- *   },
- * });
- */
-export function useStudentsQuery(baseOptions: Apollo.QueryHookOptions<StudentsQuery, StudentsQueryVariables>) {
-    return Apollo.useQuery<StudentsQuery, StudentsQueryVariables>(StudentsDocument, baseOptions)
-}
-export function useStudentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StudentsQuery, StudentsQueryVariables>) {
-    return Apollo.useLazyQuery<StudentsQuery, StudentsQueryVariables>(StudentsDocument, baseOptions)
-}
-export type StudentsQueryHookResult = ReturnType<typeof useStudentsQuery>
-export type StudentsLazyQueryHookResult = ReturnType<typeof useStudentsLazyQuery>
-export type StudentsQueryResult = Apollo.QueryResult<StudentsQuery, StudentsQueryVariables>
 export const TaalhuisDocument = gql`
     query taalhuis($taalhuisId: String!) {
         taalhuis(taalhuisId: $taalhuisId) {
