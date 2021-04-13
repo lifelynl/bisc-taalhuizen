@@ -325,6 +325,178 @@ class CreateStudentCourseInputType {
     public doesCourseProvideCertificate?: boolean
 }
 
+enum StudentJobDaytimeActivitiesEnum {
+    SEARCHING_FOR_JOB = 'SEARCHING_FOR_JOB', // Op zoek naar werk
+    RE_INTEGRATION = 'RE_INTEGRATION', // Re-integratie
+    SCHOOL = 'SCHOOL', // Studie/school
+    VOLUNTEER_JOB = 'VOLUNTEER_JOB', // Vrijwilligerswerk
+    JOB = 'JOB', // Werk
+    OTHER = 'OTHER', // Werk
+}
+registerEnumType(StudentJobDaytimeActivitiesEnum, { name: 'StudentJobDaytimeActivitiesEnum' })
+
+@InputType()
+class CreateStudentJobInputType {
+    @Field({ nullable: true })
+    public trainedForJob?: string
+
+    @Field({ nullable: true })
+    public lastJob?: string
+
+    @Field(() => [StudentJobDaytimeActivitiesEnum], { nullable: true })
+    public dayTimeActivities?: StudentJobDaytimeActivitiesEnum[]
+
+    @Field({ nullable: true })
+    public dayTimeActivitiesOther?: string
+}
+
+enum StudentMotivationDesiredSkillsEnum {
+    KLIKTIK = 'KLIKTIK', // Klik & Tik
+    USING_WHATSAPP = 'USING_WHATSAPP', // Leren whatsappen
+    USING_SKYPE = 'USING_SKYPE', // Leren skypen
+    DEVICE_FUNCTIONALITIES = 'DEVICE_FUNCTIONALITIES', // Functionaliteiten apparaat leren kennen
+    DIGITAL_GOVERNMENT = 'DIGITAL_GOVERNMENT', // Met digitiale overheid werken
+    RESERVE_BOOKS_IN_LIBRARY = 'RESERVE_BOOKS_IN_LIBRARY', // Boeken kunnen reserveren in de bibliotheek
+    ADS_ON_MARKTPLAATS = 'ADS_ON_MARKTPLAATS', // Een advertentie op martkplaats zetten
+
+    READ_FOR_CHILDREN = 'READ_FOR_CHILDREN', // Voorlezen aan mijn (klein)kind
+    UNDERSTAND_PRESCRIPTIONS = 'UNDERSTAND_PRESCRIPTIONS', // Een bijsluiter begrijpen
+
+    WRITE_APPLICATION_LETTER = 'WRITE_APPLICATION_LETTER', // Sollicitatiebrief schrijven
+    WRITE_POSTCARD_FOR_FAMILY = 'WRITE_POSTCARD_FOR_FAMILY', // Een kaart aan familie kunnen sturen
+
+    DO_ADMINISTRATION = 'DO_ADMINISTRATION', // Mijn eigen administratie kunnen doen
+    CALCULATIONS_FOR_RECIPES = 'CALCULATIONS_FOR_RECIPES', // Hoeveelheden bij een recept kunnen uitrekenen
+
+    OTHER = 'OTHER',
+}
+registerEnumType(StudentMotivationDesiredSkillsEnum, { name: 'StudentMotivationDesiredSkillsEnum' })
+
+enum StudentMotivationDesiredLearningMethodsEnum {
+    IN_A_GROUP = 'IN_A_GROUP', // In een groep
+    ONE_ON_ONE = 'ONE_ON_ONE', // Een-op-een
+    HOME_ENVIRONMENT = 'HOME_ENVIRONMENT', // In thuis omgeving
+    IN_LIBRARY_OR_OTHER = 'IN_LIBRARY_OR_OTHER', // In de bibliotheek of elders
+    ONLINE = 'ONLINE', // Online
+}
+registerEnumType(StudentMotivationDesiredLearningMethodsEnum, { name: 'StudentMotivationDesiredLearningMethodsEnum' })
+
+@InputType()
+class CreateStudentMotivationInputType {
+    @Field(() => [StudentMotivationDesiredSkillsEnum], { nullable: true })
+    public desiredSkills?: StudentMotivationDesiredSkillsEnum[]
+
+    @Field({ nullable: true })
+    public desiredSkillsOther?: string
+
+    @Field({ nullable: true })
+    public hasTriedThisBefore?: boolean
+
+    @Field({ nullable: true })
+    public hasTriedThisBeforeExplanation?: string
+
+    @Field({ nullable: true })
+    public whyWantTheseSkills?: string
+
+    @Field({ nullable: true })
+    public whyWantThisNow?: string
+
+    @Field(() => [StudentMotivationDesiredLearningMethodsEnum], { nullable: true })
+    public desiredLearningMethod?: StudentMotivationDesiredLearningMethodsEnum[]
+
+    @Field({ nullable: true })
+    public remarks?: string
+}
+
+@InputType()
+class CreateStudentAvailabilityDayInputType {
+    @Field()
+    public morning?: boolean
+
+    @Field()
+    public afternoon?: boolean
+
+    @Field()
+    public evening?: boolean
+}
+
+@InputType()
+class CreateStudentAvailabilityDaysInputType {
+    @Field()
+    @ValidateNested()
+    public monday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public tuesday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public wednesday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public thursday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public friday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public saturday?: CreateStudentAvailabilityDayInputType
+
+    @Field()
+    @ValidateNested()
+    public sunday?: CreateStudentAvailabilityDayInputType
+}
+
+@InputType()
+class CreateStudentAvailabilityInputType {
+    @Field({ nullable: true })
+    @Type(() => CreateStudentAvailabilityDaysInputType)
+    @ValidateNested()
+    public availability?: CreateStudentAvailabilityDaysInputType
+
+    @Field({ nullable: true })
+    public availabilityNotes?: string
+}
+
+enum StudentReadingTestResultEnum {
+    CAN_NOT_READ = 'CAN_NOT_READ', // Kan niet lezen
+    A0 = 'A0',
+    A1 = 'A1',
+    A2 = 'A2',
+    B1 = 'B1',
+    B2 = 'B2',
+    C1 = 'C1',
+    C2 = 'C2',
+}
+registerEnumType(StudentReadingTestResultEnum, { name: 'StudentReadingTestResultEnum' })
+
+enum StudentWritingTestResultEnum {
+    CAN_NOT_WRITE = 'CAN_NOT_WRITE', // Kan niet schrijven
+    WRITE_NAW_DETAILS = 'WRITE_NAW_DETAILS', // Kan NAW gegevens schrijven
+    WRITE_SIMPLE_TEXTS = 'WRITE_SIMPLE_TEXTS', // Kan eenvoudige teksten schrijven (boodschappenbriefje etc.)
+    WRITE_SIMPLE_LETTERS = 'WRITE_SIMPLE_LETTERS', // Kan (eenvoudige) brieven schrijven
+}
+registerEnumType(StudentWritingTestResultEnum, { name: 'StudentWritingTestResultEnum' })
+
+@InputType()
+class CreateStudentPermissionInputType {
+    @Field()
+    public didSignPermissionForm!: boolean
+
+    @Field()
+    public hasPermissionToShareDataWithAanbieders!: boolean
+
+    @Field()
+    public hasPermissionToShareDataWithLibraries!: boolean
+
+    @Field()
+    public hasPermissionToSendInformationAboutLibraries!: boolean
+}
+
 @InputType()
 // export class CreateStudentInputType implements CreateStudentInput {
 export class CreateStudentInputType {
@@ -389,6 +561,38 @@ export class CreateStudentInputType {
     @Type(() => CreateStudentCourseInputType)
     @ValidateNested()
     public courseDetails!: CreateStudentCourseInputType
+
+    // TOOD: Disable field to not break the frontend
+    @Field({ nullable: true })
+    @Type(() => CreateStudentJobInputType)
+    @ValidateNested()
+    public jobDetails!: CreateStudentJobInputType
+
+    // TOOD: Disable field to not break the frontend
+    @Field({ nullable: true })
+    @Type(() => CreateStudentMotivationInputType)
+    @ValidateNested()
+    public motivationDetails!: CreateStudentMotivationInputType
+
+    // TOOD: Disable field to not break the frontend
+    @Field({ nullable: true })
+    @Type(() => CreateStudentAvailabilityInputType)
+    @ValidateNested()
+    public availabilityDetails!: CreateStudentAvailabilityInputType
+
+    // TOOD: Disable field to not break the frontend
+    @Field(() => StudentReadingTestResultEnum, { nullable: true })
+    public readingTestResult?: StudentReadingTestResultEnum
+
+    // TOOD: Disable field to not break the frontend
+    @Field(() => StudentWritingTestResultEnum, { nullable: true })
+    public writingTestResult?: StudentWritingTestResultEnum
+
+    // TOOD: Disable field to not break the frontend
+    @Field()
+    @Type(() => CreateStudentPermissionInputType)
+    @ValidateNested()
+    public permissionDetails!: CreateStudentPermissionInputType
 
     // @Field()
     // public givenName!: string

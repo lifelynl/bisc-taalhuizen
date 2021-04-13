@@ -766,6 +766,12 @@ export type CreateStudentInputType = {
     speakingLevel?: Maybe<StudentSpeakingLevelEnum>
     educationDetails?: Maybe<CreateStudentEducationInputType>
     courseDetails?: Maybe<CreateStudentCourseInputType>
+    jobDetails?: Maybe<CreateStudentJobInputType>
+    motivationDetails?: Maybe<CreateStudentMotivationInputType>
+    availabilityDetails?: Maybe<CreateStudentAvailabilityInputType>
+    readingTestResult?: Maybe<StudentReadingTestResultEnum>
+    writingTestResult?: Maybe<StudentWritingTestResultEnum>
+    permissionDetails: CreateStudentPermissionInputType
 }
 
 export type CreateStudentCivicIntegrationInputType = {
@@ -969,6 +975,104 @@ export enum StudentFollowingCourseTeacherEnum {
 export enum StudentFollowingCourseGroupEnum {
     Individually = 'INDIVIDUALLY',
     Group = 'GROUP',
+}
+
+export type CreateStudentJobInputType = {
+    trainedForJob?: Maybe<Scalars['String']>
+    lastJob?: Maybe<Scalars['String']>
+    dayTimeActivities?: Maybe<Array<StudentJobDaytimeActivitiesEnum>>
+    dayTimeActivitiesOther?: Maybe<Scalars['String']>
+}
+
+export enum StudentJobDaytimeActivitiesEnum {
+    SearchingForJob = 'SEARCHING_FOR_JOB',
+    ReIntegration = 'RE_INTEGRATION',
+    School = 'SCHOOL',
+    VolunteerJob = 'VOLUNTEER_JOB',
+    Job = 'JOB',
+    Other = 'OTHER',
+}
+
+export type CreateStudentMotivationInputType = {
+    desiredSkills?: Maybe<Array<StudentMotivationDesiredSkillsEnum>>
+    desiredSkillsOther?: Maybe<Scalars['String']>
+    hasTriedThisBefore?: Maybe<Scalars['Boolean']>
+    hasTriedThisBeforeExplanation?: Maybe<Scalars['String']>
+    whyWantTheseSkills?: Maybe<Scalars['String']>
+    whyWantThisNow?: Maybe<Scalars['String']>
+    desiredLearningMethod?: Maybe<Array<StudentMotivationDesiredLearningMethodsEnum>>
+    remarks?: Maybe<Scalars['String']>
+}
+
+export enum StudentMotivationDesiredSkillsEnum {
+    Kliktik = 'KLIKTIK',
+    UsingWhatsapp = 'USING_WHATSAPP',
+    UsingSkype = 'USING_SKYPE',
+    DeviceFunctionalities = 'DEVICE_FUNCTIONALITIES',
+    DigitalGovernment = 'DIGITAL_GOVERNMENT',
+    ReserveBooksInLibrary = 'RESERVE_BOOKS_IN_LIBRARY',
+    AdsOnMarktplaats = 'ADS_ON_MARKTPLAATS',
+    ReadForChildren = 'READ_FOR_CHILDREN',
+    UnderstandPrescriptions = 'UNDERSTAND_PRESCRIPTIONS',
+    WriteApplicationLetter = 'WRITE_APPLICATION_LETTER',
+    WritePostcardForFamily = 'WRITE_POSTCARD_FOR_FAMILY',
+    DoAdministration = 'DO_ADMINISTRATION',
+    CalculationsForRecipes = 'CALCULATIONS_FOR_RECIPES',
+    Other = 'OTHER',
+}
+
+export enum StudentMotivationDesiredLearningMethodsEnum {
+    InAGroup = 'IN_A_GROUP',
+    OneOnOne = 'ONE_ON_ONE',
+    HomeEnvironment = 'HOME_ENVIRONMENT',
+    InLibraryOrOther = 'IN_LIBRARY_OR_OTHER',
+    Online = 'ONLINE',
+}
+
+export type CreateStudentAvailabilityInputType = {
+    availability?: Maybe<CreateStudentAvailabilityDaysInputType>
+    availabilityNotes?: Maybe<Scalars['String']>
+}
+
+export type CreateStudentAvailabilityDaysInputType = {
+    monday: CreateStudentAvailabilityDayInputType
+    tuesday: CreateStudentAvailabilityDayInputType
+    wednesday: CreateStudentAvailabilityDayInputType
+    thursday: CreateStudentAvailabilityDayInputType
+    friday: CreateStudentAvailabilityDayInputType
+    saturday: CreateStudentAvailabilityDayInputType
+    sunday: CreateStudentAvailabilityDayInputType
+}
+
+export type CreateStudentAvailabilityDayInputType = {
+    morning: Scalars['Boolean']
+    afternoon: Scalars['Boolean']
+    evening: Scalars['Boolean']
+}
+
+export enum StudentReadingTestResultEnum {
+    CanNotRead = 'CAN_NOT_READ',
+    A0 = 'A0',
+    A1 = 'A1',
+    A2 = 'A2',
+    B1 = 'B1',
+    B2 = 'B2',
+    C1 = 'C1',
+    C2 = 'C2',
+}
+
+export enum StudentWritingTestResultEnum {
+    CanNotWrite = 'CAN_NOT_WRITE',
+    WriteNawDetails = 'WRITE_NAW_DETAILS',
+    WriteSimpleTexts = 'WRITE_SIMPLE_TEXTS',
+    WriteSimpleLetters = 'WRITE_SIMPLE_LETTERS',
+}
+
+export type CreateStudentPermissionInputType = {
+    didSignPermissionForm: Scalars['Boolean']
+    hasPermissionToShareDataWithAanbieders: Scalars['Boolean']
+    hasPermissionToShareDataWithLibraries: Scalars['Boolean']
+    hasPermissionToSendInformationAboutLibraries: Scalars['Boolean']
 }
 
 export type UpdateStudentInputType = {
