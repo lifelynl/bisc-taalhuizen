@@ -705,6 +705,58 @@ export type TestResultType = {
     examResult?: Maybe<Scalars['String']>
 }
 
+export type GroupAvailabilityDayType = {
+    __typename?: 'GroupAvailabilityDayType'
+    morning: Scalars['Boolean']
+    afternoon: Scalars['Boolean']
+    evening: Scalars['Boolean']
+}
+
+export type GroupAvailabilityDaysType = {
+    __typename?: 'GroupAvailabilityDaysType'
+    monday: GroupAvailabilityDayType
+    tuesday: GroupAvailabilityDayType
+    wednesday: GroupAvailabilityDayType
+    thursday: GroupAvailabilityDayType
+    friday: GroupAvailabilityDayType
+    saturday: GroupAvailabilityDayType
+    sunday: GroupAvailabilityDayType
+}
+
+export type GroupType = {
+    __typename?: 'GroupType'
+    id: Scalars['String']
+    name: Scalars['String']
+    aanbiederName: Scalars['String']
+    typeCourse: GroupTypeCourseEnum
+    outComesGoal: Scalars['String']
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    detailsIsFormal: Scalars['Boolean']
+    detailsTotalClassHours: Scalars['Int']
+    detailsCertificateWillBeAwarded: Scalars['Boolean']
+    detailsStartDate?: Maybe<Scalars['String']>
+    detailsEndDate?: Maybe<Scalars['String']>
+    availability?: Maybe<GroupAvailabilityDaysType>
+    availabilityNotes?: Maybe<Scalars['String']>
+    generalLocation: Scalars['String']
+    generalParticipantsMin?: Maybe<Scalars['Int']>
+    generalParticipantsMax?: Maybe<Scalars['Int']>
+    generalEvaluation?: Maybe<Scalars['String']>
+    aanbiederEmployees?: Maybe<Array<AanbiederEmployeeType>>
+}
+
+export enum GroupTypeCourseEnum {
+    Language = 'LANGUAGE',
+    Math = 'MATH',
+    Digital = 'DIGITAL',
+    Other = 'OTHER',
+}
+
 export type LearningNeedType = {
     __typename?: 'LearningNeedType'
     id: Scalars['String']
@@ -947,6 +999,7 @@ export type Mutation = {
     createTestResult: TestResultType
     updateTestResult: TestResultType
     deleteTestResult: Scalars['Boolean']
+    createGroup: GroupType
 }
 
 export type MutationLoginArgs = {
@@ -1137,6 +1190,10 @@ export type MutationUpdateTestResultArgs = {
 
 export type MutationDeleteTestResultArgs = {
     testResultId: Scalars['String']
+}
+
+export type MutationCreateGroupArgs = {
+    input: CreateGroupInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1668,6 +1725,47 @@ export type UpdateTestResultInputType = {
     examUsedExam: Scalars['String']
     examDate: Scalars['String']
     examMemo?: Maybe<Scalars['String']>
+}
+
+export type CreateGroupInputType = {
+    aanbiederId: Scalars['String']
+    name: Scalars['String']
+    typeCourse: GroupTypeCourseEnum
+    outComesGoal: Scalars['String']
+    outComesTopic: LearningNeedTopicEnum
+    outComesTopicOther?: Maybe<Scalars['String']>
+    outComesApplication: LearningNeedApplicationEnum
+    outComesApplicationOther?: Maybe<Scalars['String']>
+    outComesLevel: LearningNeedLevelEnum
+    outComesLevelOther?: Maybe<Scalars['String']>
+    detailsIsFormal: Scalars['Boolean']
+    detailsTotalClassHours: Scalars['Int']
+    detailsCertificateWillBeAwarded: Scalars['Boolean']
+    detailsStartDate?: Maybe<Scalars['String']>
+    detailsEndDate?: Maybe<Scalars['String']>
+    availability?: Maybe<CreateGroupAvailabilityInputType>
+    availabilityNotes?: Maybe<Scalars['String']>
+    generalLocation: Scalars['String']
+    generalParticipantsMin?: Maybe<Scalars['Int']>
+    generalParticipantsMax?: Maybe<Scalars['Int']>
+    generalEvaluation?: Maybe<Scalars['String']>
+    aanbiederEmployeeIds?: Maybe<Array<Scalars['String']>>
+}
+
+export type CreateGroupAvailabilityInputType = {
+    monday: CreateGroupAvailabilityDayInputType
+    tuesday: CreateGroupAvailabilityDayInputType
+    wednesday: CreateGroupAvailabilityDayInputType
+    thursday: CreateGroupAvailabilityDayInputType
+    friday: CreateGroupAvailabilityDayInputType
+    saturday: CreateGroupAvailabilityDayInputType
+    sunday: CreateGroupAvailabilityDayInputType
+}
+
+export type CreateGroupAvailabilityDayInputType = {
+    morning: Scalars['Boolean']
+    afternoon: Scalars['Boolean']
+    evening: Scalars['Boolean']
 }
 
 export type ChangePasswordMutationVariables = Exact<{

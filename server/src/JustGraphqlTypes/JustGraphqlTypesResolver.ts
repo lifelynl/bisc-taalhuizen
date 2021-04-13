@@ -1,5 +1,6 @@
-import { Args, Field, InputType, Mutation, ObjectType, Query, registerEnumType, Resolver } from '@nestjs/graphql'
+import { Args, Field, InputType, Int, Mutation, ObjectType, Query, registerEnumType, Resolver } from '@nestjs/graphql'
 import { IsEmail } from 'class-validator'
+import { AanbiederEmployeeType } from 'src/Aanbieder/types/CreateAanbiederEmployeeInputType'
 import {
     LearningNeedApplicationEnum,
     LearningNeedLevelEnum,
@@ -314,6 +315,228 @@ class TestResultType {
     public examResult!: string
 }
 
+enum GroupTypeCourseEnum {
+    LANGUAGE = 'LANGUAGE', // Taal
+    MATH = 'MATH', // Rekenen
+    DIGITAL = 'DIGITAL', // Digitale vaardigheden
+    OTHER = 'OTHER', // Overige
+}
+
+registerEnumType(GroupTypeCourseEnum, { name: 'GroupTypeCourseEnum' })
+
+@InputType()
+class CreateGroupAvailabilityDayInputType {
+    @Field()
+    public morning?: boolean
+
+    @Field()
+    public afternoon?: boolean
+
+    @Field()
+    public evening?: boolean
+}
+
+@InputType()
+class CreateGroupAvailabilityInputType {
+    @Field()
+    public monday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public tuesday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public wednesday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public thursday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public friday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public saturday?: CreateGroupAvailabilityDayInputType
+
+    @Field()
+    public sunday?: CreateGroupAvailabilityDayInputType
+}
+
+@InputType()
+class CreateGroupInputType {
+    @Field()
+    public aanbiederId!: string
+
+    @Field()
+    public name!: string
+
+    @Field(() => GroupTypeCourseEnum)
+    public typeCourse!: GroupTypeCourseEnum
+
+    @Field(() => String)
+    public outComesGoal?: string
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic?: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther?: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication?: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther?: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel?: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther?: string | null
+
+    @Field()
+    public detailsIsFormal!: boolean
+
+    @Field(() => Int)
+    public detailsTotalClassHours!: number
+
+    @Field()
+    public detailsCertificateWillBeAwarded!: boolean
+
+    @Field(() => String, { nullable: true })
+    public detailsStartDate?: string | null
+
+    @Field(() => String, { nullable: true })
+    public detailsEndDate?: string | null
+
+    @Field({ nullable: true })
+    public availability?: CreateGroupAvailabilityInputType
+
+    @Field({ nullable: true })
+    public availabilityNotes?: string
+
+    @Field()
+    public generalLocation?: string
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMin?: number
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMax?: number
+
+    @Field({ nullable: true })
+    public generalEvaluation?: string
+
+    @Field(() => [String], { nullable: true })
+    public aanbiederEmployeeIds?: string[]
+}
+
+@ObjectType()
+class GroupAvailabilityDayType {
+    @Field()
+    public morning?: boolean
+
+    @Field()
+    public afternoon?: boolean
+
+    @Field()
+    public evening?: boolean
+}
+
+@ObjectType()
+class GroupAvailabilityDaysType {
+    @Field()
+    public monday?: GroupAvailabilityDayType
+
+    @Field()
+    public tuesday?: GroupAvailabilityDayType
+
+    @Field()
+    public wednesday?: GroupAvailabilityDayType
+
+    @Field()
+    public thursday?: GroupAvailabilityDayType
+
+    @Field()
+    public friday?: GroupAvailabilityDayType
+
+    @Field()
+    public saturday?: GroupAvailabilityDayType
+
+    @Field()
+    public sunday?: GroupAvailabilityDayType
+}
+
+@ObjectType()
+class GroupType {
+    @Field()
+    public id!: string
+
+    @Field()
+    public name!: string
+
+    @Field()
+    public aanbiederName!: string
+
+    @Field(() => GroupTypeCourseEnum)
+    public typeCourse!: GroupTypeCourseEnum
+
+    @Field(() => String)
+    public outComesGoal?: string
+
+    @Field(() => LearningNeedTopicEnum)
+    public outComesTopic?: LearningNeedTopicEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesTopicOther?: string | null
+
+    @Field(() => LearningNeedApplicationEnum)
+    public outComesApplication?: LearningNeedApplicationEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesApplicationOther?: string | null
+
+    @Field(() => LearningNeedLevelEnum)
+    public outComesLevel?: LearningNeedLevelEnum
+
+    @Field(() => String, { nullable: true })
+    public outComesLevelOther?: string | null
+
+    @Field()
+    public detailsIsFormal!: boolean
+
+    @Field(() => Int)
+    public detailsTotalClassHours!: number
+
+    @Field()
+    public detailsCertificateWillBeAwarded!: boolean
+
+    @Field(() => String, { nullable: true })
+    public detailsStartDate?: string | null
+
+    @Field(() => String, { nullable: true })
+    public detailsEndDate?: string | null
+
+    @Field(() => GroupAvailabilityDaysType, { nullable: true })
+    public availability?: GroupAvailabilityDaysType
+
+    @Field({ nullable: true })
+    public availabilityNotes?: string
+
+    @Field()
+    public generalLocation?: string
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMin?: number
+
+    @Field(() => Int, { nullable: true })
+    public generalParticipantsMax?: number
+
+    @Field({ nullable: true })
+    public generalEvaluation?: string
+
+    @Field(() => [AanbiederEmployeeType], { nullable: true })
+    public aanbiederEmployees?: AanbiederEmployeeType[]
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -482,6 +705,12 @@ export class JustGraphqlTypesResolver {
     @Query(() => [StudentType])
     public async aanbiederEmployeeMentees(@Args('anbiederEmployeeId') anbiederEmployeeId: string) {
         // public async testResults(@Args('learningNeedId') learningNeedId: string) {
+        return undefined
+    }
+
+    // Group
+    @Mutation(() => GroupType)
+    public async createGroup(@Args('input') input: CreateGroupInputType) {
         return undefined
     }
 }
