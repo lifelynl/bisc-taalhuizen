@@ -4,10 +4,12 @@ import { CurrentUser } from 'src/User/CurrentUserDecorator'
 import { ContextUser } from 'src/User/entities/UserEntity'
 import { AanbiederEmployeeService } from './AanbiederEmployeeService'
 import { CreateAanbiederEmployeeService } from './CreateAanbiederEmployeeService'
-import { CreateAanbiederEmployeeInputType } from './types/CreateAanbiederEmployeeInputType'
-import { AanbiederEmployeeType } from './types/AanbiederEmployeeType'
+import {
+    AanbiederEmployeeType,
+    CreateAanbiederEmployeeInputType,
+    UpdateAanbiederEmployeeInputType,
+} from './types/CreateAanbiederEmployeeInputType'
 import { DeleteAanbiederEmployeeService } from './DeleteAanbiederEmployeeService'
-import { UpdateAanbiederEmployeeInputType } from './types/UpdateAanbiederEmployeeInputType'
 import { UpdateAanbiederEmployeeService } from './UpdateAanbiederEmployeeService'
 import { AanbiederEmployeePolicyService } from './AanbiederEmployeePolicyService'
 import { UnauthorizedException } from '@nestjs/common'
@@ -46,7 +48,7 @@ export class AanbiederEmployeeResolver {
             throw new UnauthorizedException()
         }
 
-        return this.aanbiederEmployeeService.findByAanbiederId(args.aanbiederId)
+        return this.aanbiederEmployeeService.findByAanbiederId(args.aanbiederId) as any
     }
 
     @Query(() => AanbiederEmployeeType)
@@ -61,7 +63,7 @@ export class AanbiederEmployeeResolver {
             throw new UnauthorizedException()
         }
 
-        return aanbiederEmployee
+        return aanbiederEmployee as any
     }
 
     @Mutation(() => AanbiederEmployeeType)
@@ -74,7 +76,7 @@ export class AanbiederEmployeeResolver {
             throw new UnauthorizedException()
         }
 
-        return this.createAanbiederEmployeeService.createAanbiederEmployee(input)
+        return this.createAanbiederEmployeeService.createAanbiederEmployee(input) as any
     }
 
     @Mutation(() => AanbiederEmployeeType)
@@ -89,7 +91,7 @@ export class AanbiederEmployeeResolver {
             throw new UnauthorizedException()
         }
 
-        return this.updateAanbiederEmployeeService.updateAanbiederEmployee(input)
+        return this.updateAanbiederEmployeeService.updateAanbiederEmployee(input) as any
     }
 
     @Mutation(() => Boolean)
