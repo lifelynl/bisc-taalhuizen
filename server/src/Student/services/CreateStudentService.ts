@@ -9,17 +9,23 @@ import { ParticipantStatusEnum } from 'src/CommonGroundAPI/edu/ParticipantStatus
 import { ProgramRepository } from 'src/CommonGroundAPI/edu/ProgramRepository'
 import { StudentService } from './StudentService'
 
-// export enum StudentCivicIntegrationRequirementReasonEnum {
-//     FINISHED = 'FINISHED',
-//     FROM_EU_COUNTRY = 'FROM_EU_COUNTRY',
-//     EXEMPTED_OR_ZROUTE = 'EXEMPTED_OR_ZROUTE',
-// }
+export enum StudentCivicIntegrationRequirementEnum {
+    NO = 'NO',
+    YES = 'YES',
+    CURRENTLY_WORKING_ON_INTEGRATION = 'CURRENTLY_WORKING_ON_INTEGRATION',
+}
 
-// export enum StudentGenderEnum {
-//     MALE = 'MALE',
-//     FEMALE = 'FEMALE',
-//     X = 'X',
-// }
+export enum StudentCivicIntegrationRequirementReasonEnum {
+    FINISHED = 'FINISHED',
+    FROM_EU_COUNTRY = 'FROM_EU_COUNTRY',
+    EXEMPTED_OR_ZROUTE = 'EXEMPTED_OR_ZROUTE',
+}
+
+export enum StudentGenderEnum {
+    MALE = 'MALE',
+    FEMALE = 'FEMALE',
+    X = 'X',
+}
 
 export interface CreateStudentInput {
     taalhuisId: string

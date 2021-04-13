@@ -756,11 +756,219 @@ export type RegisterStudentRegistrarInputType = {
 
 export type CreateStudentInputType = {
     taalhuisId: Scalars['String']
+    civicIntegrationDetails?: Maybe<CreateStudentCivicIntegrationInputType>
+    personDetails: CreateStudentPersonInputType
+    contactDetails?: Maybe<CreateStudentContactInputType>
+    generalDetails?: Maybe<CreateStudentGeneralInputType>
+    referrerDetails?: Maybe<CreateStudentReferrerInputType>
+    backgroundDetails?: Maybe<CreateStudentBackgroundInputType>
+    dutchNTDetails?: Maybe<CreateStudentDutchNtInputType>
+    speakingLevel?: Maybe<StudentSpeakingLevelEnum>
+    educationDetails?: Maybe<CreateStudentEducationInputType>
+    courseDetails?: Maybe<CreateStudentCourseInputType>
+}
+
+export type CreateStudentCivicIntegrationInputType = {
+    civicIntegrationRequirement?: Maybe<StudentCivicIntegrationRequirementEnum>
+    civicIntegrationRequirementReason?: Maybe<StudentCivicIntegrationRequirementReasonEnum>
+    civicIntegrationRequirementFinishDate?: Maybe<Scalars['String']>
+}
+
+export enum StudentCivicIntegrationRequirementEnum {
+    No = 'NO',
+    Yes = 'YES',
+    CurrentlyWorkingOnIntegration = 'CURRENTLY_WORKING_ON_INTEGRATION',
+}
+
+export enum StudentCivicIntegrationRequirementReasonEnum {
+    Finished = 'FINISHED',
+    FromEuCountry = 'FROM_EU_COUNTRY',
+    ExemptedOrZroute = 'EXEMPTED_OR_ZROUTE',
+}
+
+export type CreateStudentPersonInputType = {
     givenName: Scalars['String']
     additionalName?: Maybe<Scalars['String']>
     familyName: Scalars['String']
+    gender?: Maybe<StudentGenderEnum>
+    dateOfBirth?: Maybe<Scalars['String']>
+}
+
+export enum StudentGenderEnum {
+    Male = 'MALE',
+    Female = 'FEMALE',
+    X = 'X',
+}
+
+export type CreateStudentContactInputType = {
+    street?: Maybe<Scalars['String']>
+    postalCode?: Maybe<Scalars['String']>
+    locality?: Maybe<Scalars['String']>
+    houseNumber?: Maybe<Scalars['String']>
+    houseNumberSuffix?: Maybe<Scalars['String']>
     email?: Maybe<Scalars['String']>
     telephone?: Maybe<Scalars['String']>
+    contactPersonTelephone?: Maybe<Scalars['String']>
+    contactPreference?: Maybe<StudentContactPreferenceEnum>
+    contactPreferenceOther?: Maybe<Scalars['String']>
+}
+
+export enum StudentContactPreferenceEnum {
+    Phonecall = 'PHONECALL',
+    Whatsapp = 'WHATSAPP',
+    Email = 'EMAIL',
+    Other = 'OTHER',
+}
+
+export type CreateStudentGeneralInputType = {
+    countryOfOrigin?: Maybe<Scalars['String']>
+    nativeLanguage?: Maybe<Scalars['String']>
+    otherLanguages?: Maybe<Scalars['String']>
+    familyComposition?: Maybe<Array<StudentFamilyCompositionEnum>>
+    childrenCount?: Maybe<Scalars['Int']>
+    childrenDatesOfBirth?: Maybe<Scalars['String']>
+}
+
+export enum StudentFamilyCompositionEnum {
+    MarriedPartner = 'MARRIED_PARTNER',
+    Single = 'SINGLE',
+    Divorced = 'DIVORCED',
+    Widow = 'WIDOW',
+}
+
+export type CreateStudentReferrerInputType = {
+    referringOrganization?: Maybe<StudentReferringOrganizationEnum>
+    referringOrganizationOther?: Maybe<Scalars['String']>
+    email?: Maybe<Scalars['String']>
+}
+
+export enum StudentReferringOrganizationEnum {
+    Uwv = 'UWV',
+    SocialService = 'SOCIAL_SERVICE',
+    Library = 'LIBRARY',
+    WelfareWork = 'WELFARE_WORK',
+    NeighborhoodTeam = 'NEIGHBORHOOD_TEAM',
+    VolunteerOrganization = 'VOLUNTEER_ORGANIZATION',
+    LanguageProvider = 'LANGUAGE_PROVIDER',
+    Other = 'OTHER',
+}
+
+export type CreateStudentBackgroundInputType = {
+    foundVia?: Maybe<StudentFoundViaEnum>
+    foundViaOther?: Maybe<Scalars['String']>
+    wentToTaalhuisBefore?: Maybe<Scalars['Boolean']>
+    wentToTaalhuisBeforeReason?: Maybe<Scalars['String']>
+    wentToTaalhuisBeforeYear?: Maybe<Scalars['Float']>
+    network?: Maybe<Array<StudentNetworkEnum>>
+    participationLadder?: Maybe<Scalars['Int']>
+}
+
+export enum StudentFoundViaEnum {
+    VolunteerCenter = 'VOLUNTEER_CENTER',
+    LibraryWebsite = 'LIBRARY_WEBSITE',
+    SocialMedia = 'SOCIAL_MEDIA',
+    Newspaper = 'NEWSPAPER',
+    ViaVia = 'VIA_VIA',
+    Other = 'OTHER',
+}
+
+export enum StudentNetworkEnum {
+    HouseholdMembers = 'HOUSEHOLD_MEMBERS',
+    Neighbors = 'NEIGHBORS',
+    FamilyMembers = 'FAMILY_MEMBERS',
+    AidWorkers = 'AID_WORKERS',
+    FriendsAcquaintances = 'FRIENDS_ACQUAINTANCES',
+    PeopleAtMosqueChurch = 'PEOPLE_AT_MOSQUE_CHURCH',
+    AcquaintancesSpeakingOwnLanguage = 'ACQUAINTANCES_SPEAKING_OWN_LANGUAGE',
+    AcquaintancesSpeakingDutch = 'ACQUAINTANCES_SPEAKING_DUTCH',
+}
+
+export type CreateStudentDutchNtInputType = {
+    dutchNTLevel?: Maybe<StudentDutchNtLevelEnum>
+    inNetherlandsSinceYear?: Maybe<Scalars['Float']>
+    languageInDailyLife?: Maybe<Scalars['String']>
+    knowsLatinAlphabet?: Maybe<Scalars['Boolean']>
+    lastKnownLevel?: Maybe<StudentDutchLastKnownLevelEnum>
+}
+
+export enum StudentDutchNtLevelEnum {
+    Nt1 = 'NT1',
+    Nt2 = 'NT2',
+}
+
+export enum StudentDutchLastKnownLevelEnum {
+    A0 = 'A0',
+    A1 = 'A1',
+    A2 = 'A2',
+    B1 = 'B1',
+    B2 = 'B2',
+    C1 = 'C1',
+    C2 = 'C2',
+    Unknown = 'UNKNOWN',
+}
+
+export enum StudentSpeakingLevelEnum {
+    Beginner = 'BEGINNER',
+    Reasonable = 'REASONABLE',
+    Advanced = 'ADVANCED',
+}
+
+export type CreateStudentEducationInputType = {
+    lastFollowedEducation?: Maybe<StudentLastFollowedEducationEnum>
+    didGraduate?: Maybe<Scalars['Boolean']>
+    followingEducationRightNow?: Maybe<StudentFollowingEducationRightNowEnum>
+    followingEducationRightNowYesStartDate?: Maybe<Scalars['String']>
+    followingEducationRightNowYesEndDate?: Maybe<Scalars['String']>
+    followingEducationRightNowYesLevel?: Maybe<StudentFollowingEducationRightNowLevelEnum>
+    followingEducationRightNowYesInstitute?: Maybe<Scalars['String']>
+    followingEducationRightNowYesProvidesCertificate?: Maybe<Scalars['Boolean']>
+    followingEducationRightNowNoEndDate?: Maybe<Scalars['String']>
+    followingEducationRightNowNoLevel?: Maybe<Scalars['String']>
+    followingEducationRightNowNoGotCertificate?: Maybe<Scalars['Boolean']>
+}
+
+export enum StudentLastFollowedEducationEnum {
+    NoEducation = 'NO_EDUCATION',
+    SomeYearsPo = 'SOME_YEARS_PO',
+    Po = 'PO',
+    Vo = 'VO',
+    Mbo = 'MBO',
+    Hbo = 'HBO',
+    University = 'UNIVERSITY',
+}
+
+export enum StudentFollowingEducationRightNowEnum {
+    Yes = 'YES',
+    No = 'NO',
+    NoButDidEarlier = 'NO_BUT_DID_EARLIER',
+}
+
+export enum StudentFollowingEducationRightNowLevelEnum {
+    LanguageCourse = 'LANGUAGE_COURSE',
+    Bo = 'BO',
+    Hbo = 'HBO',
+    Wo = 'WO',
+    Other = 'OTHER',
+}
+
+export type CreateStudentCourseInputType = {
+    isFollowingCourseRightNow?: Maybe<Scalars['Boolean']>
+    courseName?: Maybe<Scalars['String']>
+    courseTeacher?: Maybe<StudentFollowingCourseTeacherEnum>
+    courseGroup?: Maybe<StudentFollowingCourseGroupEnum>
+    amountOfHours?: Maybe<Scalars['Int']>
+    doesCourseProvideCertificate?: Maybe<Scalars['Boolean']>
+}
+
+export enum StudentFollowingCourseTeacherEnum {
+    Professional = 'PROFESSIONAL',
+    Volunteer = 'VOLUNTEER',
+    Both = 'BOTH',
+}
+
+export enum StudentFollowingCourseGroupEnum {
+    Individually = 'INDIVIDUALLY',
+    Group = 'GROUP',
 }
 
 export type UpdateStudentInputType = {

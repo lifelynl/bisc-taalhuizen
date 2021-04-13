@@ -93,7 +93,10 @@ export class StudentResolver {
             throw new UnauthorizedException()
         }
 
-        return this.createStudentService.createStudent(input)
+        // TOOD: Disable field to not break the frontend
+        return undefined as any
+
+        // return this.createStudentService.createStudent(input)
     }
 
     @Mutation(() => StudentType)
