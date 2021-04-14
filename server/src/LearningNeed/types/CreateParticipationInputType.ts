@@ -78,7 +78,7 @@ export class CreateParticipationInputType extends BaseParticipationInputType imp
     public learningNeedId!: string
 }
 
-enum ParticipationPresenceEndParticipationReasonEnum {
+export enum ParticipationPresenceEndParticipationReasonEnum {
     MOVED = 'MOVED', // verhuisd
     JOB = 'JOB', // werk
     ILLNESS = 'ILLNESS', // ziekte/gezondheid

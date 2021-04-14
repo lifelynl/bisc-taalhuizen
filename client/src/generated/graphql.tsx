@@ -1043,6 +1043,9 @@ export type Mutation = {
     updateGroup: GroupType
     addMentorToParticipation: AanbiederEmployeeType
     removeMentorFromParticipation: Scalars['Boolean']
+    addParticipationToGroup: ParticipationType
+    updateGroupParticipation: ParticipationType
+    removeParticipationFromGroup: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -1249,6 +1252,18 @@ export type MutationAddMentorToParticipationArgs = {
 
 export type MutationRemoveMentorFromParticipationArgs = {
     input: AddOrRemoveMentorToParticipationInputType
+}
+
+export type MutationAddParticipationToGroupArgs = {
+    input: AddOrRemoveParticipationToGroupInputType
+}
+
+export type MutationUpdateGroupParticipationArgs = {
+    input: UpdateGroupParticipationInputType
+}
+
+export type MutationRemoveParticipationFromGroupArgs = {
+    input: AddOrRemoveParticipationToGroupInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1851,6 +1866,19 @@ export type UpdateGroupInputType = {
 export type AddOrRemoveMentorToParticipationInputType = {
     participationId: Scalars['String']
     aanbiederEmployeeId: Scalars['String']
+}
+
+export type AddOrRemoveParticipationToGroupInputType = {
+    participationId: Scalars['String']
+    groupId: Scalars['String']
+}
+
+export type UpdateGroupParticipationInputType = {
+    participationId: Scalars['String']
+    presenceEngagements?: Maybe<Scalars['String']>
+    presenceStartDate?: Maybe<Scalars['DateTime']>
+    presenceEndDate?: Maybe<Scalars['DateTime']>
+    presenceEndParticipationReason?: Maybe<ParticipationPresenceEndParticipationReasonEnum>
 }
 
 export type ChangePasswordMutationVariables = Exact<{

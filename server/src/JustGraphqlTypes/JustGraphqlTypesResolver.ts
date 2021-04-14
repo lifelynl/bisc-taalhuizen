@@ -6,7 +6,10 @@ import {
     LearningNeedLevelEnum,
     LearningNeedTopicEnum,
 } from 'src/LearningNeed/services/LearningNeedService'
-import { UpdateParticipationInputType } from 'src/LearningNeed/types/CreateParticipationInputType'
+import {
+    ParticipationPresenceEndParticipationReasonEnum,
+    UpdateParticipationInputType,
+} from 'src/LearningNeed/types/CreateParticipationInputType'
 import { ParticipationType } from 'src/LearningNeed/types/ParticipationType'
 import { StudentType } from 'src/Student/types/StudentType'
 
@@ -615,6 +618,54 @@ class AddOrRemoveMentorToParticipationInputType {
     public aanbiederEmployeeId!: string
 }
 
+@InputType()
+class AddOrRemoveParticipationToGroupInputType {
+    @Field()
+    public participationId!: string
+
+    @Field()
+    public groupId!: string
+}
+
+// @ObjectType()
+// class GroupParticipationType {
+//     @Field()
+//     public id!: string
+
+//     @Field()
+//     public groupId!: string
+
+//     @Field()
+//     public participationId!: string
+
+//     @Field()
+//     public engagements!: string
+
+//     @Field()
+//     public startDate!: string
+
+//     @Field()
+//     public endDate!: string
+// }
+
+@InputType()
+class UpdateGroupParticipationInputType {
+    @Field()
+    public participationId!: string
+
+    @Field({ nullable: true })
+    public presenceEngagements!: string
+
+    @Field(() => Date, { nullable: true })
+    public presenceStartDate?: Date
+
+    @Field(() => Date, { nullable: true })
+    public presenceEndDate?: Date
+
+    @Field(() => ParticipationPresenceEndParticipationReasonEnum, { nullable: true })
+    public presenceEndParticipationReason?: ParticipationPresenceEndParticipationReasonEnum
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -845,6 +896,22 @@ export class JustGraphqlTypesResolver {
 
     @Mutation(() => Boolean)
     public async removeMentorFromParticipation(@Args('input') input: AddOrRemoveMentorToParticipationInputType) {
+        return true
+    }
+
+    // Group -> Participation
+    @Mutation(() => ParticipationType)
+    public async addParticipationToGroup(@Args('input') input: AddOrRemoveParticipationToGroupInputType) {
+        return true
+    }
+
+    @Mutation(() => ParticipationType)
+    public async updateGroupParticipation(@Args('input') input: UpdateGroupParticipationInputType) {
+        return true
+    }
+
+    @Mutation(() => Boolean)
+    public async removeParticipationFromGroup(@Args('input') input: AddOrRemoveParticipationToGroupInputType) {
         return true
     }
 }
