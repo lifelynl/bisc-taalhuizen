@@ -1025,6 +1025,8 @@ export type Mutation = {
     updateBiscEmployee: BiscEmployeeType
     deleteBiscEmployee: Scalars['Boolean']
     downloadParticipantsReport: DownloadReportType
+    downloadDesiredLearningOutcomesReport: DownloadReportType
+    downloadVolunteersReport: DownloadReportType
     createAanbiederEmployeeDocument: AanbiederEmployeeDocumentType
     downloadAanbiederEmployeeDocument: AanbiederEmployeeDocumentDownloadType
     deleteAanbiederEmployeeDocument: Scalars['Boolean']
@@ -1179,7 +1181,15 @@ export type MutationDeleteBiscEmployeeArgs = {
 }
 
 export type MutationDownloadParticipantsReportArgs = {
-    input: DownloadParticipantReportInputType
+    input: DownloadParticipantsReportInputType
+}
+
+export type MutationDownloadDesiredLearningOutcomesReportArgs = {
+    input: DownloadDesiredLearningOutcomesReportInputType
+}
+
+export type MutationDownloadVolunteersReportArgs = {
+    input: DownloadVolunteersReportInputType
 }
 
 export type MutationCreateAanbiederEmployeeDocumentArgs = {
@@ -1700,8 +1710,20 @@ export type UpdateBiscEmployeeInputType = {
     telephone?: Maybe<Scalars['String']>
 }
 
-export type DownloadParticipantReportInputType = {
+export type DownloadParticipantsReportInputType = {
     taalhuisId: Scalars['String']
+    dateFrom?: Maybe<Scalars['String']>
+    dateUntil?: Maybe<Scalars['String']>
+}
+
+export type DownloadDesiredLearningOutcomesReportInputType = {
+    taalhuisId: Scalars['String']
+    dateFrom?: Maybe<Scalars['String']>
+    dateUntil?: Maybe<Scalars['String']>
+}
+
+export type DownloadVolunteersReportInputType = {
+    aanbiederId: Scalars['String']
     dateFrom?: Maybe<Scalars['String']>
     dateUntil?: Maybe<Scalars['String']>
 }

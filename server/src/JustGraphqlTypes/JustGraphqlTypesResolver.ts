@@ -91,9 +91,33 @@ class DownloadReportType {
 }
 
 @InputType()
-class DownloadParticipantReportInputType {
+class DownloadParticipantsReportInputType {
     @Field()
     public taalhuisId!: string
+
+    @Field({ nullable: true })
+    public dateFrom?: string
+
+    @Field({ nullable: true })
+    public dateUntil?: string
+}
+
+@InputType()
+class DownloadDesiredLearningOutcomesReportInputType {
+    @Field()
+    public taalhuisId!: string
+
+    @Field({ nullable: true })
+    public dateFrom?: string
+
+    @Field({ nullable: true })
+    public dateUntil?: string
+}
+
+@InputType()
+class DownloadVolunteersReportInputType {
+    @Field()
+    public aanbiederId!: string
 
     @Field({ nullable: true })
     public dateFrom?: string
@@ -694,9 +718,23 @@ export class JustGraphqlTypesResolver {
         return undefined
     }
 
-    // Participants report
+    // BiSC/Taalhuis: Participants report (per taalhuis)
     @Mutation(() => DownloadReportType)
-    public async downloadParticipantsReport(@Args('input') input: DownloadParticipantReportInputType) {
+    public async downloadParticipantsReport(@Args('input') input: DownloadParticipantsReportInputType) {
+        return undefined
+    }
+
+    // BiSC: Desired Learning Outcomes report (per taalhuis)
+    @Mutation(() => DownloadReportType)
+    public async downloadDesiredLearningOutcomesReport(
+        @Args('input') input: DownloadDesiredLearningOutcomesReportInputType
+    ) {
+        return undefined
+    }
+
+    // BiSC: Volunteers per aanbieder report
+    @Mutation(() => DownloadReportType)
+    public async downloadVolunteersReport(@Args('input') input: DownloadVolunteersReportInputType) {
         return undefined
     }
 
