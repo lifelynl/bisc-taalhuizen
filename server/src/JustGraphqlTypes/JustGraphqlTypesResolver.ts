@@ -606,6 +606,15 @@ class GroupType {
     public aanbiederEmployees?: AanbiederEmployeeType[]
 }
 
+@InputType()
+class AddOrRemoveMentorToParticipationInputType {
+    @Field()
+    public participationId!: string
+
+    @Field()
+    public aanbiederEmployeeId!: string
+}
+
 @Resolver()
 export class JustGraphqlTypesResolver {
     // BiscEmployee
@@ -826,5 +835,16 @@ export class JustGraphqlTypesResolver {
     @Query(() => [StudentType])
     public async completedStudents(@Args('aanbiederId') aanbiederId: string) {
         return undefined
+    }
+
+    // Aanbieder -> Add mentor to Participation
+    @Mutation(() => AanbiederEmployeeType)
+    public async addMentorToParticipation(@Args('input') input: AddOrRemoveMentorToParticipationInputType) {
+        return undefined
+    }
+
+    @Mutation(() => Boolean)
+    public async removeMentorFromParticipation(@Args('input') input: AddOrRemoveMentorToParticipationInputType) {
+        return true
     }
 }

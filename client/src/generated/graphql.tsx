@@ -1041,6 +1041,8 @@ export type Mutation = {
     deleteTestResult: Scalars['Boolean']
     createGroup: GroupType
     updateGroup: GroupType
+    addMentorToParticipation: AanbiederEmployeeType
+    removeMentorFromParticipation: Scalars['Boolean']
 }
 
 export type MutationLoginArgs = {
@@ -1239,6 +1241,14 @@ export type MutationCreateGroupArgs = {
 
 export type MutationUpdateGroupArgs = {
     input: UpdateGroupInputType
+}
+
+export type MutationAddMentorToParticipationArgs = {
+    input: AddOrRemoveMentorToParticipationInputType
+}
+
+export type MutationRemoveMentorFromParticipationArgs = {
+    input: AddOrRemoveMentorToParticipationInputType
 }
 
 export type CreateTaalhuisAddressInputType = {
@@ -1836,6 +1846,11 @@ export type UpdateGroupInputType = {
     generalParticipantsMax?: Maybe<Scalars['Int']>
     generalEvaluation?: Maybe<Scalars['String']>
     aanbiederEmployeeIds?: Maybe<Array<Scalars['String']>>
+}
+
+export type AddOrRemoveMentorToParticipationInputType = {
+    participationId: Scalars['String']
+    aanbiederEmployeeId: Scalars['String']
 }
 
 export type ChangePasswordMutationVariables = Exact<{
