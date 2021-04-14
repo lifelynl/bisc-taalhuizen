@@ -811,4 +811,10 @@ export class JustGraphqlTypesResolver {
     public async groupStudents(@Args('groupId') groupId: string) {
         return undefined
     }
+
+    // Student
+    @Query(() => [StudentType])
+    public async newReferredStudents(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
 }

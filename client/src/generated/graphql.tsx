@@ -853,6 +853,7 @@ export type Query = {
     completedGroups: Array<GroupType>
     futureGroups: Array<GroupType>
     groupStudents: Array<StudentType>
+    newReferredStudents: Array<StudentType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -977,6 +978,10 @@ export type QueryFutureGroupsArgs = {
 
 export type QueryGroupStudentsArgs = {
     groupId: Scalars['String']
+}
+
+export type QueryNewReferredStudentsArgs = {
+    aanbiederId: Scalars['String']
 }
 
 export type Mutation = {
