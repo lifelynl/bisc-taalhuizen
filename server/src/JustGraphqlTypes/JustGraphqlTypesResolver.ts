@@ -812,9 +812,19 @@ export class JustGraphqlTypesResolver {
         return undefined
     }
 
-    // Student
+    // Aanbieder -> Student
     @Query(() => [StudentType])
     public async newReferredStudents(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
+
+    @Query(() => [StudentType])
+    public async activeStudents(@Args('aanbiederId') aanbiederId: string) {
+        return undefined
+    }
+
+    @Query(() => [StudentType])
+    public async completedStudents(@Args('aanbiederId') aanbiederId: string) {
         return undefined
     }
 }

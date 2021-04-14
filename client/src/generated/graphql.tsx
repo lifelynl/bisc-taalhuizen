@@ -854,6 +854,8 @@ export type Query = {
     futureGroups: Array<GroupType>
     groupStudents: Array<StudentType>
     newReferredStudents: Array<StudentType>
+    activeStudents: Array<StudentType>
+    completedStudents: Array<StudentType>
 }
 
 export type QueryTaalhuisArgs = {
@@ -981,6 +983,14 @@ export type QueryGroupStudentsArgs = {
 }
 
 export type QueryNewReferredStudentsArgs = {
+    aanbiederId: Scalars['String']
+}
+
+export type QueryActiveStudentsArgs = {
+    aanbiederId: Scalars['String']
+}
+
+export type QueryCompletedStudentsArgs = {
     aanbiederId: Scalars['String']
 }
 
