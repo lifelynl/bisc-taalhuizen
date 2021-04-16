@@ -679,6 +679,7 @@ export type StudentDossierEventType = {
     event: StudentDossierEventEnum
     eventDate: Scalars['String']
     eventDescription: Scalars['String']
+    createdByAanbiederEmployee: AanbiederEmployeeType
 }
 
 export enum StudentDossierEventEnum {

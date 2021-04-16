@@ -227,6 +227,9 @@ class StudentDossierEventType {
 
     @Field()
     public eventDescription!: string
+
+    @Field(() => AanbiederEmployeeType)
+    public createdByAanbiederEmployee!: AanbiederEmployeeType
 }
 
 @InputType()
