@@ -89,7 +89,7 @@ export const AanbiederManagementEmployeeDetailOverviewView: React.FunctionCompon
 
         return (
             <AanbiederManagementEmployeeTabs
-                currentTab={AanbiederManagementEmployeeTab.documents}
+                currentTab={AanbiederManagementEmployeeTab.overview}
                 routeState={routeState}
             />
         )

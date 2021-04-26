@@ -12,10 +12,10 @@ import {
     AanbiederManagementEmployeeTab,
     AanbiederManagementEmployeeTabs,
 } from 'components/Domain/Aanbieder/AanbiederManagement/AanbiederManagementEmployeeTabs'
-import { useMockQuery } from 'components/hooks/useMockQuery'
+import { useProviderEmployeeMenteesQuery, useProviderEmployeeQuery } from 'generated/graphql'
 import React from 'react'
 import { supplierRoutes } from 'routes/supplier/supplierRoutes'
-import { providerEmployeeProfile, AanbiederEmployeeProfile } from '../../mocks'
+import { NameFormatters } from 'utils/formatters/name/Name'
 import { AanbiederManagementEmployeesLocationStateProps } from './AanbiederManagementEmployeesView'
 
 interface Props {
@@ -25,11 +25,14 @@ interface Props {
 export const AanbiederManagementEmployeeParticipantsView: React.FunctionComponent<Props> = props => {
     const { i18n } = useLingui()
     const { routeState } = props
+    const { data: employeeData, loading: employeeLoading, error: employeeError } = useProviderEmployeeQuery({
+        variables: { userId: routeState.employeeId },
+    })
+    const { data, loading, error } = useProviderEmployeeMenteesQuery({
+        variables: { providerEmployeeId: routeState.employeeId },
+    })
 
-    // TODO: replace with the api call/query (using participantId prop)
-    const { data, loading, error } = useMockQuery<AanbiederEmployeeProfile>(providerEmployeeProfile)
-
-    if (loading) {
+    if (loading || employeeLoading) {
         return (
             <Center grow={true}>
                 <Spinner type={Animation.pageSpinner} />
@@ -40,7 +43,10 @@ export const AanbiederManagementEmployeeParticipantsView: React.FunctionComponen
     return (
         <>
             {/* TODO: add breadcrumbs */}
-            <Headline spacingType={SpacingType.small} title={data?.fullName || ''} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={NameFormatters.formattedFullname(employeeData?.providerEmployee)}
+            />
             <Column spacing={10}>
                 <AanbiederManagementEmployeeTabs
                     routeState={routeState}
@@ -52,7 +58,7 @@ export const AanbiederManagementEmployeeParticipantsView: React.FunctionComponen
     )
 
     function renderList() {
-        if (error) {
+        if (error || employeeError) {
             return (
                 <ErrorBlock
                     title={i18n._(t`Er ging iets fout`)}
@@ -71,17 +77,17 @@ export const AanbiederManagementEmployeeParticipantsView: React.FunctionComponen
             return []
         }
 
-        return data.participants.map(({ id, lastName, firstName }) => [
+        return data.providerEmployeeMentees.map(mentee => [
             <TableLink
                 to={{
-                    pathname: supplierRoutes.participants.detail.overview,
+                    pathname: supplierRoutes.participants.detail.index,
                     search: '',
                     hash: '',
-                    state: { participantId: id },
+                    state: { participantId: mentee.id },
                 }}
-                text={lastName}
+                text={NameFormatters.formattedLastName(mentee.personDetails)}
             />,
-            <Paragraph>{firstName}</Paragraph>,
+            <Paragraph>{mentee.personDetails.givenName}</Paragraph>,
         ])
     }
 }

@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 
 export const typeDefs = gql`
-
 # Exposes a URL that specifies the behaviour of this scalar.
 directive @specifiedBy(
     # The URL that specifies the behaviour of this scalar.
@@ -847,7 +846,7 @@ type Query {
     participation(participationId: String!): ParticipationType!
     testResults(participationId: String!): [TestResultType!]!
     testResult(testResultId: String!): TestResultType!
-    providerEmployeeMentees(anbiederEmployeeId: String!): [StudentType!]!
+    providerEmployeeMentees(providerEmployeeId: String!): [StudentType!]!
     group(groupId: String!): GroupType!
     activeGroups(providerId: String!): [GroupType!]!
     completedGroups(providerId: String!): [GroupType!]!
@@ -1510,5 +1509,4 @@ type UserType {
     id: String!
     username: String!
 }
-
 `

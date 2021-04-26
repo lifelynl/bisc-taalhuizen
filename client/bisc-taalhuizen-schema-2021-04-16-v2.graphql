@@ -843,7 +843,7 @@ type Query {
     participation(participationId: String!): ParticipationType!
     testResults(participationId: String!): [TestResultType!]!
     testResult(testResultId: String!): TestResultType!
-    providerEmployeeMentees(anbiederEmployeeId: String!): [StudentType!]!
+    providerEmployeeMentees(providerEmployeeId: String!): [StudentType!]!
     group(groupId: String!): GroupType!
     activeGroups(providerId: String!): [GroupType!]!
     completedGroups(providerId: String!): [GroupType!]!

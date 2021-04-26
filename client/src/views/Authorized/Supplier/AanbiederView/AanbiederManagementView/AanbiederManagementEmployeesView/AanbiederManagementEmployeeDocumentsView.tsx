@@ -12,7 +12,6 @@ import {
 } from 'components/Domain/Aanbieder/AanbiederManagement/AanbiederManagementEmployeeTabs'
 import { DocumentUploadButtonContainer } from 'components/Domain/Documents/Containers/DocumentUploadButtonContainer'
 import { DocumentsList } from 'components/Domain/Documents/Lists/DocumentsList'
-import { useMockQuery } from 'components/hooks/useMockQuery'
 import {
     CreateProviderEmployeeDocumentDocument,
     DeleteProviderEmployeeDocumentDocument,
@@ -21,8 +20,11 @@ import {
     DownloadProviderEmployeeDocumentMutationVariables,
     ProviderEmployeeDocumentsDocument,
     useProviderEmployeeDocumentsQuery,
+    useProviderEmployeeQuery,
 } from 'generated/graphql'
 import React from 'react'
+import { toBase64SingleFile } from 'utils/files/files'
+import { NameFormatters } from 'utils/formatters/name/Name'
 import { AanbiederManagementEmployeesLocationStateProps } from './AanbiederManagementEmployeesView'
 
 interface Props {
@@ -33,14 +35,18 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
     const { routeState } = props
     const { i18n } = useLingui()
 
-    // TODO: replace with the api call/query (using participantId prop)
-    const { data, loading, error } = useProviderEmployeeDocumentsQuery({
-        variables: {
-            providerEmployeeId: routeState.employeeId,
-        },
+    const { data: documentsData, loading: documentsLoading, error: documentsError } = useProviderEmployeeDocumentsQuery(
+        {
+            variables: {
+                providerEmployeeId: routeState.employeeId,
+            },
+        }
+    )
+    const { data: employeeData, loading: employeeLoading, error: employeeError } = useProviderEmployeeQuery({
+        variables: { userId: routeState.employeeId },
     })
 
-    if (loading) {
+    if (employeeLoading || documentsLoading) {
         return (
             <Center grow={true}>
                 <Spinner type={Animation.pageSpinner} />
@@ -50,7 +56,10 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
 
     return (
         <>
-            <Headline spacingType={SpacingType.small} title={i18n._(t`Beheer`)} />
+            <Headline
+                spacingType={SpacingType.small}
+                title={NameFormatters.formattedFullname(employeeData?.providerEmployee)}
+            />
             <Column spacing={12}>
                 <Column spacing={4}>
                     {renderTabs()}
@@ -58,7 +67,7 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
                         <DocumentUploadButtonContainer
                             createDocument={CreateProviderEmployeeDocumentDocument}
                             createVariables={async file => {
-                                const base64data = await toBase64(file)
+                                const base64data = await toBase64SingleFile(file)
 
                                 return {
                                     providerEmployeeDocumentId: routeState.employeeId,
@@ -83,14 +92,14 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
     function renderTabs() {
         return (
             <AanbiederManagementEmployeeTabs
-                currentTab={AanbiederManagementEmployeeTab.overview}
+                currentTab={AanbiederManagementEmployeeTab.documents}
                 routeState={routeState}
             />
         )
     }
 
     function renderList() {
-        if (error || !data) {
+        if (employeeError || !employeeData || !documentsData || documentsError) {
             return (
                 <ErrorBlock
                     title={i18n._(t`Er ging iets fout`)}
@@ -104,7 +113,7 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
                 DeleteProviderEmployeeDocumentMutationVariables,
                 DownloadProviderEmployeeDocumentMutationVariables
             >
-                data={data.providerEmployeeDocuments}
+                data={documentsData.providerEmployeeDocuments}
                 deleteDocument={DeleteProviderEmployeeDocumentDocument}
                 deleteVariables={{ providerEmployeeDocumentId: routeState.employeeId }}
                 deleteRefetchQueries={[
@@ -119,7 +128,4 @@ export const AanbiederManagementEmployeeDocumentsView: React.FunctionComponent<P
             />
         )
     }
-}
-function toBase64(file: File) {
-    throw new Error('Function not implemented.')
 }

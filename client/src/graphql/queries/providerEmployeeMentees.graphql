@@ -1,0 +1,156 @@
+query providerEmployeeMentees($providerEmployeeId: String!) {
+    providerEmployeeMentees(providerEmployeeId: $providerEmployeeId) {
+        id
+        dateCreated
+        status
+        memo
+        registrar {
+            id
+            organisationName
+            givenName
+            additionalName
+            familyName
+            email
+            telephone
+        }
+        civicIntegrationDetails {
+            civicIntegrationRequirement
+            civicIntegrationRequirementReason
+            civicIntegrationRequirementFinishDate
+        }
+        personDetails {
+            givenName
+            additionalName
+            familyName
+            gender
+            dateOfBirth
+        }
+        contactDetails {
+            street
+            postalCode
+            locality
+            houseNumber
+            houseNumberSuffix
+            email
+            telephone
+            contactPersonTelephone
+            contactPreference
+            contactPreferenceOther
+        }
+        generalDetails {
+            countryOfOrigin
+            nativeLanguage
+            otherLanguages
+            familyComposition
+            childrenCount
+            childrenDatesOfBirth
+        }
+        referrerDetails {
+            referringOrganization
+            referringOrganizationOther
+            email
+        }
+        backgroundDetails {
+            foundVia
+            foundViaOther
+            wentToLanguageHouseBefore
+            wentToLanguageHouseBeforeReason
+            wentToLanguageHouseBeforeYear
+            network
+            participationLadder
+        }
+        dutchNTDetails {
+            dutchNTLevel
+            inNetherlandsSinceYear
+            languageInDailyLife
+            knowsLatinAlphabet
+            lastKnownLevel
+        }
+        speakingLevel
+        educationDetails {
+            lastFollowedEducation
+            didGraduate
+            followingEducationRightNow
+            followingEducationRightNowYesStartDate
+            followingEducationRightNowYesEndDate
+            followingEducationRightNowYesLevel
+            followingEducationRightNowYesInstitute
+            followingEducationRightNowYesProvidesCertificate
+            followingEducationRightNowNoEndDate
+            followingEducationRightNowNoLevel
+            followingEducationRightNowNoGotCertificate
+        }
+        courseDetails {
+            isFollowingCourseRightNow
+            courseName
+            courseTeacher
+            courseGroup
+            amountOfHours
+            doesCourseProvideCertificate
+        }
+        jobDetails {
+            trainedForJob
+            lastJob
+            dayTimeActivities
+            dayTimeActivitiesOther
+        }
+        motivationDetails {
+            desiredSkills
+            desiredSkillsOther
+            hasTriedThisBefore
+            hasTriedThisBeforeExplanation
+            whyWantTheseSkills
+            whyWantThisNow
+            desiredLearningMethod
+            remarks
+        }
+        availabilityDetails {
+            availability {
+                monday {
+                    morning
+                    afternoon
+                    evening
+                }
+                tuesday {
+                    morning
+                    afternoon
+                    evening
+                }
+                wednesday {
+                    morning
+                    afternoon
+                    evening
+                }
+                thursday {
+                    morning
+                    afternoon
+                    evening
+                }
+                friday {
+                    morning
+                    afternoon
+                    evening
+                }
+                saturday {
+                    morning
+                    afternoon
+                    evening
+                }
+                sunday {
+                    morning
+                    afternoon
+                    evening
+                }
+            }
+            availabilityNotes
+        }
+        readingTestResult
+        writingTestResult
+        permissionDetails {
+            didSignPermissionForm
+            hasPermissionToShareDataWithProviders
+            hasPermissionToShareDataWithLibraries
+            hasPermissionToSendInformationAboutLibraries
+        }
+    }
+}

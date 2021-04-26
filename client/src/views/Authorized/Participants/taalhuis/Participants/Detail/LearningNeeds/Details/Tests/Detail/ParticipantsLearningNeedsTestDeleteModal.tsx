@@ -64,6 +64,6 @@ export const ParticipantsLearningNeedsTestDeleteModal: React.FC<Props> = ({ onCl
             i18n._(t`U word teruggestuurd naar het overzicht`)
         )
 
-        history.push(routes.authorized.management.bisc.overview)
+        history.push(routes.authorized.management.bisc.coworkers.index)
     }
 }
