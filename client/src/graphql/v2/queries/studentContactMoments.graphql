@@ -1,0 +1,24 @@
+query studentContactMoments($paginationArgs: PaginatedInputType!, $studentId: String!) {
+    studentContactMoments(paginationArgs: $paginationArgs, studentId: $studentId) {
+        hasMore
+        totalCount
+        nodes {
+            id
+            createdAt
+            createdByEmployee {
+                id
+                person {
+                    id
+                    givenName
+                    additionalName
+                    familyName
+                }
+            }
+            updatedAt
+            type
+            date
+            explanation
+            canEdit
+        }
+    }
+}

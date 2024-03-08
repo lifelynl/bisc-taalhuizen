@@ -1,0 +1,62 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: spacing(3.5);
+    border-radius: 8px;
+
+    .iconContainer {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: spacing(2);
+        position: relative;
+
+        .checked {
+            background-color: $color-ui-green;
+        }
+
+        .icon {
+            color: $color-white;
+            svg {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    &.green {
+        background-color: $color-ui-green-transparent;
+        .iconContainer {
+            background-color: $color-ui-green;
+        }
+    }
+
+    &.grey {
+        background-color: $color-grey-5;
+
+        .iconContainer {
+            background-color: $color-black;
+        }
+    }
+
+    .checkboxContainer {
+        margin-right: spacing(2);
+        position: relative;
+    }
+
+    .fontweight-normal {
+        font-weight: normal;
+    }
+
+    .fontweight-bold {
+        font-weight: 600;
+    }
+}

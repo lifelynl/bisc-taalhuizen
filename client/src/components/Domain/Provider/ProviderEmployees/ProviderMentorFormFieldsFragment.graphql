@@ -1,0 +1,56 @@
+fragment ProviderMentorFormFieldsFragment on EmployeeType {
+    id
+    role
+    createdAt
+    updatedAt
+    person {
+        id
+        familyName
+        givenName
+        additionalName
+        email
+        telephone
+        gender
+        birthday
+        birthplace
+        emergencyTelephone
+        contactPreference
+        contactPreferenceOther
+        providerTargetGroupPreference
+        providerVolunteeringPreference
+        providerLanguageHouseVolunteeringReference
+        providerTargetGroupIsExperienced
+        providerTargetGroupExperience
+        address {
+            id
+            street
+            houseNumber
+            houseNumberSuffix
+            postalCode
+            locality
+            country
+        }
+        educations {
+            id
+            createdAt
+            updatedAt
+            name
+            type
+            level
+            levelOther
+            degree
+            degreeGranted
+            currentlyFollowingStatus
+            startDate
+            endDate
+            yearsFollowed
+            institution
+            group
+            courseTeacherType
+            hours
+            other
+        }
+        availabilityNotes
+        availability
+    }
+}

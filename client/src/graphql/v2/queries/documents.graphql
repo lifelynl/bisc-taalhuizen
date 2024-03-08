@@ -1,0 +1,14 @@
+query documents($paginationArgs: PaginatedInputType!, $person: String!) {
+    documents(paginationArgs: $paginationArgs, person: $person) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            createdAt
+            updatedAt
+            file {
+                name
+            }
+        }
+    }
+}

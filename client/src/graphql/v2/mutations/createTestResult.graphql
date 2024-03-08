@@ -1,0 +1,5 @@
+mutation createTestResult($input: CreateTestResultInputType!) {
+    createTestResult(input: $input) {
+        id
+    }
+}

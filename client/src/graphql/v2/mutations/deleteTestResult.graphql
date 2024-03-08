@@ -1,0 +1,3 @@
+mutation deleteTestResult($input: DeleteTestResultInputType!) {
+    deleteTestResult(input: $input)
+}

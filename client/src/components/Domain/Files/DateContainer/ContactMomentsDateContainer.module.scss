@@ -1,0 +1,26 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    .title {
+        font-size: 20px;
+        font-weight: 600;
+        color: $color-grey-99;
+    }
+    .subtitle {
+        width: 84px;
+        height: 18px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $color-grey-80;
+    }
+
+    .dottedLine {
+        margin-top: spacing(2);
+        width: 1px;
+        height: 50px;
+        border: dashed 0.5px $color-grey-60;
+    }
+}

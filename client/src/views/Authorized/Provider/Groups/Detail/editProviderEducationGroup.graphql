@@ -1,0 +1,5 @@
+mutation editProviderEducationGroup($input: EditEducationGroupInputType!) {
+    editEducationGroup(input: $input) {
+        ...ProviderGroupFormFieldsFragment
+    }
+}

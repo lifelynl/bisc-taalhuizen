@@ -1,0 +1,97 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/media-query';
+
+.container {
+    &.grow {
+        width: 100%;
+
+        .labelContainer {
+            max-width: 100%;
+        }
+    }
+    .container {
+        &.is-horizontal {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.evenContainers {
+    > * {
+        flex: 1;
+    }
+}
+
+.childrenContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.errorMessage {
+    margin-top: spacing(2);
+    font-size: 14px;
+    color: $color-ui-red;
+}
+
+.labelContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: spacing(1);
+    justify-content: space-between;
+    margin-top: 2px; // make labels align with text content by default
+
+    .description {
+        width: 220px;
+        font-size: 14px;
+        line-height: 1.71;
+        color: $color-grey-75;
+    }
+
+    .labelRight {
+        font-size: 14px;
+    }
+}
+
+.hasSmallerLabel {
+    width: 100%;
+}
+
+.loading {
+    display: block;
+    color: $color-grey-80;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: spacing(2);
+    text-transform: uppercase;
+}
+
+.displayBlock {
+    display: block;
+}
+
+@include media-query(desktop) {
+    .container {
+        &.is-horizontal {
+            display: flex;
+            flex-direction: row;
+
+            .labelContainer {
+                max-width: 281px;
+            }
+        }
+
+        &.hasSmallerLabel {
+            .labelContainer {
+                max-width: 100px;
+            }
+        }
+    }
+
+    form .container.is-horizontal > .labelContainer {
+        margin-top: 10px; // make labels align with middle of input fields
+    }
+}

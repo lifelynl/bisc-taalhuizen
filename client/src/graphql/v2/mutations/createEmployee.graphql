@@ -1,0 +1,27 @@
+mutation createEmployee($createEmployeeInput: CreateEmployeeInputType!) {
+    createEmployee(createEmployeeInput: $createEmployeeInput) {
+        id
+        organization {
+            id
+            name
+        }
+        person {
+            id
+            familyName
+            additionalName
+            givenName
+            email
+            telephone
+            availabilityNotes
+            availability
+            providerTargetGroupPreference
+            providerVolunteeringPreference
+            providerLanguageHouseVolunteeringReference
+            providerTargetGroupIsExperienced
+            providerTargetGroupExperience
+        }
+        role
+        createdAt
+        updatedAt
+    }
+}

@@ -1,0 +1,14 @@
+query document($document: String!) {
+    document(document: $document) {
+        id
+        createdAt
+        updatedAt
+        file {
+            name
+            extension
+            mimeType
+            size
+            base64
+        }
+    }
+}

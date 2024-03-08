@@ -1,0 +1,121 @@
+@import '../../../styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    position: relative;
+    display: flex;
+
+    &:not(.inline) {
+        &:first-child {
+            margin-top: 10px;
+        }
+
+        &:last-child {
+            margin-bottom: 10px;
+        }
+    }
+
+    .inputField,
+    .checkmark {
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    .inputField {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        background-color: $color-white;
+        width: 16px;
+        height: 16px;
+        border: solid 1px $color-grey-60;
+        border-radius: 4px;
+        outline: none;
+        position: relative;
+
+        &:checked ~ .checkmark {
+            color: $color-white;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled {
+            background-color: $color-grey-5;
+            border: solid 1px $color-grey-20;
+        }
+
+        &:disabled:hover ~ .checkmark {
+            pointer-events: none;
+            display: none;
+            visibility: hidden;
+        }
+
+        &:checked:disabled ~ .checkmark {
+            color: $color-grey-60;
+            display: block;
+            visibility: visible;
+        }
+
+        &:disabled:hover {
+            cursor: no-drop;
+        }
+    }
+
+    &.inline {
+        display: inline-flex;
+    }
+
+    &.orange {
+        .inputField {
+            &:checked {
+                background-color: $color-bisc-orange;
+                border: none;
+            }
+
+            &:hover ~ .checkmark {
+                color: $color-bisc-orange;
+                display: block;
+                visibility: visible;
+            }
+
+            &:checked:hover ~ .checkmark {
+                color: $color-white;
+            }
+        }
+    }
+
+    &.green {
+        .inputField {
+            &:checked {
+                background-color: $color-ui-green;
+                border: none;
+            }
+
+            &:hover ~ .checkmark {
+                color: $color-ui-green;
+                display: block;
+                visibility: visible;
+            }
+
+            &:checked:hover ~ .checkmark {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.checkmark {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: none;
+    visibility: hidden;
+}
+
+.label {
+    font-size: 14px;
+    margin-left: spacing(2);
+}

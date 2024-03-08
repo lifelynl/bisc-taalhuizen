@@ -1,0 +1,29 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    max-width: 400px;
+}
+
+.warning {
+    background-color: $color-background-red-light;
+    border-radius: 4px 4px 0px 0px;
+    padding: spacing(3) spacing(4);
+}
+
+.icon {
+    border-radius: 100%;
+    background-color: $color-background-orange;
+    color: $color-white;
+}
+
+.checkbox,
+.checkboxWithoutWarning {
+    padding: spacing(4) spacing(6);
+    background-color: $color-grey-10;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.checkboxWithoutWarning {
+    border-radius: 4px;
+}

@@ -1,0 +1,7 @@
+$font-title: 'Source Sans Pro', sans-serif;
+$font-title-secondary: 'Faustina', serif;
+$font-fallback: 'OpenSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+$font-default: $font-title, $font-fallback;
+$font-secondary: $font-title-secondary, $font-fallback;

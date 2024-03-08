@@ -1,0 +1,28 @@
+query studentForMentor($studentId: String!) {
+    student(studentId: $studentId) {
+        id
+        person {
+            id
+            givenName
+            additionalName
+            familyName
+        }
+        organization {
+            id
+            name
+        }
+        team {
+            id
+            name
+        }
+        mentor {
+            id
+            person {
+                id
+                givenName
+                additionalName
+                familyName
+            }
+        }
+    }
+}

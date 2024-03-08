@@ -1,0 +1,13 @@
+{{#> email }}
+	<h1>Beste,</h1>
+	<p>Bedankt voor je aanmelding! Deze is door ons ontvangen. We nemen binnenkort contact met je op.</p>
+	<hr />
+	<ul>
+		{{#each registrationInput}}
+			<li>{{this}}</li>
+		{{/each}}
+	</ul>
+	<hr />
+	<p>Met vriendelijke groet,</p>
+	<p>{{organizationName}}</p>
+{{/email}}

@@ -1,0 +1,33 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.title {
+    position: relative;
+    margin: 0;
+    margin-bottom: spacing(3);
+    font-family: Faustina;
+    font-weight: 600;
+    color: #232326;
+
+    &.is-default {
+        font-size: 40px;
+    }
+
+    &.is-large {
+        font-size: 64px;
+    }
+
+    &.lighter {
+        font-weight: 400;
+    }
+}
+
+.suffix {
+    color: $color-grey-80;
+    font-weight: 400;
+}
+
+.lightSuffix {
+    color: $color-grey-20;
+    font-weight: 400;
+}

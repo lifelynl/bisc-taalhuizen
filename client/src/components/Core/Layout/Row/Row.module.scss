@@ -1,0 +1,78 @@
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &.flex-start {
+        justify-content: flex-start;
+    }
+    &.flex-end {
+        justify-content: flex-end;
+    }
+    &.center {
+        justify-content: center;
+    }
+    &.space-between {
+        justify-content: space-between;
+    }
+}
+
+.container > * + * {
+    margin-left: spacing(4);
+}
+
+.grow {
+    width: 100%;
+}
+
+.wrap {
+    flex-wrap: wrap;
+
+    > * {
+        margin-top: spacing(2);
+        margin-right: spacing(4); // flips the margin to align wrapped children with its top siblings
+    }
+
+    &.container > * + * {
+        margin-left: 0;
+    }
+}
+
+.spacing1 > * + * {
+    margin-left: spacing(1);
+}
+.spacing2 > * + * {
+    margin-left: spacing(2);
+}
+.spacing3 > * + * {
+    margin-left: spacing(3);
+}
+.spacing4 > * + * {
+    margin-left: spacing(4);
+}
+.spacing5 > * + * {
+    margin-left: spacing(5);
+}
+.spacing6 > * + * {
+    margin-left: spacing(6);
+}
+.spacing7 > * + * {
+    margin-left: spacing(7);
+}
+.spacing8 > * + * {
+    margin-left: spacing(8);
+}
+.spacing9 > * + * {
+    margin-left: spacing(9);
+}
+.spacing10 > * + * {
+    margin-left: spacing(10);
+}
+.spacing11 > * + * {
+    margin-left: spacing(11);
+}
+.spacing12 > * + * {
+    margin-left: spacing(12);
+}

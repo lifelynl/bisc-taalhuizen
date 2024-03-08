@@ -1,0 +1,55 @@
+query participations($learningNeedId: String!, $paginationArgs: PaginatedInputType!) {
+    participations(learningNeedId: $learningNeedId, paginationArgs: $paginationArgs) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            createdAt
+            updatedAt
+            agreement
+            degree
+            educationGroup {
+                ...ProviderGroupFormFieldsFragment
+            }
+            end
+            endParticipation
+            formality
+            groupFormation
+            mentor {
+                ...ProviderMentorFormFieldsFragment
+            }
+            offerName
+            offerType
+            provider {
+                id
+                name
+            }
+            providerOption
+            providerOther
+            providerExplanation
+            reasonEndParticipation
+            outFlowParticipation
+            outFlowReasonOther
+            start
+            startParticipation
+            status
+            testResult {
+                id
+                usedExam
+                examDate
+                memo
+                learningNeedOutcome {
+                    id
+                    createdAt
+                    updatedAt
+                    subject
+                    subjectOther
+                    application
+                    applicationOther
+                    level
+                    levelOther
+                }
+            }
+        }
+    }
+}

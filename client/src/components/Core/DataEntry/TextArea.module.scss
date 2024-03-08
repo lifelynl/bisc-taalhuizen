@@ -1,0 +1,73 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/media-query';
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: $input-width;
+
+    &.grow {
+        max-width: 100%;
+    }
+
+    &.growHeight {
+        height: 314px;
+    }
+}
+
+.inputField {
+    resize: vertical;
+    border: solid 1px $color-grey-20;
+    border-radius: 4px;
+    padding: 10px 8px;
+    font-size: 14px;
+    line-height: 16px;
+    outline: none;
+    height: auto;
+    min-height: 100px;
+
+    &::placeholder {
+        color: $color-grey-70;
+    }
+
+    .hasErrorMessage & {
+        border-color: $color-ui-red;
+    }
+
+    &:focus {
+        border-color: $color-background-polar;
+    }
+
+    &:disabled {
+        border-color: $color-grey-20;
+        background-color: $color-grey-5;
+        color: $color-grey-70;
+    }
+}
+
+.errorMessage {
+    margin-top: spacing(2);
+    font-size: 14px;
+    color: $color-ui-red;
+}
+
+.grow-wrap {
+    display: grid;
+    height: 100%;
+}
+.grow-wrap::after {
+    content: attr(data-replicated-value) ' ';
+    white-space: pre-wrap;
+    visibility: hidden;
+}
+.grow-wrap > textarea {
+    resize: none;
+    overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+    padding: 0.5rem;
+    grid-area: 1 / 1 / 2 / 2;
+}

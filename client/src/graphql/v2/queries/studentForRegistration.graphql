@@ -1,0 +1,42 @@
+query studentForRegistration($studentId: String!) {
+    student(studentId: $studentId) {
+        id
+        person {
+            id
+            createdAt
+            givenName
+            additionalName
+            familyName
+            email
+            secondaryEmail
+            telephone
+            address {
+                id
+                name
+                street
+                houseNumber
+                houseNumberSuffix
+                postalCode
+                locality
+                country
+            }
+        }
+        registration {
+            id
+            registeredPublicly
+            referringOrganization
+            referringOrganizationOther
+            referringPerson {
+                id
+                givenName
+                additionalName
+                familyName
+                email
+                telephone
+            }
+            referringTeam
+            remarks
+            selfRegistered
+        }
+    }
+}

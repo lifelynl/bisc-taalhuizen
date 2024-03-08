@@ -1,0 +1,3 @@
+mutation deleteStudentContactMoment($input: DeleteStudentContactMomentInputType!) {
+    deleteStudentContactMoment(input: $input)
+}

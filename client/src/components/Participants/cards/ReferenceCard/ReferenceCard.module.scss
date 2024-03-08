@@ -1,0 +1,26 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/media-query';
+
+.container {
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+    border: solid 1px $color-grey-20;
+    background-color: $color-white;
+
+    &.isReadOnly {
+        background-color: $color-grey-5;
+        border: solid 0px;
+    }
+
+    .editIcon {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+    }
+}
+.bottom {
+    position: relative;
+    padding: spacing(12) spacing(10) spacing(10);
+}

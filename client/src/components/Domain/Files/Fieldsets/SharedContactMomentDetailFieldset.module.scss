@@ -1,0 +1,44 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.contentContainer {
+    padding: spacing(10);
+    .descriptionContainer {
+        .subtitle {
+            height: 18px;
+            margin: 0 0 0 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: $color-grey-80;
+        }
+
+        .containerList {
+            ul {
+                padding-inline-start: 0;
+                margin-left: spacing(8);
+            }
+        }
+    }
+}
+
+.buttons {
+    padding: spacing(8);
+    display: flex;
+    justify-content: space-between;
+
+    &.createButtons {
+        justify-content: flex-end;
+    }
+}
+
+.buttons,
+.leftButtonsContainer,
+.rigthButtonsContainer {
+    display: flex;
+    .button:first-of-type {
+        margin-right: 10px;
+    }
+    .button {
+        padding: 7px 16px;
+    }
+}

@@ -1,0 +1,21 @@
+@import 'src/styles/variables/animations';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.icon {
+    svg {
+        color: inherit;
+        font-size: 12px;
+        pointer-events: none;
+        transform-origin: 50% 50%;
+        transition: transform $animation-appear;
+    }
+}
+
+.iconStyleEnabled {
+    color: $color-ui-green;
+}
+
+.iconStyleDisabled {
+    color: $color-grey-20;
+}

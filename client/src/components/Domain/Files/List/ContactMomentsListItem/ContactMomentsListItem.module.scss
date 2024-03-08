@@ -1,0 +1,115 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 104px;
+    border-radius: 8px;
+    cursor: pointer;
+    .border {
+        height: 88px;
+        min-width: 4px;
+        margin-right: spacing(4);
+        border-radius: 12px;
+    }
+
+    &.default {
+        cursor: auto;
+        .border {
+            background-color: $color-grey-75;
+        }
+
+        .contentContainer .titleContainer .title {
+            color: $color-grey-75;
+        }
+
+        .contentContainer .descriptionContainer .description {
+            color: $color-grey-70;
+        }
+    }
+
+    &.finalInterview {
+        .border {
+            background-color: $color-background-dark-blue;
+        }
+        &:hover,
+        &.isActive {
+            background-color: lighten($color-background-dark-blue, 50%);
+        }
+    }
+
+    &.comment {
+        .border {
+            background-color: $color-background-purple;
+        }
+        &:hover,
+        &.isActive {
+            background-color: $color-background-purple-light;
+        }
+    }
+
+    &.followUp {
+        .border {
+            background-color: $color-background-yellow;
+        }
+        &:hover,
+        &.isActive {
+            background-color: $color-background-yellow-light;
+        }
+    }
+
+    &.storytelling {
+        .border {
+            background-color: $color-bisc-ice;
+        }
+        &:hover,
+        &.isActive {
+            background-color: lighten($color-bisc-ice, 25%);
+        }
+    }
+
+    &.intake {
+        .border {
+            background-color: $color-background-salmon;
+        }
+        &:hover,
+        &.isActive {
+            background-color: lighten($color-background-salmon, 18%);
+        }
+    }
+
+    .contentContainer {
+        padding: spacing(2) spacing(7) spacing(2) 0;
+        .titleContainer {
+            display: flex;
+            margin-bottom: spacing(2);
+
+            .title {
+                height: 18px;
+                margin: 0 8px 0 0;
+                font-size: 14px;
+                font-weight: 600;
+                color: $color-grey-99;
+            }
+
+            .subtitle {
+                height: 18px;
+                margin: 0 0 0 8px;
+                font-size: 14px;
+                font-weight: 600;
+                color: $color-grey-75;
+            }
+        }
+    }
+}
+
+.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

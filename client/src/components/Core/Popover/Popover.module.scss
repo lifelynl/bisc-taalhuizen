@@ -1,0 +1,14 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.popperContainter {
+    background-color: $color-white;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 0px spacing(5, 0.25) 0px rgba(0, 0, 0, 0.25);
+    padding: spacing(8);
+    max-height: spacing(138);
+    min-width: spacing(83);
+    overflow-y: auto;
+    margin-bottom: spacing(8);
+}

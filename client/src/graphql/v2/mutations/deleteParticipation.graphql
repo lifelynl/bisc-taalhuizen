@@ -1,0 +1,3 @@
+mutation deleteParticipation($input: DeleteParticipationInputType!) {
+    deleteParticipation(input: $input)
+}

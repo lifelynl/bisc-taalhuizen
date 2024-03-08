@@ -1,0 +1,41 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/media-query';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.contentContainer {
+    padding: spacing(4) spacing(16) spacing(30, -1) spacing(16);
+}
+
+.close {
+    position: absolute;
+    top: spacing(3);
+    right: spacing(1);
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: spacing(4) spacing(6, -2);
+}
+
+.title {
+    margin-top: spacing(6);
+    margin-left: spacing(10);
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-grey-99;
+}
+
+@include media-query(desktop) {
+    .container {
+        width: 100%;
+        max-width: 1196px;
+    }
+}

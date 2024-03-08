@@ -1,0 +1,5 @@
+mutation editParticipation($input: EditParticipationInputType!) {
+    editParticipation(input: $input) {
+        id
+    }
+}

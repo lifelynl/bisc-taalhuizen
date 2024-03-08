@@ -1,0 +1,33 @@
+query organization($input: String!) {
+    organization(id: $input) {
+        id
+        name
+        type
+        description
+        type
+        employees {
+            id
+            person {
+                id
+                email
+            }
+        }
+        postalCodes {
+            code
+            id
+        }
+        address {
+            id
+            name
+            street
+            houseNumber
+            houseNumberSuffix
+            postalCode
+            locality
+        }
+        email
+        telephone
+        disabledIntakeFields
+        hasLimitedEditRights
+    }
+}

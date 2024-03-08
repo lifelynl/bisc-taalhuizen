@@ -1,0 +1,40 @@
+@import 'src/styles/variables/colors';
+
+.form {
+    margin-top: 0px;
+}
+
+.wrapper {
+    position: relative;
+    width: 300px;
+}
+
+.icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    position: absolute;
+    box-sizing: border-box;
+    top: 75%;
+    left: 255px;
+    transform: translateY(-50%);
+    border-radius: 10%;
+    color: $color-grey-80;
+}
+
+.input {
+    height: 40px;
+    box-sizing: border-box;
+}
+
+button.buttonicon {
+    height: 1.5rem;
+    width: 2.25rem;
+    position: absolute;
+    box-sizing: border-box;
+    top: 50%;
+    left: 210px;
+    transform: translateY(-50%);
+    border-right: 1px solid $color-grey-20;
+    color: $color-grey-80;
+    border-radius: 0;
+}

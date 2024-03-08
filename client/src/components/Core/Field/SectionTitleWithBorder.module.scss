@@ -1,0 +1,31 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.titleContainer {
+    height: max-content;
+    position: relative;
+    margin-bottom: 16px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        border-radius: 1.5px;
+        margin-top: spacing(3);
+        bottom: -16px;
+        left: 0;
+        width: 24px;
+        height: 3px;
+        background-color: $color-bisc-orange;
+    }
+
+    .description {
+        width: 220px;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        color: $color-grey-99;
+    }
+}

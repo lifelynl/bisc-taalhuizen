@@ -1,0 +1,70 @@
+query employee($id: String!, $withEducations: Boolean! = false) {
+    employee(id: $id) {
+        id
+        role
+        createdAt
+        updatedAt
+        organization {
+            id
+            name
+            description
+            type
+        }
+        person {
+            id
+            familyName
+            givenName
+            additionalName
+            email
+            telephone
+            gender
+            birthday
+            birthplace
+            emergencyTelephone
+            contactPreference
+            contactPreferenceOther
+            providerTargetGroupPreference
+            providerVolunteeringPreference
+            providerLanguageHouseVolunteeringReference
+            providerTargetGroupIsExperienced
+            providerTargetGroupExperience
+            address {
+                id
+                street
+                houseNumber
+                houseNumberSuffix
+                postalCode
+                locality
+                country
+            }
+            educations @include(if: $withEducations) {
+                id
+                createdAt
+                updatedAt
+                name
+                type
+                level
+                levelOther
+                degree
+                degreeGranted
+                currentlyFollowingStatus
+                startDate
+                endDate
+                yearsFollowed
+                institution
+                group
+                courseTeacherType
+                hours
+                other
+            }
+            availabilityNotes
+            availability
+        }
+        teams {
+            id
+            name
+            createdAt
+            updatedAt
+        }
+    }
+}

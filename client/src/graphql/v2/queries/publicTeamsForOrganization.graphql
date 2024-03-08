@@ -1,0 +1,6 @@
+query publicTeamsForOrganization($organizationId: ID!) {
+	publicTeamsForOrganization(organizationId: $organizationId) {
+		id
+		name
+	}
+}

@@ -1,0 +1,25 @@
+overwrite: true
+schema:
+    - http://localhost:5000/graphql
+documents: 'src/**/*.graphql'
+generates:
+    src/graphql/v2/generated/introspection-result.json:
+        plugins:
+            - fragment-matcher
+    src/graphql/v2/generated/graphql.tsx:
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-react-apollo'
+        config:
+            withHooks: true
+            withMutationFn: false
+            withComponent: false
+            withHOC: false
+            scalars:
+                DateTime: Date
+                Date: Date
+                JSON: Record<string, unknown>
+hooks:
+    afterAllFileWrite:
+        - prettier --write

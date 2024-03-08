@@ -1,0 +1,18 @@
+mutation editOrganization($input: EditOrganizationInputType!) {
+	editOrganization(input: $input) {
+		id
+		name
+		description
+		type
+		employees {
+			id
+		}
+		address {
+			id
+		}
+    postalCodes{
+      id
+      code
+    }
+	}
+}

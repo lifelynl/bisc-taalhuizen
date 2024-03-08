@@ -1,0 +1,3752 @@
+{
+  "namespaces": [
+    "public"
+  ],
+  "name": "public",
+  "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "street": {
+          "name": "street",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "houseNumber": {
+          "name": "houseNumber",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "houseNumberSuffix": {
+          "name": "houseNumberSuffix",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "postalCode": {
+          "name": "postalCode",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "locality": {
+          "name": "locality",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        }
+      },
+      "name": "Address",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Address_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "subject": {
+          "name": "subject",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "dutchRead",
+            "dutchWrite",
+            "dutchSpeaking",
+            "math",
+            "digitalSkills",
+            "knowledge",
+            "skills",
+            "attitude",
+            "behaviour",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "application": {
+          "name": "application",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "familyAndUpbringing",
+            "laborMarketAndWork",
+            "healthAndWellbeing",
+            "livingAndNeighborhood",
+            "selfSustainability",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "level": {
+          "name": "level",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "influx",
+            "nlqf1",
+            "nlqf2",
+            "nlqf3",
+            "nlqf4",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "subjectOther": {
+          "name": "subjectOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "applicationOther": {
+          "name": "applicationOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "levelOther": {
+          "name": "levelOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        }
+      },
+      "name": "LearningNeedOutcome",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "LearningNeedOutcome_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "bisc",
+            "languageHouse",
+            "provider"
+          ],
+          "mappedType": "enum"
+        },
+        "address": {
+          "name": "address",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "telephone": {
+          "name": "telephone",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "disabledIntakeFields": {
+          "name": "disabledIntakeFields",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "integrationMandatory",
+            "contactData",
+            "general",
+            "referer",
+            "background",
+            "dutchNT",
+            "level",
+            "education",
+            "course",
+            "employment",
+            "motivation",
+            "availability",
+            "readingTest",
+            "writingTest"
+          ],
+          "mappedType": "array"
+        },
+        "hasLimitedEditRights": {
+          "name": "hasLimitedEditRights",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "comment": "Used only to limit provider editing rights at the moment",
+          "mappedType": "boolean"
+        }
+      },
+      "name": "Organization",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "slug"
+          ],
+          "composite": false,
+          "keyName": "Organization_slug_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "address"
+          ],
+          "composite": false,
+          "keyName": "Organization_address_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Organization_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Organization_address_foreign": {
+          "constraintName": "Organization_address_foreign",
+          "columnNames": [
+            "address"
+          ],
+          "localTableName": "public.Organization",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Address",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "lessonHours": {
+          "name": "lessonHours",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "language",
+            "math",
+            "digital",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "organization": {
+          "name": "organization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "desiredLearningNeedOutcome": {
+          "name": "desiredLearningNeedOutcome",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "degree": {
+          "name": "degree",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "start": {
+          "name": "start",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "end": {
+          "name": "end",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "availabilityNotes": {
+          "name": "availabilityNotes",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "minimumParticipants": {
+          "name": "minimumParticipants",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "maximumParticipants": {
+          "name": "maximumParticipants",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "evaluation": {
+          "name": "evaluation",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "formality": {
+          "name": "formality",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "formal",
+            "nonFormal"
+          ],
+          "mappedType": "enum"
+        },
+        "availability": {
+          "name": "availability",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        }
+      },
+      "name": "EducationGroup",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "composite": false,
+          "keyName": "EducationGroup_desiredLearningNeedOutcome_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "EducationGroup_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "EducationGroup_availability_check",
+          "expression": "\"availability\" <@ ARRAY['mondayMorning','mondayAfternoon','mondayEvening','tuesdayMorning','tuesdayAfternoon','tuesdayEvening','wednesdayMorning','wednesdayAfternoon','wednesdayEvening','thursdayMorning','thursdayAfternoon','thursdayEvening','fridayMorning','fridayAfternoon','fridayEvening','saturdayMorning','saturdayAfternoon','saturdayEvening','sundayMorning','sundayAfternoon','sundayEvening']",
+          "definition": "check ((\"availability\" <@ ARRAY['mondayMorning','mondayAfternoon','mondayEvening','tuesdayMorning','tuesdayAfternoon','tuesdayEvening','wednesdayMorning','wednesdayAfternoon','wednesdayEvening','thursdayMorning','thursdayAfternoon','thursdayEvening','fridayMorning','fridayAfternoon','fridayEvening','saturdayMorning','saturdayAfternoon','saturdayEvening','sundayMorning','sundayAfternoon','sundayEvening']))",
+          "columnName": "availability"
+        }
+      ],
+      "foreignKeys": {
+        "EducationGroup_organization_foreign": {
+          "constraintName": "EducationGroup_organization_foreign",
+          "columnNames": [
+            "organization"
+          ],
+          "localTableName": "public.EducationGroup",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "EducationGroup_desiredLearningNeedOutcome_foreign": {
+          "constraintName": "EducationGroup_desiredLearningNeedOutcome_foreign",
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "localTableName": "public.EducationGroup",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeedOutcome",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "languageHouse": {
+          "name": "languageHouse",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "provider": {
+          "name": "provider",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "Organization_providers",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Organization_providers_pkey",
+          "columnNames": [
+            "languageHouse",
+            "provider"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Organization_providers_languageHouse_foreign": {
+          "constraintName": "Organization_providers_languageHouse_foreign",
+          "columnNames": [
+            "languageHouse"
+          ],
+          "localTableName": "public.Organization_providers",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Organization_providers_provider_foreign": {
+          "constraintName": "Organization_providers_provider_foreign",
+          "columnNames": [
+            "provider"
+          ],
+          "localTableName": "public.Organization_providers",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "deletedAt": {
+          "name": "deletedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "parentOrganization": {
+          "name": "parentOrganization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "hiddenFromPublic": {
+          "name": "hiddenFromPublic",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        }
+      },
+      "name": "Team",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Team_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Team_parentOrganization_foreign": {
+          "constraintName": "Team_parentOrganization_foreign",
+          "columnNames": [
+            "parentOrganization"
+          ],
+          "localTableName": "public.Team",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "intakeDate": {
+          "name": "intakeDate",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "organization": {
+          "name": "organization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "team": {
+          "name": "team",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "registration": {
+          "name": "registration",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "mentor": {
+          "name": "mentor",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "Student",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "registration"
+          ],
+          "composite": false,
+          "keyName": "Student_registration_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Student_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Student_organization_foreign": {
+          "constraintName": "Student_organization_foreign",
+          "columnNames": [
+            "organization"
+          ],
+          "localTableName": "public.Student",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Student_team_foreign": {
+          "constraintName": "Student_team_foreign",
+          "columnNames": [
+            "team"
+          ],
+          "localTableName": "public.Student",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Team",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "Student_registration_foreign": {
+          "constraintName": "Student_registration_foreign",
+          "columnNames": [
+            "registration"
+          ],
+          "localTableName": "public.Student",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Registration",
+          "deleteRule": "cascade"
+        },
+        "Student_mentor_foreign": {
+          "constraintName": "Student_mentor_foreign",
+          "columnNames": [
+            "mentor"
+          ],
+          "localTableName": "public.Student",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Employee",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "address": {
+          "name": "address",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "secondaryEmail": {
+          "name": "secondaryEmail",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "comment": "non unique email",
+          "mappedType": "string"
+        },
+        "givenName": {
+          "name": "givenName",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "additionalName": {
+          "name": "additionalName",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "familyName": {
+          "name": "familyName",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "gender": {
+          "name": "gender",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "male",
+            "female",
+            "x"
+          ],
+          "mappedType": "enum"
+        },
+        "birthplace": {
+          "name": "birthplace",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "birthday": {
+          "name": "birthday",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "telephone": {
+          "name": "telephone",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "emergencyTelephone": {
+          "name": "emergencyTelephone",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "contactPreference": {
+          "name": "contactPreference",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "contactPreferenceOther": {
+          "name": "contactPreferenceOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "maritalStatus": {
+          "name": "maritalStatus",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "marriedPartner",
+            "single",
+            "divorced",
+            "widow"
+          ],
+          "mappedType": "enum"
+        },
+        "spokenLanguages": {
+          "name": "spokenLanguages",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "primaryLanguage": {
+          "name": "primaryLanguage",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "children": {
+          "name": "children",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "availability": {
+          "name": "availability",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        },
+        "availabilityNotes": {
+          "name": "availabilityNotes",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "student": {
+          "name": "student",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "didSignPermissionForm": {
+          "name": "didSignPermissionForm",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "hasPermissionToSendInformationAboutLibraries": {
+          "name": "hasPermissionToSendInformationAboutLibraries",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "hasPermissionToShareDataWithLibraries": {
+          "name": "hasPermissionToShareDataWithLibraries",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "hasPermissionToShareDataWithProviders": {
+          "name": "hasPermissionToShareDataWithProviders",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "providerTargetGroupPreference": {
+          "name": "providerTargetGroupPreference",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        },
+        "providerVolunteeringPreference": {
+          "name": "providerVolunteeringPreference",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "providerLanguageHouseVolunteeringReference": {
+          "name": "providerLanguageHouseVolunteeringReference",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "providerTargetGroupIsExperienced": {
+          "name": "providerTargetGroupIsExperienced",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "providerTargetGroupExperience": {
+          "name": "providerTargetGroupExperience",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        }
+      },
+      "name": "Person",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "address"
+          ],
+          "composite": false,
+          "keyName": "Person_address_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "student"
+          ],
+          "composite": false,
+          "keyName": "Person_student_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Person_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "Person_availability_check",
+          "expression": "\"availability\" <@ ARRAY['mondayMorning','mondayAfternoon','mondayEvening','tuesdayMorning','tuesdayAfternoon','tuesdayEvening','wednesdayMorning','wednesdayAfternoon','wednesdayEvening','thursdayMorning','thursdayAfternoon','thursdayEvening','fridayMorning','fridayAfternoon','fridayEvening','saturdayMorning','saturdayAfternoon','saturdayEvening','sundayMorning','sundayAfternoon','sundayEvening']",
+          "definition": "check ((\"availability\" <@ ARRAY['mondayMorning','mondayAfternoon','mondayEvening','tuesdayMorning','tuesdayAfternoon','tuesdayEvening','wednesdayMorning','wednesdayAfternoon','wednesdayEvening','thursdayMorning','thursdayAfternoon','thursdayEvening','fridayMorning','fridayAfternoon','fridayEvening','saturdayMorning','saturdayAfternoon','saturdayEvening','sundayMorning','sundayAfternoon','sundayEvening']))",
+          "columnName": "availability"
+        },
+        {
+          "name": "Person_providerTargetGroupPreference_check",
+          "expression": "\"providerTargetGroupPreference\" <@ ARRAY['NT1','NT2']",
+          "definition": "check ((\"providerTargetGroupPreference\" <@ ARRAY['NT1','NT2']))",
+          "columnName": "providerTargetGroupPreference"
+        }
+      ],
+      "foreignKeys": {
+        "Person_address_foreign": {
+          "constraintName": "Person_address_foreign",
+          "columnNames": [
+            "address"
+          ],
+          "localTableName": "public.Person",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Address",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "Person_student_foreign": {
+          "constraintName": "Person_student_foreign",
+          "columnNames": [
+            "student"
+          ],
+          "localTableName": "public.Person",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Student",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "selfRegistered": {
+          "name": "selfRegistered",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "referringOrganization": {
+          "name": "referringOrganization",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "referringOrganizationOther": {
+          "name": "referringOrganizationOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "referringTeam": {
+          "name": "referringTeam",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "referringPerson": {
+          "name": "referringPerson",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "remarks": {
+          "name": "remarks",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "'pending'",
+          "enumItems": [
+            "pending",
+            "accepted",
+            "rejected"
+          ],
+          "mappedType": "enum"
+        },
+        "registeredPublicly": {
+          "name": "registeredPublicly",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "foundVia": {
+          "name": "foundVia",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "volunteerCenter",
+            "libraryWebsite",
+            "socialMedia",
+            "newspaper",
+            "viaVia",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "foundViaOther": {
+          "name": "foundViaOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "wentToLanguageHouseBefore": {
+          "name": "wentToLanguageHouseBefore",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "wentToLanguageHouseBeforeReason": {
+          "name": "wentToLanguageHouseBeforeReason",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "wentToLanguageHouseBeforeYear": {
+          "name": "wentToLanguageHouseBeforeYear",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "network": {
+          "name": "network",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        },
+        "participationLadder": {
+          "name": "participationLadder",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "isolated",
+            "socialContactsOutside",
+            "organizedActivityParticipation",
+            "volunteerWork",
+            "paidWithSupport",
+            "paid"
+          ],
+          "mappedType": "enum"
+        },
+        "dutchNTLevel": {
+          "name": "dutchNTLevel",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "nt1",
+            "nt2"
+          ],
+          "mappedType": "enum"
+        },
+        "inNetherlandsSinceYear": {
+          "name": "inNetherlandsSinceYear",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "languageInDailyLife": {
+          "name": "languageInDailyLife",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "knowsLatinAlphabet": {
+          "name": "knowsLatinAlphabet",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "lastKnownLevel": {
+          "name": "lastKnownLevel",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "a0",
+            "a1",
+            "a2",
+            "b1",
+            "b2",
+            "c1",
+            "c2",
+            "unknown"
+          ],
+          "mappedType": "enum"
+        },
+        "speakingLevel": {
+          "name": "speakingLevel",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "beginner",
+            "reasonable",
+            "advanced"
+          ],
+          "mappedType": "enum"
+        },
+        "trainedForJob": {
+          "name": "trainedForJob",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "lastJob": {
+          "name": "lastJob",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "desiredLearningNeedOutcome": {
+          "name": "desiredLearningNeedOutcome",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "hasTriedThisBefore": {
+          "name": "hasTriedThisBefore",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "hasTriedThisBeforeExplanation": {
+          "name": "hasTriedThisBeforeExplanation",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "whyWantTheseskills": {
+          "name": "whyWantTheseskills",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "whyWantThisNow": {
+          "name": "whyWantThisNow",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "desiredLearningMethod": {
+          "name": "desiredLearningMethod",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        },
+        "dayTimeActivities": {
+          "name": "dayTimeActivities",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "array"
+        },
+        "dayTimeActivitiesOther": {
+          "name": "dayTimeActivitiesOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "readingTestResult": {
+          "name": "readingTestResult",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "canNotRead",
+            "a0",
+            "a1",
+            "a2",
+            "b1",
+            "b2",
+            "c1",
+            "c2"
+          ],
+          "mappedType": "enum"
+        },
+        "writingTestResult": {
+          "name": "writingTestResult",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "canNotWrite",
+            "writeNawDetails",
+            "writeSimpleTexts",
+            "writeSimpleLetters"
+          ],
+          "mappedType": "enum"
+        }
+      },
+      "name": "Registration",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "composite": false,
+          "keyName": "Registration_desiredLearningNeedOutcome_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Registration_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [
+        {
+          "name": "Registration_network_check",
+          "expression": "\"network\" <@ ARRAY['householdMembers','neighbors','familyMembers','aidWorkers','friendsAcquaintances','peopleAtMosqueChurch','acquaintancesSpeakingOwnLanguage','acquaintancesSpeakingDutch','colleagues']",
+          "definition": "check ((\"network\" <@ ARRAY['householdMembers','neighbors','familyMembers','aidWorkers','friendsAcquaintances','peopleAtMosqueChurch','acquaintancesSpeakingOwnLanguage','acquaintancesSpeakingDutch','colleagues']))",
+          "columnName": "network"
+        },
+        {
+          "name": "Registration_desiredLearningMethod_check",
+          "expression": "\"desiredLearningMethod\" <@ ARRAY['inAGroup','oneOnOne','homeEnvironment','inLibraryOrOther','online']",
+          "definition": "check ((\"desiredLearningMethod\" <@ ARRAY['inAGroup','oneOnOne','homeEnvironment','inLibraryOrOther','online']))",
+          "columnName": "desiredLearningMethod"
+        },
+        {
+          "name": "Registration_dayTimeActivities_check",
+          "expression": "\"dayTimeActivities\" <@ ARRAY['searchingForJob','reIntegration','school','volunteerJob','job','other']",
+          "definition": "check ((\"dayTimeActivities\" <@ ARRAY['searchingForJob','reIntegration','school','volunteerJob','job','other']))",
+          "columnName": "dayTimeActivities"
+        }
+      ],
+      "foreignKeys": {
+        "Registration_referringPerson_foreign": {
+          "constraintName": "Registration_referringPerson_foreign",
+          "columnNames": [
+            "referringPerson"
+          ],
+          "localTableName": "public.Registration",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Person",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "Registration_desiredLearningNeedOutcome_foreign": {
+          "constraintName": "Registration_desiredLearningNeedOutcome_foreign",
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "localTableName": "public.Registration",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeedOutcome",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "organization": {
+          "name": "organization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "employee",
+            "coordinator",
+            "mentor",
+            "coordinatorMentor",
+            "volunteer"
+          ],
+          "mappedType": "enum"
+        },
+        "person": {
+          "name": "person",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "Employee",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Employee_organization_person_unique",
+          "columnNames": [
+            "organization",
+            "person"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Employee_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Employee_organization_foreign": {
+          "constraintName": "Employee_organization_foreign",
+          "columnNames": [
+            "organization"
+          ],
+          "localTableName": "public.Employee",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Employee_person_foreign": {
+          "constraintName": "Employee_person_foreign",
+          "columnNames": [
+            "person"
+          ],
+          "localTableName": "public.Employee",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Person",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "createdByOrganization": {
+          "name": "createdByOrganization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "createdByEmployee": {
+          "name": "createdByEmployee",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "explanation": {
+          "name": "explanation",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
+        "student": {
+          "name": "student",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "remark",
+            "storyTelling",
+            "intake",
+            "followUp",
+            "finalTalk"
+          ],
+          "mappedType": "enum"
+        }
+      },
+      "name": "StudentContactMoment",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "StudentContactMoment_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "StudentContactMoment_createdByOrganization_foreign": {
+          "constraintName": "StudentContactMoment_createdByOrganization_foreign",
+          "columnNames": [
+            "createdByOrganization"
+          ],
+          "localTableName": "public.StudentContactMoment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "StudentContactMoment_createdByEmployee_foreign": {
+          "constraintName": "StudentContactMoment_createdByEmployee_foreign",
+          "columnNames": [
+            "createdByEmployee"
+          ],
+          "localTableName": "public.StudentContactMoment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Employee",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "StudentContactMoment_student_foreign": {
+          "constraintName": "StudentContactMoment_student_foreign",
+          "columnNames": [
+            "student"
+          ],
+          "localTableName": "public.StudentContactMoment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Student",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "educationGroup": {
+          "name": "educationGroup",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "employee": {
+          "name": "employee",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "EducationGroup_employees",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "EducationGroup_employees_pkey",
+          "columnNames": [
+            "educationGroup",
+            "employee"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "EducationGroup_employees_educationGroup_foreign": {
+          "constraintName": "EducationGroup_employees_educationGroup_foreign",
+          "columnNames": [
+            "educationGroup"
+          ],
+          "localTableName": "public.EducationGroup_employees",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.EducationGroup",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "EducationGroup_employees_employee_foreign": {
+          "constraintName": "EducationGroup_employees_employee_foreign",
+          "columnNames": [
+            "employee"
+          ],
+          "localTableName": "public.EducationGroup_employees",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Employee",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "person": {
+          "name": "person",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "lastFollowedEducation",
+            "currentEducation",
+            "course"
+          ],
+          "mappedType": "enum"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "course",
+            "education"
+          ],
+          "mappedType": "enum"
+        },
+        "level": {
+          "name": "level",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "primary",
+            "specialEd",
+            "domesticSchool",
+            "biologicSchool",
+            "lts",
+            "mavo",
+            "vmbo",
+            "havo",
+            "vwo",
+            "mbo",
+            "hbo",
+            "wo",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "levelOther": {
+          "name": "levelOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "degree": {
+          "name": "degree",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "degreeGranted": {
+          "name": "degreeGranted",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "other": {
+          "name": "other",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "currentlyFollowingStatus": {
+          "name": "currentlyFollowingStatus",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "yes",
+            "no",
+            "noUntilDate"
+          ],
+          "mappedType": "enum"
+        },
+        "startDate": {
+          "name": "startDate",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "endDate": {
+          "name": "endDate",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "yearsFollowed": {
+          "name": "yearsFollowed",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "institution": {
+          "name": "institution",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "group": {
+          "name": "group",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "individual",
+            "group"
+          ],
+          "mappedType": "enum"
+        },
+        "courseTeacherType": {
+          "name": "courseTeacherType",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "professional",
+            "volunteer",
+            "both"
+          ],
+          "mappedType": "enum"
+        },
+        "hours": {
+          "name": "hours",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        }
+      },
+      "name": "Education",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Education_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Education_person_foreign": {
+          "constraintName": "Education_person_foreign",
+          "columnNames": [
+            "person"
+          ],
+          "localTableName": "public.Education",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Person",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "student": {
+          "name": "student",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "motivation": {
+          "name": "motivation",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "offerDifference": {
+          "name": "offerDifference",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "no",
+            "yesNotOfferedInTravelRange",
+            "yesQueue",
+            "yesOther"
+          ],
+          "mappedType": "enum"
+        },
+        "advisedOffer": {
+          "name": "advisedOffer",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "desiredOffer": {
+          "name": "desiredOffer",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "offerDifferenceOther": {
+          "name": "offerDifferenceOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "agreements": {
+          "name": "agreements",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "desiredLearningNeedOutcome": {
+          "name": "desiredLearningNeedOutcome",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "createdByProvider": {
+          "name": "createdByProvider",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "LearningNeed",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "composite": false,
+          "keyName": "LearningNeed_desiredLearningNeedOutcome_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "LearningNeed_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "LearningNeed_student_foreign": {
+          "constraintName": "LearningNeed_student_foreign",
+          "columnNames": [
+            "student"
+          ],
+          "localTableName": "public.LearningNeed",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Student",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "LearningNeed_desiredLearningNeedOutcome_foreign": {
+          "constraintName": "LearningNeed_desiredLearningNeedOutcome_foreign",
+          "columnNames": [
+            "desiredLearningNeedOutcome"
+          ],
+          "localTableName": "public.LearningNeed",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeedOutcome",
+          "deleteRule": "cascade"
+        },
+        "LearningNeed_createdByProvider_foreign": {
+          "constraintName": "LearningNeed_createdByProvider_foreign",
+          "columnNames": [
+            "createdByProvider"
+          ],
+          "localTableName": "public.LearningNeed",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "provider": {
+          "name": "provider",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "learningNeed": {
+          "name": "learningNeed",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "cascadeOnLearningNeedDelete": {
+          "name": "cascadeOnLearningNeedDelete",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "mentor": {
+          "name": "mentor",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "providerOption": {
+          "name": "providerOption",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "provider",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "providerOther": {
+          "name": "providerOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "providerExplanation": {
+          "name": "providerExplanation",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "startParticipation": {
+          "name": "startParticipation",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "endParticipation": {
+          "name": "endParticipation",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "start": {
+          "name": "start",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "end": {
+          "name": "end",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "reasonEndParticipation": {
+          "name": "reasonEndParticipation",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "moved",
+            "work",
+            "health",
+            "deceased",
+            "completedSuccessfully",
+            "family",
+            "doesNotMeetExpectations",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "outFlowParticipation": {
+          "name": "outFlowParticipation",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "study",
+            "work",
+            "volunteerWork",
+            "formalFollowUp",
+            "nonFormalFollowUp",
+            "unknown",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "outFlowReasonOther": {
+          "name": "outFlowReasonOther",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "offerName": {
+          "name": "offerName",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "offerType": {
+          "name": "offerType",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "language",
+            "math",
+            "digital",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "formality": {
+          "name": "formality",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "formal",
+            "nonFormal"
+          ],
+          "mappedType": "enum"
+        },
+        "groupFormation": {
+          "name": "groupFormation",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "individually",
+            "group"
+          ],
+          "mappedType": "enum"
+        },
+        "degree": {
+          "name": "degree",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "boolean"
+        },
+        "agreement": {
+          "name": "agreement",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "educationGroup": {
+          "name": "educationGroup",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "offerLearningNeedOutcome": {
+          "name": "offerLearningNeedOutcome",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "Participation",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "offerLearningNeedOutcome"
+          ],
+          "composite": false,
+          "keyName": "Participation_offerLearningNeedOutcome_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "Participation_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Participation_provider_foreign": {
+          "constraintName": "Participation_provider_foreign",
+          "columnNames": [
+            "provider"
+          ],
+          "localTableName": "public.Participation",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Participation_learningNeed_foreign": {
+          "constraintName": "Participation_learningNeed_foreign",
+          "columnNames": [
+            "learningNeed"
+          ],
+          "localTableName": "public.Participation",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeed",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Participation_mentor_foreign": {
+          "constraintName": "Participation_mentor_foreign",
+          "columnNames": [
+            "mentor"
+          ],
+          "localTableName": "public.Participation",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Employee",
+          "deleteRule": "SET NULL",
+          "updateRule": "cascade"
+        },
+        "Participation_educationGroup_foreign": {
+          "constraintName": "Participation_educationGroup_foreign",
+          "columnNames": [
+            "educationGroup"
+          ],
+          "localTableName": "public.Participation",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.EducationGroup",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "Participation_offerLearningNeedOutcome_foreign": {
+          "constraintName": "Participation_offerLearningNeedOutcome_foreign",
+          "columnNames": [
+            "offerLearningNeedOutcome"
+          ],
+          "localTableName": "public.Participation",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeedOutcome",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "student": {
+          "name": "student",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "finished",
+            "fromEuCountry",
+            "exemptedOrZRoute"
+          ],
+          "mappedType": "enum"
+        },
+        "requirement": {
+          "name": "requirement",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "yes",
+            "no",
+            "inProgress"
+          ],
+          "mappedType": "enum"
+        },
+        "finishDate": {
+          "name": "finishDate",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "CivicIntegration",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "student"
+          ],
+          "composite": false,
+          "keyName": "CivicIntegration_student_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "CivicIntegration_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "CivicIntegration_student_foreign": {
+          "constraintName": "CivicIntegration_student_foreign",
+          "columnNames": [
+            "student"
+          ],
+          "localTableName": "public.CivicIntegration",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Student",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "organization": {
+          "name": "organization",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "team": {
+          "name": "team",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        },
+        "code": {
+          "name": "code",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 4,
+          "mappedType": "integer"
+        }
+      },
+      "name": "PostalCodeArea",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "code"
+          ],
+          "composite": false,
+          "keyName": "PostalCodeArea_code_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "PostalCodeArea_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "PostalCodeArea_organization_foreign": {
+          "constraintName": "PostalCodeArea_organization_foreign",
+          "columnNames": [
+            "organization"
+          ],
+          "localTableName": "public.PostalCodeArea",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Organization",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "PostalCodeArea_team_foreign": {
+          "constraintName": "PostalCodeArea_team_foreign",
+          "columnNames": [
+            "team"
+          ],
+          "localTableName": "public.PostalCodeArea",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Team",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "team": {
+          "name": "team",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "employee": {
+          "name": "employee",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "Team_members",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "Team_members_pkey",
+          "columnNames": [
+            "team",
+            "employee"
+          ],
+          "composite": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "Team_members_team_foreign": {
+          "constraintName": "Team_members_team_foreign",
+          "columnNames": [
+            "team"
+          ],
+          "localTableName": "public.Team_members",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Team",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "Team_members_employee_foreign": {
+          "constraintName": "Team_members_employee_foreign",
+          "columnNames": [
+            "employee"
+          ],
+          "localTableName": "public.Team_members",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Employee",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "examDate": {
+          "name": "examDate",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "memo": {
+          "name": "memo",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "usedExam": {
+          "name": "usedExam",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "learningNeedOutcome": {
+          "name": "learningNeedOutcome",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "participation": {
+          "name": "participation",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "didAchieveResultResponse": {
+          "name": "didAchieveResultResponse",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "yes",
+            "no",
+            "partly"
+          ],
+          "mappedType": "enum"
+        },
+        "unsuccessfulResultReasonResponse": {
+          "name": "unsuccessfulResultReasonResponse",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "quit",
+            "tooDifficult",
+            "notNeeded"
+          ],
+          "mappedType": "enum"
+        },
+        "achievedResultResponse": {
+          "name": "achievedResultResponse",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "enumItems": [
+            "satisfactory",
+            "newLearningNeedAdded",
+            "other"
+          ],
+          "mappedType": "enum"
+        },
+        "achievedResultResponseOther": {
+          "name": "achievedResultResponseOther",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        }
+      },
+      "name": "TestResult",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "learningNeedOutcome"
+          ],
+          "composite": false,
+          "keyName": "TestResult_learningNeedOutcome_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "participation"
+          ],
+          "composite": false,
+          "keyName": "TestResult_participation_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "TestResult_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "TestResult_learningNeedOutcome_foreign": {
+          "constraintName": "TestResult_learningNeedOutcome_foreign",
+          "columnNames": [
+            "learningNeedOutcome"
+          ],
+          "localTableName": "public.TestResult",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.LearningNeedOutcome",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "TestResult_participation_foreign": {
+          "constraintName": "TestResult_participation_foreign",
+          "columnNames": [
+            "participation"
+          ],
+          "localTableName": "public.TestResult",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Participation",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "passwordResetToken": {
+          "name": "passwordResetToken",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "refreshToken": {
+          "name": "refreshToken",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
+        "passwordResetRequestedAt": {
+          "name": "passwordResetRequestedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "locale": {
+          "name": "locale",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "'nl'",
+          "enumItems": [
+            "en",
+            "nl"
+          ],
+          "mappedType": "enum"
+        },
+        "person": {
+          "name": "person",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "uuid"
+        }
+      },
+      "name": "User",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "username"
+          ],
+          "composite": false,
+          "keyName": "User_username_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "person"
+          ],
+          "composite": false,
+          "keyName": "User_person_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "User_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "User_person_foreign": {
+          "constraintName": "User_person_foreign",
+          "columnNames": [
+            "person"
+          ],
+          "localTableName": "public.User",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Person",
+          "deleteRule": "CASCADE",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "person": {
+          "name": "person",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "createdByUser": {
+          "name": "createdByUser",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "extension": {
+          "name": "extension",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "mimeType": {
+          "name": "mimeType",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "size": {
+          "name": "size",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        }
+      },
+      "name": "UploadedDocument",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "UploadedDocument_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "UploadedDocument_person_foreign": {
+          "constraintName": "UploadedDocument_person_foreign",
+          "columnNames": [
+            "person"
+          ],
+          "localTableName": "public.UploadedDocument",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.Person",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "UploadedDocument_createdByUser_foreign": {
+          "constraintName": "UploadedDocument_createdByUser_foreign",
+          "columnNames": [
+            "createdByUser"
+          ],
+          "localTableName": "public.UploadedDocument",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.User",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      }
+    }
+  ]
+}

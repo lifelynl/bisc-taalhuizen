@@ -1,0 +1,35 @@
+$screen-smallest: 375px;
+$screen-tablet: 768px;
+$screen-desktop: 1016px;
+$screen-ultra-wide: 2048px;
+
+$input-width: 281px;
+
+@mixin media-query($breakpoint) {
+    $ultra-wide-breakpoint: '(min-width: #{$screen-ultra-wide})';
+    $desktop-breakpoint: '(min-width: #{$screen-desktop - 1px})';
+    $tablet-breakpoint: '(min-width: #{$screen-tablet - 1px})';
+    $mobile-breakpoint: '(max-width: #{$screen-smallest - 1px})';
+
+    @if ($breakpoint == ultra-wide) {
+        @media #{$ultra-wide-breakpoint} {
+            @content;
+        }
+    } @else if ($breakpoint == desktop) {
+        @media #{$desktop-breakpoint} {
+            @content;
+        }
+    } @else if ($breakpoint == tablet) {
+        @media #{$tablet-breakpoint} {
+            @content;
+        }
+    } @else if ($breakpoint == mobile) {
+        @media #{$mobile-breakpoint} {
+            @content;
+        }
+    } @else {
+        @media (max-width: #{$breakpoint}) {
+            @content;
+        }
+    }
+}

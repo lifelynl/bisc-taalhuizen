@@ -1,0 +1,325 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/utils';
+@import 'src/styles/variables/animations';
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: spacing(3) spacing(5);
+    border-radius: 8px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+    user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+
+    transition-property: background-color color border text-decoration;
+    transition-duration: $animation-default;
+    transition-timing-function: $animation-appear-bezier;
+
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    // types
+
+    &.primary {
+        background-color: $color-background-orange;
+        color: $color-white;
+
+        &:hover,
+        &:focus {
+            background-color: $color-background-orange-dark;
+        }
+
+        &:active {
+            background-color: $color-background-orange-darker;
+        }
+
+        &.isDanger:hover {
+            background-color: $color-ui-red-light;
+        }
+
+        &.isLoading:hover {
+            background-color: $color-background-orange;
+        }
+    }
+
+    &.secondary {
+        background-color: unset;
+        color: $color-grey-99;
+
+        &:hover,
+        &:focus {
+            background-color: $color-grey-10;
+        }
+
+        &:active {
+            background-color: $color-grey-20;
+        }
+
+        &.isDanger {
+            background-color: unset;
+            color: $color-ui-red-light;
+
+            &:hover {
+                background-color: $color-grey-10;
+            }
+        }
+
+        &.isLoading,
+        &.isLoading:hover {
+            background-color: $color-grey-10;
+        }
+    }
+
+    &.tertiary {
+        background-color: $color-background-polar;
+        color: $color-grey-99;
+
+        &:hover,
+        &:focus {
+            background-color: $color-background-polar-dark;
+        }
+
+        &:active {
+            background-color: $color-background-polar-darker;
+        }
+
+        &.isLoading:hover {
+            background-color: $color-background-polar;
+        }
+    }
+
+    &.quarternary {
+        background-color: $color-white;
+        color: $color-grey-99;
+
+        &:hover,
+        &:focus {
+            background-color: $color-grey-10;
+        }
+
+        &:active {
+            background-color: $color-grey-10;
+        }
+
+        &.isLoading:hover {
+            background-color: $color-grey-10;
+        }
+
+        &.isDanger {
+            color: $color-ui-red-light;
+            background-color: $color-white;
+
+            &:hover {
+                background-color: $color-grey-20;
+            }
+        }
+    }
+
+    &.arrowLink {
+        background-color: unset;
+        padding: 0;
+        color: $color-bisc-orange;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+
+        &.isDisabled,
+        &.isDisabled:hover {
+            background-color: unset;
+            text-decoration: none;
+        }
+    }
+
+    // modifiers
+
+    &.isStretched {
+        width: 100%;
+    }
+
+    &.isDisabled {
+        color: $color-grey-60;
+        background-color: $color-grey-10;
+
+        &:hover {
+            background-color: $color-grey-10;
+            cursor: no-drop;
+        }
+    }
+
+    &.isLoading {
+        &:hover {
+            cursor: no-drop;
+        }
+
+        .inner {
+            visibility: hidden;
+        }
+
+        .spinner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+
+    &.isDanger {
+        color: $color-white;
+        background-color: $color-ui-red;
+    }
+
+    &.isBig {
+        font-size: 16px;
+        padding: spacing(4) spacing(10);
+    }
+
+    &.isRound {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1px solid;
+
+        &.primary {
+            border-color: $color-grey-99;
+            background-color: unset;
+            color: $color-grey-99;
+
+            &:hover {
+                color: $color-background-orange-dark;
+                border-color: $color-background-orange-dark;
+            }
+
+            &:active {
+                color: $color-background-orange-darker;
+                border-color: $color-background-orange-darker;
+            }
+
+            &.isLoading,
+            &.isLoading:hover,
+            &.isDisabled,
+            &.isDisabled:hover {
+                border: unset;
+                color: $color-grey-60;
+                background-color: $color-grey-10;
+            }
+
+            &.isDanger {
+                border: unset;
+                color: $color-white;
+                background-color: $color-ui-red;
+
+                &:hover {
+                    background-color: $color-ui-red-light;
+                }
+            }
+        }
+
+        &.secondary {
+            &.isDanger {
+                border-color: $color-ui-red;
+                background-color: unset;
+
+                &:hover {
+                    color: $color-ui-red-light;
+                    background-color: $color-grey-10;
+                }
+            }
+        }
+
+        &.tertiary {
+            background-color: $color-bisc-ice;
+            color: $color-white;
+
+            &:hover {
+                color: $color-background-polar-dark;
+                border-color: $color-background-polar-dark;
+            }
+
+            &:active {
+                color: $color-background-polar-darker;
+                border-color: $color-background-polar-darker;
+            }
+
+            &.isLoading,
+            &.isLoading:hover,
+            &.isDisabled,
+            &.isDisabled:hover {
+                border: unset;
+                color: $color-grey-60;
+                background-color: $color-grey-10;
+            }
+
+            &.isDanger {
+                border: unset;
+                color: $color-white;
+                background-color: $color-ui-red;
+
+                &:hover {
+                    background-color: $color-ui-red-light;
+                }
+            }
+        }
+    }
+
+    &.icon-isTop .inner {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .icon {
+            margin-bottom: spacing(1);
+        }
+    }
+    &.icon-isRight .icon {
+        margin-left: spacing(1);
+    }
+    &.icon-isBottom .inner {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+
+        .icon {
+            margin-top: spacing(1);
+            flex-wrap: wrap-reverse;
+        }
+    }
+    &.icon-isLeft .icon {
+        margin-right: spacing(1);
+    }
+
+    &.visually-hidden {
+        @include visually-hidden;
+    }
+}
+
+// is used for ButtonFileInput
+.container {
+    .hasErrorMessage & {
+        border-color: $color-ui-red;
+    }
+}
+.errorMessage {
+    margin-top: spacing(2);
+    font-size: 14px;
+    color: $color-ui-red;
+}

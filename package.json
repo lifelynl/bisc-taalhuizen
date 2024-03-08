@@ -1,0 +1,17 @@
+{
+	"name": "bisc-taalhuizen",
+	"version": "0.0.1",
+	"engines": {
+		"node": "18.18.*"
+	},
+	"scripts": {
+		"start": "(ls Itermocil.yml > /dev/null && itermocil --here --layout ./Itermocil.yml) || itermocil --here"
+	},
+	"private": true,
+	"dependencies": {
+		"wait-on": "^7.0.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	}
+}

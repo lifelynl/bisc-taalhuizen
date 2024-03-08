@@ -1,0 +1,26 @@
+table {
+    margin-top: 16px;
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 12px;
+    padding-bottom: 4px;
+}
+
+.label {
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: baseline;
+    width: 160px;
+    padding-right: 8px;
+}
+
+.value {
+    font-size: 10px;
+    vertical-align: baseline;
+}
+
+.spacer {
+    padding: 8px;
+}

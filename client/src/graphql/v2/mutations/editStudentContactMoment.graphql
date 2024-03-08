@@ -1,0 +1,19 @@
+mutation editStudentContactMoment($input: EditStudentContactMomentInputType!) {
+    editStudentContactMoment(input: $input) {
+        id
+        createdAt
+        createdByEmployee {
+            id
+            person {
+                id
+                givenName
+                additionalName
+                familyName
+            }
+        }
+        updatedAt
+        type
+        date
+        explanation
+    }
+}

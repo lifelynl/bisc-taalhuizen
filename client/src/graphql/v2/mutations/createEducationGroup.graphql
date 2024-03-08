@@ -1,0 +1,43 @@
+mutation createEducationGroup($input: CreateEducationGroupInputType!) {
+    createEducationGroup(input: $input) {
+        id
+        createdAt
+        updatedAt
+        name
+        type
+        formality
+        lessonHours
+        degree
+        start
+        end
+        availability
+        availabilityNotes
+        location
+        minimumParticipants
+        maximumParticipants
+        evaluation
+        status
+        desiredLearningNeedOutcome {
+            id
+            createdAt
+            updatedAt
+            subject
+            subjectOther
+            application
+            applicationOther
+            level
+            levelOther
+        }
+        organization {
+            id
+            name
+        }
+        employees {
+            id
+            person {
+                availability
+                availabilityNotes
+            }
+        }
+    }
+}

@@ -1,0 +1,171 @@
+{
+    "name": "bisc-taalhuizen",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "engines": {
+        "node": "18.18.*"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.6.9",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@lingui/macro": "^4.5.0",
+        "@lingui/react": "^4.5.0",
+        "@mui/base": "^5.0.0-beta.5",
+        "@mui/material": "^5.13.6",
+        "apollo-server": "^3.10.0",
+        "babel-loader": "^9.1.3",
+        "classnames": "^2.2.6",
+        "graphql": "^16.5.0",
+        "graphql-tools": "^8.3.0",
+        "husky": "1.3.1",
+        "i18n-iso-countries": "^7.0.0",
+        "lodash": "^4.17.21",
+        "lottie-web": "^5.7.5",
+        "qs": "^6.11.2",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-infinite-scroller": "^1.2.6",
+        "react-modal": "^3.12.1",
+        "react-nl2br": "^1.0.2",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "^5.0.1",
+        "react-select": "^5.3.2",
+        "react-toastify": "^6.2.0",
+        "react-tooltip": "^4.2.11",
+        "react-transition-group": "^4.4.1",
+        "restful-react": "^15.9.2",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.0.3",
+        "validator": "^13.5.2",
+        "web-vitals": "^0.2.4",
+        "zxcvbn": "^4.4.2"
+    },
+    "scripts": {
+        "start": "npm run extract-translations && npm run compile-translations && react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "codegen": "graphql-codegen --config codegen.yml",
+        "codegen:watch": "graphql-codegen --config codegen.yml --watch",
+        "extract-translations": "lingui extract",
+        "compile-translations": "lingui compile",
+        "eslint": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
+        "eslint:check": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+        "prettier": "npx prettier --config .prettierrc --write \"src/**/**.{ts,tsx}\""
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "eslint --color --fix --quiet",
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "eslintConfig": {
+        "plugins": [
+            "lodash"
+        ],
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ],
+        "rules": {
+            "semi": [
+                1,
+                "never"
+            ],
+            "require-await": "error",
+            "no-return-await": "warn",
+            "no-else-return": "error",
+            "no-console": "warn",
+            "react/jsx-boolean-value": [
+                2,
+                "always"
+            ],
+            "react/self-closing-comp": [
+                2,
+                {
+                    "component": true
+                }
+            ],
+            "lodash/import-scope": [
+                2,
+                "method"
+            ]
+        },
+        "overrides": [
+            {
+                "files": [
+                    "**/*.ts?(x)"
+                ],
+                "rules": {
+                    "@typescript-eslint/no-parameter-properties": "off",
+                    "@typescript-eslint/explicit-function-return-type": "off",
+                    "@typescript-eslint/no-explicit-any": 0,
+                    "@typescript-eslint/no-empty-interface": "off",
+                    "@typescript-eslint/no-inferrable-types": "off",
+                    "@typescript-eslint/explicit-member-accessibility": 2
+                }
+            },
+            {
+                "files": [
+                    "**/*.stories.*"
+                ],
+                "rules": {
+                    "import/no-anonymous-default-export": "off"
+                }
+            }
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/core": "^7.23.0",
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "@graphql-codegen/cli": "^2.9.1",
+        "@graphql-codegen/fragment-matcher": "^3.3.0",
+        "@graphql-codegen/introspection": "^2.2.0",
+        "@graphql-codegen/typescript": "^2.7.2",
+        "@graphql-codegen/typescript-operations": "^2.5.2",
+        "@graphql-codegen/typescript-react-apollo": "^3.3.2",
+        "@lingui/cli": "^4.5.0",
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.1.0",
+        "@testing-library/user-event": "^12.1.10",
+        "@types/classnames": "^2.2.11",
+        "@types/jest": "^26.0.15",
+        "@types/lodash": "^4.14.167",
+        "@types/node": "^16.18.36",
+        "@types/react": "^17.0.1",
+        "@types/react-dom": "^17.0.1",
+        "@types/react-infinite-scroller": "^1.2.4",
+        "@types/react-modal": "^3.12.0",
+        "@types/react-router-dom": "^5.2.0",
+        "@types/react-tooltip": "^4.2.4",
+        "@types/react-transition-group": "^4.4.1",
+        "@types/validator": "^13.1.3",
+        "@types/zxcvbn": "^4.4.0",
+        "babel-plugin-macros": "^3.1.0",
+        "eslint-plugin-lodash": "^7.1.0",
+        "lint-staged": "8.1.7",
+        "prettier": "^2.2.1",
+        "react-error-overlay": "6.0.9",
+        "sass": "^1.51.0"
+    }
+}

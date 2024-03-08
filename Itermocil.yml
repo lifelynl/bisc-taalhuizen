@@ -1,0 +1,11 @@
+windows:
+  - name: BiSC-Taalhuizen
+    root: ~
+    pre: cwd=$(pwd)
+    layout: double-main-vertical
+    panes:
+      - cd server && nvm use && npm run start-services
+      - cd server && nvm use && npm run start:debug
+      - cd client && nvm use && npm run start
+      - cd client && nvm use && npm run codegen:watch
+      - nvm use && clear

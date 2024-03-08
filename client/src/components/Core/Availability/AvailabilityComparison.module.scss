@@ -1,0 +1,47 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    width: 100%;
+    border: 1px solid $color-grey-20;
+    border-radius: 16px;
+    padding: 35px 0;
+}
+
+.side {
+    padding: 5px 40px;
+}
+
+.side + .side {
+    border-left: 1px solid $color-grey-20;
+}
+
+.roleLabel {
+    text-transform: uppercase;
+    margin-right: spacing(1);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    color: $color-grey-80;
+}
+
+.title {
+    margin-top: spacing(1);
+    margin-bottom: spacing(8);
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $color-grey-99;
+}
+
+.notes {
+    margin-top: spacing(6);
+}

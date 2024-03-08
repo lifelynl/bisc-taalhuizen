@@ -1,0 +1,14 @@
+mutation createOrganization($input: CreateOrganizationInputType!) {
+	createOrganization(input: $input) {
+		id
+		name
+		description
+		type
+		employees {
+			id
+		}
+		address {
+			id
+		}
+	}
+}

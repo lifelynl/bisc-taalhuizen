@@ -1,0 +1,30 @@
+mutation editTeams($input: EditTeamsInputType!) {
+    editTeams(input: $input) {
+        id
+        createdAt
+        updatedAt
+        name
+        hiddenFromPublic
+        members {
+            id
+            createdAt
+            updatedAt
+            role
+        }
+        parentOrganization {
+            createdAt
+            updatedAt
+            name
+            description
+            type
+            email
+            telephone
+        }
+        postalCodeAreas {
+            id
+            createdAt
+            updatedAt
+            code
+        }
+    }
+}

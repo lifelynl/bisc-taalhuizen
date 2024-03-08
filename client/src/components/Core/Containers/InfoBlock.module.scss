@@ -1,0 +1,53 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: spacing(4) spacing(6);
+    max-width: 403px;
+    border-radius: 4px;
+
+    &.grow {
+        max-width: none;
+        width: 100%;
+
+        p {
+            max-width: none;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        max-width: 85%;
+    }
+
+    .iconContainer {
+        width: 20px;
+        height: 20px;
+        margin-right: spacing(4);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+            color: $color-white;
+        }
+    }
+
+    &.Warning {
+        background-color: rgba(255, 90, 38, 0.1);
+        .iconContainer {
+            background-color: $color-bisc-orange;
+        }
+    }
+
+    &.Info {
+        background-color: rgba(146, 190, 216, 0.1);
+        .iconContainer {
+            .icon {
+                color: $color-background-dark-blue;
+            }
+        }
+    }
+}

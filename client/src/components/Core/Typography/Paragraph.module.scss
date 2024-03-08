@@ -1,0 +1,47 @@
+@import 'src/styles/variables/colors';
+
+.paragraph {
+    font-size: 16px;
+    color: $color-grey-99;
+    line-height: 1.6;
+}
+
+.centered {
+    text-align: center;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.leftAligned {
+    text-align: left;
+}
+
+.isError {
+    color: $color-ui-red;
+}
+
+.subtle {
+    color: $color-grey-80;
+}
+
+.small {
+    font-size: 12px;
+    line-height: normal;
+}
+
+.small {
+    font-size: 14px;
+    line-height: normal;
+}
+
+.truncateEllipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,0 +1,11 @@
+query studentForDetailHeader($studentId: String!) {
+    student(studentId: $studentId) {
+        id
+        person {
+            id
+            givenName
+            additionalName
+            familyName
+        }
+    }
+}

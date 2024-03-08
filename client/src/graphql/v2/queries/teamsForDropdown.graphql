@@ -1,0 +1,10 @@
+query teamsForDropdown($paginationArgs: PaginatedInputType!, $organizationId: ID!, $filterForEmployeeId: ID) {
+    teams(paginationArgs: $paginationArgs, organizationId: $organizationId, filterForEmployeeId: $filterForEmployeeId) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            name
+        }
+    }
+}

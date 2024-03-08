@@ -1,0 +1,6 @@
+query participationProviderOrganizations {
+    participationProviderOrganizations {
+        id
+        name
+    }
+}

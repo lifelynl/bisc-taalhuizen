@@ -1,0 +1,40 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    padding: 40px 48px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+    background-color: #92bed8;
+
+    &.red {
+        background-image: url(../../../src/assets/visuals/reports/red.svg);
+    }
+
+    &.orange {
+        background-image: url(../../../src/assets/visuals/reports/orange.svg);
+    }
+
+    &.blue {
+        background-image: url(../../../src/assets/visuals/reports/blue.svg);
+    }
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 600;
+    color: $color-white;
+}
+
+.description {
+    margin-top: spacing(4);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.19);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: $color-white;
+}
+
+.actionContainer {
+    margin-top: spacing(9, -3);
+}

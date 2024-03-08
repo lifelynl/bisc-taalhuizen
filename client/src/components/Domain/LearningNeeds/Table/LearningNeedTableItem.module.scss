@@ -1,0 +1,23 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.container {
+    position: relative;
+    text-decoration: none;
+    .contentContainer {
+        width: 100%;
+        padding: spacing(6);
+        border-radius: 16px;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.11);
+        background-color: hsl(0, 0%, 100%);
+        margin-bottom: spacing(6);
+        cursor: pointer;
+
+        display: grid;
+        grid-template-columns: 30% auto;
+
+        .hr {
+            margin: spacing(5) 0;
+        }
+    }
+}

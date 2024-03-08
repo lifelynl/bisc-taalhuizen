@@ -1,0 +1,12 @@
+query team($teamId: ID!) {
+    team(teamId: $teamId) {
+        id
+        createdAt
+        updatedAt
+        name
+        postalCodeAreas {
+            id
+            code
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.label {
+    display: block;
+    color: $color-grey-80;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.isRequired::after {
+    content: '*';
+    color: $color-ui-red;
+    margin-left: spacing(1);
+}

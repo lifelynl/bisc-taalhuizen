@@ -1,0 +1,10 @@
+query availablePostalCodes($paginationArgs: PaginatedInputType!, $search: String){
+  availablePostalCodes(paginationArgs: $paginationArgs, search: $search){
+    totalCount
+		hasMore
+		nodes {
+			id
+      code
+    }
+  }
+}

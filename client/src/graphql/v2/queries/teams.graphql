@@ -1,0 +1,31 @@
+query teams($paginationArgs: PaginatedInputType!, $organizationId: ID!, $sort: TeamsSortInputType) {
+    teams(paginationArgs: $paginationArgs, organizationId: $organizationId, sort: $sort) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            createdAt
+            updatedAt
+            name
+            hiddenFromPublic
+            members {
+                id
+            }
+            parentOrganization {
+                createdAt
+                updatedAt
+                name
+                description
+                type
+                email
+                telephone
+            }
+            postalCodeAreas {
+                id
+                createdAt
+                updatedAt
+                code
+            }
+        }
+    }
+}

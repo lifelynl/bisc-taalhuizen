@@ -1,0 +1,10 @@
+{{#> email }}
+<h1>Beste {{name}},</h1>
+<p>We hebben een account voor je aangemaakt zodat je gebruik kunt maken van TOP namens {{organization}}.
+Via de link in deze mail kan je een wachtwoord instellen en hiermee inloggen om de applicatie te gaan gebruiken.</p>
+{{> button link=inviteButtonLink label="Nieuw wachtwoord instellen" }}
+{{> button-link-fallback link=inviteButtonLink}}
+<hr />
+<p>Met vriendelijke groet,</p>
+<p>TOP</p>
+{{/email}}

@@ -1,0 +1,15 @@
+query studentForDesiredLearningNeedOutcome($studentId: String!) {
+    student(studentId: $studentId) {
+        id
+        registration {
+            desiredLearningNeedOutcome {
+                subject
+                subjectOther
+                application
+                applicationOther
+                level
+                levelOther
+            }
+        }
+    }
+}

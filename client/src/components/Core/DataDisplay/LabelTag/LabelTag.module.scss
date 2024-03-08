@@ -1,0 +1,79 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+@mixin modifyContainerAndText($backgroundColor, $textColor) {
+    background-color: $backgroundColor;
+
+    .icon {
+        color: $textColor;
+    }
+    .text {
+        color: $textColor;
+    }
+
+    .icon {
+        color: $textColor;
+    }
+}
+
+.container {
+    padding: spacing(1) spacing(2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    .text {
+        text-align: center;
+        line-height: normal;
+    }
+
+    .icon {
+        display: flex;
+        margin-right: spacing(1);
+        align-items: center;
+        justify-content: center;
+        margin-top: spacing(1, -2);
+
+        svg {
+            height: 16px;
+            width: 16px;
+        }
+    }
+
+    &.hasIcon {
+        padding-left: spacing(1);
+    }
+
+    &.isRed {
+        @include modifyContainerAndText($color-background-red-light, $color-background-red);
+    }
+
+    &.isYellow {
+        @include modifyContainerAndText($color-background-yellow-light, $color-background-yellow-dark);
+    }
+
+    &.isBlue {
+        @include modifyContainerAndText($color-background-polar, $color-background-blue);
+    }
+
+    &.isPurple {
+        @include modifyContainerAndText($color-background-purple-light, $color-background-purple);
+    }
+
+    &.isGreen {
+        @include modifyContainerAndText($color-ui-green-light, $color-ui-green-dark);
+    }
+
+    &.isGrey {
+        @include modifyContainerAndText($color-grey-5, $color-grey-99);
+    }
+
+    &.isWhite {
+        @include modifyContainerAndText($color-white, $color-grey-99);
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+}

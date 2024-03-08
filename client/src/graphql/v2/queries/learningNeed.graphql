@@ -1,0 +1,54 @@
+query learningNeed($learningNeedId: String!) {
+    learningNeed(id: $learningNeedId) {
+        id
+        description
+        motivation
+        createdByOrganization {
+            id
+            name
+        }
+        desiredLearningNeedOutcome {
+            id
+            createdAt
+            updatedAt
+            subject
+            subjectOther
+            application
+            applicationOther
+            level
+            levelOther
+        }
+        advisedOffer
+        desiredOffer
+        offerDifference
+        offerDifferenceOther
+        agreements
+        participations {
+            id
+            agreement
+            groupFormation
+            offerName
+            provider {
+                id
+                name
+            }
+            providerOption
+            providerOther
+            providerExplanation
+            status
+        }
+        student {
+            id
+            person {
+                id
+                givenName
+                additionalName
+                familyName
+            }
+            organization {
+                id
+                name
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    background-color: $color-white;
+    border-radius: 8px;
+    overflow: hidden;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 403px;
+
+    th {
+        padding: 0;
+        border-color: $color-bisc-orange;
+    }
+}
+
+.thead {
+    background-color: $color-bisc-orange;
+    color: $color-white;
+}
+
+.headerBlank {
+    height: 34px;
+}
+
+.headerpaddingRight {
+    width: 12px;
+}
+
+.headerName {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: $color-white;
+}
+
+.checkBoxTd {
+    width: 40px;
+    text-align: center;
+}
+
+.checkmarkHighlight {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid $color-ui-green;
+    background-color: rgba($color-ui-green, 0.2);
+    border-radius: 2px;
+    padding: 2px;
+}
+
+.sectionOfDay {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-grey-99;
+}
+
+.timeOfDay {
+    font-size: 14px;
+    line-height: 1.83;
+    color: $color-grey-80;
+}
+
+.sectionOfDayWrapper {
+    padding-left: spacing(4, -1);
+    height: 64px;
+}
+
+.tbody {
+    tr:nth-child(odd) {
+        background-color: $color-grey-10;
+    }
+    tr:nth-child(even) {
+        background-color: $color-white;
+    }
+}
+
+.readOnlyAvailable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        color: $color-ui-green;
+    }
+}
+.readOnlyUnavailable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        color: $color-grey-20;
+    }
+}
+.compareActive {
+    margin: auto;
+    height: 24px;
+    width: 24px;
+    border-radius: 2px;
+    border: solid 1px $color-ui-green;
+    background-color: rgba(65, 193, 92, 0.2);
+}

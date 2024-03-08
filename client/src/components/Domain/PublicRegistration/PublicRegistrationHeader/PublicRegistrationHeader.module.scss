@@ -1,0 +1,140 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.defaultContainer {
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-height: 576px;
+    background-color: $color-background-polar;
+    overflow: hidden;
+
+    .contentContainer {
+        position: relative;
+        z-index: 1;
+        padding: spacing(30.75) 0;
+        max-width: 586px;
+
+        .title {
+            font-weight: normal;
+            margin-bottom: spacing(10);
+        }
+
+        .subtitle {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: spacing(6);
+        }
+    }
+
+    .providers {
+        position: absolute;
+        left: 90px;
+        top: -266px;
+        color: $color-background-yellow;
+
+        svg {
+            transform: rotate(-30deg);
+            height: 510px;
+            width: 510px;
+        }
+    }
+
+    .shape {
+        position: absolute;
+        left: -130px;
+        top: 50%;
+        transform: translate(0, -50%);
+        color: $color-bisc-ice;
+
+        svg {
+            height: 400px;
+            width: 400px;
+        }
+    }
+
+    .attendee {
+        position: absolute;
+        right: 30px;
+        top: -50px;
+        color: $color-bisc-orange;
+
+        svg {
+            height: 620px;
+            width: 620px;
+        }
+    }
+
+    .profile {
+        position: absolute;
+        right: -130px;
+        top: 120px;
+        color: $color-background-purple;
+
+        svg {
+            height: 800px;
+            width: 800px;
+        }
+    }
+
+    &.has-full-viewport-height {
+        min-height: 100vh;
+    }
+}
+
+.successContainer {
+    top: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 576px;
+    background-color: $color-ui-green-light;
+    overflow: hidden;
+
+    .contentContainer {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 586px;
+
+        .iconContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $color-ui-green;
+
+            .checkmark {
+                color: $color-white;
+                transform: scale(1.75);
+            }
+        }
+
+        .title {
+            color: $color-ui-green;
+            text-align: center;
+            font-weight: normal;
+        }
+    }
+
+    &.has-full-viewport-height {
+        min-height: 100vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .defaultContainer {
+        .attendee,
+        .profile {
+            opacity: 0.25;
+        }
+    }
+}

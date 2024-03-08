@@ -1,0 +1,18 @@
+query organizationEmployeesForTeam($paginationArgs: PaginatedInputType!, $organizationId: ID!, $teamId: ID) {
+    organizationEmployees(paginationArgs: $paginationArgs, organizationId: $organizationId, teamId: $teamId) {
+        hasMore
+        totalCount
+        nodes {
+            id
+            createdAt
+            updatedAt
+            role
+            person {
+                id
+                familyName
+                additionalName
+                givenName
+            }
+        }
+    }
+}

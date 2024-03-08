@@ -1,0 +1,36 @@
+@import 'src/styles/variables/spacing';
+.container {
+    .metaContainer {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        .statusContainer {
+            height: max-content;
+            position: relative;
+        }
+    }
+    .moreInformation {
+        padding-bottom: spacing(10);
+
+        .moreInformationLink {
+            padding: spacing(6) 0 0;
+        }
+        .moreInformationContentContaier {
+            // display: grid;
+            // grid-template-columns: 1fr 2fr;
+            margin: spacing(10);
+
+            .moreInformationContent {
+                // grid-column-start: 2;
+
+                margin-top: spacing(10);
+                padding: spacing(10) spacing(7);
+                border-radius: 16px;
+                background-color: #f2f2f7;
+            }
+        }
+    }
+    .information {
+        padding: spacing(12, -2) spacing(22, -3) spacing(0);
+    }
+}

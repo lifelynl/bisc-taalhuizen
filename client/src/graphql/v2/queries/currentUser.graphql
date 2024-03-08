@@ -1,0 +1,61 @@
+query currentUser {
+    currentUser {
+        id
+        username
+        locale
+        currentEmployee {
+            id
+            role
+            organization {
+                id
+                name
+                slug
+                description
+                type
+                employees {
+                    id
+                }
+                disabledIntakeFields
+                hasLimitedEditRights
+            }
+        }
+        person {
+            id
+            email
+            employees {
+                id
+                organization {
+                    id
+                    name
+                    slug
+                    type
+                }
+            }
+            address {
+                id
+                name
+                street
+                houseNumber
+                houseNumberSuffix
+                postalCode
+                locality
+                country
+            }
+            givenName
+            additionalName
+            familyName
+            gender
+            birthplace
+            birthday
+            telephone
+            contactPreference
+            contactPreferenceOther
+            maritalStatus
+            spokenLanguages
+            primaryLanguage
+            children
+            availability
+            availabilityNotes
+        }
+    }
+}

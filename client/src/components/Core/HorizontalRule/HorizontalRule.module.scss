@@ -1,0 +1,35 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.hr {
+    margin: spacing(10) 0px;
+    height: 4px;
+    border-color: $color-grey-5;
+    border-radius: 2px;
+    color: $color-grey-5;
+    background-color: $color-grey-5;
+    border: none;
+
+    &.is-spacing-disabled {
+        margin: 0;
+    }
+
+    &.dark {
+        color: $color-grey-20;
+        background-color: $color-grey-20;
+        border-color: $color-grey-20;
+    }
+
+    &.thin {
+        height: 1px;
+    }
+
+    &.short {
+        margin: spacing(5) 0px;
+        height: 4px;
+        color: $color-bisc-orange;
+        background-color: $color-bisc-orange;
+        border-color: $color-bisc-orange;
+        max-width: spacing(6);
+    }
+}

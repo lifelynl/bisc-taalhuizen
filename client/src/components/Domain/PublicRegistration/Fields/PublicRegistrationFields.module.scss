@@ -1,0 +1,14 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.container {
+    margin: spacing(30.75) 0;
+
+    .sectionTitle {
+        font-size: 40px;
+        font-family: Faustina;
+        font-weight: normal;
+        color: $color-grey-99;
+        margin-bottom: spacing(12);
+    }
+}

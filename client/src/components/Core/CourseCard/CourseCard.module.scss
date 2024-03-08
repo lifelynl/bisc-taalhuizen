@@ -1,0 +1,19 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    border-radius: 8px;
+    background-color: $color-background-dark-blue;
+    padding: spacing(4) spacing(6);
+
+    .offerName {
+        font-size: 18px;
+        color: $color-white;
+    }
+
+    .providerName {
+        font-size: 14px;
+        color: $color-white;
+    }
+}

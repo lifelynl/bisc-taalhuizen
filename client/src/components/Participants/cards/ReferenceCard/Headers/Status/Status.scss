@@ -1,0 +1,9 @@
+@import 'src/styles/variables/spacing';
+
+@mixin ReferenceStatus {
+    height: 193px;
+    width: 341px;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: spacing(10) spacing(10);
+}

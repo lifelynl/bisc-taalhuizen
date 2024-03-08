@@ -1,0 +1,14 @@
+mutation createDocument($input: CreateUploadedDocumentInputType!) {
+    createDocument(input: $input) {
+        id
+        createdAt
+        updatedAt
+        file {
+            name
+            extension
+            mimeType
+            size
+            base64
+        }
+    }
+}

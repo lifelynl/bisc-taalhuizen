@@ -1,0 +1,13 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(1, 118px 1fr 1fr);
+}
+
+.tooltip {
+    width: 100%;
+    overflow: hidden;
+}

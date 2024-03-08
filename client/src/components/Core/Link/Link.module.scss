@@ -1,0 +1,18 @@
+@import 'src/styles/variables/colors';
+.link {
+    display: flex;
+    align-items: center;
+    line-height: 2;
+    color: $color-bisc-orange;
+    text-decoration: none;
+    line-height: inherit;
+    font-size: inherit;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.isInline {
+        display: inline;
+    }
+}

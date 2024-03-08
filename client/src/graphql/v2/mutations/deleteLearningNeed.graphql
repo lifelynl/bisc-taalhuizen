@@ -1,0 +1,3 @@
+mutation deleteLearningNeed($learningNeedId: String!) {
+    deleteLearningNeed(id: $learningNeedId)
+}

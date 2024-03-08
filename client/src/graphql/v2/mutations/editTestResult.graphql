@@ -1,0 +1,5 @@
+mutation editTestResult($input: EditTestResultInputType!) {
+    editTestResult(input: $input) {
+        id
+    }
+}

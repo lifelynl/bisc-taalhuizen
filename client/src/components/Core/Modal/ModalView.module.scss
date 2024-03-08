@@ -1,0 +1,48 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/media-query';
+@import 'src/styles/variables/colors';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.contentContainer {
+    padding: spacing(6) spacing(8) spacing(8) spacing(8);
+}
+
+.close {
+    position: absolute;
+    top: spacing(3);
+    right: spacing(1);
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: spacing(4) spacing(6, -2);
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    .button:last-of-type {
+        margin-left: spacing(4);
+    }
+}
+
+.title {
+    margin-top: spacing(6);
+    margin-left: spacing(7.5);
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-grey-99;
+}
+
+@include media-query(desktop) {
+    .container {
+        min-width: 584px;
+    }
+}

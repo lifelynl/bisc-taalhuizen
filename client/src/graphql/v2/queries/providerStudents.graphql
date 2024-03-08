@@ -1,0 +1,43 @@
+query providerStudents(
+    $paginationArgs: PaginatedInputType!
+    $participationStatus: ParticipationStatus
+    $newOrReferred: Boolean
+    $educationGroupId: String
+    $mentorId: String
+    $sort: StudentsSortInputType
+    $searchName: String
+) {
+    providerStudents(
+        paginationArgs: $paginationArgs
+        participationStatus: $participationStatus
+        newOrReferred: $newOrReferred
+        educationGroupId: $educationGroupId
+        mentorId: $mentorId
+        sort: $sort
+        searchName: $searchName
+    ) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            person {
+                id
+                givenName
+                additionalName
+                familyName
+            }
+            registration {
+                id
+                createdAt
+                desiredLearningNeedOutcome {
+                    subject
+                    subjectOther
+                }
+            }
+            organization {
+                id
+                name
+            }
+        }
+    }
+}

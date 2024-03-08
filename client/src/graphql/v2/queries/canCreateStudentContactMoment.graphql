@@ -1,0 +1,6 @@
+query canCreateStudentContactMoment($studentId: String!) {
+    student(studentId: $studentId) {
+        id
+        canCreateContactMoment
+    }
+}

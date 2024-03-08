@@ -1,0 +1,17 @@
+<h2>{{organizationName}}</h2>
+<h1>{{studentName}}</h1>
+
+<table>
+    {{#each sections}}
+        <tr colspan='2'>
+            <th class='section-title'>{{title}}</th>
+        </tr>
+        {{#each rows}}
+            <tr class='{{className}}'>
+                <td class='label'>{{label}}</td>
+                <td class='value'>{{value}}</td>
+            </tr>
+        {{/each}}
+        <tr><td class='spacer'></td></tr>
+    {{/each}}
+</table>

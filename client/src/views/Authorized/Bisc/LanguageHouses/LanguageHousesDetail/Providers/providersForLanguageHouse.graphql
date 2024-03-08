@@ -1,0 +1,14 @@
+query providersForLanguageHouse($paginationArgs: PaginatedInputType!, $languageHouseId: String!) {
+    organizations(paginationArgs: $paginationArgs, type: "provider") {
+        totalCount
+        hasMore
+        nodes {
+            id
+            name
+            isLanguageHouseProvider(languageHouseId: $languageHouseId)
+            students {
+                id
+            }
+        }
+    }
+}

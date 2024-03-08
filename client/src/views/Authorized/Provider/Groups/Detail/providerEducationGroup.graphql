@@ -1,0 +1,5 @@
+query providerEducationGroup($id: ID!) {
+    educationGroup(educationGroupId: $id) {
+        ...ProviderGroupFormFieldsFragment
+    }
+}

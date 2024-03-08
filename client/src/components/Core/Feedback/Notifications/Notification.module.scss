@@ -1,0 +1,85 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/animations';
+
+@mixin modifyBorderAndIconColor($color) {
+    .iconContainer {
+        border-color: $color;
+
+        &::before {
+            background-color: $color;
+        }
+
+        .icon {
+            background-color: $color;
+        }
+    }
+}
+
+.container {
+    transition: transform 250ms $animation-appear-bezier, opacity 300ms $animation-appear-bezier;
+    will-change: transform;
+
+    background-color: $color-white;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 76px 75%;
+    margin-top: spacing(3);
+    padding: spacing(2);
+
+    border: 1px solid $color-grey-20;
+    border-radius: 8px;
+
+    box-shadow: rgba(60, 64, 67, 0.1) 4px 3px 12px 0;
+
+    .iconContainer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 72px;
+
+        &::before {
+            width: 4px;
+            height: 70px;
+            display: block;
+            border-radius: 2.5px;
+            content: '';
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin: auto;
+            color: $color-white;
+            border-radius: 12px;
+
+            svg {
+                font-size: 10px;
+            }
+        }
+    }
+
+    &.isSuccess {
+        @include modifyBorderAndIconColor($color-ui-green);
+    }
+    &.isWarning {
+        @include modifyBorderAndIconColor($color-ui-orange);
+    }
+    &.isError {
+        @include modifyBorderAndIconColor($color-ui-red);
+    }
+
+    .textContainer {
+        position: relative;
+        width: calc(100% - 72px); // to account for the icon container width
+        margin-left: 0;
+        padding-right: spacing(1);
+    }
+
+    .text {
+        margin: 0;
+    }
+}

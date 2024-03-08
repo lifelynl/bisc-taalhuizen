@@ -1,0 +1,12 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.button {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.lineSpacing {
+    margin-top: spacing(8);
+    margin-bottom: spacing(4);
+}

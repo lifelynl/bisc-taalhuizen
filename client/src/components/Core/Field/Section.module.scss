@@ -1,0 +1,30 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/media-query';
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    .formContainer {
+        margin-top: spacing(4);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@include media-query(desktop) {
+    .leftContainer {
+        width: 390px;
+    }
+    .container {
+        .formContainer {
+            margin-top: 0;
+        }
+    }
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,71 @@
+query students(
+    $paginationArgs: PaginatedInputType!
+    $organizationId: String!
+    $status: String
+    $participationStatus: ParticipationStatus
+    $mentorEmployeeId: String
+    $educationGroupId: String
+    $sort: StudentsSortInputType
+    $searchName: String
+    $team: String
+) {
+    students(
+        paginationArgs: $paginationArgs
+        organizationId: $organizationId
+        status: $status
+        participationStatus: $participationStatus
+        mentorEmployeeId: $mentorEmployeeId
+        educationGroupId: $educationGroupId
+        sort: $sort
+        searchName: $searchName
+        team: $team
+    ) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            createdAt
+            intakeDate
+            team {
+                id
+                name
+            }
+            mentor {
+                id
+                person {
+                    id
+                    givenName
+                    additionalName
+                    familyName
+                }
+            }
+            person {
+                id
+                createdAt
+                updatedAt
+                givenName
+                additionalName
+                familyName
+            }
+            registration {
+                id
+                referringOrganizationOther # 'aangemeld door' column in registrations overview of language house
+                referringTeam # 'team' column in registrations overview of language house
+                createdAt # 'aangemeld per' column in registrations overview of language house
+                referringPerson {
+                    id
+                    givenName
+                    additionalName
+                    familyName
+                }
+            }
+            learningNeeds {
+                id
+                participations {
+                    id
+                    createdAt # in order to show the earliest participation date ('Verwezen' column in students overview)
+                }
+            }
+        }
+    }
+}

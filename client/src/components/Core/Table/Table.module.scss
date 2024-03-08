@@ -1,0 +1,101 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/fonts';
+
+.tableContainer {
+    position: relative;
+    margin-top: spacing(2);
+    width: 100%;
+
+    .tableHeaderContainer {
+        padding: spacing(3, -2) spacing(6) 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        min-height: spacing(5.875);
+        border-bottom: 1px solid $color-grey-20;
+
+        .tableRow {
+            display: flex;
+            flex-direction: row;
+            min-height: 27px;
+            width: 100%;
+
+            .sortIcon {
+                padding-left: 10px;
+            }
+
+            .sortIconStylesActive {
+                color: $color-black;
+            }
+
+            .sortIconStylesInactive {
+                color: #d5d5dc;
+            }
+
+            .title {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                text-transform: uppercase;
+                color: $color-grey-80;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+                letter-spacing: 0.4px;
+                margin-bottom: spacing(2.5);
+
+                &:not(:last-child) {
+                    padding-right: spacing(4);
+                }
+                &.columnSortedOn {
+                    color: $color-black;
+                }
+            }
+        }
+    }
+
+    .containerBody {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            position: relative;
+            padding: spacing(3, -2) spacing(6);
+            display: flex;
+            flex-direction: row;
+            min-height: 40px;
+            border-bottom: 1px solid $color-grey-5;
+            width: 100%;
+
+            .rowItem {
+                width: 100%;
+
+                &:not(:last-child) {
+                    padding-right: spacing(4);
+                }
+            }
+
+            &:hover {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: spacing(1);
+                    bottom: spacing(1);
+                    left: spacing(1);
+                    right: spacing(1);
+                    background: $color-background-polar;
+                    border-radius: 8px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+    th,
+    td {
+        &.columnAlignmentRight {
+            justify-content: flex-end;
+        }
+    }
+}

@@ -1,0 +1,87 @@
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/colors';
+
+.tableContainer {
+    position: relative;
+    margin-top: spacing(2);
+    width: 100%;
+
+    .createButtonRow {
+        margin-top: spacing(1);
+    }
+
+    .createStateIsActive {
+        &.createButtonRow {
+            pointer-events: none;
+            visibility: hidden;
+        }
+    }
+
+    .tableHeaderContainer {
+        margin-top: spacing(1);
+        padding: spacing(3, -2) 0;
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        align-items: center;
+        min-height: spacing(5.875);
+        .tableRow {
+            .title {
+                width: 100%;
+                display: flex;
+                text-transform: uppercase;
+                color: $color-grey-80;
+                font-weight: bold;
+                font-size: 12px;
+                letter-spacing: 0.4px;
+                margin-bottom: spacing(2.5);
+            }
+        }
+
+        .detailsLabel {
+            max-width: 403px;
+            width: 100%;
+        }
+    }
+
+    .tableRow {
+        display: flex;
+        flex-direction: row;
+        min-height: 27px;
+        max-width: 1052.72px;
+        width: 100%;
+
+        &.dateRow {
+            max-width: 122px;
+        }
+
+        &.eventsRow {
+            width: 80%;
+            margin-right: spacing(6);
+        }
+    }
+
+    .containerBody {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+
+        .scrollContainer {
+            overflow-y: auto;
+            height: 700px;
+        }
+        .row {
+            position: relative;
+            padding: spacing(3, -2) 0;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            min-height: 40px;
+        }
+
+        .eventDetailContainer {
+            position: relative;
+            min-width: 403px;
+            max-width: 403px;
+            height: 700px;
+        }
+    }
+}

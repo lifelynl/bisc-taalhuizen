@@ -1,0 +1,16 @@
+.spinner {
+    width: 35px;
+
+    &.isSmall {
+        width: 25px;
+    }
+
+    &.isLarge {
+        width: 80px;
+    }
+
+    path {
+        // make the spinner adapt to the text color
+        stroke: currentColor;
+    }
+}

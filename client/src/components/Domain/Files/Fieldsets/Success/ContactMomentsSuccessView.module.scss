@@ -1,0 +1,38 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+@import 'src/styles/variables/fonts';
+
+.mainContainer {
+    z-index: 10;
+
+    .contentContainer {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 222px;
+        margin: 0 auto;
+
+        .iconContainer {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-ui-green;
+
+            .icon {
+                color: $color-white;
+                transform: scale(1.5);
+            }
+        }
+        .title {
+            font-family: $font-secondary;
+            color: $color-ui-green;
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+}

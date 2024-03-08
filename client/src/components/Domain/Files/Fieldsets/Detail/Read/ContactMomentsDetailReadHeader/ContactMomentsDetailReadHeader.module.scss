@@ -1,0 +1,57 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    .titleContainer {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: spacing(9);
+    }
+
+    .title {
+        width: 75px;
+        height: 18px;
+        margin: 0 8px 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: $color-grey-99;
+    }
+
+    &.default {
+        .editIcon {
+            background-color: $color-grey-60;
+        }
+    }
+
+    &.finalInterview {
+        .editIcon {
+            background-color: $color-background-dark-blue;
+        }
+    }
+
+    &.comment {
+        .editIcon {
+            background-color: $color-background-purple;
+        }
+    }
+
+    &.followUp {
+        .editIcon {
+            background-color: $color-background-yellow;
+        }
+    }
+
+    &.storytelling {
+        .editIcon {
+            background-color: $color-bisc-ice;
+        }
+    }
+
+    &.intake {
+        .editIcon {
+            background-color: $color-background-salmon;
+        }
+    }
+}

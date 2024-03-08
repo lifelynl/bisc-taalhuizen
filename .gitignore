@@ -1,0 +1,9 @@
+node_modules
+client-backup/.eslintcache
+client/.eslintcache
+Itermocil.custom.yml
+.DS_Store
+backups
+# ignored for public only
+devops
+docs

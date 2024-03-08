@@ -1,0 +1,81 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 12px;
+        position: relative;
+
+        .border {
+            height: 100%;
+            width: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 12px;
+        }
+
+        &.default {
+            background-color: $color-grey-5;
+            .border,
+            .editIcon {
+                background-color: $color-grey-60;
+            }
+        }
+
+        &.success {
+            background-color: $color-ui-green-light;
+
+            .border {
+                background-color: $color-ui-green;
+            }
+        }
+
+        &.finalInterview {
+            background-color: lighten($color-background-dark-blue, 50%);
+            .border,
+            .editIcon {
+                background-color: $color-background-dark-blue;
+            }
+        }
+
+        &.comment {
+            background-color: $color-background-purple-light;
+            .border,
+            .editIcon {
+                background-color: $color-background-purple;
+            }
+        }
+
+        &.followUp {
+            background-color: $color-background-yellow-light;
+            .border,
+            .editIcon {
+                background-color: $color-background-yellow;
+            }
+        }
+
+        &.storytelling {
+            background-color: lighten($color-bisc-ice, 25%);
+            .border,
+            .editIcon {
+                background-color: $color-bisc-ice;
+            }
+        }
+
+        &.intake {
+            background-color: lighten($color-background-salmon, 18%);
+            .border,
+            .editIcon {
+                background-color: $color-background-salmon;
+            }
+        }
+    }
+}

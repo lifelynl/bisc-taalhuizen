@@ -1,0 +1,5 @@
+mutation createLearningNeed($input: CreateLearningNeedInputType!) {
+    createLearningNeed(input: $input) {
+        id
+    }
+}

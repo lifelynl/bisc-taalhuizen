@@ -1,0 +1,24 @@
+mutation login($credentials: LoginInput!) {
+    login(credentials: $credentials) {
+        id
+        username
+        locale
+        accessToken
+        refreshToken
+        employees {
+            id
+            organization {
+                id
+                slug
+                type
+                name
+            }
+        }
+        person {
+            id
+            givenName
+            additionalName
+            familyName
+        }
+    }
+}

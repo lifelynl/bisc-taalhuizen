@@ -1,0 +1,9 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    height: 56px;
+    border-radius: 16px;
+    padding: spacing(4) spacing(5.5);
+    background-color: $color-background-polar;
+}

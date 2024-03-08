@@ -1,0 +1,8 @@
+mutation createParticipation($input: CreateParticipationInputType!) {
+    createParticipation(input: $input) {
+        id
+        learningNeed {
+            id
+        }
+    }
+}

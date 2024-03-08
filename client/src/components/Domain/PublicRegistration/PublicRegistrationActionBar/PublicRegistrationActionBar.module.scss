@@ -1,0 +1,13 @@
+@import 'src/styles/variables/spacing';
+
+.container {
+    width: 100%;
+    background-color: rgba(242, 242, 247, 0.8);
+    padding: spacing(4);
+
+    .contentContainer {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

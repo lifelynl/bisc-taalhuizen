@@ -1,0 +1,56 @@
+@import 'src/styles/variables/media-query';
+@import 'src/styles/variables/colors';
+
+.container {
+    max-width: $input-width;
+    font-size: 14px;
+
+    &.grow {
+        max-width: 100%;
+    }
+}
+
+.reactSelect {
+    strong {
+        font-weight: 600;
+    }
+}
+
+.value {
+    background-color: $color-background-polar;
+
+    svg {
+        color: $color-grey-60;
+    }
+}
+
+div.select {
+    border-color: $color-grey-20;
+    box-shadow: none;
+
+    .hasErrorMessage & {
+        border-color: $color-ui-red;
+    }
+
+    &:hover {
+        border-color: $color-grey-20;
+    }
+
+    &:focus {
+        // not working because the div doesn't get focus
+        border-color: $color-background-polar;
+    }
+}
+
+.placeholder {
+    color: $color-grey-20;
+}
+
+.errorMessage {
+    margin-top: spacing(2);
+    color: $color-ui-red;
+}
+
+div.input {
+    cursor: text;
+}

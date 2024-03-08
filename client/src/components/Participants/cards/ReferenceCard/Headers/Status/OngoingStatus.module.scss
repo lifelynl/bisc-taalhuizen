@@ -1,0 +1,48 @@
+@import './Status.scss';
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    @include ReferenceStatus;
+
+    background-color: $color-grey-5;
+
+    .title {
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.24px;
+        color: $color-grey-99;
+    }
+
+    .participantGroupMeta {
+        margin-top: spacing(2);
+        font-size: 14px;
+        color: $color-grey-99;
+
+        .participantGroup {
+            font-weight: 600;
+        }
+    }
+
+    .statusLabel {
+        margin-top: spacing(8);
+    }
+
+    &.isOwnReference {
+        &.isStatusOngoing {
+            background-color: $color-background-dark-blue;
+
+            .title {
+                color: $color-white;
+            }
+
+            .participantGroupMeta {
+                color: $color-grey-5;
+            }
+        }
+
+        &.isStatusReferred {
+            background-color: $color-background-light-blue;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+query organizations($paginationArgs: PaginatedInputType!, $type: String!) {
+    organizations(paginationArgs: $paginationArgs, type: $type) {
+        totalCount
+        hasMore
+        nodes {
+            id
+            name
+            type
+            description
+            type
+            postalCodes {
+                id
+                code
+            }
+            employees {
+                id
+            }
+            address {
+                id
+                street
+                houseNumber
+                houseNumberSuffix
+                postalCode
+                locality
+            }
+            email
+            telephone
+        }
+    }
+}

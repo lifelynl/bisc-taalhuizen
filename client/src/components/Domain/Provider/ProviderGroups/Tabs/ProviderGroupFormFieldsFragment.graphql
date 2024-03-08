@@ -1,0 +1,33 @@
+fragment ProviderGroupFormFieldsFragment on EducationGroupType {
+    id
+    name
+    type
+    availability
+    availabilityNotes
+    location
+    minimumParticipants
+    maximumParticipants
+    evaluation
+    lessonHours
+    degree
+    formality
+    start
+    end
+    desiredLearningNeedOutcome {
+        id
+        subject
+        subjectOther
+        application
+        applicationOther
+        level
+        levelOther
+    }
+    employees {
+        id
+        person {
+            givenName
+            additionalName
+            familyName
+        }
+    }
+}

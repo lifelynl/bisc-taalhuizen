@@ -1,0 +1,26 @@
+process.env.ENV = 'test'
+process.env.APP_VERSION = 'dev'
+process.env.APP_NAME = 'bisc-top'
+process.env.APP_PEPPER = 'pepper'
+process.env.APP_PORT = '5000'
+process.env.APP_URL = 'localhost:5000'
+process.env.FRONT_URL = 'http://localhost:3000'
+
+process.env.DB_NAME = 'postgres'
+process.env.DB_HOST = 'localhost'
+process.env.DB_PORT = '5432'
+process.env.DB_USER = 'postgres'
+process.env.DB_PASSWORD = 'secret'
+
+process.env.JWT_SECRET = 'superSecretKey'
+
+process.env.MAIL_FROM_NAME = 'BISC-TOP'
+process.env.MAIL_FROM_EMAIL = 'top@bisc.nl'
+process.env.MAIL_SMTP_HOST = '127.0.0.1'
+process.env.MAIL_SMTP_PORT = '1025'
+process.env.MAIL_SMTP_AUTH_USERNAME = 'foo'
+process.env.MAIL_SMTP_AUTH_PASSWORD = 'bar'
+
+process.env.STORAGE_DRIVER = 'local'
+process.env.STORAGE_LOCAL_BASEPATH = '/uploads'
+process.env.STORAGE_LOCAL_BASEURL = 'localhost:3000/uploads'

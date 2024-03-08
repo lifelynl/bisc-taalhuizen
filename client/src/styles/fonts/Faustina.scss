@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Bold'), local('Source-Sans-Pro-Bold'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Bold.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Bold Italic'), local('Source-Sans-Pro-BoldItalic'),
+        url('../../../src/assets/fonts/Faustina/Faustina-BoldItalic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-BoldItalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Italic'), local('Source-Sans-Pro-Italic'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Italic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Medium'), local('Source-Sans-Pro-Medium'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Medium.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Medium Italic'), local('Source-Sans-Pro-MediumItalic'),
+        url('../../../src/assets/fonts/Faustina/Faustina-MediumItalic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina Regular'), local('Source-Sans-Pro-Regular'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Regular.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina SemiBold'), local('Source-Sans-Pro-SemiBold'),
+        url('../../../src/assets/fonts/Faustina/Faustina-SemiBold.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Faustina';
+    src: local('Faustina SemiBold Italic'), local('Source-Sans-Pro-SemiBoldItalic'),
+        url('../../../src/assets/fonts/Faustina/Faustina-SemiBoldItalic.woff2') format('woff2'),
+        url('../../../src/assets/fonts/Faustina/Faustina-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}

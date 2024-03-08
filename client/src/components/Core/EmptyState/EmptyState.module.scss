@@ -1,0 +1,32 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/fonts';
+
+.container {
+    display: flex;
+    justify-content: center;
+
+    .emptyState {
+        margin-top: 100px;
+        margin-bottom: 40px;
+        position: relative;
+        width: 100%;
+        max-width: 406px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .emptyStateShape {
+            width: 100%;
+        }
+
+        .emptyStateMessage {
+            position: absolute;
+            top: 120px;
+            font-family: $font-secondary;
+            color: $color-bisc-ice;
+            font-size: 24px;
+            font-weight: normal;
+            text-align: center;
+        }
+    }
+}

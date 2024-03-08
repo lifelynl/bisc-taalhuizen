@@ -1,0 +1,3 @@
+mutation deleteDocument($input: DeleteUploadedDocumentInputType!) {
+    deleteDocument(input: $input)
+}

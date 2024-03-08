@@ -1,0 +1,45 @@
+mutation editEmployee($editEmployeeInput: EditEmployeeInputType!, $withEducations: Boolean! = false) {
+    editEmployee(editEmployeeInput: $editEmployeeInput) {
+        id
+        organization {
+            id
+            name
+        }
+        person {
+            id
+            familyName
+            additionalName
+            givenName
+            email
+            telephone
+            availabilityNotes
+            availability
+            educations @include(if: $withEducations) {
+                id
+                createdAt
+                updatedAt
+                name
+                type
+                level
+                levelOther
+                degree
+                degreeGranted
+                currentlyFollowingStatus
+                startDate
+                endDate
+                yearsFollowed
+                institution
+                group
+                courseTeacherType
+                hours
+                other
+            }
+            employees {
+                id
+            }
+        }
+        role
+        createdAt
+        updatedAt
+    }
+}

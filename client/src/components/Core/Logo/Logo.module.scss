@@ -1,0 +1,22 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/spacing';
+
+.container {
+    display: flex;
+    flex-direction: row;
+
+    .text-container {
+        display: flex;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .text {
+        position: relative;
+        margin: 0;
+        font-family: Faustina;
+        font-weight: 500;
+        color: #232326;
+        font-size: 40px;
+    }
+}

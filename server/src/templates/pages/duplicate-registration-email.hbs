@@ -1,0 +1,13 @@
+{{#> email }}
+	<h1>Beste,</h1>
+	<p>Deze deelnemer heeft zich al een keer geregistreerd met dit e-mailadres. Waarschijnlijk heeft deze deelnemer een nieuwe (leer)vraag. Zou je even contact met deze persoon willen opnemen?</p>
+	<hr />
+	<ul>
+		{{#each registrationInput}}
+			<li>{{this}}</li>
+		{{/each}}
+	</ul>
+	<hr />
+	<p>Met vriendelijke groet,</p>
+	<p>TOP</p>
+{{/email}}
